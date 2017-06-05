@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>这是一个模板.</title>
+
+    <style type="text/css">
+        #panel, #flip {
+            padding: 5px;
+            text-align: center;
+            background-color: #e5eecc;
+            border: solid 1px #c3c3c3;
+        }
+
+        #panel {
+            padding: 50px;
+
+        }
+
+        .important {
+            font-weight: bold;
+            font-size: xx-large;
+        }
+
+        .blue {
+            color: blue;
+        }
+    </style>
+
+
+    <script src="js/jquery-3.2.1.js">
+    </script>
+
+
+
+
+    <script>
+        $(document).ready(function () {
+
+
+            $("#p1").click(function () {
+
+                $(this).css("background-color", "yellow");
+
+            });
+
+
+            $("#ajaxGetBtn").click(function () {
+                $.get("/helloworld", function (data, status) {
+                    alert("数据: " + data + "\n状态: " + status);
+                });
+
+            });
+
+
+            $("#ajaxPostBtn").click(function () {
+                $.post("/post", {
+                        name: "菜鸟教程",
+                        age: 33
+                    },
+                    function (data, status) {
+                        alert("数据: \n" + data + "\n状态: " + status);
+                    });
+            });
+
+
+            $("#send").click(function () {
+
+                var url = "/post";
+                $.ajax({
+                    type: "post",
+                    url: url,
+                    data: {name: $("#name").val(), age: $("#age").val()},
+                    dataType: "json",
+
+                    success: function (data, textStatus) {
+                        //JSON.parse(jsonstr); //可以将json字符串转换成json对象
+                        //JSON.stringify(jsonobj); //可以将json对象转换成json对符串
+                       var mystr = JSON.stringify(data);
+                        alert("sucess！the data is:" + mystr);
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("fail！");
+                    }
+                });
+
+
+            });
+
+
+        });
+
+    </script>
+</head>
+<body>
+
+<div id="div1">this is a div.</div>
+<p id="p1">如果你点我，我就会消失。</p>
+<p id="panel">继续点我!</p>
+
+<p>接着点我!</p>
+
+
+<button id="ajaxGetBtn">ajax get</button>
+
+<button id="ajaxPostBtn">ajax post</button>
+
+
+name: <input type="text" name="name" id="name"/>
+age: <input type="text" name="age" id="age"/>
+
+<button id="send">ajax post detail</button>
+
+</body>
+</html>

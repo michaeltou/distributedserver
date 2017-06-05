@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en"><!-- InstanceBegin template="/Templates/temp1.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+    <title>云模·云短信</title>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keywords" content="短信平台,短信营销,短信群发,群发短信,短信api,云模短信,云模,云短信">
+    <meta name="description" content="云模·云短信是中国领先的短信服务平台,专业提供短信群发,短信接口,短信营销,短信验证码,语音验证码等服务">
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <!-- <script type="text/javascript" src="js/jquery.validate.js"></script>
+   <script type="text/javascript" src="js/jquery.form.js"></script>-->
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+
+</head>
+<body class="wrapper">
+<iframe style="display: none;"></iframe>
+<div class="header">
+    <div class="header-tit">
+        <div class="container"><span class="fr">咨询热线：0571-86571967</span></div>
+    </div>
+    <div class="container"><a id="logo" href="index.html" class="logo"><img src="image/logo.png" alt="云模网络"></a>
+        <ul class="nav">
+            <li class=""><a href="index.html">首页</a></li>
+            <li class=""><a href="product01.html">产品中心</a>
+                <div class="nav-content">
+                    <ol>
+                        <li class=""><a href="product01.html">验证码短信</a></li>
+                        <li><a href="product02.html">通知短信</a></li>
+                        <li><a href="product03.html">营销短信</a></li>
+                    </ol>
+                </div>
+            </li>
+            <li class=""><a href="API.html">API接口</a>
+                <div class="nav-content">
+                    <ol>
+                        <li><a href="API.html">API接口资料</a></li>
+                    </ol>
+                </div>
+            </li>
+            <li><a href="HelpCenter01.html">帮助中心</a>
+                <div class="nav-content">
+                    <ol>
+                        <li><a href="HelpCenter01.html">快速开始</a></li>
+                        <li><a href="HelpCenter03.html">常见问题</a></li>
+                        <li><a href="HelpCenter04.html">通道性能</a></li>
+                        <li><a href="HelpCenter05.html">用户协议</a></li>
+                        <li><a href="HelpCenter06.html">汇款账户</a></li>
+                        <li><a href="HelpCenter08.html">服务资费</a></li>
+                    </ol>
+                </div>
+            </li>
+            <li class=""><a href="AboutUs.html">关于我们</a></li>
+        </ul>
+        <div class="login-tip"><a href="register.html">注册</a><a target="_blank" href="login.html">登录</a></div>
+    </div>
+</div>
+<!--main--><!-- InstanceBeginEditable name="EditRegion1" -->
+<!-- <script type="text/javascript" src="js/Validform_v5.3.2.js"></script>-->
+<!-- <script type="text/javascript" src="js/register.js"></script>  -->
+
+<style type="text/css">
+    .validate_wrong {
+        color: red;
+        padding-left: 20px;
+        white-space: nowrap;
+        display: block;
+    }
+
+    .validate_correct {
+        display: none;
+    }
+
+
+</style>
+<script>
+
+    $(document).ready(function () {
+
+        var b_validate_result = true;
+        var b_validate_result1 = true;
+        var b_validate_result2 = true;
+        var b_validate_result3 = true;
+        var b_validate_result4 = true;
+        var b_validate_result5 = true;
+        var b_validate_result6 = true;
+
+
+        $("#userName").focusout(function () {
+
+            if ($("#userName").val().length < 6) {
+                $("#userName").next().text("用户名不合法");
+                $("#userName").next().css({"display": "block", "color": "red"});
+                b_validate_result1 = false;
+            } else {
+                $("#userName").next().css("display", "none");
+                b_validate_result1 = true;
+            }
+
+
+        });
+
+        $("#companyName").focusout(function () {
+            if ($("#companyName").val().length < 6) {
+                $("#companyName").next().text("企业名称不合法");
+                $("#companyName").next().css({"display": "block", "color": "red"});
+                b_validate_result2 = false;
+            } else {
+                $("#companyName").next().css("display", "none");
+                b_validate_result2 = true;
+            }
+
+        });
+
+        $("#password").focusout(function () {
+
+            var result = true;
+
+            if ($("#password").val().length < 6) {
+
+                $("#password").next().text("密码位数不应小于6位字符");
+                $("#password").next().css({"display": "block", "color": "red"});
+                result = false;
+            }
+
+            if (($("#password").val().length > 0 && $("#password2").val().length > 0 )) {
+                if ($("#password").val() != $("#password2").val()) {
+                    $("#password").next().text("两次密码不相等");
+                    $("#password").next().css({"display": "block", "color": "red"});
+                    result = false;
+                }
+            }
+
+            if (result) {
+                $("#password").next().css("display", "none");
+                $("#password2").next().css("display", "none");
+                b_validate_result3 = true;
+            } else {
+                b_validate_result3 = false;
+            }
+        });
+
+        $("#password2").focusout(function () {
+            var result = true;
+
+            if ($("#password2").val().length < 6) {
+
+                $("#password2").next().text("密码位数不应小于6位字符");
+                $("#password2").next().css({"display": "block", "color": "red"});
+                result = false;
+            }
+
+            if (($("#password").val().length > 0 && $("#password2").val().length > 0 )) {
+                if ($("#password").val() != $("#password2").val()) {
+                    $("#password2").next().text("两次密码不相等");
+                    $("#password2").next().css({"display": "block", "color": "red"});
+                    result = false;
+                }
+            }
+
+            if (result) {
+                $("#password2").next().css("display", "none");
+                $("#password").next().css("display", "none");
+                b_validate_result4 = true;
+            } else {
+                b_validate_result4 = false;
+            }
+        });
+
+
+        $("#telNo").focusout(function () {
+
+            var telReg = /^1[3|4|5|8][0-9]\d{8}$/;
+            if (!telReg.test($("#telNo").val())) {
+                $("#telNo").next().text("电话号码不正确");
+                $("#telNo").next().css({"display": "block", "color": "red"});
+                b_validate_result5 = false;
+            } else {
+                $("#telNo").next().css("display", "none");
+                b_validate_result5 = true;
+            }
+
+        });
+        function validateCode() {
+            var url = "/verifyRegisterValidateCode";
+            $.ajax({
+                type: "get",
+                url: url,
+                data: {validateCode: $("#code").val()},
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",//(可以)
+                success: function (data, textStatus) {
+                    /// javascript json 和字符串之间互转.
+                    //JSON.parse(jsonstr); //可以将json字符串转换成json对象
+                    //JSON.stringify(jsonobj); //可以将json对象转换成json对符串
+                    var mystr = JSON.stringify(data);
+
+                    if(!data.success){
+
+                        $("#validate_code_check_tips").text("验证码不正确");
+                        $("#validate_code_check_tips").css({"display": "block", "color": "red"});
+                        b_validate_result6 = false;
+                    }else{
+
+                        $("#validate_code_check_tips").css("display", "none");
+                        b_validate_result6 = true;
+                    }
+
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $("#code").next().text("验证码校验异常");
+                    $("#code").next().css({"display": "block", "color": "red"});
+                    b_validate_result6 = false;
+                }
+            });
+
+        }
+
+        $("#code").focusout(function () {
+
+            if ($("#code").val().length < 4 || $("#code").val().length > 4) {
+                $("#code").next().text("验证码不合法");
+                $("#code").next().css({"display": "block", "color": "red"});
+                b_validate_result6 = false;
+            } else {
+                validateCode();
+            }
+        });
+
+
+
+        $("#code").keyup(function () {
+
+           var validateCode = $("#code").val();
+           if(validateCode.length<4){
+               b_validate_result6 = false;
+               return;
+           }
+            if(validateCode.length>4){
+                $("#validate_code_check_tips").text("验证码不正确");
+                $("#validate_code_check_tips").css({"display": "block", "color": "red"});
+                b_validate_result6 = false;
+                return;
+            }
+            validateCode();
+
+        });
+
+
+
+
+        $("#submit").click(function () {
+
+            $("#userName").focus();
+            $("#companyName").focus();
+            $("#password").focus();
+            $("#password2").focus();
+            $("#telNo").focus();
+            $("#code").focus();
+            $("#userName").focus();
+
+
+            b_validate_result = b_validate_result1 && b_validate_result2 && b_validate_result3
+                && b_validate_result4 && b_validate_result5 && b_validate_result6;
+            if (!b_validate_result) {
+               return;
+            }
+
+             var url = "/sms/register";
+             $.ajax({
+                type: "post",
+                url: url,
+                data: JSON.stringify({userName: $("#userName").val(),password:$("#password").val(),companyName:$("#companyName").val(),telNo:$("#telNo").val()}),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",//(可以)
+                success: function (data, textStatus) {
+                    /// javascript json 和字符串之间互转.
+                    //JSON.parse(jsonstr); //可以将json字符串转换成json对象
+                    //JSON.stringify(jsonobj); //可以将json对象转换成json对符串
+                    var mystr = JSON.stringify(data);
+                    if(data.success){
+                        alert("注册成功！");
+                        window.location.href="/smsweb/login.html";     //在同当前窗口中打开窗口
+                    }else{
+                        alert("注册失败！");
+                    }
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("注册失败！");
+                }
+            });
+
+
+        });
+
+    });
+
+
+</script>
+<link rel="stylesheet" href="css/style_register.css" type="text/css">
+<div class="trForm">
+    <div class="container clearfix">
+        <div class="item2">
+            <div class="title">用户注册提示</div>
+            <div class="txt">请如实填报您的企业和个人信息，以便我们的客服尽快为您开通云模·云短信试用账号！</div>
+            <div class="content">
+                <form class="form-horizontal regform" id="regform">
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label" style="padding:0; margin:0;">用户名称</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="userName" name="userName" datatype="s4-10" nullmsg="请输入用户名！"
+                                   placeholder="用户名称" type="text"/>
+                            <div id="check_tips"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label" style="padding:0; margin:0;">企业名称</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="companyName" name="companyName" placeholder="企业名称"
+                                   type="text"/>
+                            <div class="check_tips"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label" style="padding:0; margin:0;">用户密码</label>
+                        <div class="col-sm-10">
+                            <input id="password" name="password" class="form-control" datatype="s6-10" nullmsg="请输入密码！"
+                                   placeholder="用户密码" type="password"/>
+                            <div class="check_tips"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label" style="padding:0; margin:0;">确认密码</label>
+                        <div class="col-sm-10">
+                            <input id="password2" name="password2" class="form-control" datatype="s6-10"
+                                   nullmsg="请输入确认密码！"
+                                   placeholder="确认密码" type="password" recheck="password"/>
+                            <div class="check_tips"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="" class="col-sm-2 control-label" style="padding:0; margin:0;">手机号码</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" datatype="m" id="telNo" name="telNo" nullmsg="请输入手机号码！"
+                                   placeholder="手机号码"
+                                   type="text"/>
+                            <div class="check_tips"></div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label   class="col-sm-2 control-label" style="padding:0; margin:0;">验&nbsp;&nbsp;证&nbsp;&nbsp;码</label>
+                        <div class="col-sm-5">
+                            <input class="form-control" datatype="s4-4" id="code" name="code" nullmsg="请输入验证码！"
+                                   placeholder="验证码"
+                                   type="text"/>
+                            <div id="validate_code_check_tips"  ></div>
+                        </div>
+                        <div class="col-sm-5"><img id="code_img" src="/getRegisterValidateCode"
+                                                   onclick="this.src='/getRegisterValidateCode?d='+new Date()*1"
+                                                   style="cursor: pointer;" height="30px"
+                                                   width="90px"></div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+
+                            <!--     <button id="submit" type="submit" class="btn btn-danger btn-lg" style="width:48%;">注&nbsp;&nbsp;&nbsp;&nbsp;册</button>   -->
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- form 里面的input加了 type="button"， 则点击这个按钮，不会默认有表单提交行为 -->
+                         <input type="button" name="submit" id="submit" value="&nbsp;&nbsp;注&nbsp;&nbsp;&nbsp;&nbsp;册&nbsp;&nbsp;" style="width:100%;background-color: #00A0E9">
+                        <!-- form 里面的button加了 type="button"， 则点击这个按钮，不会默认有表单提交行为 -->
+                        <!--    <button type="button" name="submit" id="submit"  style="width:100%;background-color: #00A0E9">&nbsp;&nbsp;注&nbsp;&nbsp;&nbsp;&nbsp;册&nbsp;&nbsp;</button>-->
+                        </div>
+
+                    </form>
+                    <!-- <div>&nbsp;&nbsp;&nbsp;&nbsp;</div><button id="submit"   style="width:20%;">注&nbsp;&nbsp;&nbsp;&nbsp;册</button>-->
+
+                <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                <div class="form-group text-right"><a href="HelpCenter05.html" target="_blank">点击“注册”，即表示您已经同意遵守《云模·云短信用户注册协议》</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- InstanceEndEditable -->
+<div class="footer">
+    <div class="container">
+        <div class="footer-item clearfix">
+            <div class="footer-nav" style="450px">
+                <dl>
+                    <dt class="title"><a href="product01.html">产品中心</a></dt>
+                    <dd><a href="product01.html">验证码短信</a> <a href="product02.html">通知短信</a> <a href="product03.html">营销短信</a>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt class="title"><a href="API.html">API接口</a></dt>
+                    <dd><a href="API.html">API接口资料</a></dd>
+                </dl>
+                <dl>
+                    <dt class="title"><a href="HelpCenter01.html">帮助中心</a></dt>
+                    <dd><a href="HelpCenter01.html">快速开始</a> <a href="HelpCenter03.html">常见问题</a> <a
+                            href="HelpCenter04.html">通道性能</a> <a href="HelpCenter05.html">用户协议</a><a
+                            href="HelpCenter08.html">服务资费</a></dd>
+                </dl>
+            </div>
+            <div class="footer-contact">
+                <div class="title"><a href="javascript:void(0);">联系我们</a></div>
+                <div class="content">
+                    销售中心：中国 · 杭州市滨江区秋溢路西可软件园<br>
+                    售前热线：0571-86571967<br>
+                    投诉电话：0571-86571967<br>
+                    企业邮箱：jianqiao.wang@deepidata.com<br>
+                    公司官网：<a href="index.html" target="_blank">www.deepidata.com</a>&nbsp;<br>
+                    产品网站：<a href="index.html">www.yunmosms.com</a><br>
+                    服务时间：9:00-18:00<br>
+                </div>
+            </div>
+        </div>
+        <div class="copyright" style="padding-top:0px;">Copyright © 2016 杭州云模网络科技有限公司 All Rights Reserved.</div>
+    </div>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- InstanceBegin template="/Templates/temp1.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<title>云模·云短信</title>
+<meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="keywords" content="短信平台,短信营销,短信群发,群发短信,短信api,云模短信,云模,云短信">
+<meta name="description" content="云模·云短信是中国领先的短信服务平台,专业提供短信群发,短信接口,短信营销,短信验证码,语音验证码等服务">
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/jquery.validate.js"></script>
+<script type="text/javascript" src="js/jquery.form.js"></script>
+<script type="text/javascript" src="js/Validform_v5.3.2.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+</head>
+<body class="wrapper">
+<iframe style="display: none;"></iframe>
+<div class="header">
+  <div class="header-tit">
+    <div class="container"> <span class="fr">咨询热线：0571-86571967</span> </div>
+  </div>
+  <div class="container"> <a id="logo" href="index.html" class="logo"><img src="image/logo.png" alt="云模网络"></a>
+    <ul class="nav">
+      <li class=""><a href="index.html">首页</a></li>
+      <li class=""><a href="product01.html">产品中心</a>
+        <div class="nav-content">
+          <ol>
+            <li class=""><a href="product01.html">验证码短信</a></li>
+            <li><a href="product02.html">通知短信</a></li>
+            <li><a href="product03.html">营销短信</a></li>
+          </ol>
+        </div>
+      </li>
+      <li class=""><a href="API.html">API接口</a>
+        <div class="nav-content">
+          <ol>
+            <li> <a href="API.html">API接口资料</a> </li>
+          </ol>
+        </div>
+      </li>
+      <li><a href="HelpCenter01.html">帮助中心</a>
+        <div class="nav-content">
+          <ol>
+            <li><a href="HelpCenter01.html">快速开始</a></li>
+            <li><a href="HelpCenter03.html">常见问题</a></li>
+            <li><a href="HelpCenter04.html">通道性能</a></li>
+            <li><a href="HelpCenter05.html">用户协议</a></li>
+            <li><a href="HelpCenter06.html">汇款账户</a></li>
+            <li><a href="HelpCenter08.html">服务资费</a></li>
+          </ol>
+        </div>
+      </li>
+      <li class=""><a href="AboutUs.html">关于我们</a></li>
+    </ul>
+    <div class="login-tip"> <a href="register.html">注册</a><a target="_blank" href="login.html">登录</a></div>
+  </div>
+</div>
+
+<script>
+
+    $(document).ready(function () {
+
+        var b_validate_result = true;
+
+
+        function validateLoginCode(){
+            var url = "/verifyLoginValidateCode";
+            $.ajax({
+                type: "get",
+                url: url,
+                data: {validateCode: $("#code").val()},
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",//(可以)
+                success: function (data, textStatus) {
+                    /// javascript json 和字符串之间互转.
+                    //JSON.parse(jsonstr); //可以将json字符串转换成json对象
+                    //JSON.stringify(jsonobj); //可以将json对象转换成json对符串
+                    var mystr = JSON.stringify(data);
+
+                    if(!data.success){
+
+                        $("#validate_code_check_tips").text("验证码不正确");
+                        $("#validate_code_check_tips").css({"display": "block", "color": "red"});
+                        b_validate_result = false;
+                    }else{
+
+                        $("#validate_code_check_tips").css("display", "none");
+                        b_validate_result = true;
+                    }
+
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $("#code").next().text("验证码校验异常");
+                    $("#code").next().css({"display": "block", "color": "red"});
+                    b_validate_result = false;
+                }
+            });
+        }
+
+
+        $("#code").keyup(function () {
+
+            var validateCode = $("#code").val();
+            if(validateCode.length<4){
+                b_validate_result = false;
+                return;
+            }
+            if(validateCode.length>4){
+                $("#validate_code_check_tips").text("验证码不正确");
+                $("#validate_code_check_tips").css({"display": "block", "color": "red"});
+                b_validate_result = false;
+                return;
+            }
+            validateLoginCode();
+
+        });
+
+
+
+        $("#code").focusout(function () {
+
+            if ($("#code").val().length < 4 || $("#code").val().length >4) {
+                $("#validate_code_check_tips").text("验证码不正确");
+                $("#validate_code_check_tips").css({"display": "block", "color": "red"});
+                b_validate_result = false;
+            } else {
+                validateLoginCode();
+            }
+        });
+
+
+
+        $("#loginBtn").click(function () {
+            //验证码不通过，直接返回.
+            if(!b_validate_result){
+                return;
+            }
+            var url = "/sms/login";
+            $.ajax({
+                type: "post",
+                url: url,
+                data: JSON.stringify({userName: $("#userName").val(),password:$("#password").val()}),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",//(可以)
+                success: function (data, textStatus) {
+                    /// javascript json 和字符串之间互转.
+                    //JSON.parse(jsonstr); //可以将json字符串转换成json对象
+                    //JSON.stringify(jsonobj); //可以将json对象转换成json对符串
+                    var mystr = JSON.stringify(data);
+                    if(data.success){
+                        window.location.href="/smsweb/index.html";     //在同当前窗口中打开窗口
+                    }else{
+                        alert("登录失败！");
+                    }
+
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("登录失败！");
+                }
+            });
+
+
+        });
+
+    });
+
+
+</script>
+<!--main--><!-- InstanceBeginEditable name="EditRegion1" -->
+<div style="width: 100%; height: 560px; margin: 0px auto 0px auto; padding: 25px 20px;background: #0CF; " >
+  <table width="100%" cellspacing="0" cellpadding="0" border="0" height="358" style="margin-left:100px; margin-top:150px;">
+    <tbody>
+      <tr>
+        <td width="600"><div class="images" width="600" > 
+            <!--<p style="display: block;"> <img src="image/5.jpg" alt="" style="padding:0 0 0 200px"></p>-->
+            <p style="display: none;"> <a href="index.html" target="_blank"><img src="image/adban.jpg" alt=""></a></p>
+            <span style="display: none;"><a href="javascript:void(0);"></a><a href="javascript:void(0);"> </a></span> </div></td>
+        <td valign="top" style="padding:0 750px 0 0"><div class="contact11"> <br class="clear">
+          </div>
+          <form    id="form1" class="form1" style="margin-top:15	0px;">
+            <table style="margin: 15px auto 0 480px;" width="340" cellspacing="0" cellpadding="0" border="0" bordercolor="#669966" >
+              <tbody>
+                <tr>
+    			<span id="error"  style="width:400px;height:50px;float:left;text-align:right; color:#0CF;"></span> 
+                  <td style="font-size: 14px; padding-right: 10px;" width="66" align="right" height="45"> 账&nbsp;&nbsp;&nbsp;&nbsp;号 </td>
+                  <td  ><input name="userName" id="userName" style="border: solid 1px #C8C8C8;
+                                    border-radius: 3px; width: 214px; height: 28px; line-height: 28px; text-indent: 5px;" placeholder="请输入您的登录账号" type="text" datatype="s4-10" nullmsg="请输入登录账号！" placeholder="登录账号"></td>
+                </tr>
+                <tr>
+                  <td style="font-size: 14px; padding-right: 10px; border-radius: 3px;" align="right" height="45"> 密&nbsp;&nbsp;&nbsp;&nbsp;码 </td>
+                  <td><input name="password" id="password" style="border: solid 1px #C8C8C8;
+                                    border-radius: 3px; width: 214px; height: 28px; line-height: 28px; text-indent: 5px;" placeholder="请输入密码" type="password" datatype="s6-10" nullmsg="请输入密码！" placeholder="用户密码"></td>
+                </tr>
+                <tr>
+                  <td style="font-size: 14px; padding-right: 10px;" align="right" height="45"> 验证码
+
+                  </td>
+                  <td><input name="code" id="code" style="border: solid 1px #C8C8C8;
+                                    border-radius: 3px; width: 100px; height: 28px; line-height: 28px; text-indent: 5px;" datatype="s4-4" nullmsg="请输入验证码！"  placeholder="请输入验证码" type="text" >
+                    <img style="cursor: pointer; width: 90px; height: 28px; vertical-align: middle ; line-height: 28px; margin-buttom:3px;"  id="yzm" src="/getLoginValidateCode"
+                         onclick="this.src='/getLoginValidateCode?d='+new Date()*1" >
+                    <div id="validate_code_check_tips"  ></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td  colspan="2" style="padding-left: 24px;" height="50">
+                    <input name="loginBtn" value="登&nbsp;&nbsp;录" id="loginBtn" style="width: 120px; text-align: center;
+                                    height: 38px; line-height: 38px; float: left; display: block; background: #339;
+                                    color: #FFFFFF; border: 0; border-radius: 3px; font-family: '微软雅黑'; font-size: 14px;
+                                    cursor: pointer; margin-left: 10px;" type="button">
+                                    <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=251506188&amp;site=qq&amp;menu=yes" target="_blank" style="width: 120px; height: 38px; text-align: center;
+                                    line-height: 38px; float: left; display: block; background: #339; color: #FFFFFF; border-radius: 3px; font-size: 14px; margin-left:10px;">联系客服</a>
+                                    </td>
+                </tr>
+
+
+              </tbody>
+            </table>
+          </form>
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div style=" margin-top: 0px; text-align: center; padding: 0px;"> </div>
+<!-- InstanceEndEditable -->
+<div class="footer">
+<div class="container">
+  <div class="footer-item clearfix">
+    <div class="footer-nav" style="450px">
+      <dl>
+        <dt class="title"><a href="product01.html">产品中心</a></dt>
+        <dd> <a href="product01.html">验证码短信</a> <a href="product02.html">通知短信</a> <a href="product03.html">营销短信</a> </dd>
+      </dl>
+      <dl>
+        <dt class="title"><a href="API.html">API接口</a></dt>
+        <dd> <a href="API.html">API接口资料</a> </dd>
+      </dl>
+      <dl>
+        <dt class="title"><a href="HelpCenter01.html">帮助中心</a></dt>
+        <dd> <a href="HelpCenter01.html">快速开始</a> <a href="HelpCenter03.html">常见问题</a> <a href="HelpCenter04.html">通道性能</a> <a href="HelpCenter05.html">用户协议</a><a href="HelpCenter08.html">服务资费</a></dd>
+      </dl>
+    </div>
+    <div class="footer-contact">
+      <div class="title"><a href="javascript:void(0);">联系我们</a></div>
+      <div class="content"> 销售中心：中国 · 杭州市滨江区秋溢路西可软件园<br>
+        售前热线：0571-86571967<br>
+        投诉电话：0571-86571967<br>
+        企业邮箱：jianqiao.wang@deepidata.com<br>
+        公司官网：<a href="index.html" target="_blank">www.deepidata.com</a>&nbsp;<br>
+        产品网站：<a href="index.html">www.yunmosms.com</a><br>
+        服务时间：9:00-18:00<br>
+      </div>
+    </div>
+  </div>
+  <div class="copyright" style="padding-top:0px;">Copyright © 2016 杭州云模网络科技有限公司 All Rights Reserved.</div>
+</div>
+</body>
+<!-- InstanceEnd -->
+</html>

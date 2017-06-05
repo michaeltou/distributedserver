@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>云模-用户体验中心</title>
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/style2.css">
+</head>
+<body class="wrapper">
+<div class="header">
+  <div class="container"> <a href="index.html" target="_blank class=" logo"=""><img src="image/logo.png" alt="云模-中国专业的短信服务商"></a>
+    <div class="tel">联系方式：<span>0571-86571967</span></div>
+  </div>
+</div>
+<div class="main">
+  <div class="item">
+    <div class="container">
+      <div class="title">短信验证码测试</div>
+      <div class="content">
+        <div class="form">
+          <form class="form-horizontal codeform" action="/sms/servlet/TestMessageServlet" method="post">
+            <div class="form-group">
+              <label class="col-sm-3 control-label">手机号</label>
+              <div class="col-sm-9">
+                <input name="mobile" datatype="m" class="form-control" placeholder="手机号" type="text">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">发送内容</label>
+              <div class="col-sm-9">
+                <textarea class="form-control" disabled="disabled" placeholder="">您好，您正在测试云模短信，验证码：0285，官网yunmo.cn。【云模】</textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">验证码</label>
+              <ul class="col-sm-9 ewm">
+                <li class="input">
+                  <input datatype="s4-4" name="code" class="form-control" placeholder="验证码" type="text" ajaxurl="/sms/servlet/CheckValidCodeServlet">
+                </li>
+                <li class="img"><img id="code_img" src="/sms/servlet/CheckCodeServlet" onclick="changeImage(this)" style="cursor: pointer;" height="30px" width="90px"></li>
+              </ul>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-9">
+                <input id="yzm" value="测试" class="btn btn-lg btn-danger" type="submit">
+                <button type="button" onclick="window.location='register.html'" class="btn btn-lg btn-warning">注册</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="txt">
+          <h3>注意：</h3>
+          <p>1. 同一分钟，同一号码，同样内容测试1次<br>
+            2. 同样的号码一小时最多发送4次<br>
+            3. 同一号码，验证码一天不超6次（如需解除请联系客服）<br>
+            4. 当前测试只支持文本中的固定内容<br>
+            5. 如有疑问可联系客服电话：0571-86571967</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="container">
+      <div class="title">通知短信测试</div>
+      <div class="content">
+        <div class="form">
+          <form class="form-horizontal codeform_tz" action="/sms/servlet/TestMessageServlet" method="post">
+            <div class="form-group">
+              <label class="col-sm-3 control-label">手机号</label>
+              <div class="col-sm-9">
+                <input name="mobile" datatype="m" class="form-control" placeholder="手机号" type="text">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">发送内容</label>
+              <div class="col-sm-9">
+                <textarea class="form-control" disabled="disabled" placeholder="">尊敬的会员，您的订单4008650285我们已经受理，感谢您的支持！【云模】</textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">验证码</label>
+              <ul class="col-sm-9 ewm">
+                <li class="input">
+                  <input datatype="s4-4" name="code" class="form-control" placeholder="验证码" type="text" ajaxurl="/sms/servlet/CheckValidCodeServlet">
+                </li>
+                <li class="img"><img id="code_img" src="/sms/servlet/CheckCodeServlet" onclick="changeImage(this)" style="cursor: pointer;" height="30px" width="90px"></li>
+              </ul>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-9">
+                <input id="yzm_tz" value="测试" class="btn btn-lg btn-danger" type="submit">
+                <button type="button" onclick="window.location='register.html'" class="btn btn-lg btn-warning">注册</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="txt">
+          <h3>注意：</h3>
+          <p>1. 同一分钟，同一号码，同样内容测试1次<br>
+            2. 同样的号码一小时最多发送4次<br>
+            3. 同一号码，通知短信一天不超6次（如需解除请联系客服）<br>
+            4. 当前测试只支持文本中的固定内容<br>
+            5. 如有疑问可联系客服电话：0571-86571967</p>
+        </div>
+      </div>
+    </div>
+    <div class="item">
+      <div class="container">
+        <div class="title">营销短信测试</div>
+        <div class="content">
+          <div class="form">
+            <form class="form-horizontal codeform_yx" action="/sms/servlet/TestMessageServlet" method="post">
+              <div class="form-group">
+                <label class="col-sm-3 control-label">手机号</label>
+                <div class="col-sm-9">
+                  <input name="mobile" datatype="m" class="form-control" placeholder="手机号" type="text">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">发送内容</label>
+                <div class="col-sm-9">
+                  <textarea class="form-control" disabled="disabled" placeholder="">您正在测试，如需帮助请联系客服，官网yunmo.cn。回T退订【云模】</textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label">验证码</label>
+                <ul class="col-sm-9 ewm">
+                  <li class="input">
+                    <input datatype="s4-4" name="code" class="form-control" placeholder="验证码" type="text" ajaxurl="/sms/servlet/CheckValidCodeServlet">
+                  </li>
+                  <li class="img"><img id="code_img" src="/sms/servlet/CheckCodeServlet" onclick="changeImage(this)" style="cursor: pointer;" height="30px" width="90px"></li>
+                </ul>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                  <input id="yzm_yx" value="测试" class="btn btn-lg btn-danger" type="submit">
+                  <button type="button" onclick="window.location='register.html'" class="btn btn-lg btn-warning">注册</button>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="txt">
+            <h3>注意：</h3>
+            <p>1. 同一分钟，同一号码，同样内容测试1次<br>
+              2. 同样的号码一小时最多发送4次<br>
+              3. 同一号码，营销短信一天不超6次（如需解除请联系客服）<br>
+              4. 当前测试只支持文本中的固定内容<br>
+              5. 如有疑问可联系客服电话：0571-86571967</p>
+          </div>
+        </div>
+      </div>
+      <div class="item">
+        <div class="container">
+          <div class="title">语音验证码测试</div>
+          <div class="content">
+            <div class="form">
+              <form class="form-horizontal codeforms" action="/sms/servlet/TestMessageServlet" method="post">
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">手机号</label>
+                  <div class="col-sm-9">
+                    <input name="mobile" datatype="m" class="form-control" placeholder="手机号" type="text">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">发送内容</label>
+                  <div class="col-sm-9">
+                    <textarea class="form-control" disabled="disabled" placeholder="">您的语音验证码是：0285。【云模】</textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">验证码</label>
+                  <ul class="col-sm-9 ewm">
+                    <li class="input">
+                      <input datatype="s4-4" name="code" class="form-control" placeholder="验证码" type="text" ajaxurl="/sms/servlet/CheckValidCodeServlet">
+                    </li>
+                    <li class="img"><img id="code_img" src="/sms/servlet/CheckCodeServlet" onclick="changeImage(this)" style="cursor: pointer;" height="30px" width="90px"></li>
+                  </ul>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-3 col-sm-9">
+                    <input id="yzms" value="测试" class="btn btn-lg btn-danger" type="submit">
+                    <button type="button" onclick="window.location='register.html'" class="btn btn-lg btn-warning">注册</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="txt">
+              <h3>注意：</h3>
+              <p>1. 同一分钟，同一号码，同样内容测试1次<br>
+                2. 同样的号码一小时最多发送4次<br>
+                3. 同一号码，验证码一天不超6次（如需解除请联系客服）<br>
+                4. 当前测试只支持文本中的固定内容<br>
+                5. 如有疑问可联系客服电话：0571-86571967</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="container">
+        <div class="copyright"> Copyright © 2016 杭州云模信息技术有限公司 All Rights Reserved. </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/jquery.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/layer.js"></script> 
+<script src="js/Validform_v5.3.2.js"></script> 
+<script>
+
+	 function changeImage(img){
+    		img.src = img.src+"?"+new Date().getTime();
+    	}
+	$('input[name=code]').focus(function(){
+		
+		$(this).parent().next().find('img').attr("src","/sms/servlet/CheckCodeServlet");
+	});
+	 $(".codeforms").Validform({
+	 ajaxPost:true,
+        tiptype:function(msg,o,cssctl){
+
+            if(!o.obj.is("form")){
+            		if(msg =="codeNotExist"){
+                		alert("验证码不一致");
+			}
+                if(o.type != 2) {
+                    layer.msg(msg, {icon: 5});
+                }
+
+            }else{
+                if(msg == 1){
+                    layer.msg("电话拨打中~", {icon: 16});
+                    setTimeout(function(){
+                        layer.closeAll('loading');
+                        layer.msg('拨打成功！', {icon: 1});
+						 countdown("60");
+						// $("#code_imgs").attr("src","/checkcode/codes.php");
+						
+                    }, 1500);
+                }else{
+                    layer.msg(msg, {icon: 5});
+					 //$("#code_imgs").attr("src","/checkcode/codes.php");
+                  
+                }
+            }
+        },
+        callback:function(data){
+        		alert("电话拨打成功");
+                    setTimeout(function(){
+                        //window.location="login.html";
+                    }, 1000);
+    		},
+    });
+
+
+    $(".codeform").Validform({
+    	ajaxPost:true,
+        tiptype:function(msg,o,cssctl){
+        	
+            if(!o.obj.is("form")){
+            	
+                	if(msg =="codeNotExist"){
+                		alert("验证码不一致");
+			}
+               	 if(o.type != 2) {
+                    layer.msg(msg, {icon: 5});
+                }
+
+            }else{
+                if(msg == 1){
+                    layer.msg("短信发送中~", {icon: 16});
+                    setTimeout(function(){
+                        layer.closeAll('loading');
+                        layer.msg('发送成功！', {icon: 1});
+						 countdowns("60");
+						
+                    }, 1500);
+                }else{
+                    layer.msg(msg, {icon: 5});
+                  
+                }
+            }
+        },
+        callback:function(data){
+        		alert("短信发送成功");
+                    setTimeout(function(){
+                        //window.location="login.html";
+                    }, 1000);
+    		},
+    });
+	$(".codeform_tz").Validform({
+	ajaxPost:true,
+        tiptype:function(msg,o,cssctl){
+
+            if(!o.obj.is("form")){
+            		if(msg =="codeNotExist"){
+                		alert("验证码不一致");
+			}
+                if(o.type != 2) {
+                    layer.msg(msg, {icon: 5});
+                }
+
+            }else{
+                if(msg == 1){
+                    layer.msg("短信发送中~", {icon: 16});
+                    setTimeout(function(){
+                        layer.closeAll('loading');
+                        layer.msg('发送成功！', {icon: 1});
+						 countdown_tz("60");
+						// $("#code_img_tz").attr("src","/checkcode/codes.php");
+						
+                    }, 1500);
+                }else{
+                    layer.msg(msg, {icon: 5});
+					// $("#code_img_tz").attr("src","/checkcode/codes.php");
+                  
+                }
+            }
+        },
+        callback:function(data){
+        		alert("短信发送成功");
+                    setTimeout(function(){
+                        //window.location="login.html";
+                    }, 1000);
+    		},
+    });
+		$(".codeform_yx").Validform({
+		ajaxPost:true,
+        tiptype:function(msg,o,cssctl){
+
+            if(!o.obj.is("form")){
+            	if(msg =="codeNotExist"){
+                		alert("验证码不一致");
+			}
+                if(o.type != 2) {
+                    layer.msg(msg, {icon: 5});
+                }
+
+            }else{
+                if(msg == 1){
+                    layer.msg("短信发送中~", {icon: 16});
+                    setTimeout(function(){
+                        layer.closeAll('loading');
+                        layer.msg('发送成功！', {icon: 1});
+						 countdown_yx("60");
+						// $("#code_img_yx").attr("src","/checkcode/codes.php");
+						
+                    }, 1500);
+                }else{
+                    layer.msg(msg, {icon: 5});
+					// $("#code_img_yx").attr("src","/checkcode/codes.php");
+                  
+                }
+            }
+        },
+        callback:function(data){
+        		alert("短信发送成功");
+                    setTimeout(function(){
+                        //window.location="login.html";
+                    }, 1000);
+    		},
+    });
+
+    //倒计时
+    function countdowns(stimes){
+        var times=stimes;
+        $("#yzm").attr('disabled','disabled');
+        $("#yzm").val(times+'s可重新发送');
+        times--;
+        if(times >= 0){
+        setTimeout(function(){
+                countdowns(times);
+        }, 1000);
+        }else{
+            $("#yzm").removeAttr('disabled');
+            $("#yzm").val('测试');
+        }
+    }
+
+	   function countdown(stime){
+        var time=stime;
+        $("#yzms").attr('disabled','disabled');
+        $("#yzms").val(time+'s可重新发送');
+        time--;
+        if(time >= 0){
+        setTimeout(function(){
+                countdown(time);
+        }, 1000);
+        }else{
+            $("#yzms").removeAttr('disabled');
+            $("#yzms").val('测试');
+        }
+    }
+
+	function countdown_yx(stime){
+        var time=stime;
+        $("#yzm_yx").attr('disabled','disabled');
+        $("#yzm_yx").val(time+'s可重新发送');
+        time--;
+        if(time >= 0){
+        setTimeout(function(){
+                countdown_yx(time);
+        }, 1000);
+        }else{
+            $("#yzm_yx").removeAttr('disabled');
+            $("#yzm_yx").val('测试');
+        }
+    }
+
+	function countdown_tz(stime){
+        var time=stime;
+        $("#yzm_tz").attr('disabled','disabled');
+        $("#yzm_tz").val(time+'s可重新发送');
+        time--;
+        if(time >= 0){
+        setTimeout(function(){
+                countdown_tz(time);
+        }, 1000);
+        }else{
+            $("#yzm_tz").removeAttr('disabled');
+            $("#yzm_tz").val('测试');
+        }
+    }
+
+</script>
+</body>
+</html>

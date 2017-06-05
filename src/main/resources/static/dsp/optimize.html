@@ -1,0 +1,743 @@
+<html style="overflow-x:auto;overflow-y:auto;"><head>
+    <title>优化工具 - Powered By 智能数据</title>
+
+
+    <meta name="decorator" content="default1">
+    <script type="text/javascript" src="http://mis.ultradata.cn/DSP/static/jquery/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="http://mis.ultradata.cn/DSP/static/jquery/jquery.cookie.js"></script>
+    <script src="http://mis.ultradata.cn/DSP/static/dtGrid/dependents/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://mis.ultradata.cn/DSP/static/dtGrid/dependents/bootstrap/css/bootstrap.css">
+
+    <script type="text/javascript" src="http://mis.ultradata.cn/DSP/static/dtGrid/jquery.dtGrid.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="http://mis.ultradata.cn/DSP/static/dtGrid/jquery.dtGrid.min.css">
+    <link href="http://mis.ultradata.cn/DSP/static/bootstrap/2.3.1/css_default/dsp-style.css" type="text/css" rel="stylesheet">
+
+    <link href="http://mis.ultradata.cn/DSP/static/common/daterangepicker-bs3.css" type="text/css" rel="stylesheet">
+    <link href="http://mis.ultradata.cn/DSP/static/common/daterangepicker-1.3.7.css" type="text/css" rel="stylesheet">
+    <script src="http://mis.ultradata.cn/DSP/static/common/moment.js" type="text/javascript"></script>
+    <script src="http://mis.ultradata.cn/DSP/static/common/daterangepicker-1.3.7.js" type="text/javascript"></script>
+    <script src="http://mis.ultradata.cn/DSP/static/common/dateList.js" type="text/javascript"></script>
+    <script src="http://mis.ultradata.cn/DSP/static/common/mustache.min.js" type="text/javascript"></script>
+    <script src="http://mis.ultradata.cn/DSP/static/common/jeesite.js" type="text/javascript"></script>
+    <link href="http://mis.ultradata.cn/DSP/static/jquery-select2/3.4/select2.css" rel="stylesheet">
+    <script src="http://mis.ultradata.cn/DSP/static/jquery-select2/3.4/select2.min.js" type="text/javascript"></script>
+    <script src="http://mis.ultradata.cn/DSP/static/My97DatePicker/WdatePicker.js" type="text/javascript"></script><link href="http://mis.ultradata.cn/DSP/static/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+    <script src="../../../dependents/bootstrap/plugins/ie/html5shiv.js"></script>
+    <script src="../../../dependents/bootstrap/plugins/ie/respond.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <script src="../../../dependents/bootstrap/plugins/ie/json2.js"></script>
+    <![endif]-->
+    <!-- font-awesome -->
+    <link rel="stylesheet" type="text/css" href="http://mis.ultradata.cn/DSP/static/dtGrid/dependents/fontAwesome/css/font-awesome.min.css" media="all">
+    <script type="text/javascript" src="http://mis.ultradata.cn/DSP/static/dtGrid/i18n/zh-cn.js"></script>
+    <script type="text/javascript">var ctx = '/DSP', ctxStatic='/DSP/static';</script>
+
+</head><style type="text/css" id="859369706170"></style>
+<body>
+
+<div class=" report-title clearfix">
+    <button class="btn btn-primary btn-sm" type="button" onclick="window.location.reload();"><span class="icon icon-refresh"></span> 刷新当前页面</button>
+    <!-- <div id="reportrange" class="span3 dateRange pull-right timeList mBottom15">
+        <span id="searchDateRange"></span>
+        <b class="caret"></b>
+    </div> -->
+</div>
+<form id="searchForm" method="post" class="breadcrumb form-search">
+    <ul class="ul_tool clearfix">
+        <li><label>订单ID：</label>
+            <input id="s_orderId" value="" name="orderId" type="text" maxlength="50" class="input-medium">
+            <span class="help-inline"><font color="red">*</font> </span>
+        </li>
+        <li><label>域名：</label>
+            <input id="s_media" value="" name="media" type="text" class="input-medium">
+        </li>
+        <li>
+            <label>状态：</label>
+            <div class="select2-container input-large" id="s2id_s_isExclude"><a href="javascript:void(0)" onclick="return false;" class="select2-choice" tabindex="-1">   <span class="select2-chosen">请选择</span><abbr class="select2-search-choice-close"></abbr>   <span class="select2-arrow"><b></b></span></a><input class="select2-focusser select2-offscreen" type="text" id="s2id_autogen1"><div class="select2-drop select2-display-none select2-with-searchbox">   <div class="select2-search">       <input type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="select2-input">   </div>   <ul class="select2-results">   </ul></div></div><select name="isExclude" class="input-large select2-offscreen" id="s_isExclude" tabindex="-1">
+            <option value="">请选择</option>
+            <option value="1">选择</option>
+            <option value="2">排除</option>
+        </select>
+        </li>
+        <li><label>创建时间：</label>
+            <input name="createDate" id="s_createDate" type="text" readonly="readonly" maxlength="20" class="input-medium Wdate" value="" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',isShowClear:false});">
+            <input id="query_optimize" class="btn btn-primary" type="button" value="查询">
+        </li>
+        <!--
+        <li class="btns"><input id="allExclude" class="btn btn-primary" type="button" value="全部排除"/></li>
+        <li class="btns"><input id="unAllExclude" class="btn btn-primary" type="button" value="清除排除"/></li>
+         -->
+        <li class="clearfix"></li>
+    </ul>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">top.$.jBox.closeTip();</script>
+
+<div class="text-right mBottom15">
+    <button type="button" class="btn btn-primary btn-sm" id="toolTable" data-toggle="modal">
+        自定义表格
+    </button>
+</div>
+<div></div>
+<div style="width: 100%; overflow-x: auto">
+    <div id="dtGridColumns" class="dt-grid-container" style="min-height: 50px"></div>
+    <div id="dtGridToolBar" class="dt-grid-toolbar-container"></div><!-- 分页工具条 -->
+</div>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" onclick="cancelCode('data-code-list')" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title" id="myModalLabel">自定义表格参数选择</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="data-code-list clearfix"></ul>
+                <input id="tool-val" type="hidden" value="">
+            </div>
+            <div class="modal-footer">
+                <button id="data-sure" type="button" class="btn btn-primary">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var optimizeGrid;
+    var dtGridColumns = [
+        {
+            id : 'orderId',
+            title : 'orderId',
+            headerStyle:'font-weight:900',
+            type : 'string',
+            hide :true,
+            columnClass : 'text-center'
+        },
+        {
+            id : 'appUrl',
+            title : 'url',
+            headerStyle:'font-weight:900',
+            type : 'string',
+            columnClass : 'text-center'
+        },
+        {
+            id : 'bids',
+            title : '竞价(次)',
+            headerStyle:'font-weight:900',
+            type : 'number',
+            columnClass : 'text-center'
+        },
+        {
+            id : 'showNum',
+            title : '播放(次)',
+            headerStyle:'font-weight:900',
+            type : 'number',
+            columnClass : 'text-center'
+        },
+        {
+            id : 'winRate',
+            title : '成功率(%)',
+            headerStyle:'font-weight:900',
+            type : 'number',
+            format : '#.00',
+            columnClass : 'text-center'
+        },
+        {
+            id : 'clickNum',
+            title : '点击数(次)',
+            headerStyle:'font-weight:900',
+            type : 'number',
+            columnClass : 'text-center'
+        },
+        {
+            id : 'clickRate',
+            title : '点击率(%)',
+            headerStyle:'font-weight:900',
+            type : 'number',
+            format : '#.00',
+            columnClass : 'text-center'
+        },
+        /* {
+         id : 'arriveNum',
+         title : '到达数(次)',
+         headerStyle:'font-weight:900',
+         type : 'number',
+         format : '#,###',
+         columnClass : 'text-center',
+         hideType : 'xs'
+         },
+         {
+         title : '到达率(%)',
+         id : 'arriveRate',
+         headerStyle:'font-weight:900',
+         type : 'number',
+         format : '#.00',
+         columnClass : 'text-center'
+         }, */
+        {
+            id : 'actionNum',
+            title : '转化数(次)',
+            headerStyle:'font-weight:900',
+            type : 'number',
+            format : '#,###',
+            columnClass : 'text-center',
+            hideType : 'xs'
+        },/* {
+         title : '转化率(%)',
+         id : 'actionRate',
+         headerStyle:'font-weight:900',
+         type : 'number',
+         format : '#.00',
+         columnClass : 'text-center'
+         }, */
+        /* {
+         title: '唯一点击数(次)',
+         id : 'uniqueClickNum',
+         headerStyle:'font-weight:900',
+         type : 'number',
+         columnClass : 'text-center'
+         },
+         {
+         id : 'uniqueArriveNum',
+         title : '唯一到达数(次)',
+         headerStyle:'font-weight:900',
+         type : 'number',
+         format : '#,###',
+         columnClass : 'text-center',
+         hideType : 'xs'
+         },
+         {
+         id : 'uniqueActionNum',
+         title : '唯一转化数(次)',
+         headerStyle:'font-weight:900',
+         type : 'number',
+         cformat : '#,###',
+         columnClass : 'text-center',
+         hideType : 'xs'
+         }, */
+
+
+        {
+            id : 'agencyBid',
+            title : '出价(元)',
+            headerStyle:'font-weight:900',
+            type : 'number',
+            format : '#.00',
+            columnClass : 'text-center input-td-pos',
+            hideType : 'xs',
+            resolution:function(value, record, column, grid, dataNo, columnNo){
+                //var content=record.orderId+' '+value+' '+record.media;
+                var reg=/^[0-9]*[1-9][0-9]*$/;
+                if(value!=''){
+                    if(reg.test(value)){
+                        value=value+'.00';
+                    }
+                }
+                var _html='<div>'
+
+                    +'<span class="glyphicon glyphicon-edit pointer" onclick="showEdit(this)"></span> '
+
+                    +'<span>'+value+'</span>'
+                    +'</div>'
+                    +'<div class="input-group input-group-pos">'
+                    +'<input class="bids-text" type="text"  value="'+value+'" maxlength="8"  onfocus="bidFocus(this)" />'
+                    +'<span class="glyphicon glyphicon-ok" orderId='+record.orderId+' mda='+record.media+' onclick="subEdit(this)"></span>|'
+                    +'<span class="glyphicon glyphicon-remove" onclick="hideEdit(this)"></span>'
+                    +'</div>';
+                return _html;
+            }
+        },
+
+        {
+            id : 'memberBid',
+            title : '出价(元)',
+            headerStyle:'font-weight:900',
+            type : 'number',
+            format : '#.00',
+            columnClass : 'text-center',
+            hideType : 'xs'
+        },
+        {
+            id : 'isExclude',
+            title : '状态',
+            headerStyle:'font-weight:900',
+            type : 'string',
+            format : '#.00',
+            columnClass : 'text-center',
+            hideType : 'xs',
+            resolution:function(value, record, column, grid, dataNo, columnNo){
+                var content='';
+                if(value&&value=="2"){
+                    content+='<button class="btn btn-xs btn-success" type="button" onclick="changeStatus(\''+record.orderId+'\',\''+record.media+'\')" >选择</button>';
+                }else{
+                    content+='<button class="btn btn-xs btn-danger"  type="button" onclick="changeStatus(\''+record.orderId+'\',\''+record.media+'\',\'2\')" >排除</button>';
+                }
+                return content;
+            }
+        },
+
+
+        {
+            id : 'agencyCost',
+            title : '花费(元)',
+            headerStyle:'font-weight:900',
+            type : 'number',
+            format : '#.00',
+            columnClass : 'text-center',
+            hideType : 'xs'
+        },
+        {
+            id : 'agencyProfit',
+            title : '盈利(元)',
+            headerStyle:'font-weight:900',
+            type : 'number',
+            format : '#.00',
+            columnClass : 'text-center',
+            hideType : 'xs'
+        },
+
+        {
+            id : 'memberSpend',
+            title : '花费(元)',
+            headerStyle:'font-weight:900',
+            type : 'number',
+            format : '#.00',
+            columnClass : 'text-center',
+            hideType : 'xs'
+        },
+        {
+            id : 'cpm',
+            title : 'CPM',
+            headerStyle:'font-weight:900',
+            type : 'number',
+            format : '#.00',
+            columnClass : 'text-center',
+            hideType : 'xs'
+        },
+        {
+            id : 'cpc',
+            title : 'CPC',
+            headerStyle:'font-weight:900',
+            type : 'number',
+            format : '#.00',
+            columnClass : 'text-center',
+            hideType : 'xs',
+            fastQuery : true,
+            fastQueryType : 'range'
+        },
+        /* {
+         id : 'roi',
+         title : 'ROI',
+         headerStyle:'font-weight:900',
+         type : 'number',
+         format : '#.00',
+         columnClass : 'text-center',
+         hideType : 'xs',
+         fastQuery : true,
+         fastQueryType : 'range'
+         }, */
+        {
+            id : 'cpa',
+            title : 'CPA',
+            headerStyle:'font-weight:900',
+            type : 'number',
+            format : '#.00',
+            columnClass : 'text-center',
+            hideType : 'xs',
+            fastQuery : true,
+            fastQueryType : 'range'
+        }
+    ];
+
+    var dtGridOption = {
+        lang : 'zh-cn',
+        columns : dtGridColumns,
+        showFooter:true,
+        loadURL : '/DSP/optimizePosition/list',
+        ajaxLoad : true,
+        check : true,
+        gridContainer : 'dtGridColumns',
+        toolbarContainer : 'dtGridToolBar',
+        tools : 'export[excel],print',
+        pageSize: 10,
+        pageSizeLimit: [10,20,30,50,100,150,200,300],
+        onGridComplete: function(grid){
+            columns(grid,dtGridColumns);
+        },
+    };
+
+    function loadGrid(first_){
+        var s_orderId=$("#s_orderId").val();
+        if(s_orderId){
+            optimizeGrid.parameters=gridParamters();
+            optimizeGrid.load();
+        }else if(!first_){
+            var _alert='<div class="alert alert-danger alert-tip mt10">'
+                +'<button data-dismiss="alert" class="close">×</button>'
+                +'<span>请输入订单编号！</span>'
+                +'</div>';
+            $('#searchForm').append(_alert);
+            setTimeout(function(){
+                $('#searchForm .alert-tip').remove();
+            },3000);
+        }
+    }
+
+    /** ********获取grid报表的查询参数**********/
+    function gridParamters(){
+        var param=new Object();
+        var s_orderId=$("#s_orderId").val();
+        if(s_orderId&&s_orderId!=''){
+            param['orderId']=s_orderId;
+        }
+        var s_media=$("#s_media").val();
+        if(s_media&&s_media!=''){
+            param['media']=s_media;
+        }
+        var s_isExclude=$("#s_isExclude").val();
+        if(s_isExclude&&s_isExclude!=''){
+            param['isExclude']=s_isExclude;
+        }
+        var s_createDate=$("#s_createDate").val();
+        if(s_createDate&&s_createDate!=''){
+            param['createDate']=s_createDate;
+        }
+        return param;
+
+    }
+
+    function showEdit(ithis){ //编辑显示出价操作
+        var _this=$(ithis);
+        var editCont=_this.parent().next();
+        var parents=_this.parent().parent().parent().parent();
+        parents.find('.input-group-pos').hide();
+        parents.find('.input-group-pos').prev().show();
+        if(editCont.is('show')){
+            editCont.hide();
+            _this.parent().show();
+        }else{
+            editCont.show();
+            editCont.find('input[type="text"]').val(_this.next().text());
+            _this.parent().hide();
+        }
+    }
+
+    function hideEdit(ithis){ //关闭出价操作
+        var _this=$(ithis);
+        _this.parent().hide();
+        _this.parent().prev().show();
+        _this.parent().find('.tip-danger').remove();
+        _this.parent().find('input[type="text"]').val('');
+    }
+
+    function bidFocus(ithis){
+        var _this=$(ithis);
+        _this.parent().find('.tip-danger').remove();
+    }
+
+    function subEdit(ithis){
+        var _this=$(ithis);
+        var tipEmpty='<p class="tip-danger mt10">数值不能为空，请输入正确的数值！</p>';
+        var notNum='<p class="tip-danger mt10">请输入正整数或者小数点后三位的浮点数！</p>';
+        var reg=/^(\d|([1-9]\d+))(\.\d{1,3})?$/;
+        var bid=_this.parent().find('.bids-text').val();
+        var orderId=_this.attr('orderId');
+        var media=_this.attr('mda');
+
+        _this.parent().find('.tip-danger').remove();
+
+        if(_this.parent().find('input[type="text"]').hasClass('bids-text')){
+            if(bid==''){
+                _this.parent().append(tipEmpty);
+                _this.parent().find('.bids-text').val('');
+                return false;
+            }
+
+            if(reg.test(bid)==false){
+                _this.parent().find('.bids-text').val('');
+                _this.parent().append(notNum);
+                return false;
+            }
+        }
+
+        singleBid(orderId,media,bid);
+
+        _this.parent().hide();
+        _this.parent().prev().show();
+    }
+
+    //出价
+    function singleBid(orderId,media,bid){
+        if(orderId==null||media==null){
+            return ;
+        }
+
+        $.ajax({
+            url:ctx+'/optimizePosition/setSinglePrice',
+            data:{'orderId':orderId,'media':media,'bid':bid},
+            type:'post',
+            dataType:'json',
+            success:function(data){
+                loadGrid();
+            }
+        });
+    }
+
+    //选择 排除   单元格修改
+    function changeStatus(orderId,media,isExclude){
+        if(orderId==null||media==null){
+            return ;
+        }
+        $.ajax({
+            url:ctx+'/optimizePosition/setSingleIsExclude',
+            data:{'orderId':orderId,'media':media,'isExclude':isExclude},
+            type:'post',
+            dataType:'json',
+            success:function(data){
+                loadGrid();
+            }
+        });
+    }
+
+    function checkCode(ithis){ //选择表格项
+        var _this=$(ithis);
+        if(_this.parent().children('input[type="checkbox"]').is(':checked')){ //判断是否为选中
+            _this.parent().children('input[type="checkbox"]').attr('checked',false); //未选中
+        }else{
+            _this.parent().children('input[type="checkbox"]').attr('checked',true); //选中
+        }
+    }
+
+    /********* 报表合计 方法 start ***********/
+
+    function columns(grid,dtGridColumns){ //配置列选项属性
+        var counts=[],str;
+        for(var i=0;i<dtGridColumns.length;i++){
+            if(i==0||i==1){
+                continue;
+            }
+            if(dtGridColumns[i].id=='clickRate'){ //需要运算方法计算取值配置
+                str={colname:dtGridColumns[i].id,hide:dtGridColumns[i].hide,type:1,params:['clickNum','showNum'],count:function(clickNum,showNum){ return clickNum/showNum*100;}};
+            }else if(dtGridColumns[i].id=='winRate'){
+                str={colname:dtGridColumns[i].id,hide:dtGridColumns[i].hide,type:1,params:['showNum','bids'],count:function(showNum,bids){ return showNum/bids*100;}};
+            }else if(dtGridColumns[i].id=='arriveRate'){
+                str={colname:dtGridColumns[i].id,hide:dtGridColumns[i].hide,type:1,params:['arriveNum','clickNum'],count:function(arriveNum,clickNum){ return arriveNum/clickNum*100;}};
+            }else if(dtGridColumns[i].id=='actionRate'){
+                str={colname:dtGridColumns[i].id,hide:dtGridColumns[i].hide,type:1,params:['arriveNum','actionNum'],count:function(actionNum,arriveNum){ return actionNum/arriveNum*100;}};
+            }else if(dtGridColumns[i].id=='cpc'){
+                str={colname:dtGridColumns[i].id,hide:dtGridColumns[i].hide,type:1,params:['memberSpend','clickNum'],count:function(memberSpend,clickNum){ return memberSpend/clickNum;}};
+            }else if(dtGridColumns[i].id=='cpm'){
+                str={colname:dtGridColumns[i].id,hide:dtGridColumns[i].hide,type:1,params:['memberSpend','showNum'],count:function(memberSpend,showNum){ return memberSpend/showNum*1000;}};
+            }else if(dtGridColumns[i].id=='roi'){
+                str={colname:dtGridColumns[i].id,hide:dtGridColumns[i].hide,type:1,params:['incomeAmount','memberSpend'],count:function(incomeAmount,memberSpend){ return incomeAmount/memberSpend;}};
+            }else if(dtGridColumns[i].id=='cpa'){
+                str={colname:dtGridColumns[i].id,hide:dtGridColumns[i].hide,type:1,params:['memberSpend','actionNum'],count:function(memberSpend,actionNum){ return memberSpend/actionNum;}};
+            }else if(dtGridColumns[i].id=='bid'){
+                str={colname:dtGridColumns[i].id,hide:dtGridColumns[i].hide,type:2};
+            }else if(dtGridColumns[i].id=='agencyBid'){
+                str={colname:dtGridColumns[i].id,hide:dtGridColumns[i].hide,type:2};
+            }else if(dtGridColumns[i].id=='memberBid'){
+                str={colname:dtGridColumns[i].id,hide:dtGridColumns[i].hide,type:2};
+            }else if(dtGridColumns[i].id=='isExclude'){
+                str={colname:dtGridColumns[i].id,hide:dtGridColumns[i].hide,type:2};
+            }else{
+                str={colname:dtGridColumns[i].id,hide:dtGridColumns[i].hide,type:0}; //单独计算取值默认配置
+            }
+            counts.push(str);
+        }
+        //console.log(counts);
+        total(grid,counts,dtGridColumns);//调用表格数据计算
+    }
+
+    function total(grid,arr,dtGridColumns){ //合计统计列数据
+        var datas=grid.exhibitDatas; //表格统计数组
+        var temp={},tempShow={};//初始化json
+        var num=[];//初始化数组
+        num.length=arr.length;//取列等长度
+        if(datas.length==0){
+            return false;
+        }
+        for(var j=0;j<arr.length;j++){ //循环列
+            num[j]=0;
+            if(arr[j].type==0){
+                for(var i=0;i<datas.length;i++){ //循环取值相加
+                    var key=arr[j].colname;
+                    if(datas[i].hasOwnProperty(key)){
+                        num[j]+=Number(datas[i][arr[j].colname]);
+                    }else{
+                        num[j]=0;
+                    }
+                }
+                temp[arr[j].colname]=Math.round(num[j]*100)/100;//四舍五入并且赋值
+                tempShow[arr[j].colname]=arr[j].hide;
+            }else if(arr[j].type==1){ //取运算组
+                var param1=arr[j].params[0];
+                var param2=arr[j].params[1];
+                param1=temp[param1];
+                param2=temp[param2];
+                if(param1==0||param2==0){ //防止值为0时计算错误，并且赋值为0
+                    temp[arr[j].colname]=0;
+                }else{
+                    temp[arr[j].colname]=Math.round(arr[j].count(param1,param2)*100)/100; //四舍五入并且赋值
+                }
+            }else{ //取运算组
+                temp[arr[j].colname]=0;
+                tempShow[arr[j].colname]=arr[j].hide;
+            }
+        }
+
+        var tdrow='';
+        for(var i in temp){ //循环json
+            if(tempShow[i]==true){
+                tdrow+='<th class="dt-grid-cell text-center hidden">'+temp[i]+'</th>';
+            }else{
+                tdrow+='<th class="dt-grid-cell text-center">'+temp[i]+'</th>';
+            }
+        }
+        var _html='<tr><th></th><th class="dt-grid-cell text-center">合计:</th>'+tdrow+'</tr>';
+
+        $('#dt_grid_'+grid.option.id).prepend(_html); //放置table底部
+    }
+    /********* 报表合计 方法 end ***********/
+
+    $(function(){
+        //定义表格
+        for(var i=0;i<dtGridColumns.length;i++){ //初始化自定义表格选择项
+            if(i==0){//判断是否为userId
+                continue;
+            }
+            if($.cookie(dtGridColumns[i].id)=='true'){//判断cookie里是否有表格选中项，并且值为true
+                dtGridColumns[i].hide=true;
+            }
+        }
+        console.log("eeee")
+        optimizeGrid=$.fn.DtGrid.init(dtGridOption);
+        loadGrid(true);
+
+        $("#query_optimize").click(function(){
+            loadGrid();
+        });
+
+        $('#toolTable').click(function(){
+            var _this=$(this);
+            if($('#dtGridColumns').is(':has(table)')){
+                $("#myModal").modal('show');
+                if($('#tool-val').val()==''){
+                    var dataLi='';
+                    for(var i=0;i<dtGridColumns.length;i++){ //初始化自定义表格选择项
+                        if(i==0){//判断是否为userId
+                            continue;
+                        }
+                        if($.cookie(dtGridColumns[i].id)=='true'){//判断cookie里是否有表格选中项，并且值为true
+                            dtGridColumns[i].hide=true;
+                            dataLi='<li><div code="'+dtGridColumns[i].id+'" onclick="checkCode(this)"></div><input type="checkbox" value="'+dtGridColumns[i].id+'" /><span>'+dtGridColumns[i].title+'</span></li>';
+                        }else{
+                            dataLi='<li><div code="'+dtGridColumns[i].id+'" onclick="checkCode(this)"></div><input type="checkbox" value="'+dtGridColumns[i].id+'" checked/><span>'+dtGridColumns[i].title+'</span></li>';
+                        }
+                        $('.data-code-list').append(dataLi); //插入表格表头数据
+                    }
+                    var str='';
+                    $('.data-code-list input:checked').each(function(){
+                        var _this=$(this);
+                        str+=_this.val()+',';
+                    });
+                    str=str.substring(0,str.length-1);
+                    $('#tool-val').val(str);
+                }else{
+                    var arr=$('#tool-val').val().split(',');
+                    $('.data-code-list input').attr('checked',false);
+                    for(var i=0;i<arr.length;i++){
+                        $('.data-code-list input').each(function(){
+                            var _this=$(this);
+                            if(_this.val()==arr[i]){
+                                _this.attr('checked',true);
+                            }
+                        });
+                    }
+                }
+
+            }else{
+                var tip='<div class="alert alert-danger mt10">'
+                    +'<button data-dismiss="alert" class="close">×</button>'
+                    +'<span>请先查询数据</span>'
+                    +'</div>';
+                _this.parent().next().append(tip);
+                setTimeout(function(){
+                    _this.parent().next().find('.alert').remove();
+                },2000);
+            }
+
+        });
+
+        $('#data-sure').click(function(){ //弹窗点击确定数据
+            var strCheck='';
+            $('#tool-val').val('');
+            $('.data-code-list input:checked').each(function(){
+                var _this=$(this);
+                strCheck+=_this.val()+',';
+            });
+            strCheck=strCheck.substring(0,strCheck.length-1);
+            $('#tool-val').val(strCheck);
+
+            $('.data-code-list input').each(function(){
+                var _this=$(this);
+                if(_this.is(':checked')){
+                    for(var i=0;i<dtGridColumns.length;i++){
+                        if(_this.val()==dtGridColumns[i].id){
+                            dtGridColumns[i].hide=false;
+                            $.cookie(dtGridColumns[i].id,false);//存储到cookie中
+                        }
+                    }
+                }else{
+                    for(var i=0;i<dtGridColumns.length;i++){
+                        if(_this.val()==dtGridColumns[i].id){
+                            dtGridColumns[i].hide=true;
+                            $.cookie(dtGridColumns[i].id,true);//存储到cookie中
+                        }
+                    }
+                }
+            });
+            $('#myModal').modal('hide');
+            dtGridOption.columns=dtGridColumns;
+            optimizeGrid.refresh();
+        });
+        $('#myModal').on('hidden.bs.modal', function (e) {
+            var arr=$('#tool-val').val().split(',');
+            for(var i=0;i<arr.length;i++){
+                $('.data-code-list input').each(function(){
+                    var _this=$(this);
+                    if(_this.val()==arr[i]){
+                        _this.attr('checked',true);
+                    }
+                });
+            }
+        });
+    });
+</script>
+
+<script type="text/javascript">//<!-- 无框架时，左上角显示菜单图标按钮。
+if(!(self.frameElement && self.frameElement.tagName=="IFRAME")){
+    $("body").prepend("<i id=\"btnMenu\" class=\"icon-th-list\" style=\"cursor:pointer;float:right;margin:10px;\"></i><div id=\"menuContent\"></div>");
+    $("#btnMenu").click(function(){
+        top.$.jBox('get:/DSP/sys/menu/treeselect;JSESSIONID=b0feffe388ad43b7b239a7e455f1acad', {title:'选择菜单', buttons:{'关闭':true}, width:300, height: 350, top:10});
+        //if ($("#menuContent").html()==""){$.get("/DSP/sys/menu/treeselect", function(data){$("#menuContent").html(data);});}else{$("#menuContent").toggle(100);}
+    });
+}//-->
+</script>
+
+</body></html>

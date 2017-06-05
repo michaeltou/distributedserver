@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Home</title>
+    <style type="text/css">
+        <!--
+        .STYLE1 {color: #339933}
+        .STYLE3 {
+            color: #339933;
+            font-size: 36px;
+            font-weight: bold;
+        }
+        .STYLE4 {color: #0000FF}
+        -->
+    </style>
+</head>
+<body>
+<table width="996" height="100" border="0" align="center">
+    <tr>
+        <td colspan="2"><div align="center"><span class="STYLE3">风控评估中心</span></div></td>
+    </tr>
+    <tr>
+        <td width="634"><img src="/image/archive/gard.jpg" width="570" height="522" /></td>
+        <td width="352"><p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <form th:action="@{/checkRisk}" th:object="${user}" th:method="post">
+                <strong>请输入用户id：</strong>
+                <p>
+                    <input name="text" type="text" th:field="*{id}"/>
+                </p>
+                <strong>请输入身份证：      </strong>
+                <p>
+                    <input name="text2" type="text" th:field="*{identifyId}"/>
+                </p>
+                <strong>请输入电话：      </strong>
+                <p>
+                    <input name="text2" type="text" th:field="*{mobilePhone}"/>
+                </p>
+                <p>&nbsp;</p>
+                <p>
+                    <input name="submit" type="submit"/>
+                </p>
+            </form>
+            <p>&nbsp;</p>
+            <p></p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p></td>
+    </tr>
+    <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+    </tr>
+</table>
+<p class="STYLE1" >&nbsp;</p>
+<p >&nbsp;</p>
+<p class="STYLE4" >&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center"><span data-reactid=".hi7php2vsu.0.2.1.0.0">Copyright @2016 杭州云模网络科技有限公司 版权所有</span><a href="http://www.miitbeian.gov.cn/" target="_blank" data-reactid=".hi7php2vsu.0.2.1.0.1">浙ICP备12036190号-1</a><span data-reactid=".hi7php2vsu.0.2.1.0.2">组织机构代码:05368706-1</span><a href="https://www.deepidata.com/agreement" data-reactid=".hi7php2vsu.0.2.1.0.3">隐私政策</a><a href="https://www.deepidata.com/agreement" data-reactid=".hi7php2vsu.0.2.1.0.4">服务条款</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

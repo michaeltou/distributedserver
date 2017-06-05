@@ -1,0 +1,389 @@
+<html style="overflow-x: hidden; overflow-y: auto;"><head>
+    <title>报表主页 - Powered By 智能数据</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"><meta name="author" content="http://jeesite.com/">
+    <meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=8,IE=9,IE=10">
+    <meta http-equiv="Expires" content="0"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Cache-Control" content="no-store">
+    <script src="http://mis.ultradata.cn/DSP/static/jquery/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <link href="http://mis.ultradata.cn/DSP/static/bootstrap/2.3.1/css_default/bootstrap_new.css" type="text/css" rel="stylesheet">
+    <link href="http://mis.ultradata.cn/DSP/static/bootstrap/2.3.1/css_default/dsp-style_new.css" type="text/css" rel="stylesheet">
+
+    <script src="http://mis.ultradata.cn/DSP/static/bootstrap/2.3.1/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="http://mis.ultradata.cn/DSP/static/bootstrap/2.3.1/awesome/font-awesome.min.css" type="text/css" rel="stylesheet">
+    <!--[if lte IE 7]><link href="http://mis.ultradata.cn/DSP/static/bootstrap/2.3.1/awesome/font-awesome-ie7.min.css" type="text/css" rel="stylesheet" /><![endif]-->
+    <!--[if lte IE 6]><link href="http://mis.ultradata.cn/DSP/static/bootstrap/bsie/css/bootstrap-ie6.min.css" type="text/css" rel="stylesheet" />
+<script src="http://mis.ultradata.cn/DSP/static/bootstrap/bsie/js/bootstrap-ie.min.js" type="text/javascript"></script><![endif]-->
+    <link href="http://mis.ultradata.cn/DSP/static/jquery-select2/3.4/select2.css" rel="stylesheet">
+    <script src="http://mis.ultradata.cn/DSP/static/jquery-select2/3.4/select2.min.js" type="text/javascript"></script>
+    <link href="http://mis.ultradata.cn/DSP/static/jquery-validation/1.11.0/jquery.validate.min.css" type="text/css" rel="stylesheet">
+    <script src="http://mis.ultradata.cn/DSP/static/jquery-validation/1.11.0/jquery.validate.js" type="text/javascript"></script>
+    <link href="http://mis.ultradata.cn/DSP/static/jquery-jbox/2.3/Skins/Bootstrap/jbox.css" rel="stylesheet">
+    <script src="http://mis.ultradata.cn/DSP/static/jquery-jbox/2.3/jquery.jBox-2.3.min.js" type="text/javascript"></script>
+    <script src="http://mis.ultradata.cn/DSP/static/My97DatePicker/WdatePicker.js" type="text/javascript"></script><link href="http://mis.ultradata.cn/DSP/static/My97DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
+    <script src="http://mis.ultradata.cn/DSP/static/common/mustache.min.js" type="text/javascript"></script>
+    <link href="http://mis.ultradata.cn/DSP/static/common/jeesite.css" type="text/css" rel="stylesheet">
+    <script src="http://mis.ultradata.cn/DSP/static/common/jeesite.js" type="text/javascript"></script>
+    <script type="text/javascript">var ctx = '/DSP', ctxStatic='/DSP/static';</script>
+    <link rel="icon" type="image/x-icon" href="http://mis.ultradata.cn/DSP/static/favicon.ico">
+    <!-- 自定义时间kongjian -->
+    <link href="http://mis.ultradata.cn/DSP/static/common/daterangepicker-bs3.css" type="text/css" rel="stylesheet">
+    <link href="http://mis.ultradata.cn/DSP/static/common/daterangepicker-1.3.7.css" type="text/css" rel="stylesheet">
+    <script src="http://mis.ultradata.cn/DSP/static/common/moment.js" type="text/javascript"></script>
+    <script src="http://mis.ultradata.cn/DSP/static/common/daterangepicker-1.3.7.js" type="text/javascript"></script>
+    <script src="http://mis.ultradata.cn/DSP/static/common/dateList.js" type="text/javascript"></script>
+
+    <meta name="decorator" content="default">
+
+    <link href="http://mis.ultradata.cn/DSP/static/common/daterangepicker-bs3.css" type="text/css" rel="stylesheet">
+    <link href="http://mis.ultradata.cn/DSP/static/common/daterangepicker-1.3.7.css" type="text/css" rel="stylesheet">
+    <script src="http://mis.ultradata.cn/DSP/static/common/moment.js" type="text/javascript"></script>
+    <script src="http://mis.ultradata.cn/DSP/static/common/daterangepicker-1.3.7.js" type="text/javascript"></script>
+    <script src="http://mis.ultradata.cn/DSP/static/common/dateList.js" type="text/javascript"></script>
+    <link href="http://mis.ultradata.cn/DSP/static/jquery-ztree/3.5.12/css/zTreeStyle/zTreeStyle.css" rel="stylesheet" type="text/css">
+    <script src="http://mis.ultradata.cn/DSP/static/jquery-ztree/3.5.12/js/jquery.ztree.core-3.5.js" type="text/javascript"></script>
+
+    <style type="text/css">
+        a{
+            cursor: pointer;
+        }
+    </style>
+
+
+</head><style type="text/css" id="859369706170"></style>
+<body>
+
+<div>
+    <div id="content" class="row-fluid">
+        <div id="left" class="left-menu" style="width: 160px; height: 572px;">
+            <ul id="leftztree" class="ztree report-ztree"><li id="leftztree_1" class="level0" tabindex="0" hidefocus="true" treenode=""><div class="report-node"><span id="leftztree_1_switch" title="" class="button level0 switch root_close" treenode_switch=""></span><a id="leftztree_1_a" class="level0" treenode_a="" onclick="" target="_blank" style="" title="广告公司测试名称"><span id="leftztree_1_ico" title="" treenode_ico="" class="button ico_close" style=""></span><span id="leftztree_1_span">广告公司测试名称</span></a></div></li></ul>
+        </div>
+        <!-- 			<div id="openCloses" class="close">&nbsp;</div> -->
+        <div id="right" style="height: 572px; width: 1231px;">
+            <input id="user_id" type="hidden" value="">
+            <input id="plan_id" type="hidden" value="">
+            <input id="order_id" type="hidden" value="">
+            <input id="reportUrl" type="hidden" value="/DSP/report/rpTimePage?1=1">
+
+            <input id="startTime" type="hidden" value="2017-04-07">
+            <input id="endTime" type="hidden" value="2017-04-07">
+
+            <div class="container-fluid">
+                <div class="row-fluid report-title">
+                    <div class="span9">
+                        <h2 class="header-title">报表总览</h2>
+                    </div>
+                    <div id="reportrange" class="span3 dateRange timeList">
+                        <span id="searchDateRange">2017-04-07 - 2017-04-07</span>
+                        <b class="caret"></b>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div id="content" class="row-fluid">
+                    <div class="span12">
+                        <div class="rp_nav rpMain hide" style="display: block;">
+                            <ul class="nav nav-tabs nav-report">
+                                <li class="active" data-href="/DSP/report/rpTimePage"><a>时间报表</a></li>
+                            </ul>
+                        </div>
+                        <div class=" rp_nav rpMember hide">
+                            <ul class="nav nav-tabs nav-report">
+                                <li class="active" data-href="/DSP/report/rpMemberPage"><a>时间报表</a></li>
+                            </ul>
+                        </div>
+                        <div class=" rp_nav rpPlan hide">
+                            <ul class="nav nav-tabs nav-report">
+                                <li class="active" data-href="/DSP/report/rpPlanOrder"><a>订单报表</a></li>
+                                <li data-href="/DSP/report/rpPlanTimePage"><a>时间报表</a></li>
+                            </ul>
+                        </div>
+                        <div class=" rp_nav rpOrder hide">
+                            <ul class="nav nav-tabs nav-report">
+                                <li data-href="/DSP/report/rpOrder/time" class="active" data-kind="rpOrder-0"><a>投放报表</a></li>
+                                <li data-href="/DSP/report/rpOrder/domain" data-kind="rpOrder-1"><a>媒体报表</a></li>
+                                <li data-href="/DSP/report/rpOrder/material"><a>素材报表</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row-fluid  rpOrder-nav hide">
+                    <div class="btn-group btn-group-xs btn-group-rpOrder rpOrder-0">
+                        <button type="button" class="btn btn-sm btn-rpOrder active" data-href="/DSP/report/rpOrder/time">时间报表</button>
+                        <button type="button" class="btn btn-sm  btn-rpOrder" data-href="/DSP/report/rpOrder/borwser">浏览器报表</button>
+                        <button type="button" class="btn btn-sm btn-rpOrder" data-href="/DSP/report/rpOrder/os">操作系统报表</button>
+                        <button type="button" class="btn btn-sm btn-rpOrder" data-href="/DSP/report/rpOrder/geo">地域报表</button>
+                    </div>
+                    <div class="btn-group btn-group-xs btn-group-rpOrder rpOrder-1 hide">
+                        <button type="button" class="btn btn-sm btn-rpOrder active" data-href="/DSP/report/rpOrder/domain">域名报表</button>
+                        <button type="button" class="btn btn-sm btn-rpOrder" data-href="/DSP/report/rpOrder/ad">广告位报表</button>
+                        <!--
+                        <button type="button" class="btn btn-sm btn-rpOrder">媒体分类报表</button>
+                        <button type="button" class="btn btn-sm btn-rpOrder">渠道报表</button>
+                         -->
+                    </div>
+                    <!--
+                    <div class="btn-group  btn-group-xs btn-group-rpOrder rpOrder-2 hide">
+                      <button type="button" class="btn btn-sm btn-rpOrder">兴趣爱好</button>
+                      <button type="button" class="btn btn-sm btn-rpOrder">收入阶层</button>
+                      <button type="button" class="btn btn-sm btn-rpOrder">年龄段</button>
+                      <button type="button" class="btn btn-sm btn-rpOrder">性别</button>
+                    </div>
+                     -->
+                </div>
+                <div class="row-fluid">
+                    <div id="reportContent" class="span12">
+                        <iframe id="reportFrame" name="reportFrame" src="/DSP/report/rpTimePage?1=1&amp;startTime=2017-04-07&amp;endTime=2017-04-07" style="overflow: visible; height: 572px;" scrolling="yes" frameborder="no" width="100%"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var userId='';
+        var planId;
+        var orderId;
+        var entity_id='';//从其他页面跳转过来时，用以接受ztree的id参数
+        var isMember;//1 非 广告主 0  广告主
+        var reportUrl;
+
+        var startTime;
+        var endTime;
+
+        $(function(){
+            //时间控件
+            $(document).on('apply.daterangepicker', function(){
+                var range=$("#searchDateRange").text();
+                var times=range.split(" - ");
+                $("#startTime").val(times[0]);
+                $("#endTime").val(times[1]);
+                startTime=times[0];
+                endTime=times[1];
+                loadIfram();
+            });
+
+            //初始化开始时间 为 当日
+            //为导航添加事件
+            $(".nav-report li").click(function(){
+                var _this=$(this);
+                _this.addClass("active").siblings().removeClass('active');
+                if(_this.attr("data-kind")!=undefined){//订单报表下 展开二级导航
+                    var tmp=_this.attr("data-kind");
+                    $(".rpOrder-nav").show();
+                    $(".btn-group-rpOrder").hide();
+
+                    $("."+tmp).show();
+                    $("."+tmp).children('button:first-child').addClass('active').siblings().removeClass('active');
+                }else{
+                    $(".rpOrder-nav").hide();
+                    $(".btn-group-rpOrder").hide();
+                }
+                $("#reportUrl").val(_this.attr("data-href")+"?1=1");
+                reportUrl=_this.attr("data-href")+"?1=1";
+                loadIfram();
+            });
+
+            $(".btn-group-rpOrder .btn-rpOrder").click(function(){
+                if($(this).hasClass('active')){
+                    return false;
+                }
+                $(this).addClass('active').siblings().removeClass('active');
+                $("#reportUrl").val($(this).attr("data-href")+"?1=1");
+                reportUrl=$(this).attr("data-href")+"?1=1";
+                loadIfram();
+            });
+
+            var setting =
+                {
+                    callback: {
+                        onClick: menuClick
+                    },
+                    data: {
+                        simpleData: {
+                            enable: true
+                        }
+                    }
+                };
+
+            $.ajax({
+                url:ctx+'/report/rpMain/left',
+                type:'post',
+                dataType:'json',
+                async:true,
+                success:function(data){
+                    if(data.success){
+                        isMember=data.attributes.isMember;
+                        var treeObj=$.fn.zTree.init($("#leftztree"), setting, data.obj);
+                        if(entity_id){//如果是从其他页面跳转到报表页面
+                            var sel=treeObj.getNodeByParam("id",entity_id);
+                            treeObj.selectNode(sel);
+                            setting.callback.onClick(null, treeObj.setting.treeId, sel);
+                        }else{
+                            $(".rpMain").show();
+                            loadReport(isMember);
+                        }
+
+                    }else{
+                        alert("没有数据");
+                    }
+                }
+            });
+        });
+
+        function loadIfram(){
+            var href=reportUrl;
+            if(userId){
+                href=href+"&userId="+userId;
+            }
+            if(planId){
+                href=href+"&planId="+planId;
+            }
+            if(orderId){
+                href=href+"&orderId="+orderId;
+            }
+            var startTime=$("#startTime").val();
+            var endTime=$("#endTime").val();
+            if(startTime){
+                href=href+"&startTime="+startTime;
+            }
+            if(endTime){
+                href=href+"&endTime="+endTime;
+            }
+            //alert(href);
+            $('#reportFrame').attr('src', href);
+        }
+
+        function  loadReport(isMember){
+            if(isMember=="1"){//rootId 为0  即  代理商或管理员登录后   默认加载全局 统计页面
+                $("#reportUrl").val(ctx+"/report/rpTimePage?1=1");
+                reportUrl=ctx+"/report/rpTimePage?1=1";
+                loadIfram();
+            }else{//rootId 为1  即 广告主登录后   默认加载广告主 统计页面
+                $("#reportUrl").val(ctx+"/report/rpPlanTimePage?1=1");
+                reportUrl=ctx+"/report/rpMemberPage?1=1";
+                loadIfram();
+            }
+        }
+
+        //节点点击事件
+        function menuClick(event, treeId, treeNode) {
+
+            if(isMember=="1"){//管理员登录
+                if(treeNode.level==0){
+                    $('.rp_nav ul').children('li:first-child').addClass('active').siblings().removeClass('active');
+                    $('.rpOrder-nav .btn-group-rpOrder').children('button:first-child').addClass('active').siblings().removeClass('active');
+                    $('.rpOrder-nav').hide();
+                    $(".rp_nav").hide();
+                    $(".rpMember").show();
+                    userId=treeNode.id;
+                    orderId=null;
+                    planId=null;
+                    $("#reportUrl").val(ctx+"/report/rpMemberPage?1=1");
+                    reportUrl=ctx+"/report/rpMemberPage?1=1";
+
+                    loadIfram();
+                }else if(treeNode.level==1){
+                    $('.rp_nav ul').children('li:first-child').addClass('active').siblings().removeClass('active');
+                    $('.rpOrder-nav .btn-group-rpOrder').children('button:first-child').addClass('active').siblings().removeClass('active');
+                    $('.rpOrder-nav').hide();
+                    $(".rp_nav").hide();
+                    $(".rpPlan").show();
+                    userId=treeNode.getParentNode().id;
+                    planId=treeNode.id;
+                    orderId=null;
+
+                    $("#reportUrl").val(ctx+"/report/rpPlanOrder?1=1");
+                    reportUrl=ctx+"/report/rpPlanOrder?1=1";
+
+                    loadIfram();
+                }else if(treeNode.level==2){
+                    $('.rp_nav ul').children('li:first-child').addClass('active').siblings().removeClass('active');
+                    $('.rpOrder-nav .btn-group-rpOrder').children('button:first-child').addClass('active').siblings().removeClass('active');
+                    $(".rp_nav").hide();
+                    $(".rpOrder").show();
+                    orderId=treeNode.id;
+                    planId=treeNode.getParentNode().id;
+
+                    $("#reportUrl").val(ctx+"/report/rpOrder/time?1=1");
+                    reportUrl=ctx+"/report/rpOrder/time?1=1";
+
+                    $(".rpOrder-nav").show();
+                    $(".btn-group-rpOrder").hide();
+                    $(".rpOrder-0").show();
+
+                    //TODO  默认加载投放报表-时间报表
+                    loadIfram();
+                }
+            }else{//广告主登录 广告主登录后默认记录用户id
+                if(treeNode.level==0){
+                    $('.rp_nav ul').children('li:first-child').addClass('active').siblings().removeClass('active');
+                    $('.rpOrder-nav .btn-group-rpOrder').children('button:first-child').addClass('active').siblings().removeClass('active');
+                    $('.rpOrder-nav').hide();
+                    $(".rp_nav").hide();
+                    $(".rpPlan").show();
+                    planId=treeNode.id;
+                    orderId=null;
+
+                    $("#reportUrl").val(ctx+"/report/rpPlanOrder?1=1");
+                    reportUrl=ctx+"/report/rpPlanOrder?1=1";
+
+                    loadIfram();
+                }else if(treeNode.level==1){
+                    $('.rp_nav ul').children('li:first-child').addClass('active').siblings().removeClass('active');
+                    $('.rpOrder-nav .btn-group-rpOrder').children('button:first-child').addClass('active').siblings().removeClass('active');
+                    $(".rp_nav").hide();
+                    $(".rpOrder").show();
+                    orderId=treeNode.id;
+                    planId=treeNode.getParentNode().id;
+
+                    $("#reportUrl").val(ctx+"/report/rpOrder/time?1=1");
+                    reportUrl=ctx+"/report/rpOrder/time?1=1";
+
+                    $(".rpOrder-nav").show();
+                    $(".btn-group-rpOrder").hide();
+                    $(".rpOrder-0").show();
+                    //TODO  默认加载投放报表-时间报表
+                    loadIfram();
+                }
+            }
+            $(".header-title").html("");
+            $(".header-title").html(treeNode.name);
+        }
+
+    </script>
+    <script type="text/javascript">
+        var leftWidth = 160; // 左侧窗口大小
+        var tabTitleHeight = 33; // 页签的高度
+        var htmlObj = $("html"), mainObj = $("#main");
+        var headerObj = $("#header"), footerObj = $("#footer");
+        var frameObj = $("#left, #openClose1, #right, #right iframe");
+        function wSize(){
+            var minHeight = 600, minWidth = 980;
+            var strs = getWindowSize().toString().split(",");
+            htmlObj.css({"overflow-x":strs[1] < minWidth ? "auto" : "hidden", "overflow-y":strs[0] < minHeight ? "auto" : "hidden"});
+            mainObj.css("width",strs[1] < minWidth ? minWidth - 10 : "auto");
+            frameObj.height((strs[0] < minHeight ? minHeight : strs[0]) - headerObj.height() - footerObj.height() - (strs[1] < minWidth ? 42 : 28));
+            $("#openClose1").height($("#openClose1").height() - 5);//
+            wSizeWidth();
+        }
+        function wSizeWidth(){
+            if (!$("#openClose1").is(":hidden")){
+                var leftWidth = ($("#left").width() < 0 ? 0 : $("#left").width());
+                $("#right").width($("#content").width()- leftWidth - $("#openClose1").width() -5);
+            }else{
+                $("#right").width("100%");
+            }
+        }//
+    </script>
+    <script src="/DSP/static/common/wsize.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">//<!-- 无框架时，左上角显示菜单图标按钮。
+    if(!(self.frameElement && self.frameElement.tagName=="IFRAME")){
+        $("body").prepend("<i id=\"btnMenu\" class=\"icon-th-list\" style=\"cursor:pointer;float:right;margin:10px;\"></i><div id=\"menuContent\"></div>");
+        $("#btnMenu").click(function(){
+            top.$.jBox('get:/DSP/sys/menu/treeselect;JSESSIONID=b0feffe388ad43b7b239a7e455f1acad', {title:'选择菜单', buttons:{'关闭':true}, width:300, height: 350, top:10});
+            //if ($("#menuContent").html()==""){$.get("/DSP/sys/menu/treeselect", function(data){$("#menuContent").html(data);});}else{$("#menuContent").toggle(100);}
+        });
+    }//-->
+    </script>
+
+</div><div class="daterangepicker dropdown-menu opensleft"><div class="calendar left"><div class="calendar-date"><table class="table-condensed"><thead><tr><th class="prev available"><i class="fa fa-arrow-left icon-arrow-left glyphicon glyphicon-arrow-left"></i></th><th colspan="5" class="month"><select class="monthselect"><option value="0">一月</option><option value="1">二月</option><option value="2">三月</option><option value="3" selected="selected">四月</option><option value="4">五月</option><option value="5">六月</option><option value="6">七月</option><option value="7">八月</option><option value="8">九月</option><option value="9">十月</option><option value="10">十一月</option><option value="11">十二月</option></select><select class="yearselect"><option value="1967">1967</option><option value="1968">1968</option><option value="1969">1969</option><option value="1970">1970</option><option value="1971">1971</option><option value="1972">1972</option><option value="1973">1973</option><option value="1974">1974</option><option value="1975">1975</option><option value="1976">1976</option><option value="1977">1977</option><option value="1978">1978</option><option value="1979">1979</option><option value="1980">1980</option><option value="1981">1981</option><option value="1982">1982</option><option value="1983">1983</option><option value="1984">1984</option><option value="1985">1985</option><option value="1986">1986</option><option value="1987">1987</option><option value="1988">1988</option><option value="1989">1989</option><option value="1990">1990</option><option value="1991">1991</option><option value="1992">1992</option><option value="1993">1993</option><option value="1994">1994</option><option value="1995">1995</option><option value="1996">1996</option><option value="1997">1997</option><option value="1998">1998</option><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option><option value="2010">2010</option><option value="2011">2011</option><option value="2012">2012</option><option value="2013">2013</option><option value="2014">2014</option><option value="2015">2015</option><option value="2016">2016</option><option value="2017" selected="selected">2017</option></select></th><th class="next available"><i class="fa fa-arrow-right icon-arrow-right glyphicon glyphicon-arrow-right"></i></th></tr><tr><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th><th>日</th></tr></thead><tbody><tr><td class="available off" data-title="r0c0">27</td><td class="available off" data-title="r0c1">28</td><td class="available off" data-title="r0c2">29</td><td class="available off" data-title="r0c3">30</td><td class="available off" data-title="r0c4">31</td><td class="available" data-title="r0c5">1</td><td class="available" data-title="r0c6">2</td></tr><tr><td class="available" data-title="r1c0">3</td><td class="available" data-title="r1c1">4</td><td class="available" data-title="r1c2">5</td><td class="available" data-title="r1c3">6</td><td class="available active start-date end-date" data-title="r1c4">7</td><td class="off disabled" data-title="r1c5">8</td><td class="off disabled" data-title="r1c6">9</td></tr><tr><td class="off disabled" data-title="r2c0">10</td><td class="off disabled" data-title="r2c1">11</td><td class="off disabled" data-title="r2c2">12</td><td class="off disabled" data-title="r2c3">13</td><td class="off disabled" data-title="r2c4">14</td><td class="off disabled" data-title="r2c5">15</td><td class="off disabled" data-title="r2c6">16</td></tr><tr><td class="off disabled" data-title="r3c0">17</td><td class="off disabled" data-title="r3c1">18</td><td class="off disabled" data-title="r3c2">19</td><td class="off disabled" data-title="r3c3">20</td><td class="off disabled" data-title="r3c4">21</td><td class="off disabled" data-title="r3c5">22</td><td class="off disabled" data-title="r3c6">23</td></tr><tr><td class="off disabled" data-title="r4c0">24</td><td class="off disabled" data-title="r4c1">25</td><td class="off disabled" data-title="r4c2">26</td><td class="off disabled" data-title="r4c3">27</td><td class="off disabled" data-title="r4c4">28</td><td class="off disabled" data-title="r4c5">29</td><td class="off disabled" data-title="r4c6">30</td></tr><tr><td class="off disabled" data-title="r5c0">1</td><td class="off disabled" data-title="r5c1">2</td><td class="off disabled" data-title="r5c2">3</td><td class="off disabled" data-title="r5c3">4</td><td class="off disabled" data-title="r5c4">5</td><td class="off disabled" data-title="r5c5">6</td><td class="off disabled" data-title="r5c6">7</td></tr></tbody></table></div></div><div class="calendar right"><div class="calendar-date"><table class="table-condensed"><thead><tr><th></th><th colspan="5" class="month"><select class="monthselect"><option value="0">一月</option><option value="1">二月</option><option value="2">三月</option><option value="3" selected="selected">四月</option><option value="4">五月</option><option value="5">六月</option><option value="6">七月</option><option value="7">八月</option><option value="8">九月</option><option value="9">十月</option><option value="10">十一月</option><option value="11">十二月</option></select><select class="yearselect"><option value="2017" selected="selected">2017</option></select></th><th class="next available"><i class="fa fa-arrow-right icon-arrow-right glyphicon glyphicon-arrow-right"></i></th></tr><tr><th>一</th><th>二</th><th>三</th><th>四</th><th>五</th><th>六</th><th>日</th></tr></thead><tbody><tr><td class="off disabled" data-title="r0c0">27</td><td class="off disabled" data-title="r0c1">28</td><td class="off disabled" data-title="r0c2">29</td><td class="off disabled" data-title="r0c3">30</td><td class="off disabled" data-title="r0c4">31</td><td class="off disabled" data-title="r0c5">1</td><td class="off disabled" data-title="r0c6">2</td></tr><tr><td class="off disabled" data-title="r1c0">3</td><td class="off disabled" data-title="r1c1">4</td><td class="off disabled" data-title="r1c2">5</td><td class="off disabled" data-title="r1c3">6</td><td class="available active start-date end-date" data-title="r1c4">7</td><td class="off disabled" data-title="r1c5">8</td><td class="off disabled" data-title="r1c6">9</td></tr><tr><td class="off disabled" data-title="r2c0">10</td><td class="off disabled" data-title="r2c1">11</td><td class="off disabled" data-title="r2c2">12</td><td class="off disabled" data-title="r2c3">13</td><td class="off disabled" data-title="r2c4">14</td><td class="off disabled" data-title="r2c5">15</td><td class="off disabled" data-title="r2c6">16</td></tr><tr><td class="off disabled" data-title="r3c0">17</td><td class="off disabled" data-title="r3c1">18</td><td class="off disabled" data-title="r3c2">19</td><td class="off disabled" data-title="r3c3">20</td><td class="off disabled" data-title="r3c4">21</td><td class="off disabled" data-title="r3c5">22</td><td class="off disabled" data-title="r3c6">23</td></tr><tr><td class="off disabled" data-title="r4c0">24</td><td class="off disabled" data-title="r4c1">25</td><td class="off disabled" data-title="r4c2">26</td><td class="off disabled" data-title="r4c3">27</td><td class="off disabled" data-title="r4c4">28</td><td class="off disabled" data-title="r4c5">29</td><td class="off disabled" data-title="r4c6">30</td></tr><tr><td class="off disabled" data-title="r5c0">1</td><td class="off disabled" data-title="r5c1">2</td><td class="off disabled" data-title="r5c2">3</td><td class="off disabled" data-title="r5c3">4</td><td class="off disabled" data-title="r5c4">5</td><td class="off disabled" data-title="r5c5">6</td><td class="off disabled" data-title="r5c6">7</td></tr></tbody></table></div></div><div class="ranges"><ul><li class="">今日</li><li>昨日</li><li>最近7日</li><li>最近30日</li><li class="active">自定义</li></ul><div class="range_inputs"><div class="daterangepicker_start_input"><label for="daterangepicker_start">起始时间</label><input class="input-mini" type="text" name="daterangepicker_start" value="" disabled="disabled"></div><div class="daterangepicker_end_input"><label for="daterangepicker_end">结束时间</label><input class="input-mini" type="text" name="daterangepicker_end" value="" disabled="disabled"></div><button class="applyBtn btn btn-default btn-small btn-primary blue">确定</button>&nbsp;<button class="cancelBtn btn btn-default btn-small">取消</button></div></div></div></body></html>

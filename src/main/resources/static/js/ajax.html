@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>这是一个ajax模板.</title>
+
+
+    <script src="js/jquery-3.2.1.js">
+    </script>
+
+
+    <script>
+
+        var localHandler = function(data){
+            alert('我是本地函数，可以被跨域的remote.js文件调用，远程js带来的数据是：' + data.result);
+        };
+    </script>
+
+
+    <!-- js天然支持跨域访问.
+    <script src="http://106.14.95.85:9999/js/js/remote.js">
+    </script>
+
+-->
+
+    <script>
+        $(document).ready(function () {
+
+
+            $("#ajaxPost").click(function () {
+
+                var url = "/ajaxPost";
+                $.ajax({
+                    type: "post",
+                    url: url,
+                    /**     * 关键点：获取post请求的参数，有2个关键点：
+                     * 1、java接口需要加上@RequestBody这个注解.
+                     * 2、js里面的ajax请求的data要使用 data:  JSON.stringify({name: $("#name").val(), age: $("#age").val()}), 传递json字符串，而不json对象.
+                     * */
+                    data:  JSON.stringify({name: $("#name").val(), age: $("#age").val()}),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",//(可以)
+                    success: function (data, textStatus) {
+                        //JSON.parse(jsonstr); //可以将json字符串转换成json对象
+                        //JSON.stringify(jsonobj); //可以将json对象转换成json对符串
+                        var mystr = JSON.stringify(data);
+                        alert("sucess！the data is:" + mystr);
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("fail！");
+                    }
+                });
+
+
+            });
+
+
+            $("#ajaxGet").click(function () {
+
+                var url = "/ajaxGet";
+                $.ajax({
+                    type: "get",
+                    url: url,
+                    data: {name: $("#name").val(), age: $("#age").val()},
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",//(可以)
+                    success: function (data, textStatus) {
+                        //JSON.parse(jsonstr); //可以将json字符串转换成json对象
+                        //JSON.stringify(jsonobj); //可以将json对象转换成json对符串
+                        var mystr = JSON.stringify(data);
+                        alert("sucess！the data is:" + mystr);
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        alert("fail！");
+                    }
+                });
+
+
+            });
+
+
+
+
+
+            $("#jsonpBtn").click(function () {
+
+                $.ajax({
+                    type: "post",
+                    async: false,
+                    url: "http://localhost:9999/jsonppost",
+                    data: {name: $("#name").val(), age: $("#age").val()},
+                    dataType: "jsonp",//这个很关键，说明返回的数据是jsonp格式的。服务端需要将json数据 拼接上callback的函数名字符串.
+                    success: function(json){
+                        alert('姓名： ' + json.data.name + '年龄： ' + json.data.age);
+                    },
+                    error: function(){
+                        alert('fail');
+                    }
+                });
+
+
+
+            });
+
+
+            $("#jsonpBtn2").click(function () {
+
+                $.ajax({
+                    type: "post",
+                    async: false,
+                    url: "http://localhost:9999/jsonppost",
+                    data: {name: $("#name").val(), age: $("#age").val()},
+                    dataType: "jsonp",//这个很关键，说明返回的数据是jsonp格式的。服务端需要将json数据 拼接上callback的函数名字符串.
+                    jsonp: "callback",//传递给服务端的参数名称，用于服务端获取  构建返回字符串的 参数名称  , 例如为 request.getParameter("callback") 中的callback字符串.
+                    jsonpCallback:"flightHandler",//自定义的jsonp回调函数名称，不写jQuery自动生成的随机函数名，用于服务端获取  构建返回字符串的 返回函数名称 ,值为request.getParameter("callback");
+                    success: function(json){
+                        alert('姓名： ' + json.data.name + '年龄： ' + json.data.age);
+                    },
+                    error: function(){
+                        alert('fail');
+                    }
+                });
+            });
+
+
+
+
+
+
+        });
+
+    </script>
+</head>
+<body>
+
+
+name: <input type="text" name="name" id="name"/>
+age: <input type="text" name="age" id="age"/>
+
+<button id="ajaxPost">ajax post detail</button>
+
+<button id="ajaxGet">ajax get detail</button>
+
+<button id="jsonpBtn">jsonp post</button>
+
+<button id="jsonpBtn2">jsonp post2</button>
+
+</body>
+</html>

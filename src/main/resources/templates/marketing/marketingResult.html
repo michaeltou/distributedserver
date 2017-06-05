@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Home</title>
+    <style type="text/css">
+        <!--
+        .STYLE5 {
+            font-size: 36px;
+            color: #000000;
+        }
+        .STYLE6 {color: #0000FF}
+        -->
+    </style>
+</head>
+<body>
+
+<table width="1003" height="125" border="0" align="center">
+    <tr>
+        <td colspan="2"><div align="center"><span class="STYLE5">大数据精准营销结果</span></div></td>
+    </tr>
+    <tr>
+        <td width="210"><div align="left"><img src="/image/archive/jiantou4.jpg" width="503" height="462"/></div>      </td>
+
+        <td width="783"><p>&nbsp;</p>
+            <table width="674" border="0" align="left">
+                <tr>
+                    <th width="80" bgcolor="#99FF66"><div align="left"><span class="STYLE6">用户id</span></div></th>
+                    <th width="73" bgcolor="#99FF66"><div align="left"><span class="STYLE6">姓名</span></div></th>
+                    <th width="102" bgcolor="#99FF66"><div align="left"><span class="STYLE6">手机</span></div></th>
+                    <th width="127" bgcolor="#99FF66"><div align="left"><span class="STYLE6">金融产品</span></div></th>
+                    <th width="108" bgcolor="#99FF66"><div align="left"><span class="STYLE6">匹配度</span></div></th>
+                    <th width="156" bgcolor="#99FF66"><div align="left" class="STYLE6">操作</div></th>
+                </tr>
+                <tr th:each="userProductScore : ${userProductScoreList}">
+                    <td th:text="${userProductScore.userId}"><div align="left">11</div></td>
+                    <td th:text="${userProductScore.userName}"><div align="left">michael</div></td>
+                    <td th:text="${userProductScore.mobilePhone}"><div align="left">15302753327</div></td>
+                    <td th:text="${userProductScore.productName}"><div align="left">bala</div></td>
+                    <td th:text="${userProductScore.matchScore}"><div align="left">99</div></td>
+                    <td  ><div align="left"><a href="#">呼叫</a></div></td>
+                </tr>
+            </table>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p>
+            <p>&nbsp;</p></td>
+    </tr>
+</table>
+<h1 align="left" >&nbsp;</h1>
+<h1 align="left" >&nbsp;</h1>
+<h1 align="left" >&nbsp;</h1>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center"><span data-reactid=".hi7php2vsu.0.2.1.0.0">Copyright @2016 杭州云模网络科技有限公司 版权所有</span><a href="http://www.miitbeian.gov.cn/" target="_blank" data-reactid=".hi7php2vsu.0.2.1.0.1">浙ICP备12036190号-1</a><span data-reactid=".hi7php2vsu.0.2.1.0.2">组织机构代码:05368706-1</span><a href="https://www.deepidata.com/agreement" data-reactid=".hi7php2vsu.0.2.1.0.3">隐私政策</a><a href="https://www.deepidata.com/agreement" data-reactid=".hi7php2vsu.0.2.1.0.4">服务条款</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>

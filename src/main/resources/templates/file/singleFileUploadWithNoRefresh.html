@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>Hello World!</title>
+</head>
+<body>
+
+<div th:if="${result} != 'success'">
+
+
+
+<form method="POST" enctype="multipart/form-data" action="/single/uploadWithNoRefresh">
+    <p>文件：<input type="file" name="file"/></p>
+    <p><input type="submit" value="上传"/></p>
+</form>
+
+</div>
+
+<div th:if="${result} == 'success'">
+    <img src="/image/test/1.jpg"  th:src="@{${imagePath}}" width="100" height="100"></img>
+
+</div>
+
+
+上传结果： <span th:text="${result}">暂无.</span>
+</body>
+</html>

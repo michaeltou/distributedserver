@@ -1,0 +1,64 @@
+@charset "utf-8";
+body, ul, li, dl, dt, dd, h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
+}
+body {
+	color: #444;
+	font-size: 12px;
+	font-family: "Î¢ÈíÑÅºÚ";
+}
+a {
+	text-decoration: none;
+	color: #444;
+}
+a:hover {
+	color: #FF0000;
+}
+ul, li {
+	list-style: none;
+}
+.clear {
+	clear: both;
+}
+.blank10 {
+	height: 10px;
+}
+.foot {
+	height: 80px;
+	text-align: center;
+	color: #FFFFFF;
+	font-size: 12px;
+	background: #0D8FCF;
+	padding-top: 20px;
+	line-height: 26px;
+}
+.foot a {
+	color: #FFFFFF;
+}
+.contact11 {
+	height: 140px;
+	width: 300px;
+	font-size: 14px;
+	margin: auto;
+}
+.hotline {
+	width: 210px;
+	font-size: 30px;
+	height: 30px;
+	font-family: "Microsoft Yahei";
+	float: left;
+	color: #0d8fcf
+}
+.line-sign {
+	width: 58px;
+	border-radius: 3px;
+	padding: 5px 8px;
+	float: right;
+	background: #0d8fcf;
+	color: #fff;
+	margin-top: 4px;
+}
+.contact-method li {
+	margin: 10px 0 0
+}

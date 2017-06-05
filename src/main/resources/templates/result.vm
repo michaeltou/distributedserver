@@ -1,0 +1,12 @@
+<html>
+<body>
+数据查询结果：
+
+    ${message}
+
+祝：开心！
+    ${fromUserName}
+    ${time}
+
+</body>
+</html>

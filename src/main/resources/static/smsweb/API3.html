@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en"><!-- InstanceBegin template="/Templates/temp1.dwt" codeOutsideHTMLIsLocked="false" -->
+<head>
+<title>云模·云短信</title>
+<meta charset="utf-8">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="keywords" content="短信平台,短信营销,短信群发,群发短信,短信api,云模短信,云模,云短信">
+<meta name="description" content="云模·云短信是中国领先的短信服务平台,专业提供短信群发,短信接口,短信营销,短信验证码,语音验证码等服务">
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/jquery.validate.js"></script>
+<script type="text/javascript" src="js/jquery.form.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+
+</head>
+<body class="wrapper">
+<iframe style="display: none;"></iframe>
+<div class="header">
+  <div class="header-tit">
+    <div class="container">  <span class="fr">咨询热线：0571-86571967</span> </div>
+  </div>
+  <div class="container"> <a id="logo" href="index.html" class="logo"><img src="image/logo.png" alt="云模网络"></a>
+    <ul class="nav">
+      <li class=""><a href="index.html">首页</a></li>
+      <li class=""><a href="product01.html">产品中心</a>
+        <div class="nav-content">
+          <ol>
+            <li class=""><a href="product01.html">验证码短信</a></li>
+            <li><a href="product02.html">通知短信</a></li>
+            <li><a href="product03.html">营销短信</a></li>
+          </ol>
+        </div>
+      </li>
+      <li class=""><a href="API.html">API接口</a>
+        <div class="nav-content">
+          <ol>
+            <li> <a href="API.html">API接口资料</a> </li>
+          </ol>
+        </div>
+      </li>
+      <li><a href="HelpCenter01.html">帮助中心</a>
+        <div class="nav-content">
+          <ol>
+            <li><a href="HelpCenter01.html">快速开始</a></li>
+            <li><a href="HelpCenter03.html">常见问题</a></li>
+            <li><a href="HelpCenter04.html">通道性能</a></li>
+            <li><a href="HelpCenter05.html">用户协议</a></li>
+            <li><a href="HelpCenter06.html">汇款账户</a></li>
+            <li><a href="HelpCenter08.html">服务资费</a></li>
+          </ol>
+        </div>
+      </li>
+      <li class=""><a href="AboutUs.html">关于我们</a></li>
+    </ul>
+    <div class="login-tip"> <a href="register.html">注册</a><a target="_blank" href="login.html">登录</a></div>
+  </div>
+</div>
+<!--main--><!-- InstanceBeginEditable name="EditRegion1" -->
+<!--
+<div id="main">
+	<div class="banner-detail" style="height:565px; width:auto;background-image:url(image/background.png)">
+</div>-->
+<div class="navigate" style="margin:40px auto;">
+  <div class="container"><i class="iconfont"></i><a href="index.html">首页</a> &gt; <a href="javascript:void(0);">API开放接口</a> &gt; <a href="API.html">短信验证码</a> &gt; <a href="API3.html">状态报告推送</a></div>
+</div>
+<div class="detail">
+  <div class="container">
+    <div class="detail-left">
+      <ul class="menu">
+        <li class="current"><a href="API.html">短信验证码<i class="iconfont"></i></a>
+          <ul class="clearfix">
+            <li><a href="API.html">普通短信发送</a> </li>
+          </ul>
+          <ul class="clearfix">
+            <li><a href="API2.html">个性短信发送</a> </li>
+          </ul>
+          <ul class="clearfix">
+            <li><a href="API3.html" style="color:red">状态报告推送</a> </li>
+          </ul>
+          <ul class="clearfix">
+            <li><a href="API4.html">短信接收</a> </li>
+          </ul>
+          <ul class="clearfix">
+            <li><a href="API5.html">余额查询接口</a> </li>
+          </ul>
+          <ul class="clearfix">
+            <li><a href="API6.html">短信模板添加修改</a> </li>
+          </ul>
+          <ul class="clearfix">
+            <li><a href="API7.html">模板审核状态</a> </li>
+          </ul>
+          <ul class="clearfix">
+            <li><a href="API8.html">下载接口包</a> </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="detail-right"> 
+      <!-- right star -->
+      
+      <div class="detail-item"> <span style="font-family:微软雅黑;"><span style="font-size: 14px;">如果管理员设置用户账户需要状态报告，并且也配置了账户的状态报告接收地址，则用户可以接收到其发送短信的状态报告。用户侧启动一个HTTP服务用于接收状态报告。POST方式推送</span></span><br>
+        <br>
+        <p><span style="font-size:16px;"><strong><span style="font-family: 微软雅黑;">1. 参数定义</span></strong></span></p>
+        <table cellspacing="0" cellpadding="0" border="1">
+          <tbody>
+            <tr>
+              <td style="width: 55px; text-align: center;"><span style="font-size:14px;">序号</span></td>
+              <td style="width: 104px; text-align: center;"><span style="font-size:14px;">参数</span></td>
+              <td style="width: 381px; text-align: center;"><span style="font-size:14px;">说明</span></td>
+            </tr>
+            <tr>
+              <td style="width: 55px; text-align: center;"><span style="font-size:14px;">1</span></td>
+              <td style="width: 104px; text-align: center;"><span style="font-size:14px;">name</span></td>
+              <td style="width:381px;"><span style="font-size:14px;">接收状态报告验证的用户名（不是账户名），是按照用户要求配置的名称，可以为空</span></td>
+            </tr>
+            <tr>
+              <td style="width: 55px; text-align: center;"><span style="font-size:14px;">2</span></td>
+              <td style="width: 104px; text-align: center;"><span style="font-size:14px;">pwd</span></td>
+              <td style="width:381px;"><span style="font-size:14px;">接收状态报告验证的密码，可以为空</span></td>
+            </tr>
+            <tr>
+              <td style="width: 55px; text-align: center;"><span style="font-size:14px;">3</span></td>
+              <td style="width: 104px; text-align: center;"><span style="font-size:14px;">sendid</span></td>
+              <td style="width:381px;"><span style="font-size:14px;">提交短信时平台返回的sendid，参见1.2</span></td>
+            </tr>
+            <tr>
+              <td style="width: 55px; text-align: center;"><span style="font-size:14px;">4</span></td>
+              <td style="width: 104px; text-align: center;"><span style="font-size:14px;">time</span></td>
+              <td style="width:381px;"><span style="font-size:14px;">报告时间（多个号码时，是第一个号码的时间）</span></td>
+            </tr>
+            <tr>
+              <td style="width: 55px; text-align: center;"><span style="font-size:14px;">5</span></td>
+              <td style="width: 104px; text-align: center;"><span style="font-size:14px;">mobile</span></td>
+              <td style="width:381px;"><span style="font-size:14px;">当多个号码状态相同时 手机号以英文逗号隔开；<br>
+                不同时 为单个手机号码</span></td>
+            </tr>
+            <tr>
+              <td style="width: 55px; text-align: center;"><span style="font-size:14px;">6</span></td>
+              <td style="width: 104px; text-align: center;"><span style="font-size:14px;">state</span></td>
+              <td style="width:381px;"><span style="font-size:14px;">状态报告数值</span></td>
+            </tr>
+          </tbody>
+        </table>
+        &nbsp;<br>
+        <p><strong><span style="font-family:微软雅黑;"><span style="font-size: 16px;">2. 状态报告值</span></span></strong></p>
+        <span style="font-size:14px;">状态报告的值即，state后面的数据，如下</span><br>
+        <br>
+        <table cellspacing="0" cellpadding="0" border="1">
+          <tbody>
+            <tr>
+              <td style="width: 161px; height: 26px; text-align: center;"><span style="font-size:14px;">状态值(字符串)</span></td>
+              <td style="width: 380px; height: 26px; text-align: center;"><span style="font-size:14px;">说明</span></td>
+            </tr>
+            <tr>
+              <td style="width: 161px; text-align: center;"><span style="font-size:14px;">DELIVRD</span></td>
+              <td style="width: 380px; text-align: center;"><span style="font-size:14px;">短消息转发成功</span></td>
+            </tr>
+            <tr>
+              <td style="width: 161px; text-align: center;"><span style="font-size:14px;">EXPIRED</span></td>
+              <td style="width: 380px; text-align: center;"><span style="font-size:14px;">短消息超过有效期</span></td>
+            </tr>
+            <tr>
+              <td style="width: 161px; height: 25px; text-align: center;"><span style="font-size:14px;">UNDELIV</span></td>
+              <td style="width: 380px; height: 25px; text-align: center;"><span style="font-size:14px;">短消息是不可达的</span></td>
+            </tr>
+            <tr>
+              <td style="width: 161px; text-align: center;"><span style="font-size:14px;">UNKNOWN</span></td>
+              <td style="width: 380px; text-align: center;"><span style="font-size:14px;">未知短消息状态</span></td>
+            </tr>
+            <tr>
+              <td style="width: 161px; text-align: center;"><span style="font-size:14px;">REJECTD</span></td>
+              <td style="width: 380px; text-align: center;"><span style="font-size:14px;">短消息被短信中心拒绝</span></td>
+            </tr>
+            <tr>
+              <td style="width: 161px; text-align: center;"><span style="font-size:14px;">DTBLACK</span></td>
+              <td style="width: 380px; text-align: center;"><span style="font-size:14px;">目的号码是黑名单号码</span></td>
+            </tr>
+            <tr>
+              <td style="width: 161px; text-align: center;"><span style="font-size:14px;">ERR:104</span></td>
+              <td style="width: 380px; text-align: center;"><span style="font-size:14px;">系统忙</span></td>
+            </tr>
+            <tr>
+              <td style="width: 161px; text-align: center;"><span style="font-size:14px;">REJECT</span></td>
+              <td style="width: 380px; text-align: center;"><span style="font-size:14px;">审核驳回</span></td>
+            </tr>
+            <tr>
+              <td style="width: 161px; text-align: center;"><span style="font-size:14px;">其他</span></td>
+              <td style="width: 380px; text-align: center;"><span style="font-size:14px;">网关内部状态</span></td>
+            </tr>
+          </tbody>
+        </table>
+        &nbsp;<br>
+        <p><span style="font-family:微软雅黑;"><span style="font-size: 16px;"><strong>3. 示例</strong></span></span></p>
+        <span style="font-family:微软雅黑;"><span style="font-size: 14px;">http://pushUrl?name=admin&amp;pwd=12345&amp;sendid=12345&amp;time=2013-08-20 20:11:34&amp;mobile=13900210021&amp;state=DELIVRD</span></span><br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+        <span style="font-family:微软雅黑;"><span style="font-size: 14px;">其中，pushUrl为用户启动的服务地址。</span></span> </div>
+      
+      <!-- right end --> 
+    </div>
+  </div>
+</div>
+<!-- InstanceEndEditable -->
+<div class="footer">
+  <div class="container">
+    <div class="footer-item clearfix">
+      <div class="footer-nav" style="450px">
+        <dl>
+          <dt class="title"><a href="product01.html">产品中心</a></dt>
+          <dd> <a href="product01.html">验证码短信</a> <a href="product02.html">通知短信</a> <a href="product03.html">营销短信</a> </dd>
+        </dl>
+        <dl>
+          <dt class="title"><a href="API.html">API接口</a></dt>
+          <dd> <a href="API.html">API接口资料</a> </dd>
+        </dl>
+        <dl>
+          <dt class="title"><a href="HelpCenter01.html">帮助中心</a></dt>
+          <dd> <a href="HelpCenter01.html">快速开始</a> <a href="HelpCenter03.html">常见问题</a> <a href="HelpCenter04.html">通道性能</a> <a href="HelpCenter05.html">用户协议</a><a href="HelpCenter08.html">服务资费</a></dd>
+        </dl>
+      </div>
+      <div class="footer-contact">
+        <div class="title"><a href="javascript:void(0);">联系我们</a></div>
+        <div class="content">
+          销售中心：中国 · 杭州市滨江区秋溢路西可软件园<br>
+          售前热线：0571-86571967<br>
+          投诉电话：0571-86571967<br>
+          企业邮箱：jianqiao.wang@deepidata.com<br>
+          公司官网：<a href="index.html" target="_blank">www.deepidata.com</a>&nbsp;<br>
+          产品网站：<a href="index.html">www.yunmosms.com</a><br>
+          服务时间：9:00-18:00<br>
+        </div>
+      </div>
+    </div>
+    <div class="copyright" style="padding-top:0px;">Copyright © 2016 杭州云模网络科技有限公司 All Rights Reserved.</div>
+</div>
+</body>
+<!-- InstanceEnd --></html>

@@ -1,0 +1,303 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html style="overflow-x:auto;overflow-y:auto;">
+<head>
+    <title>Ultra-DSP广告管理平台</title><!--  - Powered By 智能数据 -->
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" /><meta name="author" content="http://jeesite.com/"/>
+    <meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=8,IE=9,IE=10" />
+    <meta http-equiv="Expires" content="0"><meta http-equiv="Cache-Control" content="no-cache"><meta http-equiv="Cache-Control" content="no-store">
+
+    <script src="http://mis.ultradata.cn/DSP/static/jquery/jquery-1.8.3.min.js" type="text/javascript"></script>
+    <link href="http://mis.ultradata.cn/DSP/static/bootstrap/2.3.1/css_default/bootstrap_new.css" type="text/css" rel="stylesheet" />
+    <link href="http://mis.ultradata.cn/DSP/static/bootstrap/2.3.1/css_default/dsp-style_new.css" type="text/css" rel="stylesheet" />
+
+    <script src="http://mis.ultradata.cn/DSP/static/bootstrap/2.3.1/js/bootstrap.min.js" type="text/javascript"></script>
+    <link href="http://mis.ultradata.cn/DSP/static/bootstrap/2.3.1/awesome/font-awesome.min.css" type="text/css" rel="stylesheet" />
+    <!--[if lte IE 7]><link href="http://mis.ultradata.cn/DSP/static/bootstrap/2.3.1/awesome/font-awesome-ie7.min.css" type="text/css" rel="stylesheet" /><![endif]-->
+    <!--[if lte IE 6]><link href="http://mis.ultradata.cn/DSP/static/bootstrap/bsie/css/bootstrap-ie6.min.css" type="text/css" rel="stylesheet" />
+<script src="http://mis.ultradata.cn/DSP/static/bootstrap/bsie/js/bootstrap-ie.min.js" type="text/javascript"></script><![endif]-->
+    <link href="http://mis.ultradata.cn/DSP/static/jquery-select2/3.4/select2.css" rel="stylesheet" />
+    <script src="http://mis.ultradata.cn/DSP/static/jquery-select2/3.4/select2.min.js" type="text/javascript"></script>
+    <link href="http://mis.ultradata.cn/DSP/static/jquery-validation/1.11.0/jquery.validate.min.css" type="text/css" rel="stylesheet" />
+    <script src="http://mis.ultradata.cn/DSP/static/jquery-validation/1.11.0/jquery.validate.js" type="text/javascript"></script>
+    <link href="http://mis.ultradata.cn/DSP/static/jquery-jbox/2.3/Skins/Bootstrap/jbox.css" rel="stylesheet" />
+    <script src="http://mis.ultradata.cn/DSP/static/jquery-jbox/2.3/jquery.jBox-2.3.min.js" type="text/javascript"></script>
+    <script src="http://mis.ultradata.cn/DSP/static/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+    <script src="http://mis.ultradata.cn/DSP/static/common/mustache.min.js" type="text/javascript"></script>
+    <link href="http://mis.ultradata.cn/DSP/static/common/jeesite.css" type="text/css" rel="stylesheet" />
+    <script src="http://mis.ultradata.cn/DSP/static/common/jeesite.js" type="text/javascript"></script>
+    <script type="text/javascript">var ctx = '/DSP', ctxStatic='/DSP/static';</script>
+    <link rel="icon" type="image/x-icon" href="http://mis.ultradata.cn/DSP/static/favicon.ico">
+    <!-- 自定义时间kongjian -->
+    <link href="http://mis.ultradata.cn/DSP/static/common/daterangepicker-bs3.css" type="text/css" rel="stylesheet" />
+    <link href="http://mis.ultradata.cn/DSP/static/common/daterangepicker-1.3.7.css" type="text/css" rel="stylesheet" />
+    <script src="http://mis.ultradata.cn/DSP/static/common/moment.js" type="text/javascript"></script>
+    <script src="http://mis.ultradata.cn/DSP/static/common/daterangepicker-1.3.7.js" type="text/javascript"></script>
+    <script src="http://mis.ultradata.cn/DSP/static/common/dateList.js" type="text/javascript"></script>
+
+    <meta name="decorator" content="blank"/>
+
+    <style type="text/css">
+        #main {padding:0;margin:0;} #main .container-fluid{padding:0 4px 0 6px;}
+        #header {margin:0 0 8px;position:static;} #header li {font-size:14px;_font-size:12px;}
+        #header .brand {font-family:Helvetica, Georgia, Arial, sans-serif, 黑体;font-size:26px;padding-left:33px;}
+        #footer {margin:8px 0 0 0;padding:3px 0 0 0;font-size:11px;text-align:center;border-top:2px solid #0663A2;}
+        #footer, #footer a {color:#999;} #left{overflow-x:hidden;overflow-y:auto;} #left .collapse{position:static;}
+        #userControl>li>a{/*color:#fff;*/text-shadow:none;} #userControl>li>a:hover, #user #userControl>li.open>a{background:transparent;}
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            //
+            // 绑定菜单单击事件
+            $("#menu a.menu").click(function(){
+                // 一级菜单焦点
+                $("#menu li.menu").removeClass("active");
+                $(this).parent().addClass("active");
+                // 左侧区域隐藏
+                if ($(this).attr("target") == "mainFrame"){
+                    $("#left,#openClose").hide();
+                    wSizeWidth();
+                    //
+                    return true;
+                }else{
+                    // 左侧区域显示
+                    $("#left,#openClose").show();
+                    if(!$("#openClose").hasClass("close")){
+                        $("#openClose").click();
+                    }
+                    // 显示二级菜单
+                    var menuId = "#menu-" + $(this).attr("data-id");
+                    if ($(menuId).length > 0){
+                        $("#left .accordion").hide();
+                        $(menuId).show();
+                        // 初始化点击第一个二级菜单
+                        if (!$(menuId + " .accordion-body:first").hasClass('in')){
+                            $(menuId + " .accordion-heading:first a").click();
+                        }
+                        if (!$(menuId + " .accordion-body li:first ul:first").is(":visible")){
+                            $(menuId + " .accordion-body a:first i").click();
+                        }
+                        // 初始化点击第一个三级菜单
+                        $(menuId + " .accordion-body li:first li:first a:first i").click();
+                    }else{
+                        // 获取二级菜单数据
+                        $.get($(this).attr("data-href"), function(data){
+                            if (data.indexOf("id=\"loginForm\"") != -1){
+                                alert('未登录或登录超时。请重新登录，谢谢！');
+                                top.location = "/DSP";
+                                return false;
+                            }
+                            $("#left .accordion").hide();
+                            $("#left").append(data);
+                            // 链接去掉虚框
+                            $(menuId + " a").bind("focus",function() {
+                                if(this.blur) {this.blur()};
+                            });
+                            // 二级标题
+                            $(menuId + " .accordion-heading a").click(function(){
+                                $(menuId + " .accordion-toggle i").removeClass('icon-chevron-down').addClass('icon-chevron-right');
+                                if(!$($(this).attr('data-href')).hasClass('in')){
+                                    $(this).children("i").removeClass('icon-chevron-right').addClass('icon-chevron-down');
+                                }
+                            });
+                            // 二级内容
+                            $(menuId + " .accordion-body a").click(function(){
+                                $(menuId + " li").removeClass("active");
+                                $(menuId + " li i").removeClass("icon-white");
+                                $(this).parent().addClass("active");
+                                $(this).children("i").addClass("icon-white");
+                            });
+                            // 展现三级
+                            $(menuId + " .accordion-inner a").click(function(){
+                                var href = $(this).attr("data-href");
+                                if($(href).length > 0){
+                                    $(href).toggle().parent().toggle();
+                                    return false;
+                                }
+                                //
+                            });
+                            // 默认选中第一个菜单
+                            $(menuId + " .accordion-body a:first i").click();
+                            $(menuId + " .accordion-body li:first li:first a:first i").click();
+                        });
+                    }
+                    // 大小宽度调整
+                    wSizeWidth();
+                    return false;
+                }
+
+            });
+
+
+
+            // 初始化点击第一个一级菜单
+            $("#menu a.menu:first span").click();
+            //
+            // 鼠标移动到边界自动弹出左侧菜单
+            $("#openClose").mouseover(function(){
+                if($(this).hasClass("open")){
+                    $(this).click();
+                }
+            });
+        });
+        //
+    </script>
+
+</head>
+<body>
+
+<div id="main">
+    <div id="header" class="navbar navbar-fixed-top">
+        <div class="dsp-head">
+            <div class="dsp-logo pull-left"><span id="productName">云模网络广告管理平台</span></div>
+            <div class="dsp-lead pull-right text-right ">
+                <ul id="userControl" class="list-inline dsp-lead-list clearfix">
+
+                    <!-- 						<li class="list-line-cut">|</li> -->
+                    <!-- 						<li id="themeSwitch" class="dropdown"> -->
+                    <!-- 							<a class="dropdown-toggle" data-toggle="dropdown" href="#" title="主题切换"><i class="icon-th-large"></i></a> -->
+                    <!-- 							<ul class="dropdown-menu"> -->
+
+
+                    <!-- 							</ul> -->
+                    <!-- 							[if lte IE 6]><script type="text/javascript">$('#themeSwitch').hide();</script><![endif] -->
+                    <!-- 						</li> -->
+                    <!-- 						<li class="list-line-cut">|</li> -->
+                    <li id="userInfo" class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" title="个人信息">您好, 云模一&nbsp;<span id="notifyNum" class="label label-info hide"></span></a>
+
+                    </li>
+                    <li class="list-line-cut">|</li>
+                    <li><a href="/DSP/logout" title="退出登录"><span class="icon icon-off"></span> 退出登录</a></li>
+                    <li>&nbsp;</li>
+                </ul>
+            </div>
+
+
+        </div>
+        <div class="dsp-nav">
+            <ul id="menu" class="list-inline dsp-nav-list clearfix" style="*white-space:nowrap;float:none;">
+
+                <li class="menu  active">
+                    <a class="menu" href="javascript:" data-href="/dsp/activity.html" data-id="5e8ac54724664238bcc09f48d49c2e26"><span>广告活动</span></a>
+                </li>
+
+                <li class="menu ">
+                    <a class="menu" href="/DSP/order/dspOrder" data-id="de7af6fe82c340db93525cd6d13f3425" target="mainFrame"><span>广告订单</span></a>
+                </li>
+
+                <li class="menu ">
+                    <a class="menu" href="/DSP/optimizePosition/page" data-id="886d7c400fe040ae915d8afb9d5f4447" target="mainFrame"><span>优化工具</span></a>
+                </li>
+
+                <li class="menu ">
+                    <a class="menu" href="/DSP/report/rpMain/page" data-id="21d2dc1e1ba34987a3d004882562ca07" target="mainFrame"><span>效果报表</span></a>
+                </li>
+                <li class="menu ">
+                    <a class="menu" href="javascript:" data-href="/DSP/sys/menu/tree?parentId=2" data-id="2"><span>系统设置</span></a>
+                </li>
+
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+    <div class="container-fluid">
+        <div id="content" class="row-fluid">
+            <div id="left" style="width: 160px; height: 341px; display: block;">
+
+                <div class="accordion" id="menu-5e8ac54724664238bcc09f48d49c2e26" style="display: block;">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#menu-5e8ac54724664238bcc09f48d49c2e26" data-href="#collapse-df44519c5dd84a609c1a8b6bc1f64a57" href="#collapse-df44519c5dd84a609c1a8b6bc1f64a57" title=""><i class="icon-chevron-down"></i>&nbsp;我的投放</a>
+                        </div>
+                        <div id="collapse-df44519c5dd84a609c1a8b6bc1f64a57" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <ul class="nav nav-list">
+                                    <li class="active"><a data-href=".menu3-0fe964b3e72d4deaa5ee85d1887b58b0" href="/DSP/plan/dspPlan/list?bidStatus=1" target="mainFrame"><i class="icon-circle-arrow-right icon-white"></i>&nbsp;投放中的活动</a>
+                                        <ul class="nav nav-list hide" style="margin:0;padding-right:0;">
+
+                                        </ul></li>
+                                    <li><a data-href=".menu3-032abf5f679b4179b4ca4895c446de58" href="/DSP/plan/dspPlan/list?bidStatus=2" target="mainFrame"><i class="icon-circle-arrow-right"></i>&nbsp;已暂停的活动</a>
+                                        <ul class="nav nav-list hide" style="margin:0;padding-right:0;">
+
+
+                                        </ul></li>
+                                    <li><a data-href=".menu3-04d7019531a24cb797e2c7f219216ed4" href="/DSP/plan/dspPlan/list?bidStatus=3" target="mainFrame"><i class="icon-circle-arrow-right"></i>&nbsp;已结束的活动</a>
+                                        <ul class="nav nav-list hide" style="margin:0;padding-right:0;">
+
+                                        </ul></li>
+                                    <li><a data-href=".menu3-73240e18c7ef4920945a7750df46f0b6" href="/DSP/plan/dspPlan" target="mainFrame"><i class="icon-circle-arrow-right"></i>&nbsp;全部</a>
+                                        <ul class="nav nav-list hide" style="margin:0;padding-right:0;">
+
+                                        </ul></li></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion" id="menu-2" style="display: none;">
+                    <div class="accordion-group">
+                        <div class="accordion-heading">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#menu-2" data-href="#collapse-7fce5ac814aa499ea4a77ead3e75c30e" href="#collapse-7fce5ac814aa499ea4a77ead3e75c30e" title=""><i class="icon-chevron-down"></i>&nbsp;广告主</a>
+                        </div>
+                        <div id="collapse-7fce5ac814aa499ea4a77ead3e75c30e" class="accordion-body collapse in">
+                            <div class="accordion-inner">
+                                <ul class="nav nav-list">
+                                    <li class="active"><a data-href=".menu3-1f77904177ef4749828bf7e78c6a40f1" href="/DSP/member/member" target="mainFrame"><i class="icon-user icon-white"></i>&nbsp;广告主管理</a>
+                                        <ul class="nav nav-list hide" style="margin:0;padding-right:0;">
+
+
+                                        </ul></li></ul>
+                            </div>
+                        </div>
+                    </div>
+                </div></div>
+            <div id="openClose" class="close" style="height: 336px; display: block;">&nbsp;</div>
+            <div id="right" style="height: 341px; width: 1242px;">
+                <iframe id="mainFrame" name="mainFrame" src="" style="overflow: visible; height: 341px;" scrolling="yes" frameborder="no" width="100%" height="650"></iframe>
+            </div>
+        </div>
+        <div id="footer" class="row-fluid">
+            Copyright &copy; 2015-2017 DeepIData DSP广告管理平台 - Powered By 杭州云模网络科技有限公司
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var leftWidth = 160; // 左侧窗口大小
+    var tabTitleHeight = 33; // 页签的高度
+    var htmlObj = $("html"), mainObj = $("#main");
+    var headerObj = $("#header"), footerObj = $("#footer");
+    var frameObj = $("#left, #openClose, #right, #right iframe");
+    function wSize(){
+        var minHeight = 500, minWidth = 980;
+        var strs = getWindowSize().toString().split(",");
+        htmlObj.css({"overflow-x":strs[1] < minWidth ? "auto" : "hidden", "overflow-y":strs[0] < minHeight ? "auto" : "hidden"});
+        mainObj.css("width",strs[1] < minWidth ? minWidth - 10 : "auto");
+        frameObj.height((strs[0] < minHeight ? minHeight : strs[0]) - headerObj.height() - footerObj.height() - (strs[1] < minWidth ? 42 : 28));
+        $("#openClose").height($("#openClose").height() - 5);//
+        wSizeWidth();
+    }
+    function wSizeWidth(){
+        if (!$("#openClose").is(":hidden")){
+            var leftWidth = ($("#left").width() < 0 ? 0 : $("#left").width());
+            $("#right").width($("#content").width()- leftWidth - $("#openClose").width() -5);
+        }else{
+            $("#right").width("100%");
+        }
+    }//
+</script>
+<script src="/DSP/static/common/wsize.min.js" type="text/javascript"></script>
+</body>
+</html>

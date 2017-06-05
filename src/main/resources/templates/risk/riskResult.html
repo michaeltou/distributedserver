@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Home</title>
+    <style type="text/css">
+        <!--
+        .STYLE1 {color: #FF0000}
+        .STYLE5 {
+            font-size: 36px;
+            color: #000000;
+        }
+        -->
+    </style>
+</head>
+<body>
+
+<table width="947" height="125" border="0" align="center">
+    <tr>
+        <td colspan="2"><div align="center"><span class="STYLE5">风控评估结果</span></div></td>
+    </tr>
+    <tr>
+        <td width="606"><div align="left"><img src="/image/archive/gard.jpg" width="570" height="522"/></div></td>
+        <td width="325"><div align="left">
+            <p><strong>用户的身份证id：<span class="STYLE1" th:text="${user.identifyId}">暂无.</span></strong></p>
+        </div>
+            <p align="left"></p>
+            <div>
+                <div align="left">评估打分：<span class="STYLE1" th:text="${riskScore}">暂无评估打分.</span></div>
+                <p align="left"></p>
+                <div align="left">评估详细细节：<span class="STYLE1" th:text="${riskDetail}">暂无评估细节.</span></div>
+            </div>
+            <p>&nbsp;</p>
+            <a th:if="${#strings.isEmpty(user.mobilePhone)}" ></a>
+            <p>用户详细信息：</p>
+            <p>用户id：<span class="STYLE1" th:text="${user.id}">暂无.</span></p>
+            <p>姓名：<span class="STYLE1" th:text="${user.name}">暂无.</span></p>
+            <p>身份证：<span class="STYLE1" th:text="${user.identifyId}">暂无.</span></p>
+            <p>电话：<span class="STYLE1" th:text="${user.mobilePhone}">暂无.</span></p>
+            <p>座机：<span class="STYLE1" th:text="${user.telePhone}">暂无.</span></p>
+            <p>银行卡：<span class="STYLE1" th:text="${user.bankCard}">暂无.</span></p>
+            <p>是否有车：<span class="STYLE1" th:text="${user.hasCar}">暂无.</span></p>
+            <p>是否有房：<span class="STYLE1" th:text="${user.hasHouse}">暂无.</span></p>
+            <p>是否有社保：<span class="STYLE1" th:text="${user.hasSocialSecurity}">暂无.</span></p>
+            <p>是否有公积金：<span class="STYLE1" th:text="${user.hasHouseFund}">暂无.</span></p>
+            <p>电话IMEI:<span class="STYLE1" th:text="${user.phoneIMEI}">暂无.</span></p>
+            <p>是否黑名单：<span class="STYLE1" th:text="${user.blackUser}">暂无.</span></p>    <p>&nbsp;</p></td>
+    </tr>
+</table>
+<h1 align="left" >&nbsp;</h1>
+<h1 align="left" >&nbsp;</h1>
+<h1 align="left" >&nbsp;</h1>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center">&nbsp;</p>
+<p align="center"><span data-reactid=".hi7php2vsu.0.2.1.0.0">Copyright @2016 杭州云模网络科技有限公司 版权所有</span><a href="http://www.miitbeian.gov.cn/" target="_blank" data-reactid=".hi7php2vsu.0.2.1.0.1">浙ICP备12036190号-1</a><span data-reactid=".hi7php2vsu.0.2.1.0.2">组织机构代码:05368706-1</span><a href="https://www.deepidata.com/agreement" data-reactid=".hi7php2vsu.0.2.1.0.3">隐私政策</a><a href="https://www.deepidata.com/agreement" data-reactid=".hi7php2vsu.0.2.1.0.4">服务条款</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+</body>
+</html>
