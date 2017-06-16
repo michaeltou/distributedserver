@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
- * Created by daoying on 2017/5/16.
+ * Created by lenovo on 2017/5/16.
  */
 public class DateUtil {
 

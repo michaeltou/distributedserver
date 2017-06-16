@@ -4,7 +4,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- * Created by daoying on 2017/5/11.
+ * Created by lenovo on 2017/5/11.
  */
 @XmlRootElement(name = "Notification")
 public class Notification {

@@ -1,7 +1,7 @@
 package com.tm.yunmo.aop.cglib;
 
 /**
- * Created by daoying on 2017/5/23.
+ * Created by Administrator on 2017/5/23.
  */
 public class OneService {
 

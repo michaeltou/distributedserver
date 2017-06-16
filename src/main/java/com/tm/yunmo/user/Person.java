@@ -3,7 +3,7 @@ package com.tm.yunmo.user;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by daoying on 2017/3/14.
+ * Created by lenovo on 2017/3/14.
  */
 
 @Component

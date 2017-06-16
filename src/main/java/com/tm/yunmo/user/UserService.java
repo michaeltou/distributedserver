@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by daoying on 2017/3/13.
+ * Created by lenovo on 2017/3/13.
  */
 
 @RestController

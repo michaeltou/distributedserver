@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by daoying on 2017/3/20.
+ * Created by lenovo on 2017/3/20.
  */
 @RestController
 public class Hello {
@@ -28,12 +28,6 @@ public class Hello {
         logger.info("This is an info message");
         System.out.println("hello,world!");
         return "hello,world!";
-    }
-    
-    @RequestMapping("/test")
-    public String test(){
-    	logger.info("test");
-    	return "test";
     }
 
 

@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Created by daoying on 2017/5/23.
+ * Created by Administrator on 2017/5/23.
  */
 public class ProxyTest {
     @Test

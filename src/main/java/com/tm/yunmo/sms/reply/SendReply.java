@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 /**
- * Created by daoying on 2017/5/11.
+ * Created by lenovo on 2017/5/11.
  * 接收来自阿里云的回调.
  */
 @RestController
@@ -27,5 +27,5 @@ public class SendReply {
         Gson gson = new Gson();
         System.out.println("replybean is: "+ gson.toJson(notification)  );
         return "success";
-    } 
+    }
 }

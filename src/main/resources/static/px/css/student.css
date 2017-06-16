@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* CSS Document */
+#employeeNameText ,
+#employeePhoneText,
+#employeeAgeText,
+#schoolTypeText,
+#employeeIDText,
+#employeeEmailText,
+#employeeMarriedText,
+#nativePlaceText,
+#nationText,
+#politicalStatusText,
+#academyText,
+#majorText,
+#educationText,
+#laborRelationsText,
+#personnelStatusText,
+#laborContractText,
+#remarksText,
+#payrollCardText,
+#payrollCardNoText,
+#logonAcountText,
+#logonAcountPasswordText
+{
+	width:300px; 
+}
+
+#employeeNameForSearchText,
+#employeePhoneForSearchText,
+#managementScopeForSearchText
+{
+	width:150px; 
+}

@@ -8,7 +8,7 @@ import org.apache.ibatis.annotations.Select;
 import java.util.List;
 
 /**
- * Created by daoying on 2017/3/15.
+ * Created by lenovo on 2017/3/15.
  */
 
 @Mapper
