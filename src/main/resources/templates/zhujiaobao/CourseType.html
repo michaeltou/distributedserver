@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>助教宝 - 管理后台</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="baidu-site-verification" content="elXuCAMAW3">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/reset.css">
+<link rel="stylesheet" href="css/index_style.css">
+<link rel="stylesheet" href="css/jquery-ui.css">
+<link rel="stylesheet" href="css/yp_style.css">
+<link rel="stylesheet" href="css/coursetype.css">
+<link rel="stylesheet" href="css/jquery.tree-multiselect.min.css"/>
+<script type="text/javascript" src="../../static/js/jquery.js"></script>
+<script type="text/javascript" src="../../static/js/jquery-ui.js"></script>
+<script type="text/javascript" src="js/jquery.form.js"></script>
+<script type="text/javascript" src="../../static/js/coursetype.js"></script>
+<script type="text/javascript" src="../../static/js/main.js"></script>
+</head>
+
+<body style="background-color: #fff;" onload = "load()">
+<div class="mainContainer">
+<div class="rightmain clearfix tplSettingDome signSetting" data-page="domesticRegister">
+<div class="app-framework-cpt">
+  <div class="domestic-register-manager-cpt">
+    <div class="tab-cpt">
+      <div class="tab-body-group-cpt">
+        <div class="tab-body-cpt tab-body-show">
+          <div class="sign-setting-cpt clearfix">
+            <div class="add-new-sign-cpt">
+              <div>
+                <input  style="margin-left: 10px;" class="button button-middle  float-left"  type="button"  name="newCourseType" value="新建课程类别" id="newCourseType">
+              </div>
+            </div>
+            <form class="addCourseType" title="新建课程类别" action="sms/servlet/AddSignatureServlet" id="addCourseType">
+              <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
+                <label id='courseTypeCodeTitle'>类别编号:</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px;">
+                <input class="text-input-cpt" type="text" name="courseTypeCodeText" placeholder="请输入课程类别编号(必填)" value="" id = "courseTypeCodeText">
+              </div>
+              <div style="clear:both;"></div>
+              <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
+                <label id='courseTypeNameTitle'>类别名称:</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px;">
+                <input class="text-input-cpt" type="text" name="courseTypeNameText" placeholder="请输入课程类别名称(必填)" value="" id = "courseTypeNameText">
+              </div>
+            </form>
+            <div class="sign-list-cpt" parent-account="">
+              <div class="block-title-cpt"> 课程类别一览 </div>
+              <div style="float:left; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
+                <label id='courseTypeNameForSearchTitle'>类别名:</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px; padding-bottom:30px;">
+                <input class="text-input-cpt" type="text" name="courseTypeNameForSearchText" placeholder="请输入课程类别名" value="" id = "courseTypeNameForSearchText">
+              </div>
+              <div style="float:left; width=350px; padding-top:15px;padding-left:25px;">
+                <input  style="margin-left: 10px;" class="button button-middle    float-left"  type="button"  name="search" value="查询" id="search">
+              </div>
+              <div class="recordList">
+                <table class="yunmo">
+                  <thead>
+                    <tr>
+                      <th style="width:10%;">类别编号</th>
+                      <th style="width:80%; text-align:center;">类别名称</th>
+                      <th style="width:10%;">操作</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>789</td>
+                      <td  style="text-align:center;">美术</td>
+                      <td ><input type='button' name='deleteButton' value='删除' class="deleteButton">
+                        <input type='button' name='editButton' value='编辑' class="editButton" ></td>
+                        </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!--<div class="pagination-cpt" pre-page="1" next-page="1"> <span class="totalCount">共0条记录</span> </div>--> 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="../../static/js/jquery.js"></script>
+<script src="../../static/js/jquery-ui.js"></script>
+<script src="../../static/js/bootstrap.min.js"></script>
+<script src="../../static/js/jquery.tree-multiselect.min.js"></script>
+<script src="../../static/js/doT.js"></script>
+</body>
+</html>

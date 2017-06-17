@@ -1,0 +1,10 @@
+@charset "utf-8";
+/* CSS Document */
+#schoolNameTitle ,#schoolCodeTitle,#schoolTypeTitle,#schoolPhoneTitle,#schoolAddressTitle,#schoolContactTitle {
+	font-size:12px;
+}
+
+#schoolNameText ,#schoolCodeText,#schoolTypeText,#schoolPhoneText,#schoolAddressText,#schoolContactText{
+	width:300px; 
+	font-size:12px;
+}
