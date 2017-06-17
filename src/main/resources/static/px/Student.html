@@ -18,7 +18,6 @@
 <script type="text/javascript" src="js/jquery.form.js"></script>
 <script type="text/javascript" src="js/student.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
-
 </head>
 
 <body style="background-color: #fff;" onload = "load()">
@@ -32,39 +31,39 @@
           <div class="sign-setting-cpt clearfix">
             <div class="add-new-sign-cpt">
               <div>
-                <input  style="margin-left: 10px;" class="button button-middle  float-left"  type="button"  name="NewEmployee" value="新生报名" id="NewEmployee">
+                <input  style="margin-left: 10px;" class="button button-middle  float-left"  type="button"  name="NewStudent" value="新生报名" id="NewStudent">
               </div>
             </div>
-            <form class="AddEmplyee" title="新建学员" action="sms/servlet/AddSignatureServlet" id="AddEmplyee">
-              <div style="float:left; width:140px; padding-top:20px; border:solid;"> <a target="_blank" href="image/employee.png" id ="employeeImageHref"> <img src="image/employee.png" id="employeeImage" style="width:140px; height:120px;"> </a> 
-              <input type="button" value="上传头像" style="width:140px; " id="imageselect">
-              <input style="display: none;" type="file" onchange="filechange(event)" >
+            <form class="AddStudent" title="新生报名" action="sms/servlet/AddSignatureServlet" id="AddStudent">
+              <div style="float:left; width:140px; padding-top:20px; border:solid;"> <a target="_blank" href="image/employee.png" id ="employeeImageHref"> <img src="image/employee.png" id="employeeImage" style="width:140px; height:120px;"> </a>
+                <input type="button" value="上传头像" style="width:140px; " id="imageselect">
+                <input style="display: none;" type="file" onchange="filechange(event)" >
               </div>
               <div style="float:left; width:1030px;">
-              	<div style="float:left; width:100%; height:30px; padding-top:8px;margin-left:50px; background-color:#9CF;">
-                  <label id='employeeBaseInfoTitle' style="font-size:14px; margin-left:10px;">基本信息</label>
+                <div style="float:left; width:100%; height:30px; padding-top:8px;margin-left:50px; background-color:#9CF;">
+                  <label id='studentBaseInfoTitle' style="font-size:14px; margin-left:10px;">基本信息</label>
                 </div>
                 <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
-                  <label id='employeeNameTitle'>学员姓名:</label>
+                  <label id='studentNameTitle'>学员姓名:</label>
                 </div>
                 <div style="float:left; width=350px; padding-top:15px;">
-                	<input class="text-input-cpt" type="text" name="employeeNameText" placeholder="请输入学员姓名(必填)" value="" id = "employeeNameText">
-              	</div>
+                  <input class="text-input-cpt" type="text" name="studentNameText" placeholder="请输入学员姓名(必填)" value="" id = "studentNameText">
+                </div>
                 <div style="float:left; width:70px; padding-top:20px;padding-left:30px;">
-                  <label id='employeePhoneTitle'>手机号码:</label>
+                  <label id='studentPhoneTitle'>手机号码:</label>
                 </div>
                 <div style="float:left; width=350px; padding-top:15px;">
-                	<input class="text-input-cpt" type="text" name="employeePhoneText" placeholder="请输入手机号码(如无手机可填父亲的手机号码)(必填)" value="" id = "employeePhoneText">
+                  <input class="text-input-cpt" type="text" name="studentPhoneText" placeholder="请输入手机号码(如无手机可填父亲的手机号码)(必填)" value="" id = "studentPhoneText">
                 </div>
                 <div style="clear:both;"></div>
                 <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
-                  <label id='employeeAgeTitle'>身份证</label>
+                  <label id='studentIDTitle'>身份证</label>
                 </div>
                 <div style="float:left; width=350px; padding-top:15px;">
-                	<input class="text-input-cpt" type="text" name="employeeAgeText" placeholder="请输入您的年龄(必填)" value="" id = "employeeAgeText">
-              	</div>
+                  <input class="text-input-cpt" type="text" name="studentIDText" placeholder="请输入您的年龄(必填)" value="" id = "studentIDText">
+                </div>
                 <div style="float:left; width:70px; padding-top:20px;padding-left:30px;">
-                  <label id='employeeSexTitle'>性别:</label>
+                  <label id='studentSexTitle'>性别:</label>
                 </div>
                 <div style="float:left; width=350px; padding-top:15px;">
                   <input type="radio" name="sex" value="女" id="female">
@@ -76,50 +75,86 @@
                 </div>
                 <div style="clear:both;"></div>
                 <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
-                  <label id='employeePhoneTitle'>母亲手机:</label>
+                  <label id='motherPhoneTitle'>母亲手机:</label>
                 </div>
                 <div style="float:left; width=350px; padding-top:15px;">
-                	<input class="text-input-cpt" type="text" name="employeePhoneText" placeholder="请输入母亲的手机号码(必填)" value="" id = "employeePhoneText">
+                  <input class="text-input-cpt" type="text" name="motherPhoneText" placeholder="请输入母亲的手机号码(必填)" value="" id = "motherPhoneText">
                 </div>
                 <div style="float:left; width:70px; padding-top:20px;padding-left:30px;">
-                  <label id='employeePhoneTitle'>住所:</label>
+                  <label id='residenceTitle'>住所:</label>
                 </div>
                 <div style="float:left; width=350px; padding-top:15px;">
-                	<input class="text-input-cpt" type="text" name="employeePhoneText" placeholder="请输入您的的住所(必填)" value="" id = "employeePhoneText">
+                  <input class="text-input-cpt" type="text" name="residenceText" placeholder="请输入您的的住所(必填)" value="" id = "residenceText">
                 </div>
-               
               </div>
               <div style="clear:both;"></div>
               <div style="float:left; width:100%; height:30px; padding-top:8px; margin-top:18px; background-color:#9CF;">
-                  <label id='employeeDetailedTitle' style="font-size:14px; margin-left:10px;">详细信息（选填）</label>
-                </div>
+                <label id='employeeDetailedTitle' style="font-size:14px; margin-left:10px;">详细信息（选填）</label>
+              </div>
               <div style="float:left; width:70px; padding-top:20px;">
-                <label id='employeeIDTitle'>父亲手机:</label>
+                <label id='fatherPhoneTitle'>父亲手机:</label>
               </div>
               <div style="float:left; width=350px; padding-top:15px;">
-                <input class="text-input-cpt" type="text" name="employeeIDText" placeholder="请输入父亲的手机号码(选填)" value="" id = "employeeIDText">
+                <input class="text-input-cpt" type="text" name="fatherPhoneText" placeholder="请输入父亲的手机号码(选填)" value="" id = "fatherPhoneText">
               </div>
-              
               <div style="float:left; width:70px; padding-top:20px; padding-left:50px;">
-                <label id='employeeEmailTitle'>邮箱:</label>
+                <label id='studentEmailTitle'>邮箱:</label>
               </div>
               <div style="float:left; width=350px; padding-top:15px;">
-                <input class="text-input-cpt" type="text" name="employeeEmailText" placeholder="请输入邮箱地址(选填)" value="" id = "employeeEmailText">
+                <input class="text-input-cpt" type="text" name="studentEmailText" placeholder="请输入邮箱地址(选填)" value="" id = "studentEmailText">
               </div>
               <div style="float:left; width:70px; padding-top:20px; padding-left:50px;">
-                <label id='employeeMarriedTitle'>渠道来源:</label>
+                <label id='channelSourceTitle'>渠道来源:</label>
               </div>
               <div style="float:left; width=350px; padding-top:15px;">
                 <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
-                	<select name="employeeMarriedText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;" id="employeeMarriedText">
-                      <option value="转介绍"> 转介绍 </option>
-                      <option value="试听课"> 试听课 </option>
-                      <option value="微信"> 微信 </option>
-                      <option value="网站"> 网站 </option>
-                      <option value="传单"> 传单 </option>
-                      <option value="直接进店"> 直接进店 </option>
-                    </select>
-                    </div>
+                  <select name="channelSourceText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;" id="channelSourceText">
+                    <option value="转介绍"> 转介绍 </option>
+                    <option value="试听课"> 试听课 </option>
+                    <option value="微信"> 微信 </option>
+                    <option value="网站"> 网站 </option>
+                    <option value="传单"> 传单 </option>
+                    <option value="直接进店"> 直接进店 </option>
+                  </select>
+                </div>
+              </div>
+              <div style="clear:both;"></div>
+              <div style="float:left; width:70px; padding-top:20px;">
+                <label id='educationTitle'>在读学校:</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px;">
+                <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
+                  <select name="educationText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;" id="educationText">
+                    <option value="学龄前"> 学龄前 </option>
+                    <option value="幼儿园"> 幼儿园 </option>
+                    <option value="小学"> 小学 </option>
+                    <option value="初中"> 初中 </option>
+                    <option value="初中"> 大学 </option>
+                    <option value="高中"> 高中 </option>
+                    <option value="其他"> 其他 </option>
+                  </select>
+                </div>
+              </div>
+              <div style="float:left; width:70px; padding-top:20px; padding-left:50px;">
+                <label id='gradeTitle'>年级:</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px;">
+                <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
+                  <select name="gradeText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;" id="gradeText">
+                    <option value="一年级"> 一年级 </option>
+                    <option value="二年级"> 二年级 </option>
+                    <option value="三年级"> 三年级 </option>
+                    <option value="四年级"> 四年级 </option>
+                    <option value="五年级"> 五年级 </option>
+                    <option value="六年级"> 六年级 </option>
+                  </select>
+                </div>
+              </div>
+              <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
+                <label id='hobbyTitle'>兴趣爱好:</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px;">
+                <input class="text-input-cpt" type="text" name="hobbyText" placeholder="" value="" id = "hobbyText">
               </div>
               <div style="clear:both;"></div>
               <div style="float:left; width:70px; padding-top:20px;">
@@ -139,157 +174,523 @@
               </div>
               <div style="float:left; width=350px; padding-top:15px;">
                 <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
-                	<select name="politicalStatusText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;" id="politicalStatusText">
-                      <option value="群众"> 群众 </option>
-                      <option value="党员"> 党员 </option>
-                      <option value="预备党员"> 预备党员 </option>
-                      <option value="团员"> 团员 </option>
-                      <option value="其他"> 其他 </option>
-                    </select>
-                    </div>
+                  <select name="politicalStatusText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;" id="politicalStatusText">
+                    <option value="群众"> 群众 </option>
+                    <option value="党员"> 党员 </option>
+                    <option value="预备党员"> 预备党员 </option>
+                    <option value="团员"> 团员 </option>
+                    <option value="其他"> 其他 </option>
+                  </select>
+                </div>
               </div>
               <div style="clear:both;"></div>
-              <div style="float:left; width:70px; padding-top:20px;">
-                <label id='academyTitle'>在读学校:</label>
-              </div>
-              <div style="float:left; width=350px; padding-top:15px;">
-                <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
-                	<select name="educationText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;" id="educationText">
-                      <option value="学龄前"> 学龄前 </option>
-                      <option value="幼儿园"> 幼儿园 </option>
-                      <option value="小学"> 小学 </option>
-                      <option value="初中"> 初中 </option>
-                      <option value="初中"> 大学 </option>
-                      <option value="高中"> 高中 </option>
-                      <option value="其他"> 其他 </option>
-                    </select>
-                    </div>
-              </div>
-              <div style="float:left; width:70px; padding-top:20px; padding-left:50px;">
-                <label id='majorTitle'>年级:</label>
-              </div>
-              <div style="float:left; width=350px; padding-top:15px;">
-              <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
-                <select name="educationText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;" id="educationText">
-                      <option value="一年级"> 一年级 </option>
-                      <option value="二年级"> 二年级 </option>
-                      <option value="三年级"> 三年级 </option>
-                      <option value="四年级"> 四年级 </option>
-                      <option value="五年级"> 五年级 </option>
-                      <option value="六年级"> 六年级 </option>
-                    </select>
-                    </div>
-              </div>
-              <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
-                <label id='educationTitle'>兴趣爱好:</label>
-              </div>
-              <div style="float:left; width=350px; padding-top:15px;">
-                <input class="text-input-cpt" type="text" name="nationText" placeholder="请输入您兴趣爱好(选填)" value="" id = "nationText">
-              </div>
-               
-              
-               <div style="clear:both;"></div>
               <div style="float:left; width:100%; height:30px; padding-top:8px; margin-top:18px; background-color:#9CF;">
-                  <label id='accountInfoTitle' style="font-size:14px; margin-left:10px;">账户情报（选填）</label>
+                <div style ="float:left;">
+                  <label id='courseInfoTitle' style="font-size:14px; margin-left:10px;">课程信息</label>
                 </div>
-                <div style="float:left; width:70px; padding-top:20px;">
-                  <label id='logonPermissionTitle'>账户状态:</label>
+                <div style ="float:left;">
+                  <input  style="margin-top: -3px; margin-left:10px;" class="button button-middle  float-left"  type="button"  name="accordingCourse" value="按课程报名" id="accordingCourse">
                 </div>
-                <div style="float:left; width=350px; padding-top:15px;">
-                  <input type="radio" name="logonPermission" value="有效" id="validAcount">
-                  <label for='validAcount'>有效</label>
-                  </input>
-                  <input type="radio" name="logonPermission" value="无效" id="invalidAcount">
-                  <label for='invalidAcount'>无效</label>
-                  </input>
+                <div style ="float:left;">
+                  <input  style="margin-top: -3px; margin-left: 10px;" class="button button-middle  float-left"  type="button"  name="accordingClasses" value="按班级报名" id="accordingClasses">
                 </div>
+              </div>
+              <!-- ======================课程信息列表===========================-->
+              <div style="clear:both;"></div>
+              <div style="float:left; width:100%; height:20px; padding-top:8px; margin-top:10px; margin-bottom:1px;background-color:#9FF;">
+                <div style ="float:left;">
+                  <label id='courseDetailInfoTitle' style="font-size:14px; margin-left:10px;">课程1</label>
+                </div>
+              </div>
+              <div id = "course1" style = "padding-top:10px;">
+                <div class="recordList">
+                  <table class="yunmo">
+                    <thead>
+                      <tr>
+                        <th style="width:15%">课程名称</th>
+                        <th style="width:15%">学费</th>
+                        <th style="width:10%">优惠</th>
+                        <th style="width:10%">优惠金额</th>
+                        <th style="width:10%">新增教材杂费</th>
+                        <th style="width:10%">教材</th>
+                        <th style="width:10%">杂费</th>
+                        <th style="width:10%">合计</th>
+                        <th style="width:30%">操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>美术</td>
+                        <td >4000元/期</td>
+                        <td ><input type='button' name='discountButton' value='优惠' class="discountButton"></td>
+                        <td >230</td>
+                        <td ><input type='button' name='teachingMaterialButton' value='新增' class="teachingMaterialButton"></td>
+                        <td >230</td>
+                        <td >130</td>
+                        <td >4330</td>
+                        <td ><input type='button' name='deleteButton' value='删除' class="deleteButton">
+                          <input type='button' name='placementButton' value='分班' class="placementButton" ></td>
+                          </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                
+                <!-- ======================新增教材杂费===========================-->
                 <div style="clear:both;"></div>
-               <div style="float:left; width:70px; padding-top:20px;">
-                <label id='logonAcountTitle'>登录账号:</label>
+                <div class="recordList"  id = "teachingMaterialDiv" style = "padding-top:10px;">
+                  <table class="yunmo" style = "width:60%">
+                    <thead>
+                      <tr>
+                        <th style="width:10%">领用</th>
+                        <th style="width:12%">教材杂费名</th>
+                        <th style="width:10%">价格</th>
+                        <th style="width:10%">数量</th>
+                        <th style="width:10%">合计</th>
+                        <th style="width:15%">操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><input value="" name="teachingMaterialUse"  type="checkbox" id = "teachingMaterialUse"></td>
+                        <td >画笔</td>
+                        <td ><div class="gw_price">
+                            <input type="text" value="1" class="price"/>
+                          </div></td>
+                        <td ><div class="gw_num"><em class="jian">-</em>
+                            <input type="text" value="1" class="num"/>
+                            <em class="add">+</em></div></td>
+                        <td >130</td>
+                        <td ><input type='button' name='deleteButton' value='删除' class="deleteButton"></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <!-- ======================课程信息列表===========================--> 
+              <!-- ======================新增教材杂费===========================--> 
+              <!-- =====================支付信息===========================-->
+              <div style="clear:both;"></div>
+              <div style="float:left; width:100%; height:30px; padding-top:8px; margin-top:18px; background-color:#9CF;">
+                <label id='paymentInfoTitle' style="font-size:14px; margin-left:10px;">支付信息</label>
+              </div>
+              <div style="float:left; width:70px; padding-top:20px;">
+                <label id='receivableMoneyTitle'>应收总额:</label>
+              </div>
+              <div style="float:left; width:70px; padding-top:20px; padding-left:10px;"> <span style="color:red; font-weight:bold;" id = "receivableMoneyText">+XXX</span><span>元</span> </div>
+              <div style="clear:both;"></div>
+              <div style="float:left; width:70px; padding-top:20px;">
+                <label id='netReceiptsMoneyTitle'>实收金额:</label>
+              </div>
+              <div style="float:left; width:70px; padding-top:20px; padding-left:10px;"> <span style="color:red; font-weight:bold;" id = "netReceiptsMoneyText">+XXX</span><span>元</span> </div>
+              <div style="clear:both;"></div>
+              <div style="float:left; width:70px; padding-top:20px; ">
+                <label id='cashTitle'>现金:</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px; ">
+                <input class="text-input-cpt" type="text" name="cashText" placeholder="" value="" id = "cashText">
+              </div>
+              <div style="float:left; width:70px; padding-top:20px; padding-left:10px;">
+                <label id='employeePhoneForSearchTitle'>元</label>
+              </div>
+              <div style="clear:both;"></div>
+              <div style="float:left; width:70px; padding-top:20px; ">
+                <label id='transferAccountsTypeTitle'>转账:</label>
               </div>
               <div style="float:left; width=350px; padding-top:15px;">
-                <input class="text-input-cpt" type="text" name="logonAcountText" placeholder="请输入登录账户(选填)" value="" id = "logonAcountText">
+                <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
+                  <select name="transferAccountsTypeText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;" id="transferAccountsTypeText">
+                    <option value="支付宝"> 支付宝 </option>
+                    <option value="微信"> 微信 </option>
+                    <option value="银行转账"> 银行转账 </option>
+                  </select>
+                </div>
               </div>
-              <div style="float:left; width:70px; padding-top:20px; padding-left:50px;">
-                <label id='logonAcountPasswordTitle'>登录密码:</label>
+              <div style="float:left; width:30px; padding-top:20px; padding-left:20px;">
+                <label id='transferAccountsMoneyTitle'>金额:</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px; padding-left:1px; ">
+                <input class="text-input-cpt" type="text" name="transferAccountsMoneyText" placeholder="" value="" id = "transferAccountsMoneyText">
+              </div>
+              <div style="float:left; width:30px; padding-top:20px; padding-left:10px;">
+                <label id='employeePhoneForSearchTitle'>元</label>
+              </div>
+              <div style="float:left; width:70px; padding-top:20px; padding-left:10px;">
+                <label id='opposingAccountTitle'>对方账户</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px; ">
+                <input class="text-input-cpt" type="text" name="opposingAccountText" placeholder="" value="" id = "opposingAccountText">
+              </div>
+              <div style="float:left; width:70px; padding-top:20px; padding-left:20px;">
+                <label id='orderNumberTitle'>订单编号:</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px; ">
+                <input class="text-input-cpt" type="text" name="orderNumberText" placeholder="" value="" id = "orderNumberText">
+              </div>
+              <!-- =====================支付信息===========================--> 
+              
+              <!-- =====================经办信息===========================-->
+              <div style="clear:both;"></div>
+              <div style="float:left; width:100%; height:30px; padding-top:8px; margin-top:18px; background-color:#9CF;">
+                <label id='handlingInfoTitle' style="font-size:14px; margin-left:10px;">经办信息</label>
+              </div>
+              <div style="float:left; width:70px; padding-top:20px; ">
+                <label id='handlingSchoolTitle'>经办校区:</label>
               </div>
               <div style="float:left; width=350px; padding-top:15px;">
-                <input class="text-input-cpt" type="text" name="logonAcountPasswordText" placeholder="请输入登录密码(选填)" value="" id = "logonAcountPasswordText">
+                <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
+                  <select name="handlingSchoolText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;" id="handlingSchoolText">
+                    <option value="东校区"> 东校区 </option>
+                    <option value="西校区"> 西校区 </option>
+                  </select>
+                </div>
+              </div>
+              <div style="float:left; width:70px; padding-top:20px; padding-left:20px;">
+                <label id='handlerTitle'>经办人:</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px;">
+                <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
+                  <select name="handlerText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;" id="handlerText">
+                    <option value="张老师"> 张老师 </option>
+                    <option value="李老师"> 李老师 </option>
+                  </select>
+                </div>
+              </div>
+              <div style="float:left; width:70px; padding-top:20px; padding-left:20px;">
+                <label id='salesmanTitle'>销售人员:</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px;">
+                <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
+                  <select name="salesmanText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;" id="salesmanText">
+                    <option value="张老师"> 张老师 </option>
+                    <option value="李老师"> 李老师 </option>
+                  </select>
+                </div>
+              </div>
+              <div style="float:left; width:70px; padding-top:20px; padding-left:10px; padding-left:20px;">
+                <label id='handlingDateTitle'>经办日期:</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px;">
+                <div class="date-picker">
+                  <input class="text-input-cpt" placeholder=""  value="2017-05-19" type="text" name='date' id ="handlingDateText">
+                </div>
+              </div>
+              <!-- =====================经办信息===========================-->
+              
+            </form>
+            
+            <!-- =====================课程选择Dialog===========================-->
+            <form class="selectCourse" title="选择课程" action="sms/servlet/AddSignatureServlet" id="selectCourse">
+              <div style="float:left; width:70px; padding-top:20px;">
+                <label id='courseNameForSelTitle'>课程名称:</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px;" >
+                <input class="text-input-cpt" type="text" name="courseNameForSelText" placeholder="请输入要查询的课程名称" value="" id = "courseNameForSelText">
+              </div>
+              <div style="clear:both;"></div>
+              <div style="float:left; width:70px; padding-top:20px; ">
+                <label id='courseTypeForSelTitle'>课程类别:</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px; margin-bottom:30px">
+                <div style="position:relative; border:1px solid #cccccc; width:98px; height:26px;">
+                  <select name="courseTypeForSelText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:102px; height:31px; line-height:28px; background:#fff;" id="courseTypeForSelText">
+                    <option value="美术 "> 美术</option>
+                    <option value="音乐 "> 音乐 </option>
+                  </select>
+                </div>
+              </div>
+              <div style="float:left; width:70px; padding-top:20px; padding-left:20px;">
+                <label id='courseTypeForSelTitle'>收费模式:</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px;">
+                <div style="position:relative; border:1px solid #cccccc; width:98px; height:26px;">
+                  <select name="courseTypeForSelText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:102px; height:31px; line-height:28px; background:#fff;" id="courseTypeForSelText">
+                    <option value="按课时 "> 按课时 </option>
+                    <option value="按期 "> 按期</option>
+                    <option value="按时间 "> 按时间 </option>
+                  </select>
+                </div>
+              </div>
+              <div style="float:left; width=350px; padding-top:21px;padding-left:25px;">
+                <input  style="margin-left: 10px; margin-top: -100px;" class="button button-middle    float-left"  type="button"  name="search" value="查询" id="search">
+              </div>
+              <div class="recordList">
+                <table class="yunmo" id="courseList">
+                  <thead>
+                    <tr>
+                      <th style="width:25%;">课程名称</th>
+                      <th style="width:15%;">课程类别</th>
+                      <th style="width:20%;">学费标准</th>
+                      <th style="width:15%;">收费模式</th>
+                      <th style="width:15%;">开课形式</th>
+                      <th style="width:10%;">开班数量</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>美术高级班</td>
+                      <td >美术</td>
+                      <td >2000元/期</td>
+                      <td >按期收费</td>
+                      <td >班课</td>
+                      <td >3</td>
+                    </tr>
+                    <tr>
+                      <td>美术高级班</td>
+                      <td >美术</td>
+                      <td >2000元/期</td>
+                      <td >按期收费</td>
+                      <td >班课</td>
+                      <td >3</td>
+                    </tr>
+                    <tr>
+                      <td>美术高级班</td>
+                      <td >美术</td>
+                      <td >2000元/期</td>
+                      <td >按期收费</td>
+                      <td >班课</td>
+                      <td >3</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </form>
+            <!-- =====================课程选择Dialog===========================--> 
+            
+            <!-- =====================班级选择Dialog===========================-->
+            <form class="selectClasses" title="选择课程" action="sms/servlet/AddSignatureServlet" id="selectClasses">
+              <div style="float:left; width:70px; padding-top:20px;">
+                <label id='courseNameForSelTitle'>班级名称:</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px;" >
+                <input class="text-input-cpt" type="text" name="courseNameForSelText" placeholder="" value="" id = "courseNameForSelText">
               </div>
               <div style="clear:both;"></div>
               <div style="float:left; width:70px; padding-top:20px;">
-                <label id='managementScopeTitle'>管理范围:</label>
+                <label id='classDatePeriodTitle'>上课日期:</label>
               </div>
               <div style="float:left; width=350px; padding-top:15px;">
-                <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
-                	<select name="managementScopeText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;" id="managementScopeText">
-                      <option value="全部校区"> 全部校区 </option>
-                      <option value="东校区"> 东校区 </option>
-                      <option value="西校区"> 西校区 </option>	
-                    </select>
+                <div class="date-picker">
+                     	 <input class="text-input-cpt" placeholder=""  value="2017-05-19" type="text" name='date1' id = "classDatePeriodStart">
                     </div>
-              </div>
-              <div style="float:left; width:70px; padding-top:20px; padding-left:50px;">
-                <label id='authoritySettingTitle'>权限设定:</label>
-              </div>
-              <div style="float:left; width=350px; padding-top:15px;">
-                <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
-                	<select name="authoritySettingText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;" id="authoritySettingText">
-                      <option value="自定义"> 自定义 </option>	
-                      <option value="管理员"> 管理员 </option>
-                      <option value="社员"> 社员 </option>
-                    </select>
+                    -
+                    <div class="date-picker">
+				<input class="text-input-cpt" placeholder=""  value="2017-05-19" type="text" name='date' id = "classDatePeriodEnd">
                     </div>
               </div>
               <div style="clear:both;"></div>
-              <div  id="authorityBody" style="margin-top:30px;">
-                  
+              <div style="float:left; width:70px; padding-top:20px; padding-bottom:20px;">
+                <label id='repeatSettingTitle'>上课星期:</label>
               </div>
-              <div style="width=270px; padding-top:15px; clear:both;"></div>
-            </form>
-            <div class="sign-list-cpt" parent-account="">
-              <div class="block-title-cpt"> 社员一览 </div>
-              <div style="float:left; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
-                <label id='employeeNameForSearchTitle'>员工姓名:</label>
+              <div style="float:left; width=350px; padding-top:15px;">
+                <input value="" name="classesWeekAll"  type="checkbox" id = "classesWeekAll">全选
               </div>
-              <div style="float:left; width=350px; padding-top:15px; padding-bottom:30px;">
-                <input class="text-input-cpt" type="text" name="employeeNameForSearchText" placeholder="请输入员工姓名" value="" id = "employeeNameForSearchText">
+              <div style="float:left; width=350px; padding-top:15px; padding-left:15px;">
+                <input value="" name="classesWeek"  type="checkbox" id = "classesWeek1">周一
+              </div>
+              <div style="float:left; width=350px; padding-top:15px; padding-left:15px;">
+                <input value="" name="classesWeek"  type="checkbox" id = "classesWeek2">周二
+              </div>
+              <div style="float:left; width=350px; padding-top:15px; padding-left:15px;">
+                <input value="" name="classesWeek"  type="checkbox" id = "classesWeek3">周三
+              </div>
+              <div style="float:left; width=350px; padding-top:15px; padding-left:15px;">
+                <input value="" name="classesWeek"  type="checkbox" id = "classesWeek4">周四
+              </div>
+              <div style="float:left; width=350px; padding-top:15px; padding-left:15px;">
+                <input value="" name="classesWeek"  type="checkbox" id = "classesWeek5">周五
+              </div>
+              <div style="float:left; width=350px; padding-top:15px; padding-left:15px;">
+                <input value="" name="classesWeek"  type="checkbox" id = "classesWeek6">周六
+              </div>
+              <div style="float:left; width=350px; padding-top:15px; padding-left:15px;">
+                <input value="" name="classesWeek"  type="checkbox" id = "classesWeek7">周日
               </div>
               
-              <div style="float:left; width:70px; padding-top:20px; padding-left:20px;padding-bottom:10px;">
-                <label id='employeePhoneForSearchTitle'>手机号码:</label>
+              <div style="float:left; width=350px; padding-top:11px;padding-left:25px;">
+                <input  style="margin-left: 10px; margin-top: -100px;" class="button button-middle    float-left"  type="button"  name="search" value="查询" id="search">
+              </div>
+              <div class="recordList">
+                <table class="yunmo" id="courseList">
+                  <thead>
+                    <tr>
+                      <th style="width:25%;">班级名称</th>
+                      <th style="width:15%;">课程</th>
+                      <th style="width:20%;">人数</th>
+                      <th style="width:15%;">学费标准</th>
+                      <th style="width:15%;">开班日期</th>
+                      <th style="width:10%;">上课时间</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>美术高级班</td>
+                      <td >美术</td>
+                      <td >20</td>
+                      <td >2000元/期</td>
+                      <td >2017-6-5</td>
+                      <td ><span>周四10:00~12:00</span></br><span>周五10:00~12:00</span></td>
+                    </tr>
+                    <tr>
+                      <td>美术高级班</td>
+                      <td >美术</td>
+                      <td >20</td>
+                      <td >2000元/期</td>
+                      <td >2017-6-5</td>
+                      <td ><span>周四10:00~12:00</span></br><span>周五10:00~12:00</span></td>
+                    </tr>
+                    <tr>
+                      <td>美术高级班</td>
+                      <td >美术</td>
+                      <td >20</td>
+                      <td >2000元/期</td>
+                      <td >2017-6-5</td>
+                      <td ><span>周四10:00~12:00</span></br><span>周五10:00~12:00</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </form>
+            <!-- =====================班级选择Dialog===========================--> 
+            
+            
+            <!-- =====================教材杂费选择Dialog===========================-->
+            <form class="addTeachingMaterial" title="教材/杂费一览" action="sms/servlet/AddSignatureServlet" id="addTeachingMaterial ">
+              <div class="modal-body" id="authorityBody"> </div>
+            </form>
+            <!-- =====================教材杂费选择Dialog===========================--> 
+            
+            <!-- =====================优惠选择Dialog===========================-->
+            <form class="discountSelect" title="优惠选择" action="sms/servlet/AddSignatureServlet" id="discountSelect ">
+              <div style="float:left; width:70px; padding-top:20px;">
+                <label id='receivableMoneyTitle'>应收总额:</label>
+              </div>
+              <div style="float:left; width:70px; padding-top:20px; padding-left:10px;"> <span style="color:red; font-weight:bold;" id = "receivableMoneyText">+XXX</span><span>元</span> </div>
+              <div style = "clear:both;"></div>
+              <div style="float:left; width:70px; padding-top:20px;">
+                <label id='receivableMoneyTitle'>优惠金额:</label>
+              </div>
+              <div style="float:left; width:70px; padding-top:20px; padding-left:10px;"> <span style="color:red; font-weight:bold;" id = "receivableMoneyText">+XXX</span><span>元</span> </div>
+              <div style = "clear:both;"></div>
+              <div style="float:left; width:70px; padding-top:20px; ">
+                <label id='discountTypeTitle'>优惠方式:</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px;">
+                <div style="position:relative; border:1px solid #cccccc; width:98px; height:26px;">
+                  <select name="discountTypeText" style="position:absolute; clip:rect(2px 102px 28px 2px); margin:-2px; width:102px; height:31px; line-height:28px; background:#fff;" id="discountTypeText">
+                    <option value="原价"> 原价 </option>
+                    <option value="打折"> 打折 </option>
+                    <option value="优惠"> 优惠 </option>
+                    <option value="先优惠后打折"> 先优惠后打折 </option>
+                    <option value="先优惠后打折"> 先优惠后打折 </option>
+                    <option value="先打折后优惠"> 先打折后优惠 </option>
+                    <option value="赠送课时"> 赠送课时 </option>
+                  </select>
+                </div>
+              </div>
+              
+              <div style="float:left; width=350px; padding-top:15px; padding-left:10px;">
+                <div style="position:relative; border:1px solid #cccccc; width:98px; height:26px;">
+                  <select name="discountPercent" style="position:absolute; clip:rect(2px 102px 28px 2px); margin:-2px; width:102px; height:31px; line-height:28px; background:#fff;" id="discountPercent">
+                    <option value="9折 "> 99折 </option>
+                    <option value="打折"> 98折 </option>
+                    <option value="优惠"> 97折</option>
+                  </select>
+                </div>
+              </div>
+		
+		<div style="float:left; width:30px; padding-top:20px; padding-left:10px;">
+                <label id='discountTypeTitle'>优惠:</label>
+              </div>
+              
+              <div style="float:left; width=350px; padding-top:15px; padding-bottom:30px;">
+                <input class="text-input-cpt" type="text" name="discountMoney" placeholder="" value="" id = "discountMoney">
+              </div>
+              <div style="float:left; width:30px; padding-top:20px; padding-left:10px;">
+                <label >元</label>
+              </div>
+              
+              <div style = "clear:both;"></div>
+            </form>
+            <!-- =====================教材杂费选择Dialog===========================-->
+            
+            <div class="sign-list-cpt" parent-account="">
+              <div class="block-title-cpt"> 学员一览 </div>
+              <div style="float:left; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
+                <label id='studentNameForSearchTitle'>学员姓名:</label>
               </div>
               <div style="float:left; width=350px; padding-top:15px; padding-bottom:30px;">
-                <input class="text-input-cpt" type="text" name="employeePhoneForSearchText" placeholder="请输入手机号码" value="" id = "employeePhoneForSearchText">
+                <input class="text-input-cpt" type="text" name="studentNameForSearchText" placeholder="" value="" id = "studentNameForSearchText">
+              </div>
+              <div style="float:left; width:70px; padding-top:20px; padding-left:20px;padding-bottom:10px;">
+                <label id='studentPhoneForSearchTitle'>手机号码:</label>
+              </div>
+              <div style="float:left; width=350px; padding-top:15px; padding-bottom:30px;">
+                <input class="text-input-cpt" type="text" name="employeePhoneForSearchText" placeholder="" value="" id = "studentPhoneForSearchText">
               </div>
               <div style="float:left; width:70px; padding-top:20px; padding-left:20px;">
                 <label id='managementScopeForSearchTitle'>所属校区:</label>
               </div>
               <div style="float:left; width=350px; padding-top:15px;">
                 <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
-                	<select name="managementScopeForSearchText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;" id="managementScopeForSearchText">
-                      <option value="全部校区"> 全部校区 </option>
-                      <option value="东校区"> 东校区 </option>
-                      <option value="西校区"> 西校区 </option>	
-                    </select>
-                    </div>
+                  <select name="managementScopeForSearchText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;" id="managementScopeForSearchText">
+                    <option value="全部校区"> 全部校区 </option>
+                    <option value="东校区"> 东校区 </option>
+                    <option value="西校区"> 西校区 </option>
+                  </select>
+                </div>
               </div>
-              <div style="float:left; width=350px; padding-top:15px;padding-left:25px;">
-              	<input  style="margin-left: 10px;" class="button button-middle    float-left"  type="button"  name="search" value="查询" id="search">
+              <div style="float:left; width:70px; padding-top:20px; padding-left:20px;">
+                <label id='courseTypeForSearchTitle'>课程类别:</label>
               </div>
-              
+              <div style="float:left; width=350px; padding-top:15px;">
+                <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
+                  <select name="courseTypeForSearchText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;" id="courseTypeForSearchText">
+                    <option value="全部"> 全部 </option>
+                    <option value="美术"> 美术 </option>
+                    <option value="音乐"> 音乐 </option>
+                  </select>
+                </div>
+              </div>
+              <div style="clear:both;"></div>
+              <div style="float:left; width:70px; padding-left:10px;">
+                <label id='courseTypeForSearchTitle'>是否分班:</label>
+              </div>
+              <div style="float:left; width=350px; margin-top:-8px;">
+                <div style="position:relative; border:1px solid #cccccc; width:140px; height:26px;">
+                  <select name="courseTypeForSearchText" style="position:absolute; clip:rect(2px 144px 28px 2px); margin:-2px; width:144px; height:31px; line-height:28px; background:#fff;" id="courseTypeForSearchText">
+                    <option value="全部"> 全部 </option>
+                    <option value="已分班"> 已分班 </option>
+                    <option value="已分班"> 未分班 </option>
+                  </select>
+                </div>
+              </div>
+              <div style="float:left; width:70px; margin-top:-1px; padding-left:20px; margin-bottom:20px;">
+                <label id='entryDateForSearchTitle'>报名日期:</label>
+              </div>
+              <div style="float:left; width=350px; margin-top:-10px; ">
+                <div class="date-picker">
+                  <input class="text-input-cpt" placeholder=""  value="" type="text" name='date1' id = "entryDateForSearcStart">
+                </div>
+                -
+                <div class="date-picker">
+                  <input class="text-input-cpt" placeholder=""  value="" type="text" name='date' id = "entryDateForSearcEnd">
+                </div>
+              </div>
+              <div style="float:left; width=350px; padding-top:0px;padding-left:25px;">
+                <input  style="margin-left: 10px; margin-top: -100px;" class="button button-middle    float-left"  type="button"  name="search" value="查询" id="search">
+              </div>
               <div class="recordList">
                 <table class="yunmo">
                   <thead>
                     <tr>
-                      <th style="min-width:105px;">姓名</th>
-                      <th style="min-width:140px;">手机号</th>
-                      <!--<th style="min-width:160px;padding-left: 18px;">校区类型</th> -->
-                      <th style="min-width:180px;">所属校区</th>
-                      <th style="width:100px;">性别</th>
-                      <th style="width:100px;">年龄</th>
-                      <th style="width:100px;">登录账户</th>
-                      <th style="width:100px;">账户状态</th>
+                      <th style="min-width:105px;">学员姓名</th>
+                      <th style="min-width:140px;">联系电话</th>
+                      <th style="min-width:180px;">母亲电话</th>
+                      <th style="width:100px;">学习课程</th>
+                      <th style="width:100px;">剩余课时/天数</th>
+                      <th style="width:100px;">报名时间</th>
+                      <th style="width:100px;">请假次数</th>
                       <th style="min-width:80px;">操作</th>
                     </tr>
                   </thead>
@@ -297,11 +698,11 @@
                     <tr>
                       <td>小张</td>
                       <td >18717947096</td>
-                      <td >东校区</td>
-                      <td >男</td>
+                      <td >18717947096</td>
+                      <td >美术</td>
                       <td >23</td>
-                      <td >demo</td>
-                      <td >无效</td>
+                      <td >2017/1/1</td>
+                      <td >2</td>
                       <td ><input type='button' name='deleteButton' value='删除' class="deleteButton">
                         <input type='button' name='editButton' value='编辑' class="editButton" ></td>
                         </td>
@@ -317,10 +718,10 @@
     </div>
   </div>
 </div>
-<script src="js/jquery.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.tree-multiselect.min.js"></script>
-    <script src="js/doT.js"></script>
+<script src="js/jquery.js"></script> 
+<script src="js/jquery-ui.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/jquery.tree-multiselect.min.js"></script> 
+<script src="js/doT.js"></script>
 </body>
 </html>

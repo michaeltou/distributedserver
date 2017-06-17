@@ -1,33 +1,116 @@
 @charset "utf-8";
 /* CSS Document */
-#employeeNameText ,
-#employeePhoneText,
-#employeeAgeText,
-#schoolTypeText,
-#employeeIDText,
-#employeeEmailText,
-#employeeMarriedText,
+#studentNameText ,
+#studentPhoneText,
+#studentIDText,
+#motherPhoneText,
+#residenceText,
+#fatherPhoneText,
+#studentEmailText,
 #nativePlaceText,
 #nationText,
 #politicalStatusText,
 #academyText,
 #majorText,
-#educationText,
-#laborRelationsText,
-#personnelStatusText,
-#laborContractText,
-#remarksText,
-#payrollCardText,
-#payrollCardNoText,
-#logonAcountText,
-#logonAcountPasswordText
+#educationText
 {
 	width:300px; 
 }
 
-#employeeNameForSearchText,
-#employeePhoneForSearchText,
-#managementScopeForSearchText
-{
-	width:150px; 
+#discountMoney{
+	width:100px; 
+}
+
+
+.gw_num {
+	border: 1px solid #dbdbdb;
+	width: 80px;
+	line-height: 20px;	
+	height:20px;
+	overflow: hidden;
+	margin-bottom:-6px;
+}
+
+.gw_price {
+	border: 1px solid #dbdbdb;
+	width: 60px;
+	line-height: 20px;	
+	height:20px;
+	overflow: hidden;
+	margin-bottom:-6px;
+}
+.payAcountDiv {
+	border: 1px solid #dbdbdb;
+	width: 150px;
+	line-height: 20px;	
+	height:20px;
+	overflow: hidden;
+	margin-bottom:-6px;
+}
+
+.orderCodeDiv {
+	border: 1px solid #dbdbdb;
+	width: 150px;
+	line-height: 20px;	
+	height:20px;
+	overflow: hidden;
+	margin-bottom:-6px;
+}
+
+.gw_num em {
+	display: block;
+	height: 20px;
+	width: 20px;
+	float: left;
+	color: #7A7979;
+	border-right: 1px solid #dbdbdb;
+	text-align: center;
+	cursor: pointer;
+}
+.gw_num .num {
+	display: block;
+	float: left;
+	text-align: center;
+	width: 32px;
+	font-style: normal;
+	font-size: 12px;
+	line-height: 20px;
+	border: 0;
+}
+.gw_price .price {
+	display: block;
+	float: left;
+	text-align: center;
+	width: 60px;
+	font-style: normal;
+	font-size: 12px;
+	line-height: 20px;
+	border: 0;
+}
+.payAcountDiv .payAcount {
+	display: block;
+	float: left;
+	text-align: left;
+	width: 150px;
+	font-style: normal;
+	font-size: 12px;
+	line-height: 20px;
+	border: 0;
+}
+
+.orderCodeDiv .orderCode {
+	display: block;
+	float: left;
+	text-align: left;
+	width: 150px;
+	font-style: normal;
+	font-size: 12px;
+	line-height: 20px;
+	border: 0;
+}
+
+.gw_num em.add {
+	float: right;
+	border-right: 0;
+	border-left: 1px solid #dbdbdb;
 }

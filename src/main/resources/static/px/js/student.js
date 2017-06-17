@@ -1,17 +1,11 @@
 $(function(){
 	
 		//=============================================
-		
-		
 		$("input[name='sex']").eq(0).attr("checked","checked");
 		$("input[name='sex']").eq(0).click();
 		
-		$("input[name='logonPermission']").eq(1).attr("checked","checked");
-		$("input[name='logonPermission']").eq(1).click();
-		
-		
-		$('.AddEmplyee input[type=radio]').button();
-		$('.AddEmplyee input[title]').tooltip({
+		$('.AddStudent input[type=radio]').button();
+		$('.AddStudent input[title]').tooltip({
 			show:false,
 			hide:false,
 			position:{
@@ -20,8 +14,39 @@ $(function(){
 			}
 		});
 		
-		$('#NewEmployee').click(function(){
-			$('.AddEmplyee').dialog("option","title", "新建社员").dialog('open');
+		$('#NewStudent').click(function(){
+			$('.AddStudent').dialog("option","title", "新生报名").dialog('open');
+		});
+		
+		//课程选择dialog
+		$('#accordingCourse').click(function(){
+			$('.selectCourse').dialog("option","title", "课程选择").dialog('open');
+		});
+		
+		//班级选择dialog
+		$('#accordingClasses').click(function(){
+			$('.selectClasses').dialog("option","title", "班级选择").dialog('open');
+		});
+		// 
+		$("body").on('click',".teachingMaterialButton", function(){
+			 var html = '<select id="authorifyselect" multiple="multiple">' +
+                     '<option  value="1" data-section="教材"  selected>电脑</option>' +
+                     '<option  value="2" data-section="教材"  selected>钢琴</option>' +
+                     '<option  value="3" data-section="教材"  selected>跳舞鞋</option>' +
+                     '<option  value="6" data-section="杂费">手续费</option>' +
+                    '<option  value="7" data-section="杂费">场地费</option>' +
+                    '</select>';
+        		$("#authorityBody").empty().append(html);
+        		$("#authorifyselect").treeMultiselect({ searchable: false, hideSidePanel: false });
+			$('.addTeachingMaterial').dialog("option","title", "教材杂费一览").dialog('open');
+		});
+		
+		$("body").on('click',".placementButton", function(){
+			$('.selectClasses').dialog("option","title", "班级选择").dialog('open');
+		});
+		
+		$("body").on('click',".discountButton", function(){
+			$('.discountSelect').dialog("option","title", "优惠设定").dialog('open');
 		});
 		
 		$("#imageselect").click(function(){
@@ -47,13 +72,13 @@ $(function(){
 		});
 		
 	
-		$('.AddEmplyee').dialog({
+		$('.AddStudent').dialog({
 			autoOpen:false,
 			resizable: false,
 			modal: true,
 			width:1270,
 			height:600,
-			title:'新建社员',
+			title:'新生报名',
 			buttons:{
 			'保存':function(){
 				if($("#employeeNameText").val() == ""){
@@ -100,21 +125,101 @@ $(function(){
 		});
 		
 		
-		$(document).ready(function () { 
-			$.ajax({    
-		        url:"/sms/servlet/CheckSignatureExistServlet",//servlet文件的名称  
-		        type:"GET",  
-		        success:function(data, textStatus){ 
-                    if(data=="exist"){
-                    	$("#NewEmployee").attr("disabled",false);
-                    	$(".MaxSchoolDistrictCount").hide();
-                    }else{
-                    	$("#NewEmployee").attr("disabled","true");
-                    	$(".MaxSchoolDistrictCount").show();
-                    }
-           		 }  
-    		});  
+		// 课程选择dialog
+		$('.selectCourse').dialog({
+			autoOpen:false,
+			resizable: false,
+			modal: true,
+			width:670,
+			height:500,
+			title:'选择课程',
+			buttons:{
+			'选择':function(){
+					if($lastClickTr){
+					$(this).dialog('close');
+					var tdArr = $lastClickTr.children();
+					$("#courseText").val(tdArr.eq(0).html());
+				}else{
+					alert("请选择课程");
+					return false;
+				}
+			},
+			'取消':function(){
+			$(this).dialog('close');
+			}
+			},
+			open: function (event, ui) {
+			 $(".ui-dialog-titlebar-close", $(this).parent()).hide();
+			 },
+		
 		});
+		
+		//教材杂费dialog
+		$('.addTeachingMaterial').dialog({
+			autoOpen:false,
+			resizable: false,
+			modal: true,
+			width:600,
+			height:400,
+			title:'教材杂费一览',
+			buttons:{
+			'保存':function(){
+				$(this).dialog('close');
+			},
+			'取消':function(){
+			$(this).dialog('close');
+			}
+			},
+			open: function (event, ui) {
+			 $(".ui-dialog-titlebar-close", $(this).parent()).hide();
+			 },
+		
+		});
+		
+		// 班级选择dialog
+		$('.selectClasses').dialog({
+			autoOpen:false,
+			resizable: false,
+			modal: true,
+			width:770,
+			height:500,
+			title:'选择班级',
+			buttons:{
+			'选择':function(){
+				
+			},
+			'取消':function(){
+			$(this).dialog('close');
+			}
+			},
+			open: function (event, ui) {
+			 $(".ui-dialog-titlebar-close", $(this).parent()).hide();
+			 },
+		
+		});
+		
+		//优惠设定
+		$('.discountSelect').dialog({
+			autoOpen:false,
+			resizable: false,
+			modal: true,
+			width:600,
+			height:250,
+			title:'优惠设定',
+			buttons:{
+			'保存':function(){
+				$(this).dialog('close');
+			},
+			'取消':function(){
+			$(this).dialog('close');
+			}
+			},
+			open: function (event, ui) {
+			 $(".ui-dialog-titlebar-close", $(this).parent()).hide();
+			 },
+		
+		});
+		
 		
 		$("#search").click(function(){
 			$.ajax({

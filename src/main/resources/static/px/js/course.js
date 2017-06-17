@@ -137,7 +137,7 @@ $(function(){
 			resizable: false,
 			modal: true,
 			width:600,
-			height:600,
+			height:400,
 			title:'教材杂费一览',
 			buttons:{
 			'保存':function(){
