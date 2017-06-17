@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/jquery.form.js"></script>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("#btnsubmit").click(function () {
+                $("#form1").ajaxSubmit({
+                    success: function (data) {
+                         var mystr = JSON.stringify(data);
+                       // alert(mystr);
+                        alert(data.data.imageURL);
+                    },
+                    error: function (error) { alert(error); },
+                    url: '/file/jqueryformuploadfile', /*设置post提交到的页面*/
+                    type: "post", /*设置表单以post方法提交*/
+                    dataType: "json" /*设置返回值类型为文本*/
+                });
+            });
+        });
+    </script>
+
+
+
+</head>
+
+
+<body>
+<form enctype="multipart/form-data" id="form1">
+    <input type="text" name="password">
+    <input type="text" name="username">
+    <input type="file" name="file" />
+    <input type="button" id="btnsubmit" value=" 上 传 " />
+</form>
+</body>
+</html>

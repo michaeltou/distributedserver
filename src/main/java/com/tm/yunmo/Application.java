@@ -8,10 +8,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-/**
- * Created by daoying on 2017/04/01.
- */
-
 @SpringBootApplication
 @EnableTransactionManagement
 public class Application {
@@ -28,8 +24,9 @@ public class Application {
 
 
 
-        logger.info("文件上传使用：     http://www.uploadify.com/");
+        logger.info("文件上传使用：  jquery.form.js 文件上传处理类   ");
 
+        logger.info("bootstrap 页面设计工具：http://www.layoutit.com/   ");
 
 
 

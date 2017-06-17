@@ -1,7 +1,7 @@
 package com.tm.yunmo.common;
 
 /**
- * Created by daoying on 2017/5/12.
+ * Created by lenovo on 2017/5/12.
  */
 public class ErrorCode {
     public static final String PARAM_VALIDATION_FAILED_ERROR = "PARAM_VALIDATION_FAILED_ERROR";

@@ -7,7 +7,7 @@ import net.sf.cglib.proxy.MethodProxy;
 import java.lang.reflect.Method;
 
 /**
- * Created by daoying on 2017/5/23.
+ * Created by Administrator on 2017/5/23.
  */
 public class OneServiceInterceptor implements MethodInterceptor {
     @Override

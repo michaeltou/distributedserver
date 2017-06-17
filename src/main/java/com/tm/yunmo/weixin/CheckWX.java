@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by daoying on 2017/5/3.
+ * Created by lenovo on 2017/5/3.
  */
 @RestController
 public class CheckWX {

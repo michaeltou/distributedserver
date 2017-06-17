@@ -6,7 +6,7 @@ import java.lang.reflect.Proxy;
 
 /**
  *  实现自己的InvocationHandler
- * Created by daoying on 2017/5/23.
+ * Created by Administrator on 2017/5/23.
  */
 public class MyInvocationHandler implements InvocationHandler {
 

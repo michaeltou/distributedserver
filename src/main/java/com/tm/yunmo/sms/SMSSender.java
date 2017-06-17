@@ -12,7 +12,7 @@ import com.aliyun.mns.model.TopicMessage;
 import java.util.*;
 
 /**
- * Created by daoying on 2017/5/9.
+ * Created by lenovo on 2017/5/9.
  * 短信发送功能类
  *
  */

@@ -11,7 +11,7 @@ import java.util.Properties;
  * 二维码配置类.
  * <!-- https://mvnrepository.com/artifact/com.github.penggle/kaptcha -->
  *     http://blog.csdn.net/u014104286/article/details/70515004
- * Created by daoying on 2017/6/1.
+ * Created by lenovo on 2017/6/1.
  */
 @Component
 public class KaptchaConfig {
