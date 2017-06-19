@@ -197,12 +197,13 @@
               </div>
               <!-- ======================课程信息列表===========================-->
               <div style="clear:both;"></div>
-              <div style="float:left; width:100%; height:20px; padding-top:8px; margin-top:10px; margin-bottom:1px;background-color:#9FF;">
-                <div style ="float:left;">
-                  <label id='courseDetailInfoTitle' style="font-size:14px; margin-left:10px;">课程1</label>
+
+              <div class = "selectedcourses" style = "padding-top:0px;">
+                <div class = "selectedcourse" style = "padding-top:10px;">
+                <div style="clear:both;"></div>
+                <div style="width:5%; height:20px; padding-top:8px; margin-top:10px; margin-bottom:1px;background-color:#9FF;">
+                  <label class ='courseDetailInfoTitle' style="font-size:14px; margin-left:10px;">课程</label>
                 </div>
-              </div>
-              <div id = "course1" style = "padding-top:10px;">
                 <div class="recordList">
                   <table class="yunmo">
                     <thead>
@@ -222,27 +223,26 @@
                       <tr>
                         <td>美术</td>
                         <td >4000元/期</td>
-                        <td ><input type='button' name='discountButton' value='优惠' class="discountButton"></td>
+                        <td ><input type='button' name='discountButton' value='优惠' class='discountButton'></td>
                         <td >230</td>
-                        <td ><input type='button' name='teachingMaterialButton' value='新增' class="teachingMaterialButton"></td>
-                        <td >230</td>
+                        <td ><input type='button' name='teachingMaterialButton' value='新增' class='teachingMaterialButton'></td>
+                        <td ></td>
                         <td >130</td>
                         <td >4330</td>
-                        <td ><input type='button' name='deleteButton' value='删除' class="deleteButton">
-                          <input type='button' name='placementButton' value='分班' class="placementButton" ></td>
-                          </td>
+                        <td ><input type='button' name='placementButton' value='分班' class='placementButton' ><input type='button' name='deleteButton' value='删除' class='deleteButton'></td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-                
+
                 <!-- ======================新增教材杂费===========================-->
                 <div style="clear:both;"></div>
-                <div class="recordList"  id = "teachingMaterialDiv" style = "padding-top:10px;">
+                <div class="recordList"  id = "teachingMaterialDiv" style = "padding-top:5px;">
                   <table class="yunmo" style = "width:60%">
                     <thead>
                       <tr>
                         <th style="width:10%">领用</th>
+                        <th style="width:10%">类别</th>
                         <th style="width:12%">教材杂费名</th>
                         <th style="width:10%">价格</th>
                         <th style="width:10%">数量</th>
@@ -250,21 +250,21 @@
                         <th style="width:15%">操作</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody class="tbody">
                       <tr>
                         <td><input value="" name="teachingMaterialUse"  type="checkbox" id = "teachingMaterialUse"></td>
+                        <td >教材</td>
                         <td >画笔</td>
-                        <td ><div class="gw_price">
-                            <input type="text" value="1" class="price"/>
-                          </div></td>
+                        <td >300</td>
                         <td ><div class="gw_num"><em class="jian">-</em>
                             <input type="text" value="1" class="num"/>
                             <em class="add">+</em></div></td>
-                        <td >130</td>
+                        <td class="teachingMaterialTotal">130</td>
                         <td ><input type='button' name='deleteButton' value='删除' class="deleteButton"></td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
                 </div>
               </div>
               <!-- ======================课程信息列表===========================--> 
@@ -394,6 +394,7 @@
               <div style="float:left; width=350px; padding-top:15px; margin-bottom:30px">
                 <div style="position:relative; border:1px solid #cccccc; width:98px; height:26px;">
                   <select name="courseTypeForSelText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:102px; height:31px; line-height:28px; background:#fff;" id="courseTypeForSelText">
+                    <option value="全部 "> 全部</option>
                     <option value="美术 "> 美术</option>
                     <option value="音乐 "> 音乐 </option>
                   </select>
@@ -405,6 +406,7 @@
               <div style="float:left; width=350px; padding-top:15px;">
                 <div style="position:relative; border:1px solid #cccccc; width:98px; height:26px;">
                   <select name="courseTypeForSelText" style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:102px; height:31px; line-height:28px; background:#fff;" id="courseTypeForSelText">
+                    <option value="全部 "> 全部</option>
                     <option value="按课时 "> 按课时 </option>
                     <option value="按期 "> 按期</option>
                     <option value="按时间 "> 按时间 </option>
@@ -563,17 +565,17 @@
             <!-- =====================优惠选择Dialog===========================-->
             <form class="discountSelect" title="优惠选择" action="sms/servlet/AddSignatureServlet" id="discountSelect ">
               <div style="float:left; width:70px; padding-top:20px;">
-                <label id='receivableMoneyTitle'>应收总额:</label>
+                <label>学费:</label>
               </div>
-              <div style="float:left; width:70px; padding-top:20px; padding-left:10px;"> <span style="color:red; font-weight:bold;" id = "receivableMoneyText">+XXX</span><span>元</span> </div>
+              <div style="float:left; width:90px; padding-top:20px; padding-left:10px;"> <span style="color:red; font-weight:bold;" id = "receivableMoneyTextForDialog">+XXX</span><span></span> </div>
               <div style = "clear:both;"></div>
               <div style="float:left; width:70px; padding-top:20px;">
-                <label id='receivableMoneyTitle'>优惠金额:</label>
+                <label>优惠金额:</label>
               </div>
-              <div style="float:left; width:70px; padding-top:20px; padding-left:10px;"> <span style="color:red; font-weight:bold;" id = "receivableMoneyText">+XXX</span><span>元</span> </div>
+              <div style="float:left; width:70px; padding-top:20px; padding-left:10px;"> <span style="color:red; font-weight:bold;" id = "discountMoneyTextForDialog">+XXX</span><span>元</span> </div>
               <div style = "clear:both;"></div>
               <div style="float:left; width:70px; padding-top:20px; ">
-                <label id='discountTypeTitle'>优惠方式:</label>
+                <label>优惠方式:</label>
               </div>
               <div style="float:left; width=350px; padding-top:15px;">
                 <div style="position:relative; border:1px solid #cccccc; width:98px; height:26px;">
@@ -582,24 +584,21 @@
                     <option value="打折"> 打折 </option>
                     <option value="优惠"> 优惠 </option>
                     <option value="先优惠后打折"> 先优惠后打折 </option>
-                    <option value="先优惠后打折"> 先优惠后打折 </option>
                     <option value="先打折后优惠"> 先打折后优惠 </option>
-                    <option value="赠送课时"> 赠送课时 </option>
                   </select>
                 </div>
               </div>
-              
-              <div style="float:left; width=350px; padding-top:15px; padding-left:10px;">
+              <div style="float:left; width=350px; padding-top:15px; padding-left:10px;" id="discountPercentDiv">
                 <div style="position:relative; border:1px solid #cccccc; width:98px; height:26px;">
                   <select name="discountPercent" style="position:absolute; clip:rect(2px 102px 28px 2px); margin:-2px; width:102px; height:31px; line-height:28px; background:#fff;" id="discountPercent">
-                    <option value="9折 "> 99折 </option>
-                    <option value="打折"> 98折 </option>
-                    <option value="优惠"> 97折</option>
+                    <option value="99折 "> 99折 </option>
+                    <option value="98折"> 98折 </option>
+                    <option value="97折"> 97折</option>
                   </select>
                 </div>
               </div>
-		
-		<div style="float:left; width:30px; padding-top:20px; padding-left:10px;">
+		      <div style="float: left;" id="discountMoneyDiv">
+		      <div style="float:left; width:30px; padding-top:20px; padding-left:10px;">
                 <label id='discountTypeTitle'>优惠:</label>
               </div>
               
@@ -609,7 +608,7 @@
               <div style="float:left; width:30px; padding-top:20px; padding-left:10px;">
                 <label >元</label>
               </div>
-              
+              </div>
               <div style = "clear:both;"></div>
             </form>
             <!-- =====================教材杂费选择Dialog===========================-->

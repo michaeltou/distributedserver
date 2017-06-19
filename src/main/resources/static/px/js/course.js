@@ -166,7 +166,7 @@ $(function(){
 		});
 		
 		//加的效果
-		$(".add").click(function(){
+    	$("body").on('click',".add", function(){
 			var price = $(this).parent().parent().parent().children('td:eq(2)').text();
 			price = parseInt(price);
 			var n=$(this).prev().val();
@@ -178,7 +178,7 @@ $(function(){
 			$(this).parent().parent().parent().children('td:eq(3)').text(totalPrice) ;
 		});
 		//减的效果
-		$(".jian").click(function(){
+    	$("body").on('click',".jian", function(){
 			var price = $(this).parent().parent().parent().children('td:eq(2)').text();
 			price = parseInt(price);
 			var n=$(this).next().val();
