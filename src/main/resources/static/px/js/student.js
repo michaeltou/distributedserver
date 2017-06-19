@@ -52,10 +52,29 @@ $(function(){
             $("#receivableMoneyText").text(receivableMoney);
 
 		}});
+
+
+    $.extend({calculateReceivedMoney:function(){
+		var cash = $("#cashText").val();
+        cash = parseInt(cash);
+        if (isNaN(cash)){
+            cash = 0;
+		}
+
+        var transferAccountsMoney = $("#transferAccountsMoneyText").val();
+        transferAccountsMoney = parseInt(transferAccountsMoney);
+        if (isNaN(transferAccountsMoney)){
+            transferAccountsMoney = 0;
+        }
+
+        $("#netReceiptsMoneyText").text(transferAccountsMoney +cash );
+
+    }});
     	//=============================================
 
 	
 		//=============================================
+		$.calculateReceivedMoney();
 		$("input[name='sex']").eq(0).attr("checked","checked");
 		$("input[name='sex']").eq(0).click();
 		
@@ -82,6 +101,17 @@ $(function(){
 		$('#accordingClasses').click(function(){
 			$('.selectClasses').dialog("option","title", "班级选择").dialog('open');
 		});
+
+		//输入现金变更事件
+		$('#cashText').change(function(){
+			$.calculateReceivedMoney();
+		});
+
+		//输入转账变更事件
+		$('#transferAccountsMoneyText').change(function(){
+			$.calculateReceivedMoney();
+		});
+
 		// 教材杂费选择dialog
     	var $teachingMaterialBtnTr;
 		$("body").on('click',".teachingMaterialButton", function(){
