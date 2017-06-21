@@ -25,6 +25,28 @@ public class KeChengJiaoCaiZaFei {
     /*   */
     private Date updateDate;
 
+    //机构代码
+    private String  institution_code;
+    //课程名称
+    private String kecheng_name;
+
+    public String getKecheng_name() {
+        return kecheng_name;
+    }
+
+    public void setKecheng_name(String kecheng_name) {
+        this.kecheng_name = kecheng_name;
+    }
+
+    public String getInstitution_code() {
+        return institution_code;
+    }
+
+    public void setInstitution_code(String institution_code) {
+        this.institution_code = institution_code;
+    }
+
+
     public int getId() {
         return id;
     }

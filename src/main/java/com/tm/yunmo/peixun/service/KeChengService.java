@@ -2,7 +2,6 @@ package com.tm.yunmo.peixun.service;
 
 import com.tm.yunmo.peixun.dao.KeChengDAO;
 import com.tm.yunmo.peixun.model.KeCheng;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +16,12 @@ public class KeChengService {
     @Autowired
     private KeChengDAO keChengDAO;
 
-    public List<KeCheng> queryKeChengListByInstitution(@Param("institution_code")String institution_code){
+    public List<KeCheng> queryKeChengListByInstitution( String institution_code){
         List<KeCheng> keChengList = keChengDAO.queryKeChengListByInstitution( institution_code);
         return keChengList;
     }
 
-    public KeCheng queryKeChengByName(@Param("name") String name, @Param("institution_code") String institution_code) {
+    public KeCheng queryKeChengByName( String name,  String institution_code) {
         KeCheng keCheng = keChengDAO.queryKeChengByName(name, institution_code);
         return keCheng;
     }
