@@ -311,6 +311,7 @@ $(function(){
 			title:'新生报名',
 			buttons:{
 			'保存':function(){
+                window.location.href = "Student_Saved.html";
 				if($("#employeeNameText").val() === ""){
 					alert("姓名不能为空。");
 					$("#employeeNameText").focus();
@@ -323,13 +324,10 @@ $(function(){
 					alert("年龄不能为空。");
 					$("#employeeAgeText").focus();
 					return;
-				}else if($("#schoolTypeText").children('option:selected').val() === undefined){
-					alert("所属校区不能为空。");
-					$("#schoolTypeText").focus();
-					return;
 				}
 				//$(this).submit();
 				$(this).dialog('close');
+
 				//-----------------------------
 				var tr = $("<tr></tr>").attr("bgcolor","#FFFFFF"); 
 				tr.append($("<td></td>").html($("#employeeNameText").val())); 

@@ -18,19 +18,19 @@
 }
 
 .printDataDiv table{
-	border:1px solid #ebcccc;
+	border:2px solid black;
 	margin:0px auto;
-	color: #2b542c;
+	color: #5e7a88;
 }
 
 .feeVoucher .printDataDiv table td{
-	border:1px solid #ebcccc;
+	border:2px solid black;
 	height: 24px;
 	width: 150px;
 }
 
 .classPermit .printDataDiv table td{
-	border:1px solid #ebcccc;
+	border:2px solid #5e7a88;
 	height: 24px;
 }
 
@@ -61,3 +61,16 @@ input,button
 	line-height:18px;
 	font-size:18px;
 }
+
+.printData {
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.printData td {
+	text-align: left;
+	padding: 10px;
+	word-wrap: break-word;
+	border: 1px solid black;
+}
+
