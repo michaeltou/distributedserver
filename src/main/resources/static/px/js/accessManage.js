@@ -105,17 +105,24 @@ $(function(){
         $("#accessRoleName").val("");
         $.accessDataChanged();
         $.changeTableRowColor();
-		$("#NewAccessRole").hide();
+        $("#NewAccessRole").attr("disabled", true);
         $("#accessRoleDelete").hide();
 	});
 
 	//删除按钮
     $("body").on('click',"#accessRoleDelete", function(){
-        if($lastSelectedCourse){
-            $("#accessRoleID").val("");
-            $("#accessRoleName").val("");
-            $lastSelectedCourse.remove();
-            $.accessDataChanged();
+        if(window.confirm('你确定要删除吗？')){
+            //alert("确定");
+            if($lastSelectedCourse){
+                $("#accessRoleID").val("");
+                $("#accessRoleName").val("");
+                $lastSelectedCourse.remove();
+                $.accessDataChanged();
+            }
+            return true;
+        }else{
+            //alert("取消");
+            return false;
         }
     });
 
@@ -125,7 +132,7 @@ $(function(){
         $("#accessRoleName").val("");
         $.accessDataChanged();
         $.changeTableRowColor();
-        $("#NewAccessRole").show();
+        $("#NewAccessRole").attr("disabled", false);
         $("#accessRoleDelete").hide();
     });
 
@@ -149,14 +156,14 @@ $(function(){
         $("#accessRoleName").val("");
         $.accessDataChanged();
         $.changeTableRowColor();
-        $("#NewAccessRole").show();
+        $("#NewAccessRole").attr("disabled", false);
         $("#accessRoleDelete").hide();
     });
 
 
     var $lastSelectedCourse;
     $(".recordList .yunmo tr").click(function(){
-        $("#NewAccessRole").show();
+        $("#NewAccessRole").attr("disabled", false);
         $("#accessRoleDelete").show();
 
         $.changeTableRowColor();
