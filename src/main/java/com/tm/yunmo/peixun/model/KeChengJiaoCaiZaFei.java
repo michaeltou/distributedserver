@@ -3,32 +3,40 @@ package com.tm.yunmo.peixun.model;
 import java.util.Date;
 
 /**
- * Created by daoying on 2017/6/17.
- * 课程
+ * Created by daoying on 2017/6/20.
+ * 课程教材杂费
  */
-public class KeCheng {
+public class KeChengJiaoCaiZaFei {
+
 
     private int id;
-    //'课程名称'
+    /* '教材/杂费名称' */
     private String name;
-
-    //'课程类别，如美术，音乐'
-    private String kc_category_name;
-    //'课程简介'
-    private String note;
-    //'状态'
+    /* '数量'  */
+    private int quantity;
+    /* '单价'  */
+    private int price;
+    /* '合计'  */
+    private int totalFee;
+    /* '状态'  */
     private String status;
-
-    //开课学校
-    private String openSchoolNameList;
-
-    //
+    /*   */
     private Date createDate;
-    //
+    /*   */
     private Date updateDate;
 
     //机构代码
     private String  institution_code;
+    //课程名称
+    private String kecheng_name;
+
+    public String getKecheng_name() {
+        return kecheng_name;
+    }
+
+    public void setKecheng_name(String kecheng_name) {
+        this.kecheng_name = kecheng_name;
+    }
 
     public String getInstitution_code() {
         return institution_code;
@@ -37,6 +45,7 @@ public class KeCheng {
     public void setInstitution_code(String institution_code) {
         this.institution_code = institution_code;
     }
+
 
     public int getId() {
         return id;
@@ -54,20 +63,28 @@ public class KeCheng {
         this.name = name;
     }
 
-    public String getKc_category_name() {
-        return kc_category_name;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setKc_category_name(String kc_category_name) {
-        this.kc_category_name = kc_category_name;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
-    public String getNote() {
-        return note;
+    public int getPrice() {
+        return price;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getTotalFee() {
+        return totalFee;
+    }
+
+    public void setTotalFee(int totalFee) {
+        this.totalFee = totalFee;
     }
 
     public String getStatus() {
@@ -76,14 +93,6 @@ public class KeCheng {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getOpenSchoolNameList() {
-        return openSchoolNameList;
-    }
-
-    public void setOpenSchoolNameList(String openSchoolNameList) {
-        this.openSchoolNameList = openSchoolNameList;
     }
 
     public Date getCreateDate() {

@@ -3,30 +3,23 @@ package com.tm.yunmo.peixun.model;
 import java.util.Date;
 
 /**
- * Created by daoying on 2017/6/17.
- * 课程
+ * Created by daoying on 2017/6/20.
+ * 课程收费信息.
  */
-public class KeCheng {
-
+public class KeChengChargeInfo {
     private int id;
-    //'课程名称'
-    private String name;
-
-    //'课程类别，如美术，音乐'
-    private String kc_category_name;
-    //'课程简介'
-    private String note;
-    //'状态'
+    //课程名称
+    private String kecheng_name;
+    //收费模式
+    private String chargeType;
+    //收费
+    private String chargeFee;
+    //状态
     private String status;
 
-    //开课学校
-    private String openSchoolNameList;
-
-    //
     private Date createDate;
-    //
-    private Date updateDate;
 
+    private Date updateDate;
     //机构代码
     private String  institution_code;
 
@@ -46,28 +39,28 @@ public class KeCheng {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getKecheng_name() {
+        return kecheng_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setKecheng_name(String kecheng_name) {
+        this.kecheng_name = kecheng_name;
     }
 
-    public String getKc_category_name() {
-        return kc_category_name;
+    public String getChargeType() {
+        return chargeType;
     }
 
-    public void setKc_category_name(String kc_category_name) {
-        this.kc_category_name = kc_category_name;
+    public void setChargeType(String chargeType) {
+        this.chargeType = chargeType;
     }
 
-    public String getNote() {
-        return note;
+    public String getChargeFee() {
+        return chargeFee;
     }
 
-    public void setNote(String note) {
-        this.note = note;
+    public void setChargeFee(String chargeFee) {
+        this.chargeFee = chargeFee;
     }
 
     public String getStatus() {
@@ -76,14 +69,6 @@ public class KeCheng {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getOpenSchoolNameList() {
-        return openSchoolNameList;
-    }
-
-    public void setOpenSchoolNameList(String openSchoolNameList) {
-        this.openSchoolNameList = openSchoolNameList;
     }
 
     public Date getCreateDate() {

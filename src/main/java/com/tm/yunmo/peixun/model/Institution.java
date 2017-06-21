@@ -24,6 +24,10 @@ public class Institution {
     private String registerDate;
     //'简介'
     private String intro;
+
+    //'logo图片'
+    private String logoPicUrl;
+
     //'创建时间'
     private String createDate;
     //'更新时间'
@@ -115,5 +119,13 @@ public class Institution {
 
     public void setUpdateDate(String updateDate) {
         this.updateDate = updateDate;
+    }
+
+    public String getLogoPicUrl() {
+        return logoPicUrl;
+    }
+
+    public void setLogoPicUrl(String logoPicUrl) {
+        this.logoPicUrl = logoPicUrl;
     }
 }
