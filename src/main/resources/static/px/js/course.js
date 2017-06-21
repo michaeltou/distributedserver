@@ -141,7 +141,51 @@ $(function(){
 			title:'教材杂费一览',
 			buttons:{
 			'保存':function(){
-				$(this).dialog('close');
+				alert($(this).find("#authorifyselect").children('option:selected').length);
+                if($(this).find("#authorifyselect").children('option:selected').length === 0){
+                    alert("请至少选择一种教材或杂费。");
+                    return false;
+                }
+                var trs = $("#teachingMaterialDiv").find("tbody").children();
+                for(var j = 0; j < trs.length;j++){
+                    var teachingMaterialType = trs.eq(j).children().eq(1).html();
+                    var  teachingMaterialName = trs.eq(j).children().eq(2).html();
+                    var deleteFlag = true;
+                    for (var i = 0;i<$(this).find("#authorifyselect").children('option:selected').length;i++){
+                        if(teachingMaterialType == $(this).find("#authorifyselect").children('option:selected').eq(i).attr("data-section") &&
+                            teachingMaterialName == $(this).find("#authorifyselect").children('option:selected').eq(i).html()){
+                            deleteFlag = false;
+                            continue;
+                        }
+                    }
+                    if(deleteFlag){
+                        trs.eq(j).remove();
+                    }
+                }
+
+                for (var i = 0;i<$(this).find("#authorifyselect").children('option:selected').length;i++){
+                    var teachingMaterialType = $(this).find("#authorifyselect").children('option:selected').eq(i).attr("data-section");
+                    var  teachingMaterialName = $(this).find("#authorifyselect").children('option:selected').eq(i).html();
+                    var existFlag = false;
+                    for(var j = 0; j < trs.length;j++){
+                        if(trs.eq(j).children().eq(1).html() == teachingMaterialType &&
+                            trs.eq(j).children().eq(2).html() == teachingMaterialName){
+                            existFlag = true;
+                        }
+                    }
+                    if(existFlag){
+                        continue;
+                    }
+                    var tr = $("<tr></tr>").attr("bgcolor","#FFFFFF");
+                    tr.append($("<td></td>").html(teachingMaterialName));
+                    tr.append($("<td></td>").html(teachingMaterialType));
+                    tr.append($("<td></td>").html('<div class="gw_num"><em class="jian">-</em> <input type="text" value="1" class="num"/> <em class="add">+</em></div>'));
+                    tr.append($("<td></td>").html("200"));
+                    tr.append($("<td></td>").html("200"));
+                    tr.append($("<td></td>").html('<input type="button" name="deleteButton" value="删除" class="deleteButton">'));
+                    tr.appendTo($("#teachingMaterialDiv").find("tbody"));
+                }
+                $(this).dialog('close');
 			},
 			'取消':function(){
 			$(this).dialog('close');

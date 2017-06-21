@@ -894,7 +894,7 @@
 	color: #e74c3c
 }
 .signSetting .add-new-sign-cpt {
-	margin: 20px 0
+	margin-top:10px;
 }
 .signSetting .add-new-sign-cpt .plus-icon {
 	display: inline-block;
