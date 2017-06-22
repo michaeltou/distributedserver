@@ -14,11 +14,10 @@
 <link rel="stylesheet" href="css/schooldistrict.css"/>
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/jquery-ui.js"></script>
-<script type="text/javascript" src="js/jquery.form.js"></script>
 <script type="text/javascript" src="js/schooldistrict.js"></script>
 </head>
 
-<body style="background-color: #fff;" onload = "load()">
+<body style="background-color: #fff;">
 <div class="mainContainer"/>
 <div class="rightmain clearfix tplSettingDome signSetting" data-page="domesticRegister"/>
 <div class="app-framework-cpt">
@@ -32,7 +31,7 @@
                 <input  style="margin-left: 10px;" class="button button-middle  float-left"  type="button"  name="addsignature" value="新建校区" id="NewSchoolDistrict"/>
                 <span class="MaxSchoolDistrictCount">您的校区数量已达到购买上线，无法再新建校区，如有需要请联系助教宝客服人员</span> </div>
             </div>
-            <form class="AddSchoolDistrict" title="新增校区" action="sms/servlet/AddSignatureServlet" id="AddSchoolDistrict">
+            <form class="AddSchoolDistrict" title="新增校区" name="insert" id="AddSchoolDistrict">
               <div style="float:left; width:70px; padding-top:20px;">
                 <label id='schoolCodeTitle'>校区编码:</label>
               </div>

@@ -1,5 +1,6 @@
 package com.tm.yunmo.zhujiaobao;
 
+import com.tm.yunmo.peixun.model.School;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -23,6 +24,11 @@ public class SchoolService {
                 insertSchool.getPhone(),insertSchool.getXiaoQuCode(),insertSchool.getPrincipalName(),
                 insertSchool.getPrincipalSFZCode(),insertSchool.getType());
         return insertResult>0;
+    }
+
+
+    public void deleteSchoold(int schoolId){
+        schoolDAO.deleteSchool(schoolId);
     }
 
 }
