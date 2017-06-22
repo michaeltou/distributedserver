@@ -1,7 +1,7 @@
 package com.tm.yunmo.user;
 
 /**
- * Created by lenovo on 2017/3/13.
+ * Created by daoying on 2017/3/13.
  */
 public class User {
 

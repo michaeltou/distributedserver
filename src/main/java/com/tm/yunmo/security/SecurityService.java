@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by lenovo on 2017/5/17.
+ * Created by daoying on 2017/5/17.
  */
 @Component
 public class SecurityService {

@@ -17,7 +17,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 /**
- * Created by lenovo on 2017/6/1.
+ * Created by daoying on 2017/6/1.
  */
 
 @RestController

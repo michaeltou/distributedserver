@@ -4,7 +4,7 @@ import com.tm.yunmo.user.User;
 import org.apache.ibatis.annotations.*;
 
 /**
- * Created by lenovo on 2017/3/15.
+ * Created by daoying on 2017/3/15.
  */
 
 @Mapper

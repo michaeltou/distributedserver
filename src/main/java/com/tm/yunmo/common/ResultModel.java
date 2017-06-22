@@ -1,7 +1,7 @@
 package com.tm.yunmo.common;
 
 /**
- * Created by lenovo on 2017/5/12.
+ * Created by daoying on 2017/5/12.
  */
 public class ResultModel<T> {
 

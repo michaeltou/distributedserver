@@ -1,7 +1,7 @@
 package com.tm.yunmo.security;
 
 /**
- * Created by lenovo on 2017/5/18.
+ * Created by daoying on 2017/5/18.
  */
 public class SecurityConstants {
 

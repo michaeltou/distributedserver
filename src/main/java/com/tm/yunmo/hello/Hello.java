@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Created by lenovo on 2017/3/20.
+ * Created by daoying on 2017/3/20.
  */
 @RestController
 public class Hello {

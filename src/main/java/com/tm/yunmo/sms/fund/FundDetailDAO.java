@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 
 /**
- * Created by lenovo on 2017/5/19.
+ * Created by daoying on 2017/5/19.
  */
 
 @Mapper

@@ -1,7 +1,7 @@
 package com.tm.yunmo.marketing;
 
 /**
- * Created by lenovo on 2017/3/21.
+ * Created by daoying on 2017/3/21.
  */
 public class UserProductScore {
 

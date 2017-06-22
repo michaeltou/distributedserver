@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 /**
- * Created by lenovo on 2017/3/15.
+ * Created by daoying on 2017/3/15.
  */
 
 @Component

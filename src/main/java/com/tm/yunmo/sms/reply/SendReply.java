@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 
 /**
- * Created by lenovo on 2017/5/11.
+ * Created by daoying on 2017/5/11.
  * 接收来自阿里云的回调.
  */
 @RestController

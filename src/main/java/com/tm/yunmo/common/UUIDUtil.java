@@ -3,7 +3,7 @@ package com.tm.yunmo.common;
 import java.util.UUID;
 
 /**
- * Created by lenovo on 2017/5/17.
+ * Created by daoying on 2017/5/17.
  */
 public class UUIDUtil {
     public static String generateUUID(){

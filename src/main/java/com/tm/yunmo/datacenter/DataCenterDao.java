@@ -4,7 +4,7 @@ import com.tm.yunmo.user.User;
 import org.apache.ibatis.annotations.*;
 
 /**
- * Created by lenovo on 2017/3/14.
+ * Created by daoying on 2017/3/14.
  */
 @Mapper
 public interface DataCenterDao {

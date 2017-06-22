@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 
 /**
- * Created by lenovo on 2017/3/15.
+ * Created by daoying on 2017/3/15.
  * 学校dao.
  */
 

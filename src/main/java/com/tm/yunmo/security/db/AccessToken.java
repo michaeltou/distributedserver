@@ -3,7 +3,7 @@ package com.tm.yunmo.security.db;
 import java.util.Date;
 
 /**
- * Created by lenovo on 2017/5/17.
+ * Created by daoying on 2017/5/17.
  */
 public class AccessToken {
     private int id;

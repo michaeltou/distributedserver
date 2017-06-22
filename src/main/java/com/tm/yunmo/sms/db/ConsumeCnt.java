@@ -3,7 +3,7 @@ package com.tm.yunmo.sms.db;
 import java.util.Date;
 
 /**
- * Created by lenovo on 2017/5/18.
+ * Created by daoying on 2017/5/18.
  */
 public class ConsumeCnt {
     private int id;

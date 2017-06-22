@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * Created by lenovo on 2017/3/20.
+ * Created by daoying on 2017/3/20.
  */
 @RestController
 public class AjaxAPI {
