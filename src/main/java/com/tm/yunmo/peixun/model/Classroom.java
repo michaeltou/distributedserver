@@ -9,27 +9,27 @@ import java.util.Date;
 public class Classroom {
 
 
-
     private  int id;
     //'教室名称'
     private String name;
+    //校区名称
+    private String school_name;
+    //机构名称
+    private String institution_code;
     //'容量'
     private String capacity;
-    //'类型：简单、多媒体'
-    private String type;
+
     //'地址'
     private String address;
-    //'所属学校代码'
-    private String schoolCode;
+
     //'图片url'
-    private String pic;
-    //'管理员'
-    private String administrator;
+    private String picUrl;
+
     //'备注'
     private String note;
-    //
+
     private Date createDate;
-    //
+
     private Date updateDate;
 
     public int getId() {
@@ -48,20 +48,28 @@ public class Classroom {
         this.name = name;
     }
 
+    public String getSchool_name() {
+        return school_name;
+    }
+
+    public void setSchool_name(String school_name) {
+        this.school_name = school_name;
+    }
+
+    public String getInstitution_code() {
+        return institution_code;
+    }
+
+    public void setInstitution_code(String institution_code) {
+        this.institution_code = institution_code;
+    }
+
     public String getCapacity() {
         return capacity;
     }
 
     public void setCapacity(String capacity) {
         this.capacity = capacity;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 
     public String getAddress() {
@@ -72,28 +80,12 @@ public class Classroom {
         this.address = address;
     }
 
-    public String getSchoolCode() {
-        return schoolCode;
+    public String getPicUrl() {
+        return picUrl;
     }
 
-    public void setSchoolCode(String schoolCode) {
-        this.schoolCode = schoolCode;
-    }
-
-    public String getPic() {
-        return pic;
-    }
-
-    public void setPic(String pic) {
-        this.pic = pic;
-    }
-
-    public String getAdministrator() {
-        return administrator;
-    }
-
-    public void setAdministrator(String administrator) {
-        this.administrator = administrator;
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
     }
 
     public String getNote() {
