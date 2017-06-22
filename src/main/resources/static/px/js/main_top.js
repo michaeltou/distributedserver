@@ -1,4 +1,3 @@
-function refresh()
-{
-	window.parent.location.reload();
+function refresh() {
+    window.parent.location.reload();
 }

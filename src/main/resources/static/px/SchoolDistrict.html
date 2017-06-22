@@ -1,126 +1,141 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>助教宝 - 管理后台</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="baidu-site-verification" content="elXuCAMAW3">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="renderer" content="webkit">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/reset.css">
-<link rel="stylesheet" href="css/index_style.css">
-<link rel="stylesheet" href="css/jquery-ui.css">
-<link rel="stylesheet" href="css/yp_style.css">
-<link rel="stylesheet" href="css/schooldistrict.css">
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/jquery-ui.js"></script>
-<script type="text/javascript" src="js/jquery.form.js"></script>
-<script type="text/javascript" src="js/schooldistrict.js"></script>
+    <title>助教宝 - 管理后台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="baidu-site-verification" content="elXuCAMAW3">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index_style.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/yp_style.css">
+    <link rel="stylesheet" href="css/schooldistrict.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.form.js"></script>
+    <script type="text/javascript" src="js/schooldistrict.js"></script>
 </head>
 
-<body style="background-color: #fff;" onload = "load()">
+<body style="background-color: #fff;" onload="load()">
 <div class="mainContainer">
-<div class="rightmain clearfix tplSettingDome signSetting" data-page="domesticRegister">
-<div class="app-framework-cpt">
-  <div class="domestic-register-manager-cpt">
-    <div class="tab-cpt">
-      <div class="tab-body-group-cpt">
-        <div class="tab-body-cpt tab-body-show">
-          <div class="sign-setting-cpt clearfix">
-            <div class="add-new-sign-cpt">
-              <div>
-                <input  style="margin-left: 10px;" class="button button-middle  float-left"  type="button"  name="addsignature" value="新建校区" id="NewSchoolDistrict">
-                <span class="MaxSchoolDistrictCount">您的校区数量已达到购买上线，无法再新建校区，如有需要请联系助教宝客服人员</span> </div>
-            </div>
-            <form class="AddSchoolDistrict" title="新增校区" action="sms/servlet/AddSignatureServlet" id="AddSchoolDistrict">
-              <div style="float:left; width:70px; padding-top:20px;">
-                <label id='schoolCodeTitle'>校区编码:</label>
-              </div>
-              <div style="float:left; width=350px; padding-top:15px;">
-                <input class="text-input-cpt" type="text" name="schoolCodeText" placeholder="请输入校区编码(必填)" value="" id = "schoolCodeText">
-              </div>
-              <div style="float:left; width:70px; padding-top:20px;">
-                <label id='schoolNameTitle'>校区名称:</label>
-              </div>
-              <div style="float:left; width=350px; padding-top:15px;">
-                <input class="text-input-cpt" type="text" name="schoolNameText" placeholder="请输入校区名称(必填)" value="" id = "schoolNameText">
-              </div>
-              <div style="float:left; width:70px; padding-top:20px;">
-                <label id='schoolContactTitle'>联系人:</label>
-              </div>
-              <div style="float:left; width=350px; padding-top:15px;">
-                <input class="text-input-cpt" type="text" name="schoolContactText" placeholder="请输入联系人姓名(必填)" value="" id = "schoolContactText">
-              </div>
-              <div style="float:left; width:70px; padding-top:20px;">
-                <label id='schoolPhoneTitle'>联系电话</label>
-              </div>
-              <div style="float:left; width=350px; padding-top:15px;">
-                <input class="text-input-cpt" type="text" name="schoolPhoneText" placeholder="请输入联系电话(必填)" value="" id = "schoolPhoneText">
-              </div>
-              <div style="float:left; width:70px; padding-top:20px;">
-                <label id='schoolAddressTitle'>校区地址</label>
-              </div>
-              <div style="float:left; width=350px; padding-top:15px;">
-                <input class="text-input-cpt" type="text" name="schoolAddressText" placeholder="请输入校区地址(必填)" value="" id = "schoolAddressText">
-              </div>
-              <div style="float:left; width:70px; padding-top:20px;">
-                <label id='schoolTypeTitle'>校区类型:</label>
-              </div>
-              <div style="float:left; width=350px; padding-top:15px;">
-              	<div style="position:relative; border:1px solid #cccccc; width:80px; height:21px;">
-                	<select name="schoolTypeText" style="position:absolute; clip:rect(2px 82px 22px 2px); margin:-2px; width:84px; height:24px; line-height:24px; background:#fff;" id="schoolTypeText">
-                      <option value="直营" selected="selected"> 直营 </option>
-                      <option value="加盟"> 加盟 </option>
-                      <option value="代理"> 代理 </option>
-                      <option value="合作"> 合作 </option>
-                    </select>
+    <div class="rightmain clearfix tplSettingDome signSetting" data-page="domesticRegister">
+        <div class="app-framework-cpt">
+            <div class="domestic-register-manager-cpt">
+                <div class="tab-cpt">
+                    <div class="tab-body-group-cpt">
+                        <div class="tab-body-cpt tab-body-show">
+                            <div class="sign-setting-cpt clearfix">
+                                <div class="add-new-sign-cpt">
+                                    <div>
+                                        <input style="margin-left: 10px;" class="button button-middle  float-left"
+                                               type="button" name="addsignature" value="新建校区" id="NewSchoolDistrict">
+                                        <span class="MaxSchoolDistrictCount">您的校区数量已达到购买上线，无法再新建校区，如有需要请联系助教宝客服人员</span>
+                                    </div>
+                                </div>
+                                <form class="AddSchoolDistrict" title="新增校区" action="sms/servlet/AddSignatureServlet"
+                                      id="AddSchoolDistrict">
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='schoolCodeTitle'>校区编码:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="schoolCodeText"
+                                               placeholder="请输入校区编码(必填)" value="" id="schoolCodeText">
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='schoolNameTitle'>校区名称:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="schoolNameText"
+                                               placeholder="请输入校区名称(必填)" value="" id="schoolNameText">
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='schoolContactTitle'>联系人:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="schoolContactText"
+                                               placeholder="请输入联系人姓名(必填)" value="" id="schoolContactText">
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='schoolPhoneTitle'>联系电话</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="schoolPhoneText"
+                                               placeholder="请输入联系电话(必填)" value="" id="schoolPhoneText">
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='schoolAddressTitle'>校区地址</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="schoolAddressText"
+                                               placeholder="请输入校区地址(必填)" value="" id="schoolAddressText">
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='schoolTypeTitle'>校区类型:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:80px; height:21px;">
+                                            <select name="schoolTypeText"
+                                                    style="position:absolute; clip:rect(2px 82px 22px 2px); margin:-2px; width:84px; height:24px; line-height:24px; background:#fff;"
+                                                    id="schoolTypeText">
+                                                <option value="直营" selected="selected"> 直营</option>
+                                                <option value="加盟"> 加盟</option>
+                                                <option value="代理"> 代理</option>
+                                                <option value="合作"> 合作</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="padding-top:15px; clear:both;"></div>
+                                </form>
+                                <div class="sign-list-cpt" style="position: relative; min-width: 700px; ">
+                                    <div class="block-title-cpt"> 校区一览</div>
+                                    <div class="searchbar clearfix"><span class="float-left search-title">校区名称：</span>
+                                        <div class="input-cpt-wrapper float-left" style="width: 300px;">
+                                            <input class="text-input-cpt" placeholder="请输入校区名称" name="keyword"
+                                                   type="text" id="keyword">
+                                        </div>
+                                        <input style="margin-left: 10px; " class="button button-middle float-left"
+                                               type="button" name="search" value="查询" id="search">
+                                    </div>
+                                    <div class="recordList">
+                                        <table class="yunmo">
+                                            <thead>
+                                            <tr>
+                                                <th style="width:10%;">校区编号</th>
+                                                <th style="width:15%;">校区名称</th>
+                                                <th style="width:15%;">校区类型</th>
+                                                <th style="width:15%;">联系人</th>
+                                                <th style="width:15%;">联系电话</th>
+                                                <th style="width:15%;">校区地址</th>
+                                                <th style="width:15%; min-width: 150px; text-align: center;">操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>123456</td>
+                                                <td>美院在线-滨江分校</td>
+                                                <td>直营</td>
+                                                <td>小张</td>
+                                                <td>18717947096</td>
+                                                <td>秋溢路秋溢路秋溢路秋溢路秋溢路</td>
+                                                <td style="text-align: center;">
+                                                    <button class="deleteButton icon iconfont icon-delete">删除</button>
+                                                    <button class="editButton icon iconfont icon-edit">编辑</button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-              </div>
-              <div style="width=270px; padding-top:15px; clear:both;"></div>
-            </form>
-            <div class="sign-list-cpt" parent-account="">
-              <div class="block-title-cpt"> 校区一览 </div>
-              <div class="searchbar clearfix"> <span class="float-left search-title">校区名称：</span>
-                <div class="input-cpt-wrapper float-left" style="width: 300px;">
-                  <input class="text-input-cpt" placeholder="请输入校区名称" name="keyword" type="text" id="keyword">
                 </div>
-                <input  style="margin-left: 10px;" class="button button-middle    float-left"  type="button"  name="search" value="查询" id="search">
-              </div>
-              <div class="recordList">
-                <table class="yunmo">
-                  <thead>
-                    <tr>
-                      <th style="min-width:105px;">校区编号</th>
-                      <th style="min-width:140px;">校区名称</th>
-                      <!--<th style="min-width:160px;padding-left: 18px;">校区类型</th> -->
-                      <th style="width:100px;">校区类型</th>
-                      <th style="min-width:180px;">联系人</th>
-                      <th style="min-width:180px;">联系电话</th>
-                      <th style="min-width:125px;">校区地址</th>
-                      <th style="min-width:80px;">操作</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>123456</td>
-                      <td >美院在线-滨江分校</td>
-                      <td >直营</td>
-                      <td >小张</td>
-                      <td >18717947096</td>
-                      <td >秋溢路秋溢路秋溢路秋溢路秋溢路</td>
-                      <td ><input type='button' name='deleteButton' value='删除' class="deleteButton"> <input type='button' name='editButton' value='编辑' class="editButton" > </td>
-                        </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <!--<div class="pagination-cpt" pre-page="1" next-page="1"> <span class="totalCount">共0条记录</span> </div>-->
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>
 </body>
 </html>

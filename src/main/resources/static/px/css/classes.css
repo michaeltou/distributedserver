@@ -1,36 +1,39 @@
 @charset "utf-8";
 /* CSS Document */
 #classesNameText,
-#planStuNumText
-{
-	width:300px; 
+#planStuNumText {
+    width: 300px;
 }
 
 #courseText,
-#courseNameForSelText
-{
-	width:250px; 
+#courseNameForSelText {
+    width: 250px;
 }
 
-#mainSubjectText{
-	width:460px; 
+#mainSubjectText {
+    width: 460px;
 }
 
 #teacherGettedText,
-#studentUsedUnitText{
-	width:50px;
-	height:25px;
+#studentUsedUnitText {
+    width: 50px;
+    height: 25px;
 }
 
-#addCourse
-{
-	width:50px; 
-	height:30px;
-	line-height:30px;
-	background-color:#39F;
+#addCourse {
+    width: 50px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #39F;
 }
 
-#NewClassesTime{
-	margin-top:10px;
-	margin-bottom:10px;
+#NewClassesTime {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.mainContainer {
+    border: 2px solid #e4e4e4;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 100px 10px;
 }

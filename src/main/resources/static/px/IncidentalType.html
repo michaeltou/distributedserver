@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>助教宝 - 管理后台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="baidu-site-verification" content="elXuCAMAW3">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index_style.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/yp_style.css">
+    <link rel="stylesheet" href="css/incidentalType.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/incidentalType.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body style="background-color: #fff;" onload="load()">
+<div class="mainContainer">
+    <div class="rightmain clearfix tplSettingDome signSetting" data-page="domesticRegister">
+        <div class="app-framework-cpt">
+            <div class="domestic-register-manager-cpt">
+                <div class="tab-cpt">
+                    <div class="tab-body-group-cpt">
+                        <div class="tab-body-cpt tab-body-show">
+                            <div class="sign-setting-cpt clearfix">
+                                <div class="add-new-sign-cpt">
+                                    <div>
+                                        <input style="margin-left: 10px;" class="button button-middle  float-left"
+                                               type="button" name="newIncidentalType" value="新建杂费"
+                                               id="newIncidentalType">
+                                    </div>
+                                </div>
+                                <form class="addIncidentalType" title="新建杂费" action="sms/servlet/AddSignatureServlet"
+                                      id="addIncidentalType">
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
+                                        <label>杂费名称:</label>
+                                    </div>
+                                    <div style="float:left; width:250px; padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="incidentalNameText"
+                                               placeholder="请输入杂费名称(必填)" value="" id="incidentalNameText">
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
+                                        <label>课程名称:</label>
+                                    </div>
+                                    <div style="float:left; width:250px; padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
+                                            <select name="courseTypeText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;"
+                                                    id="courseTypeText">
+                                                <option value="通用"> 通用</option>
+                                                <option value="美术"> 美术</option>
+                                                <option value="音乐"> 音乐</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
+                                        <label id='courseTypeNameTitle'>售价:</label>
+                                    </div>
+                                    <div style="float:left; width:250px; padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="incidentalSalePriceText"
+                                               placeholder="请输入销售价格(必填)" value="" id="incidentalSalePriceText">
+                                    </div>
+                                </form>
+                                <div class="sign-list-cpt" style="min-width: 700px;">
+                                    <div class="block-title-cpt"> 杂费一览</div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
+                                        <label>杂费名称:</label>
+                                    </div>
+                                    <div style="float:left; width:250px; padding-top:15px; padding-bottom:30px;">
+                                        <input class="text-input-cpt" type="text" name="incidentalNameForSearchText"
+                                               placeholder="" value="" id="incidentalNameForSearchText">
+                                    </div>
+                                    <div style="float:left; width:250px; padding-top:15px;padding-left:25px;">
+                                        <input style="margin-left: 10px;" class="button button-middle    float-left"
+                                               type="button" name="search" value="查询" id="search">
+                                    </div>
+                                    <div class="recordList" style="width: 60%;">
+                                        <table class="yunmo">
+                                            <thead>
+                                            <tr>
+                                                <th style="width:20%;">杂费名称</th>
+                                                <th style="width:20%;">课程类别</th>
+                                                <th style="width:20%;">售价</th>
+                                                <th style="width:20%;min-width: 150px;text-align: center;">操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>画笔</td>
+                                                <td>美术</td>
+                                                <td>100</td>
+                                                <td style='text-align: center;'>
+                                                    <button class="deleteButton icon iconfont icon-delete">删除</button>
+                                                    <button class="editButton icon iconfont icon-edit">编辑</button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
