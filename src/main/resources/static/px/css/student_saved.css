@@ -1,27 +1,29 @@
 @charset "utf-8";
 /* CSS Document */
 
-#saveSuccessedTitle{
-	height: 110px;
-	text-align: center;
-	font-size: 14px;
-	color: #00CCFF;
-	border: 2px solid #e4e4e4;
-	margin: 10px 10px 10px 10px;
-	padding: 10px 10px 10px 10px;
+#saveSuccessedTitle {
+    height: 110px;
+    text-align: center;
+    font-size: 14px;
+    color: #00CCFF;
+    border: 2px solid #e4e4e4;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
 }
 
 .mainContainer {
-	border: 2px solid #e4e4e4;
-	margin: 10px 10px 10px 10px;
-	padding: 10px 10px 300px 10px;
+    border: 2px solid #e4e4e4;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 300px 10px;
 }
 
+/*
 .printDataDiv table{
 	border:2px solid black;
 	margin:0px auto;
 	color: #5e7a88;
 }
+
 
 .feeVoucher .printDataDiv table td{
 	border:2px solid black;
@@ -33,44 +35,51 @@
 	border:2px solid #5e7a88;
 	height: 24px;
 }
+*/
 
-.feeVoucher, .classPermit{
-	border: 2px solid #e4e4e4;
-	margin: 10px 10px 10px 10px;
-	padding: 10px 10px 10px 10px;
+.feeVoucher, .classPermit {
+    border: 2px solid #e4e4e4;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
 
 }
 
-.btnPrint
-{
-	width:142px;
-	height:40px;
-	line-height:18px;
-	font-size:18px;
-	color:#2b542c;
-	background:url("../image/buttonbg01.jpg") no-repeat left top;
-	padding-bottom:4px;
+.btnPrint {
+    width: 142px;
+    height: 40px;
+    line-height: 18px;
+    font-size: 18px;
+    color: #2b542c;
+    background: url("../image/buttonbg01.jpg") no-repeat left top;
+    padding-bottom: 4px;
 }
 
-input,button
-{
-	font-family:"Arial","Tahoma","微软雅黑","雅黑";
-	border:0px;
-	vertical-align:middle;
-	margin:8px;
-	line-height:18px;
-	font-size:18px;
+button {
+    font-family: "Arial", "Tahoma", "微软雅黑", "雅黑";
+    border: 0px;
+    vertical-align: middle;
+    margin: 8px;
+    line-height: 18px;
+    font-size: 18px;
 }
 
 .printData {
-	border: 1px solid black;
-	border-collapse: collapse;
+    margin: 0px auto;
+    color: #5e7a88;
+    border: 1px solid black;
+    border-collapse: collapse;
 }
 
 .printData td {
-	text-align: left;
-	padding: 10px;
-	word-wrap: break-word;
-	border: 1px solid black;
+    height: 24px;
+    text-align: left;
+    padding: 10px;
+    word-wrap: break-word;
+    border: 1px solid black;
 }
+
+.feeVoucher .printDataDiv table td {
+    width: 150px;
+}
+
 

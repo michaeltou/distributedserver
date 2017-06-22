@@ -37,38 +37,40 @@
     };
 })(jQuery);
 
-$(function(){
-    $(".btnPrint").click(function(){
-    	//$(".printDataDiv").printArea();
-		if($(this).parents(".feeVoucher").length > 0){
+$(function () {
+    $(".btnPrint").click(function () {
+        //$(".printDataDiv").printArea();
+        if ($(this).parents(".feeVoucher").length > 0) {
             $(this).parents(".feeVoucher").children(".printDataDiv").printArea();
-		}else if ($(this).parents(".classPermit").length > 0){
+        } else if ($(this).parents(".classPermit").length > 0) {
             $(this).parents(".classPermit").children(".printDataDiv").printArea();
-		}
+        }
     });
 });
 
-var hkey_root,hkey_path,hkey_key
-hkey_root="HKEY_CURRENT_USER"
-hkey_path="\\Software\\Microsoft\\Internet Explorer\\PageSetup\\"
+var hkey_root, hkey_path, hkey_key
+hkey_root = "HKEY_CURRENT_USER"
+hkey_path = "\\Software\\Microsoft\\Internet Explorer\\PageSetup\\"
 //设置网页打印的页眉页脚为空
-function pagesetup_null(){
-    try{
+function pagesetup_null() {
+    try {
         var RegWsh = new ActiveXObject("WScript.Shell")
-        hkey_key="header"
-        RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"")
-        hkey_key="footer"
-        RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"")
-    }catch(e){}
+        hkey_key = "header"
+        RegWsh.RegWrite(hkey_root + hkey_path + hkey_key, "")
+        hkey_key = "footer"
+        RegWsh.RegWrite(hkey_root + hkey_path + hkey_key, "")
+    } catch (e) {
+    }
 }
 //设置网页打印的页眉页脚为默认值
-function pagesetup_default(){
-    try{
+function pagesetup_default() {
+    try {
 
         var RegWsh = new ActiveXObject("WScript.Shell")
-        hkey_key="header"
-        RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"&w&b页码，&p/&P")
-        hkey_key="footer"
-        RegWsh.RegWrite(hkey_root+hkey_path+hkey_key,"&u&b&d")
-    }catch(e){}
+        hkey_key = "header"
+        RegWsh.RegWrite(hkey_root + hkey_path + hkey_key, "&w&b页码，&p/&P")
+        hkey_key = "footer"
+        RegWsh.RegWrite(hkey_root + hkey_path + hkey_key, "&u&b&d")
+    } catch (e) {
+    }
 }

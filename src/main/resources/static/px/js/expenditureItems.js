@@ -1,7 +1,7 @@
 $(function () {
 
-    $('#newCourseType').click(function () {
-        $('.addCourseType').dialog("option", "title", "新建课程类别").dialog('open');
+    $('#newExpenditureItems').click(function () {
+        $('.addExpenditureItems').dialog("option", "title", "新建支出项目大类").dialog('open');
     });
 
 
@@ -19,35 +19,35 @@ $(function () {
 
     $("body").on('click', ".editButton", function () {
         EditData($(this).get(0));
-        $('.addCourseType').dialog("option", "title", "编辑社员").dialog('open');
+        $('.addExpenditureItems').dialog("option", "title", "编辑支出项目大类").dialog('open');
     });
 
 
-    $('.addCourseType').dialog({
+    $('.addExpenditureItems').dialog({
         autoOpen: false,
         resizable: false,
         modal: true,
-        width: 500,
+        width: 450,
         height: 200,
-        title: '新建课程类别',
+        title: '新建支出项目大类',
         buttons: {
             '保存': function () {
-                if ($("#courseTypeCodeText").val() == "") {
-                    alert("类别编号不能为空。");
-                    $("#courseTypeCodeText").focus();
+                if ($("#expenditureItemNameText").val() === "") {
+                    alert("支出项目名称不能为空。");
+                    $("#expenditureItemNameText").focus();
                     return;
-                } else if ($("#courseTypeNameText").val() == "") {
-                    alert("类别名称不能为空。");
-                    $("#courseTypeNameText").focus();
+                } else if ($("#sortIDText").children('option:selected').val() === "") {
+                    alert("请选择排序编号。");
+                    $("#sortIDText").focus();
                     return;
                 }
                 //$(this).submit();
                 $(this).dialog('close');
                 //-----------------------------
                 var tr = $("<tr></tr>").attr("bgcolor", "#FFFFFF");
-                tr.append($("<td></td>").html($("#courseTypeCodeText").val()));
-                tr.append($("<td style='text-align:center;'></td>").html($("#courseTypeNameText").val()));
-                tr.append($("<td style='text-align: center;'></td>").html('<button class="deleteButton icon iconfont icon-delete">删除</button><button class="editButton icon iconfont icon-edit">编辑</button>'));
+                tr.append($("<td></td>").html($("#sortIDText").children('option:selected').val()));
+                tr.append($("<td></td>").html($("#expenditureItemNameText").val()));
+                tr.append($("<td style='text-align: center;'></td>").html('<button class="deleteButton icon iconfont icon-delete">删除</button>'));
                 tr.appendTo($("tbody"));
 
                 //------------------------------
@@ -57,7 +57,7 @@ $(function () {
             }
         },
         open: function (event, ui) {
-            $(".ui-dialog-titlebar-close", $(this).parent()).hide();
+            //$(".ui-dialog-titlebar-close", $(this).parent()).hide();
         },
 
     });
@@ -77,8 +77,14 @@ $(function () {
 
 function EditData(editRow) {
     var tr = editRow.parentNode.parentNode;
-    byId("courseTypeCodeText").value = (tr.cells[0]).innerHTML;
-    byId("courseTypeNameText").value = (tr.cells[1]).innerHTML;
+    byId("expenditureItemNameText").value = (tr.cells[1]).innerHTML;
+    var all_options = document.getElementById("sortIDText").options;
+    for (i = 0; i < all_options.length; i++) {
+        if (all_options[i].value == (tr.cells[0]).innerHTML)  // 根据option标签的ID来进行断  测试的代码这里是两个等号
+        {
+            all_options[i].selected = true;
+        }
+    }
 }
 
 function DeleteData(delRow) {

@@ -1,16 +1,16 @@
 @charset "utf-8";
 /* CSS Document */
-#schoolNameTitle ,#schoolCodeTitle,#schoolTypeTitle,#schoolPhoneTitle,#schoolAddressTitle,#schoolContactTitle {
-	font-size:12px;
+#schoolNameTitle, #schoolCodeTitle, #schoolTypeTitle, #schoolPhoneTitle, #schoolAddressTitle, #schoolContactTitle {
+    font-size: 12px;
 }
 
-#schoolNameText ,#schoolCodeText,#schoolTypeText,#schoolPhoneText,#schoolAddressText,#schoolContactText{
-	width:300px; 
-	font-size:12px;
+#schoolNameText, #schoolCodeText, #schoolTypeText, #schoolPhoneText, #schoolAddressText, #schoolContactText {
+    width: 300px;
+    font-size: 12px;
 }
 
-.mainContainer{
-	border: 2px solid #e4e4e4;
-	margin: 10px 10px 10px 10px;
-	padding: 10px 10px 100px 10px;
+.mainContainer {
+    border: 2px solid #e4e4e4;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 100px 10px;
 }

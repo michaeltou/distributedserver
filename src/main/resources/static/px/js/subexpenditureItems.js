@@ -1,7 +1,7 @@
 $(function () {
 
-    $('#newIncidentalType').click(function () {
-        $('.addIncidentalType').dialog("option", "title", "新建杂费").dialog('open');
+    $('#newExpenditureItems').click(function () {
+        $('.addExpenditureItems').dialog("option", "title", "新建支出项目大类").dialog('open');
     });
 
 
@@ -19,40 +19,40 @@ $(function () {
 
     $("body").on('click', ".editButton", function () {
         EditData($(this).get(0));
-        $('.addIncidentalType').dialog("option", "title", "编辑杂费").dialog('open');
+        $('.addExpenditureItems').dialog("option", "title", "编辑支出项目大类").dialog('open');
     });
 
 
-    $('.addIncidentalType').dialog({
+    $('.addExpenditureItems').dialog({
         autoOpen: false,
         resizable: false,
         modal: true,
         width: 450,
         height: 250,
-        title: '新建杂费',
+        title: '新建支出项目大类',
         buttons: {
             '保存': function () {
-                if ($("#incidentalNameText").val() === "") {
-                    alert("杂费名称不能为空。");
-                    $("#incidentalNameText").focus();
+                if ($("#expenditureItemNameText").val() === "") {
+                    alert("支出项目名称不能为空。");
+                    $("#expenditureItemNameText").focus();
                     return;
-                } else if ($("#incidentalSalePriceText").val() === "") {
-                    alert("杂费售价不能为空。");
-                    $("#incidentalSalePriceText").focus();
+                } else if ($("#sortIDText").children('option:selected').val() === "") {
+                    alert("请选择排序编号。");
+                    $("#sortIDText").focus();
                     return;
-                } else if ($("#courseTypeText").children('option:selected').val() === "") {
-                    alert("请选择课程类别。");
-                    $("#courseTypeText").focus();
+                }else if ($("#expenditureItemsText").children('option:selected').val() === "") {
+                    alert("请选择支出大类。");
+                    $("#expenditureItemsText").focus();
                     return;
                 }
                 //$(this).submit();
                 $(this).dialog('close');
                 //-----------------------------
                 var tr = $("<tr></tr>").attr("bgcolor", "#FFFFFF");
-                tr.append($("<td></td>").html($("#incidentalNameText").val()));
-                tr.append($("<td></td>").html($("#courseTypeText").children('option:selected').val()));
-                tr.append($("<td ></td>").html($("#incidentalSalePriceText").val()));
-                tr.append($("<td style='text-align: center;'></td>").html('<button class="deleteButton icon iconfont icon-delete">删除</button> <button class="editButton icon iconfont icon-edit" >编辑</button>'));
+                tr.append($("<td></td>").html($("#sortIDText").children('option:selected').val()));
+                tr.append($("<td></td>").html($("#expenditureItemsText").children('option:selected').val()));
+                tr.append($("<td></td>").html($("#expenditureItemNameText").val()));
+                tr.append($("<td style='text-align: center;'></td>").html('<button class="deleteButton icon iconfont icon-delete">删除</button>'));
                 tr.appendTo($("tbody"));
 
                 //------------------------------
@@ -82,15 +82,21 @@ $(function () {
 
 function EditData(editRow) {
     var tr = editRow.parentNode.parentNode;
-    byId("incidentalNameText").value = (tr.cells[0]).innerHTML;
-    var all_options = document.getElementById("courseTypeText").options;
+    byId("expenditureItemNameText").value = (tr.cells[2]).innerHTML;
+    var all_options = document.getElementById("sortIDText").options;
+    for (i = 0; i < all_options.length; i++) {
+        if (all_options[i].value == (tr.cells[0]).innerHTML)  // 根据option标签的ID来进行断  测试的代码这里是两个等号
+        {
+            all_options[i].selected = true;
+        }
+    }
+    var all_options = document.getElementById("expenditureItemsText").options;
     for (i = 0; i < all_options.length; i++) {
         if (all_options[i].value == (tr.cells[1]).innerHTML)  // 根据option标签的ID来进行断  测试的代码这里是两个等号
         {
             all_options[i].selected = true;
         }
     }
-    byId("incidentalSalePriceText").value = (tr.cells[2]).innerHTML;
 }
 
 function DeleteData(delRow) {

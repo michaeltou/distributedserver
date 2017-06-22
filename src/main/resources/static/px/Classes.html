@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/yp_style.css">
     <link rel="stylesheet" href="css/classes.css">
     <link rel="stylesheet" href="css/jquery.tree-multiselect.min.css"/>
+    <link rel="stylesheet" href="css/iconfont.css">
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
     <script type="text/javascript" src="js/jquery.form.js"></script>
@@ -35,8 +36,7 @@
                                                type="button" name="NewClasses" value="新建班级" id="NewClasses">
                                     </div>
                                 </div>
-                                <form class="AddClasses" title="新建班级" action="sms/servlet/AddSignatureServlet"
-                                      id="AddClasses">
+                                <form class="AddClasses" title="新建班级" id="AddClasses">
                                     <div style="float:left; width:100%; height:30px; padding-top:8px; margin-top:18px; background-color:#9CF;">
                                         <label id='employeeDetailedTitle'
                                                style="font-size:14px; margin-left:10px;">班级信息</label>
@@ -198,15 +198,14 @@
                                         <table class="yunmo" id="classesTimeList">
                                             <thead>
                                             <tr>
-                                                <th style="min-width:105px;">上课日期</th>
-                                                <th style="min-width:140px;">重复设置</th>
-                                                <!--<th style="min-width:160px;padding-left: 18px;">校区类型</th> -->
-                                                <th style="min-width:180px;">上课时段</th>
-                                                <th style="width:100px;">教师</th>
-                                                <th style="width:100px;">助教</th>
-                                                <th style="width:100px;">教室</th>
-                                                <th style="width:100px;">上课主题</th>
-                                                <th style="min-width:80px;">操作</th>
+                                                <th style="width:15%;">上课日期</th>
+                                                <th style="width:15%;">重复设置</th>
+                                                <th style="width:15%;">上课时段</th>
+                                                <th style="width:10%;">教师</th>
+                                                <th style="width:10%;">助教</th>
+                                                <th style="width:10%;">教室</th>
+                                                <th style="width:10%;">上课主题</th>
+                                                <th style="width:15%; min-width:150px;text-align: center;">操作</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -218,20 +217,19 @@
                                                 <td>张老师</td>
                                                 <td>东三教室</td>
                                                 <td>美术</td>
-                                                <td><input type='button' name='deleteButton' value='删除'
-                                                           class="deleteButton">
-                                                    <input type='button' name='editTimesButton' value='编辑'
-                                                           class="editTimesButton"></td>
+                                                <td style='text-align: center;'>
+                                                    <button class="deleteButton icon iconfont icon-delete">删除</button>
+                                                    <button type='button'
+                                                            class="editTimesButton icon iconfont icon-edit">编辑
+                                                    </button>
                                                 </td>
                                             </tr>
                                             </tbody>
                                         </table>
-                                        <!--<div class="pagination-cpt" pre-page="1" next-page="1"> <span class="totalCount">共0条记录</span> </div>-->
                                     </div>
                                 </form>
 
-                                <form class="AddClassesTimes" title="新建上课时间" action="sms/servlet/AddSignatureServlet"
-                                      id="AddClassesTimes">
+                                <form class="AddClassesTimes" title="新建上课时间" id="AddClassesTimes">
                                     <div style="float:left; width:70px; padding-top:20px;">
                                         <label id='repeatSettingTitle'>重复设置:</label>
                                     </div>
@@ -380,9 +378,7 @@
                                     </div>
                                 </form>
 
-
-                                <form class="selectCourse" title="选择课程" action="sms/servlet/AddSignatureServlet"
-                                      id="selectCourse">
+                                <form class="selectCourse" title="选择课程" id="selectCourse">
                                     <div style="float:left; width:70px; padding-top:20px;">
                                         <label id='courseNameForSelTitle'>课程名称:</label>
                                     </div>
@@ -462,11 +458,10 @@
                                             </tr>
                                             </tbody>
                                         </table>
-                                        <!--<div class="pagination-cpt" pre-page="1" next-page="1"> <span class="totalCount">共0条记录</span> </div>-->
                                     </div>
                                 </form>
 
-                                <div class="sign-list-cpt" parent-account="">
+                                <div class="sign-list-cpt" style="min-width: 1200px;">
                                     <div class="block-title-cpt"> 班级一览</div>
                                     <div style="float:left; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
                                         <label id='classNameForSearchTitle'>班级名称:</label>
@@ -554,16 +549,15 @@
                                         <table class="yunmo" id="classesList">
                                             <thead>
                                             <tr>
-                                                <th style="min-width:105px;">班级名称</th>
-                                                <th style="min-width:140px;">人数</th>
-                                                <!--<th style="min-width:160px;padding-left: 18px;">校区类型</th> -->
-                                                <th style="min-width:180px;">所属课程</th>
-                                                <th style="width:100px;">所属校区</th>
-                                                <th style="width:100px;">班主任</th>
-                                                <th style="width:100px;">开班日期</th>
-                                                <th style="width:100px;">上课时间</th>
-                                                <th style="width:100px;">招生状态</th>
-                                                <th style="min-width:80px;">操作</th>
+                                                <th style="width:10%;">班级名称</th>
+                                                <th style="width:10%;">人数</th>
+                                                <th style="width:10%;">所属课程</th>
+                                                <th style="width:10%;">所属校区</th>
+                                                <th style="width:10%;">班主任</th>
+                                                <th style="width:15%;">开班日期</th>
+                                                <th style="width:15%;">上课时间</th>
+                                                <th style="width:5%;">招生状态</th>
+                                                <th style="width:15%; min-width: 200px; text-align: center;">操作</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -576,11 +570,11 @@
                                                 <td>2017-06-05</td>
                                                 <td>周四10:00~12:00</td>
                                                 <td>停止招生</td>
-                                                <td><input type='button' name='deleteButton' value='删除'
-                                                           class="deleteButton">
-                                                    <input type='button' name='editButton' value='编辑'
-                                                           class="editButton"><input type='button' name='endClasses'
-                                                                                     value='结课' class="endClasses"></td>
+                                                <td style='text-align: center;'>
+                                                    <button class="deleteButton icon iconfont icon-delete">删除</button>
+                                                    <button class="editButton icon iconfont icon-edit">编辑</button>
+                                                    <button class="editButton icon iconfont icon-edit">节课</button>
+                                                </td>
                                             </tr>
                                             </tbody>
                                         </table>
