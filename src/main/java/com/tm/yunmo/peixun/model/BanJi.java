@@ -11,32 +11,43 @@ public class BanJi {
 
     private int id;
 
-    /*  '课程代码'*/
-    private String code;
-    /*  '教师'*/
+    /*  ''班级名称''*/
+    private String banji_name;
+    /*  '校区'*/
+    private String school_name;
+    /*  '课程名称'*/
+    private String kecheng_name;
+    /*  '预招人数'*/
+    private int pre_recruit_cnt;
+    /* ''开班日期'' */
+    private Date start_ban_ji_date;
+    /*  ''学生每次上课消耗课时，使用int，单位为100.一个课时，值为100''*/
+    private String student_consume_keshi;
+    /* '老师每次上课消耗课时 使用int，单位为100.一个课时，值为100' */
+    private int teacher_consume_keshi;
+    /* ''备注'' */
+    private String note;
+
     private String teacher;
-    /*  '助教'*/
-    private String assitantTeacher;
-    /*  '学生列表'*/
-    private String studentList;
-    /* '所属学校代码' */
-    private String schoolCode;
-    /*  '教室代码'*/
-    private String classroomCode;
-    /* '预招人数\n' */
-    private int preCnt;
-    /* '状态\n' */
+
+    private String assistant_teacher;
+    /* '状态' */
     private String status;
-    /*  '开始时间'*/
-    private String startDate;
-    /* '结束时间' */
-    private String endDate;
-    /* '上课时间' */
-    private String attendRule;
-    /*  */
+
     private Date createDate;
-    /*  */
+
     private Date updateDate;
+
+    //机构代码
+    private String  institution_code;
+
+    public String getInstitution_code() {
+        return institution_code;
+    }
+
+    public void setInstitution_code(String institution_code) {
+        this.institution_code = institution_code;
+    }
 
     public int getId() {
         return id;
@@ -46,12 +57,68 @@ public class BanJi {
         this.id = id;
     }
 
-    public String getCode() {
-        return code;
+    public String getBanji_name() {
+        return banji_name;
     }
 
-    public void setCode(String code) {
-        this.code = code;
+    public void setBanji_name(String banji_name) {
+        this.banji_name = banji_name;
+    }
+
+    public String getSchool_name() {
+        return school_name;
+    }
+
+    public void setSchool_name(String school_name) {
+        this.school_name = school_name;
+    }
+
+    public String getKecheng_name() {
+        return kecheng_name;
+    }
+
+    public void setKecheng_name(String kecheng_name) {
+        this.kecheng_name = kecheng_name;
+    }
+
+    public int getPre_recruit_cnt() {
+        return pre_recruit_cnt;
+    }
+
+    public void setPre_recruit_cnt(int pre_recruit_cnt) {
+        this.pre_recruit_cnt = pre_recruit_cnt;
+    }
+
+    public Date getStart_ban_ji_date() {
+        return start_ban_ji_date;
+    }
+
+    public void setStart_ban_ji_date(Date start_ban_ji_date) {
+        this.start_ban_ji_date = start_ban_ji_date;
+    }
+
+    public String getStudent_consume_keshi() {
+        return student_consume_keshi;
+    }
+
+    public void setStudent_consume_keshi(String student_consume_keshi) {
+        this.student_consume_keshi = student_consume_keshi;
+    }
+
+    public int getTeacher_consume_keshi() {
+        return teacher_consume_keshi;
+    }
+
+    public void setTeacher_consume_keshi(int teacher_consume_keshi) {
+        this.teacher_consume_keshi = teacher_consume_keshi;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public String getTeacher() {
@@ -62,44 +129,12 @@ public class BanJi {
         this.teacher = teacher;
     }
 
-    public String getAssitantTeacher() {
-        return assitantTeacher;
+    public String getAssistant_teacher() {
+        return assistant_teacher;
     }
 
-    public void setAssitantTeacher(String assitantTeacher) {
-        this.assitantTeacher = assitantTeacher;
-    }
-
-    public String getStudentList() {
-        return studentList;
-    }
-
-    public void setStudentList(String studentList) {
-        this.studentList = studentList;
-    }
-
-    public String getSchoolCode() {
-        return schoolCode;
-    }
-
-    public void setSchoolCode(String schoolCode) {
-        this.schoolCode = schoolCode;
-    }
-
-    public String getClassroomCode() {
-        return classroomCode;
-    }
-
-    public void setClassroomCode(String classroomCode) {
-        this.classroomCode = classroomCode;
-    }
-
-    public int getPreCnt() {
-        return preCnt;
-    }
-
-    public void setPreCnt(int preCnt) {
-        this.preCnt = preCnt;
+    public void setAssistant_teacher(String assistant_teacher) {
+        this.assistant_teacher = assistant_teacher;
     }
 
     public String getStatus() {
@@ -108,30 +143,6 @@ public class BanJi {
 
     public void setStatus(String status) {
         this.status = status;
-    }
-
-    public String getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(String startDate) {
-        this.startDate = startDate;
-    }
-
-    public String getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(String endDate) {
-        this.endDate = endDate;
-    }
-
-    public String getAttendRule() {
-        return attendRule;
-    }
-
-    public void setAttendRule(String attendRule) {
-        this.attendRule = attendRule;
     }
 
     public Date getCreateDate() {
