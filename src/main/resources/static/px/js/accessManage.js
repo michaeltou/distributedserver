@@ -25,7 +25,7 @@ $(function () {
                 $("#authorityBody").empty().append(html);
                 $("#authorifyselect").treeMultiselect({
                     searchable: false,
-                    hideSidePanel: true,
+                    hideSidePanel: false,
                     freeze: false,
                     collapsible: false,
                 });
@@ -50,7 +50,7 @@ $(function () {
                 $("#authorityBody").empty().append(html);
                 $("#authorifyselect").treeMultiselect({
                     searchable: false,
-                    hideSidePanel: true,
+                    hideSidePanel: false,
                     freeze: false,
                     collapsible: false,
                 });
@@ -74,7 +74,7 @@ $(function () {
                 $("#authorityBody").empty().append(html);
                 $("#authorifyselect").treeMultiselect({
                     searchable: false,
-                    hideSidePanel: true,
+                    hideSidePanel: false,
                     freeze: false,
                     collapsible: false,
                 });
@@ -98,7 +98,7 @@ $(function () {
                 $("#authorityBody").empty().append(html);
                 $("#authorifyselect").treeMultiselect({
                     searchable: false,
-                    hideSidePanel: true,
+                    hideSidePanel: false,
                     freeze: false,
                     collapsible: false,
                 });
@@ -120,7 +120,7 @@ $(function () {
     });
 
     //=============================================
-    $("#authorifyselect").treeMultiselect({searchable: false, hideSidePanel: true, freeze: false, collapsible: false,});
+    $("#authorifyselect").treeMultiselect({searchable: false, hideSidePanel: false, freeze: false, collapsible: false,});
     $("#accessRoleDelete").hide();
 
     //新建角色按钮

@@ -46,6 +46,11 @@ $(function () {
             $(this).parents(".classPermit").children(".printDataDiv").printArea();
         }
     });
+
+    $("#back").click(function () {
+        //alert("");
+        window.location.href = "Student.html";
+    });
 });
 
 var hkey_root, hkey_path, hkey_key
