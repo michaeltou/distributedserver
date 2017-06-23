@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by daoying on 2017/6/20.
+ * 课程收费信息rest接口
  */
 @RestController
 public class KeChengChargeInfoApi {

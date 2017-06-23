@@ -14,6 +14,7 @@ import java.util.List;
 
 /**
  * Created by daoying on 2017/6/20.
+ * 教室rest接口
  */
 @RestController
 public class ClassroomApi {

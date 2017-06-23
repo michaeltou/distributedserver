@@ -8,38 +8,67 @@ import java.util.Date;
  */
 public class Student {
 
+
     private int id;
     //'姓名'
     private String name;
-    //'性别'
-    private String gender;
-    //'生日'
-    private String birthday;
     //'身份证'
     private String sfzCode;
     //'电话'
     private String phone;
-    //'父亲电话'
-    private String fatherPhone;
+
+    //'性别'
+    private String gender;
+    //'生日'
+    private String birthday;
+
     //'母亲电话'
     private String motherPhone;
+    //'父亲电话'
+    private String fatherPhone;
+
+    //'地址'
+    private String address;
+
+
+    //'邮箱'
+    private String email;
+
+
+
     //'微信号'
     private String weixinhao;
     //
     private String qq;
-    //'地址'
-    private String address;
-    //'市场标记'
-    private String marketingTag;
     //'渠道'
-    private String quDaoSource;
+    private String qudao_source;
     //'头像'
-    private String headerImage;
+    private String header_image_url;
+  //  '在读学校级别 例如：学前班，小学，初中',
+    private String current_school_level;
+    //'在读学校年级  例如：一年级、二年级',
+    private String current_school_grade;
 
+    //'籍贯'
+    private String jiguan;
+    //'民族'
+    private String minzu;
+    //'政治面貌'
+    private String zheng_zhi_mian_miao;
+    //机构代码
+    private String   institution_code;
     //
     private Date createDate;
     //
     private Date updateDate;
+
+    public String getInstitution_code() {
+        return institution_code;
+    }
+
+    public void setInstitution_code(String institution_code) {
+        this.institution_code = institution_code;
+    }
 
     public int getId() {
         return id;
@@ -55,22 +84,6 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    public String getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(String birthday) {
-        this.birthday = birthday;
     }
 
     public String getSfzCode() {
@@ -89,12 +102,20 @@ public class Student {
         this.phone = phone;
     }
 
-    public String getFatherPhone() {
-        return fatherPhone;
+    public String getGender() {
+        return gender;
     }
 
-    public void setFatherPhone(String fatherPhone) {
-        this.fatherPhone = fatherPhone;
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
     public String getMotherPhone() {
@@ -103,6 +124,30 @@ public class Student {
 
     public void setMotherPhone(String motherPhone) {
         this.motherPhone = motherPhone;
+    }
+
+    public String getFatherPhone() {
+        return fatherPhone;
+    }
+
+    public void setFatherPhone(String fatherPhone) {
+        this.fatherPhone = fatherPhone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getWeixinhao() {
@@ -121,36 +166,60 @@ public class Student {
         this.qq = qq;
     }
 
-    public String getAddress() {
-        return address;
+    public String getQudao_source() {
+        return qudao_source;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setQudao_source(String qudao_source) {
+        this.qudao_source = qudao_source;
     }
 
-    public String getMarketingTag() {
-        return marketingTag;
+    public String getHeader_image_url() {
+        return header_image_url;
     }
 
-    public void setMarketingTag(String marketingTag) {
-        this.marketingTag = marketingTag;
+    public void setHeader_image_url(String header_image_url) {
+        this.header_image_url = header_image_url;
     }
 
-    public String getQuDaoSource() {
-        return quDaoSource;
+    public String getCurrent_school_level() {
+        return current_school_level;
     }
 
-    public void setQuDaoSource(String quDaoSource) {
-        this.quDaoSource = quDaoSource;
+    public void setCurrent_school_level(String current_school_level) {
+        this.current_school_level = current_school_level;
     }
 
-    public String getHeaderImage() {
-        return headerImage;
+    public String getCurrent_school_grade() {
+        return current_school_grade;
     }
 
-    public void setHeaderImage(String headerImage) {
-        this.headerImage = headerImage;
+    public void setCurrent_school_grade(String current_school_grade) {
+        this.current_school_grade = current_school_grade;
+    }
+
+    public String getJiguan() {
+        return jiguan;
+    }
+
+    public void setJiguan(String jiguan) {
+        this.jiguan = jiguan;
+    }
+
+    public String getMinzu() {
+        return minzu;
+    }
+
+    public void setMinzu(String minzu) {
+        this.minzu = minzu;
+    }
+
+    public String getZheng_zhi_mian_miao() {
+        return zheng_zhi_mian_miao;
+    }
+
+    public void setZheng_zhi_mian_miao(String zheng_zhi_mian_miao) {
+        this.zheng_zhi_mian_miao = zheng_zhi_mian_miao;
     }
 
     public Date getCreateDate() {
