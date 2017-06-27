@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>助教宝 - 管理后台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="baidu-site-verification" content="elXuCAMAW3">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index_style.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/yp_style.css">
+    <link rel="stylesheet" href="css/jquery.tree-multiselect.min.css"/>
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/student_saved.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/student_saved.js"></script>
+</head>
+
+<body style="background-color: #fff;" onload="load()">
+<div class="mainContainer">
+    <div class="rightmain clearfix tplSettingDome signSetting" data-page="domesticRegister">
+        <div class="app-framework-cpt">
+            <div class="domestic-register-manager-cpt">
+                <div class="tab-cpt">
+                    <div class="tab-body-group-cpt">
+                        <div class="tab-body-cpt tab-body-show">
+                            <div class="sign-setting-cpt clearfix">
+                                <div class="add-new-sign-cpt">
+                                    <div id="saveSuccessedTitle">
+                                        <div style="float: left;">
+                                            <input style="margin-left: 10px;" class="button button-middle  float-left"
+                                                   type="button" name="back" value="返回" id="back">
+                                        </div>
+                                        <div id="saveSuccessedImage">
+                                            <img src="image/saveSuccess.png">
+                                        </div>
+
+                                        保存成功
+                                    </div>
+                                </div>
+                                <div class="feeVoucher">
+
+                                    <div style="text-align: center; font-size: 24px; padding-bottom: 10px;">收款凭证</div>
+                                    <div class="printDataDiv">
+                                        <table class="printData" align="center">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="6" style="text-align: center; font-size: 24px;">
+                                                    XXXXXXXXXXXXXXXXXXXX收费凭证
+
+                                                    <div style="float: right">订单号:3098</div>
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size: 14px;">
+                                                    <div style="float:left;width: 70px;">
+                                                        <label>学员姓名:</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 14px;">
+                                                    <div style="float:left;">
+                                                        <label id="studentName">安迪</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 14px;">
+                                                    <div style="float:left;padding-left: 20px;width: 70px;">
+                                                        <label>订单类型:</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 14px;">
+                                                    <div style="float:left;">
+                                                        <label id="orderType">报名</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 14px;">
+                                                    <div style="float: right">
+                                                        <label>经办日期:</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 14px;">
+                                                    <div style="float: right">
+                                                        <label id="handleDate">2017-06-21</label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" style="font-size: 16px; text-align: center;">
+                                                    <div style="float: left ; width: 100%;text-align:center;">
+                                                        <label style="text-align: center;">交易内容</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 16px; text-align: center;">
+                                                    <div style="float: left ; width: 100%;text-align:center;">
+                                                        <label style="text-align: center;">数量</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 16px; text-align: center;">
+                                                    <div style="float: left ; width: 100%;text-align:center;">
+                                                        <label style="text-align: center;">优惠</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 16px; text-align: center;">
+                                                    <div style="float: left ; width: 100%;text-align:center;">
+                                                        <label style="text-align: center;">应收</label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" style="font-size: 14px;">
+                                                    <div style="float: left ; width: 55px;">
+                                                        <label style="text-align: center;">课程：</label>
+                                                    </div>
+                                                    <div style="float: left ;">
+                                                        <label style="text-align: center;">XXXXX</label>
+                                                    </div>
+                                                    <div style="clear: both;"></div>
+                                                </td>
+                                                <td style="font-size: 14px; text-align: center;">
+                                                    <div style="float: left ; width: 100%;text-align:center;">
+                                                        <label style="text-align: center;">12</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 14px; text-align: center;">
+                                                    <div style="float: left ; width: 100%;text-align:center;">
+                                                        <label style="text-align: center;">￥500</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 14px; text-align: center;">
+                                                    <div style="float: left ; width: 100%;text-align:center;">
+                                                        <label style="text-align: center;">￥5000</label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" style="font-size: 14px;">
+                                                    <div style="float: left ; width: 55px;">
+                                                        <label style="text-align: center;">教材：</label>
+                                                    </div>
+                                                    <div style="float: left ;">
+                                                        <label style="text-align: center;">拉丁舞鞋(已领取)</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 14px; text-align: center;">
+                                                    <div style="float: left ; width: 100%;text-align:center;">
+                                                        <label style="text-align: center;">1</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 14px; text-align: center;">
+                                                    <div style="float: left ; width: 100%;text-align:center;">
+                                                        <label style="text-align: center;">￥100</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 14px; text-align: center;">
+                                                    <div style="float: left ; width: 100%;text-align:center;">
+                                                        <label style="text-align: center;">￥500</label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size: 16px; text-align: left;">
+                                                    <div style="float: left ; width: 100%;text-align:left;">
+                                                        <label style="text-align: center;">应收总计:</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 18px; text-align: center;">
+                                                    <div style="float: left ; width: 100%;text-align:center;">
+                                                        <label style="text-align: center;">￥7880</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 16px; text-align: left;">
+                                                    <div style="float: left ; width: 100%;text-align:left;">
+                                                        <label style="text-align: center;">实收总计:</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 18px; text-align: center;">
+                                                    <div style="float: left ; width: 100%;text-align:center;">
+                                                        <label style="text-align: center;">￥7880</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 16px; text-align: left;">
+                                                    <div style="float: left ; width: 100%;text-align:left;">
+                                                        <label style="text-align: center;">学员账户:</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 16px; text-align: center;">
+                                                    <div style="float: left ; width: 100%;text-align:center;">
+                                                        <label style="text-align: center;">￥0</label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size: 14px; text-align: left;">
+                                                    <div style="float: left ; text-align:left;margin-bottom: 20px;">
+                                                        <label style="text-align: center;">电话:</label>
+                                                    </div>
+                                                    <div style="float: left ; text-align:left;">
+                                                        <label id="schoolPhone"
+                                                               style="text-align: left;">18717947096</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 14px; text-align: center;">
+                                                    <div style="float: left ; text-align:left;margin-bottom: 20px;">
+                                                        <label style="text-align: center;">地址:</label>
+                                                    </div>
+                                                    <div style="float: left ; text-align:left;">
+                                                        <label id="schoolAddress" style="text-align: left;">杭州滨江</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 14px; text-align: left;">
+                                                    <div style="float: left ; text-align:left; margin-bottom: 20px;">
+                                                        <label style="text-align: center;">经办人:</label>
+                                                    </div>
+                                                    <div style="float: left ; text-align:left;">
+                                                        <label id="handlePerson" style="text-align: center;">张老师</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 14px; text-align: left;">
+                                                    <div style="float: left ; text-align:left;">
+                                                        <label style="text-align: center;">打印时间:</label>
+                                                    </div>
+                                                    <div style="float: left ; text-align:left;">
+                                                        <label id="pringDateTime" style="text-align: center;">2017-06-21
+                                                            10:00</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 14px; text-align: left;">
+                                                    <div style="float: left ; text-align:left;margin-bottom: 20px;">
+                                                        <label style="text-align: center;">经办人签名:</label>
+                                                    </div>
+                                                </td>
+                                                <td style="font-size: 14px; text-align: left; ">
+                                                    <div style="float: left ; text-align:left; margin-bottom: 20px;">
+                                                        <label>客户签名:</label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="6" style="text-align: center; font-size: 14px;">
+                                                    <div style="float: left ; text-align:left; width: 50px;">
+                                                        <label>备注:</label>
+                                                    </div>
+                                                    <div style="float: left ; text-align:left;">
+                                                        <label id="remarkData" style="text-align: left;">XXXXXXXXXXXXXXXXXXXX</label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div style="margin-left: 550px;margin-top: 20px;">
+                                        <input type="button" class="btnPrint" value="打印"
+                                               onmouseover="this.style.backgroundPosition='left -40px'"
+                                               onmouseout="this.style.backgroundPosition='left top'"/>
+                                    </div>
+                                </div>
+                                <div class="classPermit">
+
+                                    <div style="text-align: center; font-size: 24px; padding-bottom: 10px;">听课证</div>
+                                    <div class="printDataDiv">
+                                        <table class="printData" align="center">
+                                            <tbody>
+                                            <tr>
+                                                <td colspan="6" style="text-align:center;font-size: 24px;">
+                                                    XXXXXXXXXXXXXXXX 听课证
+
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1" rowspan="3" width="150px">
+                                                    <img src="image/employee.png"></img>
+                                                </td>
+                                                <td colspan="1" width="100px">学员姓名:</td>
+                                                <td colspan="3" width="350px"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">报读课程:</td>
+                                                <td colspan="3"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">报读校区:</td>
+                                                <td colspan="3"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1" rowspan="4">
+                                                    <img src="image/erweima.png" width="150px" height="150px"></img>
+                                                </td>
+                                                <td colspan="1">报读课时:</td>
+                                                <td colspan="3"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">班级:</td>
+                                                <td colspan="3"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">教室:</td>
+                                                <td colspan="3"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="1">上课时间:</td>
+                                                <td colspan="3"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div style="margin-left: 550px;margin-top: 20px;">
+                                        <input type="button" class="btnPrint" value="打印"
+                                               onmouseover="this.style.backgroundPosition='left -40px'"
+                                               onmouseout="this.style.backgroundPosition='left top'"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

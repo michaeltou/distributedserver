@@ -2,24 +2,23 @@
 <html>
 <head>
     <title>助教宝 - 管理后台</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="baidu-site-verification" content="elXuCAMAW3">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="renderer" content="webkit">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/index_style.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/yp_style.css">
-    <link rel="stylesheet" href="css/schooldistrict.css">
-    <link rel="stylesheet" href="css/iconfont.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="baidu-site-verification" content="elXuCAMAW3"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="renderer" content="webkit"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/index_style.css"/>
+    <link rel="stylesheet" href="css/jquery-ui.css"/>
+    <link rel="stylesheet" href="css/yp_style.css"/>
+    <link rel="stylesheet" href="css/schooldistrict.css"/>
+    <link rel="stylesheet" href="css/iconfont.css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
-    <script type="text/javascript" src="js/jquery.form.js"></script>
     <script type="text/javascript" src="js/schooldistrict.js"></script>
 </head>
 
-<body style="background-color: #fff;" onload="load()">
+<body style="background-color: #fff;" >
 <div class="mainContainer">
     <div class="rightmain clearfix tplSettingDome signSetting" data-page="domesticRegister">
         <div class="app-framework-cpt">
@@ -30,47 +29,53 @@
                             <div class="sign-setting-cpt clearfix">
                                 <div class="add-new-sign-cpt">
                                     <div>
-                                        <input style="margin-left: 10px;" class="button button-middle  float-left"
-                                               type="button" name="addsignature" value="新建校区" id="NewSchoolDistrict">
+                                        <input type="button"  name="newSchoolButton" style="margin-left: 10px;" class="button button-middle  float-left" value="新建校区" id="newSchoolBtn"/>
                                         <span class="MaxSchoolDistrictCount">您的校区数量已达到购买上线，无法再新建校区，如有需要请联系助教宝客服人员</span>
                                     </div>
                                 </div>
-                                <form class="AddSchoolDistrict" title="新增校区" action="sms/servlet/AddSignatureServlet"
+                                <form class="AddSchoolDistrict" title="新增校区"
                                       id="AddSchoolDistrict">
                                     <div style="float:left; width:70px; padding-top:20px;">
                                         <label id='schoolCodeTitle'>校区编码:</label>
                                     </div>
                                     <div style="float:left;  padding-top:15px;">
                                         <input class="text-input-cpt" type="text" name="schoolCodeText"
-                                               placeholder="请输入校区编码(必填)" value="" id="schoolCodeText">
+                                               placeholder="请输入校区编码(必填)" value="" id="schoolCodeText"/>
                                     </div>
                                     <div style="float:left; width:70px; padding-top:20px;">
                                         <label id='schoolNameTitle'>校区名称:</label>
                                     </div>
                                     <div style="float:left;  padding-top:15px;">
                                         <input class="text-input-cpt" type="text" name="schoolNameText"
-                                               placeholder="请输入校区名称(必填)" value="" id="schoolNameText">
+                                               placeholder="请输入校区名称(必填)" value="" id="schoolNameText"/>
                                     </div>
                                     <div style="float:left; width:70px; padding-top:20px;">
-                                        <label id='schoolContactTitle'>联系人:</label>
+                                        <label id='schoolContactTitle'>校长:</label>
                                     </div>
                                     <div style="float:left;  padding-top:15px;">
                                         <input class="text-input-cpt" type="text" name="schoolContactText"
-                                               placeholder="请输入联系人姓名(必填)" value="" id="schoolContactText">
+                                               placeholder="请输入校长姓名(必填)" value="" id="schoolContactText"/>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='schoolContactCode'>校长身份证:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="schoolContactPersonText"
+                                               placeholder="请输入校长身份证(必填)" value="" id="schoolContactPersonText"/>
                                     </div>
                                     <div style="float:left; width:70px; padding-top:20px;">
                                         <label id='schoolPhoneTitle'>联系电话</label>
                                     </div>
                                     <div style="float:left;  padding-top:15px;">
                                         <input class="text-input-cpt" type="text" name="schoolPhoneText"
-                                               placeholder="请输入联系电话(必填)" value="" id="schoolPhoneText">
+                                               placeholder="请输入联系电话(必填)" value="" id="schoolPhoneText"/>
                                     </div>
                                     <div style="float:left; width:70px; padding-top:20px;">
                                         <label id='schoolAddressTitle'>校区地址</label>
                                     </div>
                                     <div style="float:left;  padding-top:15px;">
                                         <input class="text-input-cpt" type="text" name="schoolAddressText"
-                                               placeholder="请输入校区地址(必填)" value="" id="schoolAddressText">
+                                               placeholder="请输入校区地址(必填)" value="" id="schoolAddressText"/>
                                     </div>
                                     <div style="float:left; width:70px; padding-top:20px;">
                                         <label id='schoolTypeTitle'>校区类型:</label>
@@ -89,15 +94,72 @@
                                     </div>
                                     <div style="padding-top:15px; clear:both;"></div>
                                 </form>
+
+                                <form class="UpdateSchoolDistrict" title="更新校区"
+                                      id="UpdateSchoolDistrict">
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='idTitle'>id:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="idTextName" readonly="readonly"
+                                               placeholder="无需输入" value="" id="idText"/>
+                                    </div>
+
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='schoolMasterTitle'>校长:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="schoolContactText"
+                                               placeholder="请输入校长姓名(必填)" value="" id="schoolMasterText"/>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='schoolMasterCodeTitle'>校长身份证:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="schoolContactPersonText"
+                                               placeholder="请输入校长身份证(必填)" value="" id="schoolMasterCodeText"/>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='phoneTitle'>联系电话</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="schoolPhoneText"
+                                               placeholder="请输入联系电话(必填)" value="" id="phoneText"/>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='addressTitle'>校区地址</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="schoolAddressText"
+                                               placeholder="请输入校区地址(必填)" value="" id="addressText"/>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='typeTitle'>校区类型:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:80px; height:21px;">
+                                            <select name="schoolTypeText"
+                                                    style="position:absolute; clip:rect(2px 82px 22px 2px); margin:-2px; width:84px; height:24px; line-height:24px; background:#fff;"
+                                                    id="typeText">
+                                                <option value="直营" selected="selected"> 直营</option>
+                                                <option value="加盟"> 加盟</option>
+                                                <option value="代理"> 代理</option>
+                                                <option value="合作"> 合作</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="padding-top:15px; clear:both;"></div>
+                                </form>
+
                                 <div class="sign-list-cpt" style="position: relative; min-width: 700px; ">
                                     <div class="block-title-cpt"> 校区一览</div>
                                     <div class="searchbar clearfix"><span class="float-left search-title">校区名称：</span>
                                         <div class="input-cpt-wrapper float-left" style="width: 300px;">
                                             <input class="text-input-cpt" placeholder="请输入校区名称" name="keyword"
-                                                   type="text" id="keyword">
+                                                   type="text" id="keyword"/>
                                         </div>
                                         <input style="margin-left: 10px; " class="button button-middle float-left"
-                                               type="button" name="search" value="查询" id="search">
+                                               type="button" name="search" value="查询" id="search"/>
                                     </div>
                                     <div class="recordList">
                                         <table class="yunmo">
@@ -105,9 +167,10 @@
                                             <tr>
                                                 <th style="width:10%;">校区编号</th>
                                                 <th style="width:15%;">校区名称</th>
-                                                <th style="...">校区代码</th>
+                                                <th style="...">校区编码</th>
                                                 <th style="width:15%;">校区类型</th>
-                                                <th style="width:15%;">联系人</th>
+                                                <th style="width:15%;">校长</th>
+                                                <th style="width:15%;">校长身份证</th>
                                                 <th style="width:15%;">联系电话</th>
                                                 <th style="width:15%;">校区地址</th>
                                                 <th style="width:15%; min-width: 150px; text-align: center;">操作</th>
@@ -120,6 +183,7 @@
                                                 <td th:text="${prod.institution_code}">orange</td>
                                                 <td th:text="${prod.type}">orange</td>
                                                 <td th:text="${prod.principal_name}">orange</td>
+                                                <td th:text="${prod.principal_sfz_code}">orange</td>
                                                 <td th:text="${prod.phone}">orange</td>
                                                 <td th:text="${prod.address}">orange</td>
                                                 <td ><input type='button' name='deleteButton' value='删除' class="deleteButton"/>

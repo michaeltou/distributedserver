@@ -1,20 +1,25 @@
 $(function () {
-    $('#NewSchoolDistrict').click(function () {
+
+    $('#newSchoolBtn').click(function () {
         $('.AddSchoolDistrict').dialog("option", "title", "新建校区").dialog('open');
     });
 
+
+
+
     /*
      $('input[name="deleteButton"]').click(function(event){
-     alert("sd");
      DeleteData($(this).get(0));
      });
 
+    /*
      $('.editButton').click(function(event){
      EditData($(this).get(0));
      $('.AddSchoolDistrict').dialog('open');
      });
      */
     $("body").on('click', ".deleteButton", function () {
+    
 
         if (window.confirm('你确定要删除吗？')) {
             //alert("确定");
@@ -28,7 +33,7 @@ $(function () {
 
     $("body").on('click', ".editButton", function () {
         EditData($(this).get(0));
-        $('.AddSchoolDistrict').dialog("option", "title", "编辑校区").dialog('open');
+        $('.UpdateSchoolDistrict').dialog("option", "title", "编辑校区").dialog('open');
     });
 
 
@@ -50,10 +55,15 @@ $(function () {
                     $("#schoolNameText").focus();
                     return;
                 } else if ($("#schoolContactText").val() == "") {
-                    alert("联系人不能为空。");
+                    alert("校长不能为空。");
                     $("#schoolContactText").focus();
                     return;
-                } else if ($("#schoolPhoneText").val() == "") {
+                }
+                else if ($("#schoolContactPersonText").val() == "") {
+                    alert("校长身份证不能为空。");
+                    $("#schoolContactPersonText").focus();
+                    return;
+                }else if ($("#schoolPhoneText").val() == "") {
                     alert("联系电话不能为空。");
                     $("#schoolPhoneText").focus();
                     return;
@@ -64,17 +74,84 @@ $(function () {
                     return;
                 }
                 //$(this).submit();
+                $.ajax({
+                    url: "/px/insertSchool",//servlet文件的名称
+                    type: "POST",
+                    data:JSON.stringify({ school_name:$("#schoolNameText").val(), institution_code:$("#schoolCodeText").val(), address:$("#schoolAddressText").val(),
+                        phone:$("#schoolPhoneText").val(), principal_name:$("#schoolContactText").val() , principal_sfz_code:$("#schoolContactPersonText").val(), type:$("#schoolTypeText").val()}),
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data, textStatus) {
+                        if(data.success){
+                            alert("更新学校成功");
+                            window.location.href="/px/serachSchool";
+                        }
+                        else{
+                            window.alert("更新学校失败");
+                        }
+                    }
+                });
                 $(this).dialog('close');
                 //-----------------------------
-                var tr = $("<tr></tr>").attr("bgcolor", "#FFFFFF");
-                tr.append($("<td></td>").html($("#schoolCodeText").val()));
-                tr.append($("<td></td>").html($("#schoolNameText").val()));
-                tr.append($("<td></td>").html($("#schoolTypeText").val()));
-                tr.append($("<td></td>").html($("#schoolContactText").val()));
-                tr.append($("<td></td>").html($("#schoolPhoneText").val()));
-                tr.append($("<td></td>").html($("#schoolAddressText").val()));
-                tr.append($("<td style='text-align: center;'></td>").html("<button class='deleteButton icon iconfont icon-delete'>删除</button><button class='editButton icon iconfont icon-edit'>编辑</button>"));
-                tr.appendTo($("tbody"));
+
+                //------------------------------
+            },
+            '取消': function () {
+                $(this).dialog('close');
+            }
+        },
+        open: function (event, ui) {
+            $(".ui-dialog-titlebar-close", $(this).parent()).hide();
+        },
+
+    });
+
+    $('.UpdateSchoolDistrict').dialog({
+        autoOpen: false,
+        resizable: false,
+        modal: true,
+        width: 440,
+        height: 400,
+        title: '更新校区',
+        buttons: {
+            '保存': function () {
+            if ($("#schoolMasterText").val() == "") {
+                    alert("校长不能为空。");
+                    $("#schoolMasterText").focus();
+                    return;
+                }
+                else if ($("#schoolMasterCodeText").val() == "") {
+                    alert("校长身份证不能为空。");
+                    $("#schoolMasterCodeText").focus();
+                    return;
+                }else if ($("#phoneText").val() == "") {
+                    alert("联系电话不能为空。");
+                    $("#phoneText").focus();
+                    return;
+                }
+                else if ($("#addressText").val() == "") {
+                    alert("校区地址不能为空。");
+                    $("#addressText").focus();
+                    return;
+                }
+                //$(this).submit();
+                $.ajax({
+                    url: "/px/updateSchool",//servlet文件的名称
+                    type: "POST",
+                    data:JSON.stringify({ id:$("#idText").val(), address:$("#addressText").val(),
+                        phone:$("#phoneText").val(), principal_name:$("#schoolMasterText").val() , principal_sfz_code:$("#schoolMasterCodeText").val(), type:$("#typeText").val()}),
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data, textStatus) {
+                        if(data.success){
+                            alert("更新学校成功");
+                            window.location.href="/px/serachSchool";
+                        }
+                        else{
+                            window.alert("更新学校失败");
+                        }
+                    }
+                });
+                $(this).dialog('close');
+                //-----------------------------
 
                 //------------------------------
             },
@@ -90,6 +167,10 @@ $(function () {
 
 
     $(document).ready(function () {
+        $("#NewSchoolDistrict").attr("disabled", "true");
+        $("#UpdateSchoolDistrict").attr("disabled", "true");
+        $(".MaxSchoolDistrictCount").show();
+        /*
         $.ajax({
             url: "/sms/servlet/CheckSignatureExistServlet",//servlet文件的名称
             type: "GET",
@@ -103,32 +184,35 @@ $(function () {
                 }
             }
         });
+        */
     });
 
+    
     $("#search").click(function () {
-        $.ajax({
-            type: "POST",
-            url: "XXXXXX",
-            data: "keyword=" + $("#keyword").val(),
-            success: function (data) {
 
-            }
-        });
+        if ($("#keyword").val() == "") {
+            alert("输入不能为空");
+            $("#keyword").focus();
+            return;
+        }
+        var institution_code=$("#keyword").val();
+        window.location.href="/px/querySchoolListByInstitution?institution_code="+institution_code;
     });
+    
 });
 
 function EditData(editRow) {
     var tr = editRow.parentNode.parentNode;
     var cell = tr.cells[0];//获取某行下面的某个td元素
-    byId("schoolCodeText").value = (tr.cells[0]).innerHTML;
-    byId("schoolNameText").value = (tr.cells[1]).innerHTML;
-    byId("schoolContactText").value = (tr.cells[3]).innerHTML;
-    byId("schoolPhoneText").value = (tr.cells[4]).innerHTML;
-    byId("schoolAddressText").value = (tr.cells[5]).innerHTML;
+    byId("idText").value = (tr.cells[0]).innerHTML;
+    byId("schoolMasterText").value = (tr.cells[4]).innerHTML;
+    byId("schoolMasterCodeText").value = (tr.cells[5]).innerHTML;
+    byId("phoneText").value = (tr.cells[6]).innerHTML;
+    byId("addressText").value = (tr.cells[7]).innerHTML;
     //byId("schoolTypeText").value = (tr.cells[2]).innerHTML;
-    var all_options = document.getElementById("schoolTypeText").options;
+    var all_options = document.getElementById("typeText").options;
     for (i = 0; i < all_options.length; i++) {
-        if (all_options[i].value == (tr.cells[2]).innerHTML)  // 根据option标签的ID来进行断  测试的代码这里是两个等号
+        if (all_options[i].value == (tr.cells[3]).innerHTML)  // 根据option标签的ID来进行断  测试的代码这里是两个等号
         {
             all_options[i].selected = true;
         }
@@ -136,8 +220,24 @@ function EditData(editRow) {
 }
 
 function DeleteData(delRow) {
-    var table = delRow.parentNode.parentNode.parentNode;
-    table.removeChild(delRow.parentNode.parentNode);
+    var tr = delRow.parentNode.parentNode;
+    var idTxt=(tr.cells[0]).innerText;
+    $.ajax({
+        url: "/px/deleteSchool",//servlet文件的名称
+        type: "POST",
+        data:JSON.stringify({id:idTxt}),
+        contentType: "application/json; charset=utf-8",
+        success: function (data, textStatus) {
+            if(data.success){
+                alert("删除学校成功");
+                window.location.href="/px/serachSchool";
+            }
+            else{
+                window.alert("删除学校失败");
+            }
+        }
+    });
+
 }
 
 function byId(id) {

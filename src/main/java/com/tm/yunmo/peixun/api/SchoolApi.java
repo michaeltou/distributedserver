@@ -79,7 +79,7 @@ public class SchoolApi {
      * @param school
      * @return
      */
-    @RequestMapping("/insertSchool")
+    @RequestMapping("/px/insertSchool")
     public ResultModel insertSchool(@RequestBody School school) {
         ResultModel resultModel = new ResultModel();
 
@@ -114,7 +114,7 @@ public class SchoolApi {
      * @param school
      * @return
      */
-    @RequestMapping("/updateSchool")
+    @RequestMapping("/px/updateSchool")
     public ResultModel updateSchool(@RequestBody School school) {
         ResultModel resultModel = new ResultModel();
         int result = schoolService.updateSchool(school);
@@ -146,7 +146,7 @@ public class SchoolApi {
      * @param school
      * @return
      */
-    @RequestMapping("/deleteSchool")
+    @RequestMapping("/px/deleteSchool")
     public ResultModel deleteSchool(@RequestBody School school) {
         ResultModel resultModel = new ResultModel();
         int result = schoolService.deleteSchool(school);

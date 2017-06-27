@@ -32,6 +32,7 @@ public class ResultModel<T> {
     }
 
     public void setErrorCode(String errorCode) {
+        setSuccess(false);
         this.errorCode = errorCode;
     }
 

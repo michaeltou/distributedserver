@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>助教宝 - 管理后台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="baidu-site-verification" content="elXuCAMAW3">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index_style.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/yp_style.css">
+    <link rel="stylesheet" href="css/employee.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/jquery.tree-multiselect.min.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.form.js"></script>
+    <script type="text/javascript" src="js/employee.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+
+</head>
+
+<body style="background-color: #fff;" onload="load()">
+<div class="mainContainer">
+    <div class="rightmain clearfix tplSettingDome signSetting" data-page="domesticRegister">
+        <div class="app-framework-cpt">
+            <div class="domestic-register-manager-cpt">
+                <div class="tab-cpt">
+                    <div class="tab-body-group-cpt">
+                        <div class="tab-body-cpt tab-body-show">
+                            <div class="sign-setting-cpt clearfix">
+                                <div class="add-new-sign-cpt">
+                                    <div>
+                                        <input style="margin-left: 10px;" class="button button-middle  float-left"
+                                               type="button" name="NewEmployee" value="新建员工" id="NewEmployee">
+                                    </div>
+                                </div>
+                                <form class="AddEmplyee" title="新建社员" action="sms/servlet/AddSignatureServlet"
+                                      id="AddEmplyee">
+                                    <div style="float:left; width:140px; padding-top:20px; border:solid;"><a
+                                            target="_blank" href="image/employee.png" id="employeeImageHref"> <img
+                                            src="image/employee.png" id="employeeImage"
+                                            style="width:140px; height:120px;"> </a>
+                                        <input type="button" value="上传头像" style="width:140px; " id="imageselect">
+                                        <input style="display: none;" type="file" onchange="filechange(event)">
+                                    </div>
+                                    <div style="float:left; width:1030px;">
+                                        <div style="float:left; width:100%; height:30px; padding-top:8px;margin-left:50px; background-color:#9CF;">
+                                            <label id='employeeBaseInfoTitle' style="font-size:14px; margin-left:10px;">基本信息</label>
+                                        </div>
+                                        <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
+                                            <label id='employeeNameTitle'>员工姓名:</label>
+                                        </div>
+                                        <div style="float:left;  padding-top:15px;">
+                                            <input class="text-input-cpt" type="text" name="employeeNameText"
+                                                   placeholder="请输入员工姓名(必填)" value="" id="employeeNameText">
+                                        </div>
+                                        <div style="float:left; width:70px; padding-top:20px;padding-left:30px;">
+                                            <label id='employeePhoneTitle'>手机号码:</label>
+                                        </div>
+                                        <div style="float:left;  padding-top:15px;">
+                                            <input class="text-input-cpt" type="text" name="employeePhoneText"
+                                                   placeholder="请输入手机号码(必填)" value="" id="employeePhoneText">
+                                        </div>
+                                        <div style="clear:both;"></div>
+                                        <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
+                                            <label id='employeeAgeTitle'>年龄:</label>
+                                        </div>
+                                        <div style="float:left;  padding-top:15px;">
+                                            <input class="text-input-cpt" type="text" name="employeeAgeText"
+                                                   placeholder="请输入您的年龄(必填)" value="" id="employeeAgeText">
+                                        </div>
+                                        <div style="float:left; width:70px; padding-top:20px;padding-left:30px;">
+                                            <label id='employeeSexTitle'>性别:</label>
+                                        </div>
+                                        <div style="float:left;  padding-top:15px;">
+                                            <input type="radio" name="sex" value="女" id="female">
+                                            <label for='female'>女</label>
+                                            </input>
+                                            <input type="radio" name="sex" value="男" id="male">
+                                            <label for='male'>男</label>
+                                            </input>
+                                        </div>
+
+                                        <div style="clear:both;"></div>
+                                        <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
+                                            <label id='schoolTypeTitle'>所属校区:</label>
+                                        </div>
+                                        <div style="float:left;  padding-top:15px;">
+                                            <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
+                                                <select name="schoolTypeText"
+                                                        style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;"
+                                                        id="schoolTypeText">
+                                                    <option value="东校区"> 东校区</option>
+                                                    <option value="西校区"> 西校区</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div style="float:left; width:100%; height:30px; padding-top:8px; margin-top:18px; background-color:#9CF;">
+                                        <label id='employeeDetailedTitle' style="font-size:14px; margin-left:10px;">详细信息（选填）</label>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='employeeIDTitle'>身份证:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="employeeIDText"
+                                               placeholder="请输入身份证号码(选填)" value="" id="employeeIDText">
+                                    </div>
+
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:50px;">
+                                        <label id='employeeEmailTitle'>邮箱:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="employeeEmailText"
+                                               placeholder="请输入邮箱地址(选填)" value="" id="employeeEmailText">
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:50px;">
+                                        <label id='employeeMarriedTitle'>婚姻状况:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
+                                            <select name="employeeMarriedText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;"
+                                                    id="employeeMarriedText">
+                                                <option value="已婚"> 已婚</option>
+                                                <option value="未婚"> 未婚</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='nativePlaceTitle'>籍贯:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="nativePlaceText"
+                                               placeholder="请输入籍贯所在地(选填)" value="" id="nativePlaceText">
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:50px;">
+                                        <label id='nationTitle'>民族:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="nationText"
+                                               placeholder="请输入您所属的民族(选填)" value="" id="nationText">
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:50px;">
+                                        <label id='politicalStatusTitle'>政治面貌:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
+                                            <select name="politicalStatusText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;"
+                                                    id="politicalStatusText">
+                                                <option value="群众"> 群众</option>
+                                                <option value="党员"> 党员</option>
+                                                <option value="预备党员"> 预备党员</option>
+                                                <option value="团员"> 团员</option>
+                                                <option value="其他"> 其他</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='academyTitle'>院校:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="academyText"
+                                               placeholder="请输入您最高学历的就读院校(选填)" value="" id="academyText">
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:50px;">
+                                        <label id='majorTitle'>专业:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="majorText"
+                                               placeholder="请输入您就读的专业(选填)" value="" id="majorText">
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
+                                        <label id='educationTitle'>学历:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
+                                            <select name="educationText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;"
+                                                    id="educationText">
+                                                <option value="本科"> 本科</option>
+                                                <option value="大专"> 大专</option>
+                                                <option value="硕士"> 硕士</option>
+                                                <option value="博士"> 博士</option>
+                                                <option value="小学"> 小学</option>
+                                                <option value="初中"> 初中</option>
+                                                <option value="高中"> 高中</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='laborRelationsTitle'>劳动关系:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
+                                            <select name="laborRelationsText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;"
+                                                    id="laborRelationsText">
+                                                <option value="全职"> 全职</option>
+                                                <option value="兼职"> 兼职</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:50px;">
+                                        <label id='personnelStatusTitle'>人事状态:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
+                                            <select name="personnelStatusText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;"
+                                                    id="personnelStatusText">
+                                                <option value="试用期"> 试用期</option>
+                                                <option value="正式员工"> 正式员工</option>
+                                                <option value="停薪留职"> 停薪留职</option>
+                                                <option value="临时工"> 临时工</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
+                                        <label id='laborContractTitle'>劳动合同:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
+                                            <select name="laborContractText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;"
+                                                    id="laborContractText">
+                                                <option value="已签"> 已签</option>
+                                                <option value="未签"> 未签</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='contractPeriodTitle'>合同期限:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div class="date-picker">
+                                            <input class="text-input-cpt" placeholder="" value="2017-05-19" type="text"
+                                                   name='date1'>
+                                        </div>
+                                        -
+                                        <div class="date-picker">
+                                            <input class="text-input-cpt" placeholder="" value="2017-05-19" type="text"
+                                                   name='date'>
+                                        </div>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:50px;">
+                                        <label id='dateOfCompletionTitle'>转正日期:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div class="date-picker">
+                                            <input class="text-input-cpt" placeholder="" value="2017-05-19" type="text"
+                                                   name='date1'>
+                                        </div>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:205px;">
+                                        <label id='remarksTitle'>备注:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="remarksText" placeholder="(选填)"
+                                               value="" id="remarksText">
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='payrollCardTitle'>工资卡:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="payrollCardText"
+                                               placeholder="请输入您的工资卡的开户行(选填)" value="" id="payrollCardText">
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:50px;">
+                                        <label id='payrollCardNoTitle'>卡号:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="payrollCardNoText"
+                                               placeholder="请输入您的工资卡卡号(选填)" value="" id="payrollCardNoText">
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
+                                        <label id='socialSecurityTitle'>社保:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
+                                            <select name="socialSecurityText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;"
+                                                    id="socialSecurityText">
+                                                <option value="未办理"> 未办理</option>
+                                                <option value="已办理"> 已办理</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div style="clear:both;"></div>
+                                    <div style="float:left; width:100%; height:30px; padding-top:8px; margin-top:18px; background-color:#9CF;">
+                                        <label id='accountInfoTitle'
+                                               style="font-size:14px; margin-left:10px;">账户情报（选填）</label>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='logonPermissionTitle'>账户状态:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input type="radio" name="logonPermission" value="有效" id="validAcount">
+                                        <label for='validAcount'>有效</label>
+                                        </input>
+                                        <input type="radio" name="logonPermission" value="无效" id="invalidAcount">
+                                        <label for='invalidAcount'>无效</label>
+                                        </input>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='logonAcountTitle'>登录账号:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="logonAcountText"
+                                               placeholder="请输入登录账户(选填)" value="" id="logonAcountText">
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:50px;">
+                                        <label id='logonAcountPasswordTitle'>登录密码:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="logonAcountPasswordText"
+                                               placeholder="请输入登录密码(选填)" value="" id="logonAcountPasswordText">
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='managementScopeTitle'>管理范围:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
+                                            <select name="managementScopeText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;"
+                                                    id="managementScopeText">
+                                                <option value="全部校区"> 全部校区</option>
+                                                <option value="东校区"> 东校区</option>
+                                                <option value="西校区"> 西校区</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:50px;">
+                                        <label id='authoritySettingTitle'>权限设定:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
+                                            <select name="authoritySettingText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;"
+                                                    id="authoritySettingText">
+                                                <option value="自定义"> 自定义</option>
+                                                <option value="管理员"> 管理员</option>
+                                                <option value="社员"> 社员</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div id="authorityBody" style="margin-top:30px;">
+
+                                    </div>
+                                    <div style="padding-top:15px; clear:both;"></div>
+                                </form>
+                                <div class="sign-list-cpt" style="min-width: 1200px;">
+                                    <div class="block-title-cpt"> 社员一览</div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
+                                        <label id='employeeNameForSearchTitle'>员工姓名:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px; padding-bottom:30px;">
+                                        <input class="text-input-cpt" type="text" name="employeeNameForSearchText"
+                                               placeholder="请输入员工姓名" value="" id="employeeNameForSearchText">
+                                    </div>
+
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:20px;padding-bottom:10px;">
+                                        <label id='employeePhoneForSearchTitle'>手机号码:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px; padding-bottom:30px;">
+                                        <input class="text-input-cpt" type="text" name="employeePhoneForSearchText"
+                                               placeholder="请输入手机号码" value="" id="employeePhoneForSearchText">
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:20px;">
+                                        <label id='managementScopeForSearchTitle'>所属校区:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
+                                            <select name="managementScopeForSearchText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;"
+                                                    id="managementScopeForSearchText">
+                                                <option value="全部校区"> 全部校区</option>
+                                                <option value="东校区"> 东校区</option>
+                                                <option value="西校区"> 西校区</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;padding-left:25px;">
+                                        <input style="margin-left: 10px;" class="button button-middle    float-left"
+                                               type="button" name="search" value="查询" id="search">
+                                    </div>
+
+                                    <div class="recordList">
+                                        <table class="yunmo">
+                                            <thead>
+                                            <tr>
+                                                <th style="width:10%;">姓名</th>
+                                                <th style="width:10%;">手机号</th>
+                                                <th style="width:20%;">所属校区</th>
+                                                <th style="width:10%;">性别</th>
+                                                <th style="width:10%;">年龄</th>
+                                                <th style="width:15%;">登录账户</th>
+                                                <th style="width:10%;">账户状态</th>
+                                                <th style="width:15%; min-width:150px;text-align: center;">操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>小张</td>
+                                                <td>18717947096</td>
+                                                <td>东校区</td>
+                                                <td>男</td>
+                                                <td>23</td>
+                                                <td>demo</td>
+                                                <td>无效</td>
+                                                <td style='text-align: center;'>
+                                                    <button class="deleteButton icon iconfont icon-delete">删除</button>
+                                                    <button class="editButton icon iconfont icon-edit">编辑</button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--<div class="pagination-cpt" pre-page="1" next-page="1"> <span class="totalCount">共0条记录</span> </div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.tree-multiselect.min.js"></script>
+<script src="js/doT.js"></script>
+</body>
+</html>

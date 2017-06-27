@@ -79,8 +79,8 @@ public interface SchoolDAO {
             "#{phone},\n" +
             "#{principal_name},\n" +
             "#{principal_sfz_code},\n" +
-            "#{createDate},\n" +
-            "#{updateDate},\n" +
+            "now(),\n" +
+            "now(),\n" +
             "#{type}); \n"
     )
     public int insertSchool(School school);
@@ -92,15 +92,14 @@ public interface SchoolDAO {
             "`phone` = #{phone},\n" +
             "`principal_name` = #{principal_name},\n" +
             "`principal_sfz_code` = #{principal_sfz_code},\n" +
-            "`createDate` = #{createDate},\n" +
-            "`updateDate` = #{updateDate},\n" +
+            "`updateDate` = now(),\n" +
             "`type` = #{type} \n" +
-            "WHERE `id` = #{id} and school_name=#{school_name} and institution_code=#{institution_code} ;\n "   )
+            "WHERE `id` = #{id}  ;\n "   )
     public int updateSchool(School school);
 
 
     @Delete(" DELETE FROM  `px_school`\n" +
-            " WHERE `id` = #{id} and school_name=#{school_name} and  institution_code=#{institution_code}  ; ")
+            " WHERE `id` = #{id} ; ")
     public int deleteSchool(School school);
 
 

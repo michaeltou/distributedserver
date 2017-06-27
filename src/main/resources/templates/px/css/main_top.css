@@ -1,0 +1,215 @@
+@charset "utf-8";
+/* CSS Document */
+.mainContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /*padding-left: 200px;*/
+}
+
+header.back {
+    position: fixed;
+    width: 100%;
+    min-width: 1220px;
+    height: 60px;
+    padding: 0 10px;
+    background-color: #99CCFF;
+    z-index: 999
+}
+
+header.back .logo {
+    float: left;
+    height: 60px;
+    color: #fff;
+    background: #99CCFF;
+}
+
+header.back .logo .logoimg {
+    display: block;
+    float: left;
+    margin-left: 15px;
+    width: 96px;
+    height: 60px;
+    background: url(../image/logo.png) no-repeat center;
+    background-size: 96px auto
+}
+
+header.back .account {
+    float: right;
+    margin-right: 10px;
+    color: #666;
+}
+
+header.back .account .item {
+    float: left;
+    line-height: 60px
+}
+
+header.back .account .goFront {
+    display: inline-block;
+    margin-right: 0
+}
+
+header.back .account .goFront li {
+    float: left;
+    margin-right: 20px
+}
+
+header.back .account .goFront .hiCom {
+    margin-left: 60px
+}
+
+header.back .topmenu-div {
+    float: left;
+    min-width: 110px;
+    z-index: 100
+}
+
+header.back .click-div1 {
+    float: left;
+    text-align: left;
+    line-height: 60px;
+    cursor: pointer;
+    margin-left: 15px;
+    margin-top: 0;
+    padding-left: 0;
+    font-size: 13px;
+    color: #039;
+}
+
+header.back .topmenu-div .comName {
+    margin-right: 20px
+}
+
+header.back .topmenu-div .topmenu-btn {
+    display: block;
+    float: right;
+    width: 13px;
+    height: 13px;
+    background: #03a9f4;
+    border-left: 2px solid #fff;
+    border-top: 2px solid #fff;
+    transform: rotate(225deg);
+    -ms-transform: rotate(225deg);
+    -moz-transform: rotate(225deg);
+    -webkit-transform: rotate(225deg);
+    -o-transform: rotate(225deg)
+}
+
+header.back .topmenu-div .topmenu {
+    display: none;
+    float: right;
+    position: relative;
+    min-width: 110px;
+    margin-top: 7px;
+    margin-right: -10px;
+    background: #03a9f4
+}
+
+header.back .topmenu-div .topmenu .triangle {
+    display: block;
+    position: absolute;
+    top: -9px;
+    right: 4px;
+    width: 22px;
+    line-height: 12px;
+    color: #03a9f4
+}
+
+header.back .topmenu-div .topmenu .menu-ul li {
+    text-align: left
+}
+
+header.back .topmenu-div .topmenu .menu-ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+    line-height: 30px;
+    background: transparent
+}
+
+header.back .topmenu-div .topmenu .menu-ul li:hover {
+    background: #029be0
+}
+
+header.back .lang-picker {
+    color: #fff;
+    line-height: 60px;
+    height: 60px;
+    margin: 0 30px 0 20px
+}
+
+header.back .lang-picker .lang-zh_TW span:before {
+    content: "��"
+}
+
+header.back .lang-picker .lang-zh_TW.cur span:after {
+    content: "";
+    padding: 0
+}
+
+header.back .lang-picker .lang-zh_CN span:before {
+    content: "��"
+}
+
+header.back .lang-picker .lang-zh_CN.cur span:after {
+    content: "";
+    padding: 0
+}
+
+header.back .lang-picker .lang-en span:before {
+    content: "English"
+}
+
+header.back .lang-picker .lang-en.cur span:before {
+    content: "En"
+}
+
+header.back .lang-picker > div {
+    float: left;
+    line-height: 60px;
+    height: 60px
+}
+
+header.back .lang-picker > div > span {
+    font-size: 12px;
+    display: inline;
+    vertical-align: middle
+}
+
+header.back .lang-picker > div > span:hover:before {
+    cursor: pointer
+}
+
+header.back .lang-picker > div > span:after {
+    content: "/";
+    padding: 0 5px
+}
+
+header.back .lang-picker > div.cur {
+    float: right
+}
+
+header.back .lang-picker > div.cur span {
+    display: inline-block;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 30px;
+    line-height: 20px;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    padding: 0px;
+    font-size: 12px
+}
+
+header.back .lang-picker > div.cur span:hover:before {
+    color: #fff;
+    cursor: auto
+}
+
+header.back .lang-picker > div.cur span:after {
+    content: "";
+    padding: 0
+}
