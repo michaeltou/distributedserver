@@ -1460,3 +1460,15 @@
     cursor: pointer;
     border: none;
 }
+
+.rememberClassButton, .classRecordButton {
+    height: 20px;
+    width: 80px;
+    color: blue;
+    background: transparent;
+    display: inline-block;
+    color: royalblue !important;
+    cursor: pointer;
+    border: none;
+}
+

@@ -35,6 +35,13 @@ public interface KeChengCategoryDAO {
             " where kc_category_name = #{name} and institution_code = #{institution_code} ")
     KeChengCategory queryKeChengCategoryByName(@Param("name") String name,@Param("institution_code")String institution_code);
 
+    @Select("SELECT `px_kecheng_category`.`id`,\n" +
+            "    `px_kecheng_category`.`kc_category_name`,\n" +
+            "    `px_kecheng_category`.`institution_code`\n" +
+            "FROM  `px_kecheng_category` " +
+            " where kc_category_name like CONCAT('%',#{name},'%')  and institution_code = #{institution_code} ")
+    List<KeChengCategory>  queryKeChengCategoryByNameWithLike(@Param("name") String name,@Param("institution_code")String institution_code);
+
 
     @Insert("  INSERT INTO  `px_kecheng_category`\n" +
             "( " +
