@@ -94,12 +94,12 @@ public interface SchoolDAO {
             "`principal_sfz_code` = #{principal_sfz_code},\n" +
             "`updateDate` = now(),\n" +
             "`type` = #{type} \n" +
-            "WHERE `id` = #{id}  ;\n "   )
+            "WHERE `id` = #{id} and school_name=#{school_name} and institution_code=#{institution_code} ;\n "   )
     public int updateSchool(School school);
 
 
     @Delete(" DELETE FROM  `px_school`\n" +
-            " WHERE `id` = #{id} ; ")
+            " WHERE `id` = #{id} and school_name=#{school_name} and institution_code=#{institution_code} ; ")
     public int deleteSchool(School school);
 
 
