@@ -74,7 +74,7 @@
                                                 <th style="width:30%; text-align: center;">操作</th>
                                             </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="data_body">
                                             <tr th:each="courseTypeData : ${courseTypeList}">
                                                 <td th:text="${courseTypeData.id}">789</td>
                                                 <td th:text="${courseTypeData.kc_category_name}" style="text-align:center;">美术</td>

@@ -46,14 +46,17 @@ $(function () {
                 $.ajax({
                     url: "/insertKeChengCategory",
                     type: "POST",
-                    data:JSON.stringify({ kc_category_name:$("#courseTypeNameText").val(), institution_code:$("#courseTypeCodeText").val()}),
+                    data: JSON.stringify({
+                        kc_category_name: $("#courseTypeNameText").val(),
+                        institution_code: $("#courseTypeCodeText").val()
+                    }),
                     contentType: "application/json; charset=utf-8",
                     success: function (data, textStatus) {
-                        if(data.success){
+                        if (data.success) {
                             alert("课程类别更新成功");
-                            window.location.href="/px/serachKeChengCategory";
+                            window.location.href = "/px/serachKeChengCategory";
                         }
-                        else{
+                        else {
                             window.alert("课程类别更新失败");
                         }
                     }
@@ -81,15 +84,31 @@ $(function () {
         $.ajax({
             url: "/px/queryKeChengCategoryListByInstitution",
             type: "POST",
-            data:JSON.stringify({ institution_code:institution_code, kc_category_name:courseName}),
+            data: JSON.stringify({institution_code: institution_code, kc_category_name: courseName}),
             contentType: "application/json; charset=utf-8",
 
             success: function (data, textStatus) {
-                if(data.success){
-                    alert("课程类别更新成功");
-                    //window.location.href="/px/serachKeChengCategory";
+
+
+                if (data.success) {
+                    // alert(JSON.stringify(data)); 调试使用，请勿删除
+
+                    //清空当前表格
+                    document.getElementById("data_body").innerHTML = '';
+
+                    $.each(data.data, function (id, schoolCategory) { 
+                        var $tr = $("<tr ></tr>");
+                        var $td1 = $("<td ></td>");
+                        var $td2 = $("<td style='text-align: center;' ></td>");
+                        var $td3 = $("<td style='text-align: center;'>  <button class='deleteButton icon iconfont icon-delete'>删除</button> </td>");
+                        $tr.append($td1.clone().text(schoolCategory.id));
+                        $tr.append($td2.clone().text(schoolCategory.kc_category_name));
+                        $tr.append($td3.clone());
+                        $tr.appendTo($("#data_body"));
+                    });
+
                 }
-                else{
+                else {
                     window.alert("课程类别更新失败");
                     //window.location.href="/px/CourseType.html";
                 }
@@ -110,20 +129,20 @@ function DeleteData(delRow) {
     //var table = delRow.parentNode.parentNode.parentNode;
     //table.removeChild(delRow.parentNode.parentNode);
     var tr = delRow.parentNode.parentNode;
-    var courseID=(tr.cells[0]).innerText;
-    var courseName=(tr.cells[1]).innerText;
+    var courseID = (tr.cells[0]).innerText;
+    var courseName = (tr.cells[1]).innerText;
     var institution_code = "tm";//(tr.cells[0]).innerText;
     $.ajax({
         url: "/deleteChengCategory",
         type: "POST",
-        data:JSON.stringify({id:courseID, kc_category_name:courseName, institution_code:institution_code}),
+        data: JSON.stringify({id: courseID, kc_category_name: courseName, institution_code: institution_code}),
         contentType: "application/json; charset=utf-8",
         success: function (data, textStatus) {
-            if(data.success){
+            if (data.success) {
                 alert("课程类别删除成功");
-                window.location.href="/px/serachKeChengCategory";
+                window.location.href = "/px/serachKeChengCategory";
             }
-            else{
+            else {
                 window.alert("课程类别删除失败");
             }
         }
