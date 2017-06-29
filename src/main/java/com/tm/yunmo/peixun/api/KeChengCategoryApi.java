@@ -148,8 +148,8 @@ public class KeChengCategoryApi {
         }
     }
 
-    @RequestMapping("/px/queryKeChengCategoryListByInstitution")
-    public ResultModel queryKeChengCategoryListByInstitution(@RequestBody KeChengCategory keChengCategoryForSearch) {
+    @RequestMapping("/px/queryKeChengCategoryListByNameWithLike")
+    public ResultModel queryKeChengCategoryListByNameWithLike(@RequestBody KeChengCategory keChengCategoryForSearch) {
         ResultModel resultModel = new ResultModel();
         List<KeChengCategory> keChengCategoryList = keChengCategoryService.queryKeChengCategoryByNameWithLike(keChengCategoryForSearch.getKc_category_name(), keChengCategoryForSearch.getInstitution_code());
 

@@ -74,15 +74,11 @@ $(function () {
 
 
     $("#search").click(function () {
-        if ($("#courseTypeNameForSearchText").val() == "") {
-            alert("课程类别不能为空");
-            $("#courseTypeNameForSearchText").focus();
-            return;
-        }
+
         var institution_code = "tm";
         var courseName = $("#courseTypeNameForSearchText").val();
         $.ajax({
-            url: "/px/queryKeChengCategoryListByInstitution",
+            url: "/px/queryKeChengCategoryListByNameWithLike",
             type: "POST",
             data: JSON.stringify({institution_code: institution_code, kc_category_name: courseName}),
             contentType: "application/json; charset=utf-8",
@@ -96,13 +92,13 @@ $(function () {
                     //清空当前表格
                     document.getElementById("data_body").innerHTML = '';
 
-                    $.each(data.data, function (id, schoolCategory) { 
+                    $.each(data.data, function (id, keChengCategory) {
                         var $tr = $("<tr ></tr>");
                         var $td1 = $("<td ></td>");
                         var $td2 = $("<td style='text-align: center;' ></td>");
                         var $td3 = $("<td style='text-align: center;'>  <button class='deleteButton icon iconfont icon-delete'>删除</button> </td>");
-                        $tr.append($td1.clone().text(schoolCategory.id));
-                        $tr.append($td2.clone().text(schoolCategory.kc_category_name));
+                        $tr.append($td1.clone().text(keChengCategory.id));
+                        $tr.append($td2.clone().text(keChengCategory.kc_category_name));
                         $tr.append($td3.clone());
                         $tr.appendTo($("#data_body"));
                     });
@@ -110,12 +106,9 @@ $(function () {
                 }
                 else {
                     window.alert("课程类别更新失败");
-                    //window.location.href="/px/CourseType.html";
                 }
             }
-
         });
-        //window.location.href="/px/queryKeChengCategoryListByInstitution?institution_code="+institution_code+"&courseName="+courseName;
     });
 });
 
