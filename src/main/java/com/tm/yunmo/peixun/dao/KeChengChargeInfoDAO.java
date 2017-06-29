@@ -17,7 +17,7 @@ public interface KeChengChargeInfoDAO {
             "    `px_charge_info`.`institution_code`,\n" +
             "    `px_charge_info`.`createDate`,\n" +
             "    `px_charge_info`.`updateDate`\n" +
-            "FROM `px_charge_info` \n" +
+            "FROM `px_kecheng_charge_info` \n" +
             " where  kecheng_name = #{kecheng_name}  and institution_code = #{institution_code}")
     KeChengChargeInfo queryKeChengChargeInfoByKechengName(@Param("kecheng_name") String kecheng_name, @Param("institution_code") String institution_code);
 
@@ -39,7 +39,7 @@ public interface KeChengChargeInfoDAO {
      * @return
      */
 
-    @Insert("  INSERT INTO  `px_charge_info`\n" +
+    @Insert("  INSERT INTO  `px_kecheng_charge_info`\n" +
             "( \n" +
             "`kecheng_name`,\n" +
             "`chargeType`,\n" +
@@ -75,7 +75,7 @@ public interface KeChengChargeInfoDAO {
      * "values":"2234,云模人工智能"
      * }
      */
-    @Update(" UPDATE  `px_charge_info`\n" +
+    @Update(" UPDATE  `px_kecheng_charge_info`\n" +
             "SET\n" +
             "`chargeType` = #{chargeType},\n" +
             "`chargeFee` = #{chargeFee},\n" +
@@ -104,7 +104,7 @@ public interface KeChengChargeInfoDAO {
      * @param keChengChargeInfo
      * @return
      */
-    @Delete("  DELETE FROM  `px_charge_info`\n" +
+    @Delete("  DELETE FROM  `px_kecheng_charge_info`\n" +
             "WHERE   institution_code=#{institution_code}  and   kecheng_name = #{kecheng_name} ; ")
     public int deleteKeChengChargeInfoByKeChengName(KeChengChargeInfo keChengChargeInfo);
 }
