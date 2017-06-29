@@ -96,7 +96,8 @@ $(function () {
                     //清空当前表格
                     document.getElementById("data_body").innerHTML = '';
 
-                    $.each(data.data, function (id, schoolCategory) { 
+                    //动态构建表格数据.
+                    $.each(data.data, function (id, schoolCategory) {
                         var $tr = $("<tr ></tr>");
                         var $td1 = $("<td ></td>");
                         var $td2 = $("<td style='text-align: center;' ></td>");
