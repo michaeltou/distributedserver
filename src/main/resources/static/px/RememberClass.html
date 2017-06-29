@@ -11,13 +11,11 @@
     <link rel="stylesheet" href="css/index_style.css">
     <link rel="stylesheet" href="css/jquery-ui.css">
     <link rel="stylesheet" href="css/yp_style.css">
-    <link rel="stylesheet" href="css/employee.css">
+    <link rel="stylesheet" href="css/rememberclass.css">
     <link rel="stylesheet" href="css/iconfont.css">
-    <link rel="stylesheet" href="css/jquery.tree-multiselect.min.css"/>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
-    <script type="text/javascript" src="js/jquery.form.js"></script>
-    <script type="text/javascript" src="js/employee.js"></script>
+    <script type="text/javascript" src="js/rememberclass.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
 
 </head>
@@ -32,7 +30,7 @@
                         <div class="tab-body-cpt tab-body-show">
                             <div class="sign-setting-cpt clearfix">
                                 <div class="sign-list-cpt" style="min-width: 1200px;">
-                                    <div class="block-title-cpt"> 记上课情报一览</div>
+                                    <div class="block-title-cpt"> 班级情报一览</div>
                                     <div style="float:left; width:70px; padding-top:20px; padding-left:20px;padding-bottom:20px;">
                                         <label>所属校区:</label>
                                     </div>
@@ -103,8 +101,8 @@
                                                 <td>东校区</td>
                                                 <td>东区一教室</td>
                                                 <td style='text-align: center;'>
-                                                    <button class="rememberClassButton icon iconfont icon-delete">记上课</button>
-                                                    <button class="classRecordButton icon iconfont icon-edit">上课记录</button>
+                                                    <button class="rememberClassButton icon iconfont icon-edit" onclick="window.location.href = 'RememberClassDetail.html'">记上课</button>
+                                                    <button class="classRecordButton icon iconfont icon-viewlist">上课记录</button>
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -119,10 +117,5 @@
         </div>
     </div>
 </div>
-<script src="js/jquery.js"></script>
-<script src="js/jquery-ui.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.tree-multiselect.min.js"></script>
-<script src="js/doT.js"></script>
 </body>
 </html>
