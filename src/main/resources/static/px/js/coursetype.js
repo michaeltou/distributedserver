@@ -74,15 +74,11 @@ $(function () {
 
 
     $("#search").click(function () {
-        if ($("#courseTypeNameForSearchText").val() == "") {
-            alert("课程类别不能为空");
-            $("#courseTypeNameForSearchText").focus();
-            return;
-        }
+
         var institution_code = "tm";
         var courseName = $("#courseTypeNameForSearchText").val();
         $.ajax({
-            url: "/px/queryKeChengCategoryListByInstitution",
+            url: "/px/queryKeChengCategoryListByNameWithLike",
             type: "POST",
             data: JSON.stringify({institution_code: institution_code, kc_category_name: courseName}),
             contentType: "application/json; charset=utf-8",
@@ -111,12 +107,9 @@ $(function () {
                 }
                 else {
                     window.alert("课程类别更新失败");
-                    //window.location.href="/px/CourseType.html";
                 }
             }
-
         });
-        //window.location.href="/px/queryKeChengCategoryListByInstitution?institution_code="+institution_code+"&courseName="+courseName;
     });
 });
 

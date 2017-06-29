@@ -214,7 +214,7 @@ $(function () {
 
     //加的效果
     $("body").on('click', ".add", function () {
-        var price = $(this).parent().parent().parent().children('td:eq(2)').text();
+        var price = $(this).parent().parent().parent().children('td:eq(3)').text();
         price = parseInt(price);
         var n = $(this).prev().val();
         var num = parseInt(n) + 1;
@@ -224,11 +224,11 @@ $(function () {
         $(this).prev().val(num);
         var totalPrice = num * price;
         totalPrice += "元";
-        $(this).parent().parent().parent().children('td:eq(3)').text(totalPrice);
+        $(this).parent().parent().parent().children('td:eq(4)').text(totalPrice);
     });
     //减的效果
     $("body").on('click', ".jian", function () {
-        var price = $(this).parent().parent().parent().children('td:eq(2)').text();
+        var price = $(this).parent().parent().parent().children('td:eq(3)').text();
         price = parseInt(price);
         var n = $(this).next().val();
         var num = parseInt(n) - 1;
@@ -238,7 +238,7 @@ $(function () {
         $(this).next().val(num);
         var totalPrice = num * price;
         totalPrice += "元";
-        $(this).parent().parent().parent().children('td:eq(3)').text(totalPrice);
+        $(this).parent().parent().parent().children('td:eq(4)').text(totalPrice);
     });
 });
 
