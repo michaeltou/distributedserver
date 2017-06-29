@@ -97,13 +97,13 @@ $(function () {
                     document.getElementById("data_body").innerHTML = '';
 
                     //动态构建表格数据.
-                    $.each(data.data, function (id, schoolCategory) {
+                    $.each(data.data, function (id, keChengCategory) {
                         var $tr = $("<tr ></tr>");
                         var $td1 = $("<td ></td>");
                         var $td2 = $("<td style='text-align: center;' ></td>");
                         var $td3 = $("<td style='text-align: center;'>  <button class='deleteButton icon iconfont icon-delete'>删除</button> </td>");
-                        $tr.append($td1.clone().text(schoolCategory.id));
-                        $tr.append($td2.clone().text(schoolCategory.kc_category_name));
+                        $tr.append($td1.clone().text(keChengCategory.id));
+                        $tr.append($td2.clone().text(keChengCategory.kc_category_name));
                         $tr.append($td3.clone());
                         $tr.appendTo($("#data_body"));
                     });
