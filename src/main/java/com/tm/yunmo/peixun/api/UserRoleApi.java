@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * Created by daoying on 2017/6/20.
- * 学生rest接口
+ * 用户角色rest接口
  */
 @RestController
 public class UserRoleApi {
