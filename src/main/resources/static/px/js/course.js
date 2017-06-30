@@ -76,7 +76,7 @@ $(function () {
     });
 
     $("body").on('click', ".editButton", function () {
-        EditData($(this).get(0));
+        //EditData($(this).get(0));
         $('.addCourse').dialog("option", "title", "编辑课程").dialog('open');
     });
 
