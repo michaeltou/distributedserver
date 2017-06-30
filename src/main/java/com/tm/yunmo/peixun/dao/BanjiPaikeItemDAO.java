@@ -14,41 +14,41 @@ import java.util.List;
 public interface BanjiPaikeItemDAO {
 
 
-    @Select("  SELECT `px_banji_paike_list`.`id`,\n" +
-            "    `px_banji_paike_list`.`institution_code`,\n" +
-            "    `px_banji_paike_list`.`xiaoqu_name`,\n" +
-            "    `px_banji_paike_list`.`classroom_name`,\n" +
-            "    `px_banji_paike_list`.`start_date`,\n" +
-            "    `px_banji_paike_list`.`end_date`,\n" +
-            "    `px_banji_paike_list`.`banji_name`,\n" +
-            "    `px_banji_paike_list`.`teacher_name`,\n" +
-            "    `px_banji_paike_list`.`jiaoshi_sfzCode`,\n" +
-            "    `px_banji_paike_list`.`assist_teacher_name`,\n" +
-            "    `px_banji_paike_list`.`assist_teacher_sfzCode`,\n" +
-            "    `px_banji_paike_list`.`status`,\n" +
-            "    `px_banji_paike_list`.`rule_id`,\n" +
-            "    `px_banji_paike_list`.`createDate`,\n" +
-            "    `px_banji_paike_list`.`updateDate`\n" +
-            "FROM  `px_banji_paike_list` \n" +
+    @Select("  SELECT `px_banji_paike_item`.`id`,\n" +
+            "    `px_banji_paike_item`.`institution_code`,\n" +
+            "    `px_banji_paike_item`.`xiaoqu_name`,\n" +
+            "    `px_banji_paike_item`.`classroom_name`,\n" +
+            "    `px_banji_paike_item`.`start_date`,\n" +
+            "    `px_banji_paike_item`.`end_date`,\n" +
+            "    `px_banji_paike_item`.`banji_name`,\n" +
+            "    `px_banji_paike_item`.`teacher_name`,\n" +
+            "    `px_banji_paike_item`.`jiaoshi_sfzCode`,\n" +
+            "    `px_banji_paike_item`.`assist_teacher_name`,\n" +
+            "    `px_banji_paike_item`.`assist_teacher_sfzCode`,\n" +
+            "    `px_banji_paike_item`.`status`,\n" +
+            "    `px_banji_paike_item`.`rule_id`,\n" +
+            "    `px_banji_paike_item`.`createDate`,\n" +
+            "    `px_banji_paike_item`.`updateDate`\n" +
+            "FROM  `px_banji_paike_item` \n" +
             " where  institution_code = #{institution_code} and xiaoqu_name=#{xiaoqu_name} and banji_name=#{banji_name}")
     List<BanjiPaikeItem> queryBanjiPaikeItemListByInstitutionAndBanjiName(@Param("institution_code") String institution_code, @Param("xiaoqu_name") String xiaoqu_name, @Param("banji_name") String banji_name);
 
-    @Select("  SELECT `px_banji_paike_list`.`id`,\n" +
-            "    `px_banji_paike_list`.`institution_code`,\n" +
-            "    `px_banji_paike_list`.`xiaoqu_name`,\n" +
-            "    `px_banji_paike_list`.`classroom_name`,\n" +
-            "    `px_banji_paike_list`.`start_date`,\n" +
-            "    `px_banji_paike_list`.`end_date`,\n" +
-            "    `px_banji_paike_list`.`banji_name`,\n" +
-            "    `px_banji_paike_list`.`teacher_name`,\n" +
-            "    `px_banji_paike_list`.`jiaoshi_sfzCode`,\n" +
-            "    `px_banji_paike_list`.`assist_teacher_name`,\n" +
-            "    `px_banji_paike_list`.`assist_teacher_sfzCode`,\n" +
-            "    `px_banji_paike_list`.`status`,\n" +
-            "    `px_banji_paike_list`.`rule_id`,\n" +
-            "    `px_banji_paike_list`.`createDate`,\n" +
-            "    `px_banji_paike_list`.`updateDate`\n" +
-            "FROM  `px_banji_paike_list` \n" +
+    @Select("  SELECT `px_banji_paike_item`.`id`,\n" +
+            "    `px_banji_paike_item`.`institution_code`,\n" +
+            "    `px_banji_paike_item`.`xiaoqu_name`,\n" +
+            "    `px_banji_paike_item`.`classroom_name`,\n" +
+            "    `px_banji_paike_item`.`start_date`,\n" +
+            "    `px_banji_paike_item`.`end_date`,\n" +
+            "    `px_banji_paike_item`.`banji_name`,\n" +
+            "    `px_banji_paike_item`.`teacher_name`,\n" +
+            "    `px_banji_paike_item`.`jiaoshi_sfzCode`,\n" +
+            "    `px_banji_paike_item`.`assist_teacher_name`,\n" +
+            "    `px_banji_paike_item`.`assist_teacher_sfzCode`,\n" +
+            "    `px_banji_paike_item`.`status`,\n" +
+            "    `px_banji_paike_item`.`rule_id`,\n" +
+            "    `px_banji_paike_item`.`createDate`,\n" +
+            "    `px_banji_paike_item`.`updateDate`\n" +
+            "FROM  `px_banji_paike_item` \n" +
             " where  institution_code = #{institution_code} and xiaoqu_name=#{xiaoqu_name} and banji_name=#{banji_name} and id=#{id}")
     BanjiPaikeItem queryBanjiPaikeItemByInstitutionAndBanjiNameAndId(@Param("institution_code") String institution_code, @Param("xiaoqu_name") String xiaoqu_name, @Param("banji_name") String banji_name,@Param("id") int id);
 
@@ -80,7 +80,7 @@ public interface BanjiPaikeItemDAO {
             "#{jiaoshi_sfzCode},\n" +
             "#{assist_teacher_name},\n" +
             "#{assist_teacher_sfzCode},\n" +
-            "#{status: 1}>,\n" +
+            "#{status},\n" +
             "#{rule_id},\n" +
             "#{createDate},\n" +
             "#{updateDate});\n"
@@ -97,7 +97,7 @@ public interface BanjiPaikeItemDAO {
             "`jiaoshi_sfzCode` = #{jiaoshi_sfzCode},\n" +
             "`assist_teacher_name` = #{assist_teacher_name},\n" +
             "`assist_teacher_sfzCode` = #{assist_teacher_sfzCode},\n" +
-            "`status` = #{status: 1}>,\n" +
+            "`status` = #{status},\n" +
             "`rule_id` = #{rule_id},\n" +
             "`updateDate` = #{updateDate}\n" +
             " where  institution_code = #{institution_code} and xiaoqu_name=#{xiaoqu_name} and banji_name=#{banji_name} and id=#{id}")

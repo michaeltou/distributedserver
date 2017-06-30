@@ -30,7 +30,7 @@ public interface BanjiPaikeRuleDAO {
             "    `px_banji_paike_rule`.`status`,\n" +
             "    `px_banji_paike_rule`.`createDate`,\n" +
             "    `px_banji_paike_rule`.`updateDate`\n" +
-            "FROM  `px_banji_paike_rule`;\n" +
+            "FROM  `px_banji_paike_rule` \n" +
             " where  institution_code = #{institution_code} and xiaoqu_name=#{xiaoqu_name} and banji_name=#{banji_name}")
     List<BanjiPaikeRule> queryBanjiPaikeRuleListByInstitutionAndBanjiName(@Param("institution_code") String institution_code, @Param("xiaoqu_name")String xiaoqu_name, @Param("banji_name")String banji_name);
 
