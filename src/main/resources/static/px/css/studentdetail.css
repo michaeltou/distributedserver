@@ -1,0 +1,63 @@
+@charset "utf-8";
+/* CSS Document */
+.mainContainer {
+     border: 2px solid #e4e4e4;
+     margin: 10px 10px 10px 10px;
+     padding: 10px 10px 100px 10px;
+     min-height: 520px;
+ }
+
+.courseDetailDiv {
+    border: 1px solid #e4e4e4;
+    margin: 10px 10px 10px 0px;
+    padding: 0px 0px 20px 0px;
+    //background-color: ThreeDFace;
+}
+
+#studentNameText,
+#studentPhoneText,
+#studentIDText,
+#motherPhoneText,
+#residenceText,
+#fatherPhoneText,
+#studentEmailText,
+#nativePlaceText,
+#nationText,
+#politicalStatusText,
+#academyText,
+#majorText,
+#educationText {
+    width: 300px;
+}
+
+.printClassCardBtn,.renewBtn,.buyTextbooksBtn,.classTransferBtn,.suspendClassesBtn,.refundBtn,.endClassesBtn,.placementClassesBtn{
+    height: 20px;
+    //width: 60px;
+    color: blue;
+    background: transparent;
+    display: inline-block;
+    color: royalblue !important;
+    cursor: pointer;
+    border: 1px solid silver;
+    margin-right: 10px;
+}
+
+.courseDetailTitleDiv{
+    float: left;
+    padding-top:12px;
+}
+
+.courseDetailTitleBtnDiv{
+    float: right;
+    padding-top:12px;
+}
+
+.courseDetailTitleLable{
+    margin-left:10px;
+    color: #6F7082
+}
+
+.courseName,.courseSchoolName,.addCourseDate,.courseHours,.courseMoney,.courseValidDate{
+    margin-left:10px;
+    color: #007fff;
+}

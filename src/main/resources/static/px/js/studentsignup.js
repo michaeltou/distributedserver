@@ -377,7 +377,7 @@ $(function () {
                     $("#studentPhoneText").val(tdArr.eq(1).html());
 
                     if(tdArr.eq(3).html() ==="男"){
-                        alert(tdArr.eq(3).html());
+                        //alert(tdArr.eq(3).html());
                        //
                        $("input[name='sex']").eq(1).click();
                        $("input[name='sex']").eq(1).attr("checked", "checked");

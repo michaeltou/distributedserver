@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>助教宝 - 管理后台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="baidu-site-verification" content="elXuCAMAW3">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index_style.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/yp_style.css">
+    <link rel="stylesheet" href="css/studentdetail.css">
+    <link rel="stylesheet" href="css/jquery.tree-multiselect.min.css"/>
+    <link rel="stylesheet" href="css/iconfont.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/studentdetail.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body style="background-color: #fff;" onload="load()">
+<div class="mainContainer">
+    <div class="rightmain clearfix tplSettingDome signSetting" data-page="domesticRegister">
+        <div class="app-framework-cpt">
+            <div class="domestic-register-manager-cpt">
+                <div class="tab-cpt">
+                    <div class="tab-body-group-cpt">
+                        <div class="tab-body-cpt tab-body-show">
+                            <div class="sign-setting-cpt clearfix">
+                                <div style="float:left; width:140px; padding-top:20px; border:solid;"><a
+                                        target="_blank" href="image/employee.png" id="employeeImageHref"> <img
+                                        src="image/employee.png" id="employeeImage"
+                                        style="width:140px; height:120px;"> </a>
+
+                                </div>
+                                <div style="float:left; width:1030px;">
+                                    <div style="float:left; width:100%; height:30px; padding-top:8px;margin-left:50px; background-color:#9CF;">
+                                        <label id='studentBaseInfoTitle'
+                                               style="font-size:14px; margin-left:10px;">基本信息</label>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
+                                        <label id='studentNameTitle'>学员姓名:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="studentNameText"
+                                               value="" id="studentNameText" disabled="disabled"/>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:30px;">
+                                        <label id='studentPhoneTitle'>手机号码:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="studentPhoneText"
+                                               value=""
+                                               id="studentPhoneText" disabled="disabled"/>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
+                                        <label id='studentIDTitle'>身份证</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="studentIDText"
+                                               value="" id="studentIDText" disabled="disabled"/>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:30px;">
+                                        <label id='studentSexTitle'>性别:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input type="radio" name="sex" value="女" id="female" disabled="disabled"/>
+                                        <label for='female'>女</label>
+                                        <input type="radio" name="sex" value="男" id="male" disabled="disabled"/>
+                                        <label for='male'>男</label>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
+                                        <label id='motherPhoneTitle'>母亲手机:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="motherPhoneText"
+                                               value="" id="motherPhoneText" disabled="disabled"/>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:30px;">
+                                        <label id='residenceTitle'>住所:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="residenceText"
+                                               value="" id="residenceText" disabled="disabled"/>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                                <div class="tab-nav-cpt" style="margin-top: 10px;">
+                                    <div class="tab-nav-btn-cpt selected">
+                                        <div class="tab-nav-btn-body"><span> 课程 </span> </a></div>
+                                    </div>
+                                    <div class="tab-nav-btn-cpt ">
+                                        <div class="tab-nav-btn-body"><span> 课程表 </span> </a></div>
+                                    </div>
+                                    <div class="tab-nav-btn-cpt ">
+                                        <div class="tab-nav-btn-body"><span> 上课记录 </span> </a></div>
+                                    </div>
+                                    <div class="tab-nav-btn-cpt">
+                                        <div class="tab-nav-btn-body"><span> 订单 </span> </a></div>
+                                    </div>
+                                </div>
+                                <!--订单详情-->
+                                <div class="ordersDetailListDiv" style="padding-top: 10px;">
+                                    <div class="recordList">
+                                        <table class="yunmo">
+                                            <thead>
+                                            <tr>
+                                                <th style="width:10%;">订单号</th>
+                                                <th style="width:10%;">订单类型</th>
+                                                <th style="width:10%;">交易内容</th>
+                                                <th style="width:10%;">应收</th>
+                                                <th style="width:10%;">实收</th>
+                                                <th style="width:10%;">经办人</th>
+                                                <th style="width:10%;">经办校区</th>
+                                                <th style="width:10%;">经办日期</th>
+                                                <th style="width:10%;min-width:150px;text-align: center;">操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1234</td>
+                                                <td>报名</td>
+                                                <td>课程费用+教材杂费</td>
+                                                <td>2000元</td>
+                                                <td>2000元</td>
+                                                <td>张老师</td>
+                                                <td>东校区</td>
+                                                <td>2017-6-5</td>
+                                                <td style='text-align: center;'>
+                                                    <button class="editButton icon iconfont icon-edit">编辑</button>
+                                                    <button class="printButton icon iconfont icon-print">打印</button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <!--课程详情-->
+                                <div class="coursesDetailListDiv" style="padding-top: 10px;">
+                                    <!-- 报名机能暂不对应
+                                    <div class="addNewCoursesDiv">
+                                        <input class="button button-middle  float-left"
+                                               type="button" name="addCourseBtn" value="报名" id="addCourseBtn"/>
+                                    </div>
+                                    -->
+                                    <div class="courseDetailDiv">
+                                        <div style="float:left; width:100%; height:40px; background-color:lavender;">
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseDetailTitleLable'>课程名:</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseName'>XXX</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseDetailTitleLable'>校区:</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseSchoolName'>XXX</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseDetailTitleLable'>报名日期：</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='addCourseDate'>XXX-XX-XX</label>
+                                            </div>
+                                            <div class="courseDetailTitleBtnDiv">
+                                                <input class="printClassCardBtn" type="button" value="打印听课证"/>
+                                            </div>
+                                            <div class="courseDetailTitleBtnDiv">
+                                                <input class="renewBtn" type="button" value="续费"/>
+                                            </div>
+                                            <div class="courseDetailTitleBtnDiv">
+                                                <input class="buyTextbooksBtn" type="button" value="买教材"/>
+                                            </div>
+                                            <div class="courseDetailTitleBtnDiv">
+                                                <input class="classTransferBtn" type="button" value="转班"/>
+                                            </div>
+                                            <div class="courseDetailTitleBtnDiv">
+                                                <input class="suspendClassesBtn" type="button" value="停课"/>
+                                            </div>
+                                            <div class="courseDetailTitleBtnDiv">
+                                                <input class="refundBtn" type="button" value="退费"/>
+                                            </div>
+                                            <div class="courseDetailTitleBtnDiv">
+                                                <input class="endClassesBtn" type="button" value="节课"/>
+                                            </div>
+                                            <div class="courseDetailTitleBtnDiv">
+                                                <input class="placementClassesBtn" type="button" value="分班"/>
+                                            </div>
+                                        </div>
+                                        <div style="float:left; width:100%; height:40px; background-color: #f4f6f9;">
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseDetailTitleLable'>课时：</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseHours'>剩余 XXX 课时/总计 XXX 课时</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseDetailTitleLable'>学费：</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseMoney'>剩余 XXX 元/总计 XXX 元</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseDetailTitleLable'>有效期：</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseValidDate'>XXX-XX-XX</label>
+                                            </div>
+                                        </div>
+                                        <div class="recordList">
+                                            <table class="yunmo">
+                                                <thead>
+                                                <tr>
+                                                    <th style="width:25%; text-align: center;">状态</th>
+                                                    <th style="width:25%; text-align: center;">教师</th>
+                                                    <th style="width:25%; text-align: center;">开班日期</th>
+                                                    <th style="width:25%; text-align: center;">已用课时</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td style="text-align: center;">在读</td>
+                                                    <td style="text-align: center;">张老师</td>
+                                                    <td style="text-align: center;">2017-6-5</td>
+                                                    <td style="text-align: center;">1</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="courseDetailDiv">
+                                        <div style="float:left; width:100%; height:40px; background-color:lavender;">
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseDetailTitleLable'>课程名:</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseName'>XXX</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseDetailTitleLable'>校区:</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseSchoolName'>XXX</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseDetailTitleLable'>报名日期：</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='addCourseDate'>XXX-XX-XX</label>
+                                            </div>
+                                            <div class="courseDetailTitleBtnDiv">
+                                                <input class="printClassCardBtn" type="button" value="打印听课证"/>
+                                            </div>
+                                            <div class="courseDetailTitleBtnDiv">
+                                                <input class="renewBtn" type="button" value="续费"/>
+                                            </div>
+                                            <div class="courseDetailTitleBtnDiv">
+                                                <input class="buyTextbooksBtn" type="button" value="买教材"/>
+                                            </div>
+                                            <div class="courseDetailTitleBtnDiv">
+                                                <input class="classTransferBtn" type="button" value="转班"/>
+                                            </div>
+                                            <div class="courseDetailTitleBtnDiv">
+                                                <input class="suspendClassesBtn" type="button" value="停课"/>
+                                            </div>
+                                            <div class="courseDetailTitleBtnDiv">
+                                                <input class="refundBtn" type="button" value="退费"/>
+                                            </div>
+                                            <div class="courseDetailTitleBtnDiv">
+                                                <input class="endClassesBtn" type="button" value="节课"/>
+                                            </div>
+                                            <div class="courseDetailTitleBtnDiv">
+                                                <input class="placementClassesBtn" type="button" value="分班"/>
+                                            </div>
+                                        </div>
+                                        <div style="float:left; width:100%; height:40px; background-color: #f4f6f9;">
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseDetailTitleLable'>课时：</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseHours'>剩余 XXX 课时/总计 XXX 课时</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseDetailTitleLable'>学费：</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseMoney'>剩余 XXX 元/总计 XXX 元</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseDetailTitleLable'>有效期：</label>
+                                            </div>
+                                            <div class="courseDetailTitleDiv">
+                                                <label class='courseValidDate'>XXX-XX-XX</label>
+                                            </div>
+                                        </div>
+                                        <div class="recordList">
+                                            <table class="yunmo">
+                                                <thead>
+                                                <tr>
+                                                    <th style="width:25%; text-align: center;">状态</th>
+                                                    <th style="width:25%; text-align: center;">教师</th>
+                                                    <th style="width:25%; text-align: center;">开班日期</th>
+                                                    <th style="width:25%; text-align: center;">已用课时</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td style="text-align: center;">在读</td>
+                                                    <td style="text-align: center;">张老师</td>
+                                                    <td style="text-align: center;">2017-6-5</td>
+                                                    <td style="text-align: center;">1</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--课程表详情-->
+                                <div class="classScheduleListDiv" style="padding-top: 10px;">
+                                    暂时未对应
+
+                                </div>
+                                <!--上课记录详情-->
+                                <div class="classRecordListDiv" style="padding-top: 10px;">
+                                    <div style="float:left; width:70px; padding-top:20px; ">
+                                        <label>班级名称:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;padding-bottom:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:298px; height:26px;">
+                                            <select name="classNameForSearch"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:302px; height:31px; line-height:28px; background:#fff;"
+                                                    class="classNameForSearch">
+                                                <option value="全部班级"> 全部班级</option>
+                                                <option value="美术一班"> 美术一班</option>
+                                                <option value="美术二班"> 美术二班</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="recordList">
+                                        <table class="yunmo">
+                                            <thead>
+                                            <tr>
+                                                <th style="width:10%;">上课日期</th>
+                                                <th style="width:10%;">上课时间</th>
+                                                <th style="width:10%;">班级</th>
+                                                <th style="width:10%;">课程</th>
+                                                <th style="width:10%;">出勤状态</th>
+                                                <th style="width:10%;">完成课时</th>
+                                                <th style="width:10%;">教师</th>
+                                                <th style="width:10%;">操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>2017-06-30</td>
+                                                <td>10:00-12:00</td>
+                                                <td>美术一班</td>
+                                                <td>美术</td>
+                                                <td>上课</td>
+                                                <td>2</td>
+                                                <td>张老师</td>
+                                                <td style='text-align: center;'>
+                                                    <button class="editButton icon iconfont icon-edit">编辑</button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
