@@ -91,7 +91,7 @@ public class StudentApi {
      * @param student
      * @return
      */
-    @RequestMapping("/px/insertStudent")
+    @RequestMapping("/insertStudent")
     public ResultModel insertStudent(@RequestBody Student student) {
         ResultModel resultModel = new ResultModel();
 

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>frames</title>
+</head>
+
+<frameset rows="50,*" frameborder="yes" border="1" framespacing="0" >
+
+    <frame src="top.html">
+    <frameset cols="200,*" frameborder="yes" border="1" framespacing="0" >
+        <frame src="left.html" name="leftFrame" scrolling="No" noresize="noresize" id="leftFrame" title="leftFrame" />
+
+        <frame src="main.html" name="mainFrame" id="mainFrame" title="mainFrame" />
+    </frameset>
+</frameset>
+
+
+
+<noframes>
+    <body>您的浏览器无法处理框架！</body>
+</noframes>
+</html>

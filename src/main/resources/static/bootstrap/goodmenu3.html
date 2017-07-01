@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- 这个页面的菜单是彼此点击后，不会会将其他的菜单合起来. -->
+    <meta charset="utf-8">
+    <title>在线尝试 Bootstrap 实例</title>
+    <meta name="viewport" content="width=device-width,
+                                     initial-scale=1.0,
+                                     maximum-scale=1.0,
+                                     user-scalable=no">
+
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>
+                        h3. Lorem ipsum dolor sit amet.
+                    </h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+
+
+                    <!-- margin-bottom: 0px; 这个style非常重要,不然每个菜单分隔比较多 -->
+
+
+
+
+                                <button id="myid"  data-toggle="collapse"   href="#panel-people-management">
+                                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 人 员 管 理
+                                </button>
+
+                            <div id="panel-people-management" class=" collapse ">
+
+                                    <a href="content.html"   ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>学校管理</a><br>
+                                    <a href="#"  ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>校长管理</a><br>
+                                    <a href="#"  ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>老师管理</a><br>
+                                    <a href="#"  ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>教务老师管理</a><br>
+                                    <a href="#"  ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>学生管理</a><br>
+                                    <a href="#"  ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>家长管理</a><br>
+                                    <a href="#"  ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>权限管理</a><br>
+                                    <a href="#"  ><span class="glyphicon glyphicon-star" aria-hidden="true"></span>审批管理</a><br>
+
+                            </div>
+
+
+
+                    <div class="panel-group" id="panel-tm-menu2" style="  margin-bottom: 0px;">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu2" href="#panel-baoming-jiaofei">
+                                    <span class="glyphicon glyphicon-yen" aria-hidden="true"></span> 报  名  缴  费
+                                </a>
+                            </div>
+                            <div id="panel-baoming-jiaofei" class="panel-collapse collapse">
+                                <div class="list-group">
+                                    <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star" aria-hidden="true"></span>家长咨询</a>
+                                    <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star" aria-hidden="true"></span>预约试听</a>
+                                    <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star" aria-hidden="true"></span>学员报名</a>
+                                    <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star" aria-hidden="true"></span>缴费查询</a>
+                                    <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star" aria-hidden="true"></span>教材订购</a>
+                                    <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star" aria-hidden="true"></span>活动发布</a>
+                                    <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star" aria-hidden="true"></span>学员会员卡</a>
+                                    <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star" aria-hidden="true"></span>教材出入库</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-10">
+                     <div id="mainContents">
+
+
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+
+    $(document).ready(function () {
+
+//http://blog.csdn.net/xllily_11/article/details/51879420
+
+      $("#panel-people-management a").on('click', function() {
+
+
+            var href = $(this).attr('href');
+
+            $.ajax({
+                type: "GET",
+                async: true,
+                url: "/bootstrap/" + href,
+                success: function(data) {
+                  //   alert(data)
+                    $('#mainContents').empty();
+                    //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
+                    var data2= data.replace(/ \<script src=\"js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
+                    $('#mainContents').append(data2);
+
+
+                }
+            });
+
+            //阻止跳转
+             return false;
+        });
+
+
+
+
+
+    });
+
+
+</script>
+</body>
+</html>

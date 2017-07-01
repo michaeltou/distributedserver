@@ -42,7 +42,7 @@ $(function () {
         resizable: false,
         modal: true,
         width: 440,
-        height: 400,
+        height: 460,
         title: '新建校区',
         buttons: {
             '保存': function () {

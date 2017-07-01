@@ -40,6 +40,11 @@ public class KeChengCategoryService {
         return keChengCategory;
     }
 
+    public List<KeChengCategory>  queryKeChengCategoryByNameWithLike(String name,String institution_code){
+        List<KeChengCategory> keChengCategoryList = keChengCategoryDAO.queryKeChengCategoryByNameWithLike(name,institution_code);
+        return keChengCategoryList;
+    }
+
 
     public int insertKeChengCategory(KeChengCategory KeChengCategory){
         int result =  keChengCategoryDAO.insertKeChengCategory(KeChengCategory);

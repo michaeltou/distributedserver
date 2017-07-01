@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>助教宝 - 管理后台</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="baidu-site-verification" content="elXuCAMAW3">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="renderer" content="webkit">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/index_style.css">
+  <link rel="stylesheet" href="css/jquery-ui.css">
+  <link rel="stylesheet" href="css/yp_style.css">
+  <link rel="stylesheet" href="css/classrecorddetail.css">
+  <link rel="stylesheet" href="css/iconfont.css">
+  <script type="text/javascript" src="js/jquery.js"></script>
+  <script type="text/javascript" src="js/jquery-ui.js"></script>
+  <script type="text/javascript" src="js/classrecorddetail.js"></script>
+  <script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body style="background-color: #fff;">
+<div class="mainContainer">
+<div class="rightmain clearfix tplSettingDome signSetting" data-page="domesticRegister">
+  <div class="app-framework-cpt">
+    <div class="domestic-register-manager-cpt">
+      <div class="tab-cpt">
+        <div class="tab-nav-cpt">
+          <div class="tab-nav-btn-cpt">
+            <div class="tab-nav-btn-body"> <a href="RememberClassDetail.html"> <span class="tab-nav-btn-content"> 记上课 </span> </a> </div>
+          </div>
+          <div class="tab-nav-btn-cpt selected">
+            <div class="tab-nav-btn-body"><a href="ClassRecordDetail.html"> <span class="tab-nav-btn-content"> 上课记录 </span> </a></div>
+          </div>
+          <div class="tab-nav-btn-cpt ">
+            <div class="tab-nav-btn-body"><a href="TeachersClassHourDetail.html"> <span class="tab-nav-btn-content"> 教师课时 </span> </a></div>
+          </div>
+        </div>
+        <div class="tab-body-group-cpt">
+          <div class="tab-body-cpt tab-body-show">
+            <div class="sign-setting-cpt clearfix">
+
+              <div class="sign-list-cpt" style="min-width: 1200px;">
+                <div class="block-title-cpt"> 上课记录情报一览 </div>
+                <div style="float:left; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
+                  <label id='classNameForSearchTitle'>班级名称:</label>
+                </div>
+                <div style="float:left;  padding-top:15px; padding-bottom:30px;">
+                  <input class="text-input-cpt" type="text" name="classNameForSearchText"
+                         value="" id="classNameForSearchText">
+                </div>
+                <div style="float:left; width:70px; padding-top:20px; padding-left:20px;padding-bottom:10px;">
+                  <label id='teacherForSearchTitle'>任课教师:</label>
+                </div>
+                <div style="float:left;  padding-top:15px;">
+                  <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
+                    <select name="teacherForSearchText"
+                            style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;"
+                            id="teacherForSearchText">
+                      <option value="全部"> 全部</option>
+                      <option value="张老师"> 张老师</option>
+                      <option value="李老师"> 李老师</option>
+                      <option value="王老师"> 王老师</option>
+                    </select>
+                  </div>
+                </div>
+                <div style="float:left; width:70px; padding-top:20px; padding-left:20px;">
+                  <label id='schoolDistrictForSearchTitle'>所属校区:</label>
+                </div>
+                <div style="float:left;  padding-top:15px;">
+                  <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
+                    <select name="schoolDistrictForSearchText"
+                            style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;"
+                            id="schoolDistrictForSearchText">
+                      <option value="全部校区"> 全部校区</option>
+                      <option value="东校区"> 东校区</option>
+                      <option value="西校区"> 西校区</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style="clear:both;"></div>
+                <div style="float:left; width:70px; margin-top:-1px; padding-left:10px;">
+                  <label id='courseForSearchTitle'>所属课程:</label>
+                </div>
+                <div style="float:left;  margin-top:-10px; ">
+                  <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
+                    <select name="courseForSearchText"
+                            style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;"
+                            id="courseForSearchText">
+                      <option value="全部"> 全部</option>
+                      <option value="美术"> 美术</option>
+                      <option value="音乐"> 音乐</option>
+                      <option value="舞蹈"> 舞蹈</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div style="float:left; width:70px; margin-top:-1px; padding-left:20px;">
+                  <label>收费模式:</label>
+                </div>
+                <div style="float:left;  margin-top:-8px;">
+                  <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
+                    <select name="chargingModeForSearchText"
+                            style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;"
+                            id="chargingModeForSearchText">
+                      <option value="全部"> 全部</option>
+                      <option value="按课时"> 按课时</option>
+                      <option value="按时间"> 按时间</option>
+                      <option value="按期"> 按期</option>
+                    </select>
+                  </div>
+                </div>
+                <div style="float:left; width:70px; margin-top:-1px; padding-left:20px; margin-bottom:20px;">
+                  <label id='classStartDateForSearchTitle'>上课日期:</label>
+                </div>
+                <div style="float:left;  margin-top:-10px; ">
+                  <div class="date-picker">
+                    <input class="text-input-cpt" placeholder="" value="" type="text"
+                           name='date1' id="classStartDateForSearchStart">
+                  </div>
+                  -
+                  <div class="date-picker">
+                    <input class="text-input-cpt" placeholder="" value="" type="text"
+                           name='date' id="classStartDateForSearchEnd">
+                  </div>
+                </div>
+                <div style="float:left;  padding-top:0px;padding-left:25px;">
+                  <input style="margin-left: 10px; margin-top: -100px;"
+                         class="button button-middle    float-left" type="button" name="search"
+                         value="查询" id="searchClasses">
+                </div>
+                <div class="recordList">
+                  <table class="yunmo" id="classesList">
+                    <thead>
+                    <tr>
+                      <th style="width:10%;">上课日期</th>
+                      <th style="width:10%;">上课时间</th>
+                      <th style="width:10%;">班级名称</th>
+                      <th style="width:10%;">所属课程</th>
+                      <th style="width:10%;">所属校区</th>
+                      <th style="width:10%;">教师</th>
+                      <th style="width:5%;">上课</th>
+                      <th style="width:5%;">旷课</th>
+                      <th style="width:5%;">请假</th>
+                      <th style="width:5%;">补课</th>
+                      <th style="width:5%;">学员课时</th>
+                      <th style="width:10%;">创建日期</th>
+                      <th style="width:5%; min-width: 200px; text-align: center;">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td>2017-06-30</td>
+                      <td>10:00-12:00</td>
+                      <td>美术辅导班</td>
+                      <td>美术</td>
+                      <td>东校区</td>
+                      <td>张老师</td>
+                      <td>1</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>0</td>
+                      <td>10</td>
+                      <td>2017-06-05</td>
+                      <td style='text-align: center;'>
+                        <button class="deleteButton icon iconfont icon-delete">删除</button>
+                        <button class="editButton icon iconfont icon-edit">编辑</button>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

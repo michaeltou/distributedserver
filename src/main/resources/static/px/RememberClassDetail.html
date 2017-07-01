@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>助教宝 - 管理后台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="baidu-site-verification" content="elXuCAMAW3"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="renderer" content="webkit"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="css/reset.css"/>
+    <link rel="stylesheet" href="css/index_style.css"/>
+    <link rel="stylesheet" href="css/jquery-ui.css"/>
+    <link rel="stylesheet" href="css/yp_style.css"/>
+    <link rel="stylesheet" href="css/iconfont.css"/>
+    <link rel="stylesheet" href="css/rememberclassdetail.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/rememberclassdetail.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body style="background-color: #fff;">
+<div class="mainContainer">
+    <div class="rightmain clearfix tplSettingDome signSetting" data-page="domesticRegister">
+        <div class="app-framework-cpt">
+            <div class="domestic-register-manager-cpt">
+                <div class="tab-cpt">
+                    <div class="tab-nav-cpt">
+                        <div class="tab-nav-btn-cpt selected">
+                            <div class="tab-nav-btn-body"><a href="RememberClassDetail.html"> <span
+                                    class="tab-nav-btn-content"> 记上课 </span> </a></div>
+                        </div>
+                        <div class="tab-nav-btn-cpt ">
+                            <div class="tab-nav-btn-body"><a href="ClassRecordDetail.html"> <span
+                                    class="tab-nav-btn-content"> 上课记录 </span> </a></div>
+                        </div>
+                        <div class="tab-nav-btn-cpt ">
+                            <div class="tab-nav-btn-body"><a href="TeachersClassHourDetail.html"> <span
+                                    class="tab-nav-btn-content"> 教师课时 </span> </a></div>
+                        </div>
+                    </div>
+                    <div class="tab-body-group-cpt">
+                        <div class="tab-body-cpt tab-body-show">
+                            <div class="sign-setting-cpt clearfix" style="min-width: 1100px;">
+                                <div class="add-new-sign-cpt">
+                                    <div style="background-color: lavender; border: 1px solid #e4e4e4 ;height: 50px;">
+                                        <div style="float:left; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
+                                            <label>所属校区:</label>
+                                        </div>
+                                        <div style="float:left; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
+                                            <label id='schoolNameText'>XXXXXX</label>
+                                        </div>
+
+                                        <div style="float:left; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
+                                            <label>课程类别:</label>
+                                        </div>
+                                        <div style="float:left; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
+                                            <label id='courseTypeText'>YYYYYYY</label>
+                                        </div>
+                                        <div style="float:left; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
+                                            <label>班级名称:</label>
+                                        </div>
+                                        <div style="float:left; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
+                                            <label id='classesNameText'>ZZZZZZZZZZ</label>
+                                        </div>
+                                        <div style="float:right; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
+                                            <label id='studentCountText'>FFFFFF</label>
+                                        </div>
+                                        <div style="float:right; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
+                                            <label>学员人数:</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div class="sign-list-cpt">
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label>上课日期:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div class="date-picker">
+                                            <input class="text-input-cpt" placeholder="" value="2017-05-19" type="text"
+                                                   name='date' id="classingDateText">
+                                        </div>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:20px;">
+                                        <label id='classTimePeriodTitle'>上课时段:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:57px; height:26px;">
+                                            <select name="classTimeStartHourText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:61px; height:31px; line-height:28px; background:#fff;"
+                                                    id="classTimeStartHourText">
+                                                <option value="06"> 06</option>
+                                                <option value="07"> 07</option>
+                                                <option value="08"> 08</option>
+                                                <option value="09"> 09</option>
+                                                <option value="10"> 10</option>
+                                                <option value="11"> 11</option>
+                                                <option value="12"> 12</option>
+                                                <option value="13"> 13</option>
+                                                <option value="14"> 14</option>
+                                                <option value="15"> 15</option>
+                                                <option value="16"> 16</option>
+                                                <option value="17"> 17</option>
+                                                <option value="18"> 18</option>
+                                                <option value="19"> 19</option>
+                                                <option value="20"> 20</option>
+                                                <option value="21"> 21</option>
+                                                <option value="22"> 22</option>
+                                                <option value="23"> 23</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="float:left; width:10px; padding-top:20px;padding-left:10px;">
+                                        <label>:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:57px; height:26px;">
+                                            <select name="classTimeStartMinText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:61px; height:31px; line-height:28px; background:#fff;"
+                                                    id="classTimeStartMinText">
+                                                <option value="00"> 00</option>
+                                                <option value="05"> 05</option>
+                                                <option value="10"> 10</option>
+                                                <option value="15"> 15</option>
+                                                <option value="20"> 20</option>
+                                                <option value="25"> 25</option>
+                                                <option value="30"> 30</option>
+                                                <option value="35"> 35</option>
+                                                <option value="40"> 40</option>
+                                                <option value="45"> 45</option>
+                                                <option value="50"> 50</option>
+                                                <option value="55"> 55</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="float:left; width:10px; padding-top:20px;padding-left:10px;">
+                                        <label>至</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;padding-left:10px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:57px; height:26px;">
+                                            <select name="classTimeEndHourText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:61px; height:31px; line-height:28px; background:#fff;"
+                                                    id="classTimeEndHourText">
+                                                <option value="06"> 06</option>
+                                                <option value="07"> 07</option>
+                                                <option value="08"> 08</option>
+                                                <option value="09"> 09</option>
+                                                <option value="10"> 10</option>
+                                                <option value="11"> 11</option>
+                                                <option value="12"> 12</option>
+                                                <option value="13"> 13</option>
+                                                <option value="14"> 14</option>
+                                                <option value="15"> 15</option>
+                                                <option value="16"> 16</option>
+                                                <option value="17"> 17</option>
+                                                <option value="18"> 18</option>
+                                                <option value="19"> 19</option>
+                                                <option value="20"> 20</option>
+                                                <option value="21"> 21</option>
+                                                <option value="22"> 22</option>
+                                                <option value="23"> 23</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="float:left; width:10px; padding-top:20px;padding-left:10px;">
+                                        <label>:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:56px; height:26px;">
+                                            <select name="classTimeEndMinText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:60px; height:31px; line-height:28px; background:#fff;"
+                                                    id="classTimeEndMinText">
+                                                <option value="00"> 00</option>
+                                                <option value="05"> 05</option>
+                                                <option value="10"> 10</option>
+                                                <option value="15"> 15</option>
+                                                <option value="20"> 20</option>
+                                                <option value="25"> 25</option>
+                                                <option value="30"> 30</option>
+                                                <option value="35"> 35</option>
+                                                <option value="40"> 40</option>
+                                                <option value="45"> 45</option>
+                                                <option value="50"> 50</option>
+                                                <option value="55"> 55</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label>教师课时:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="teacherClassHourText"
+                                               placeholder="请输入教师课时" value="" id="teacherClassHourText">
+                                    </div>
+
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:20px;">
+                                        <label>任课教师:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
+                                            <select name="teacherNameText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;"
+                                                    id="teacherNameText">
+                                                <option value="张老师"> 张老师</option>
+                                                <option value="李老师"> 李老师</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:20px;">
+                                        <label>助教:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
+                                            <select name="helpTeacherNameText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;"
+                                                    id="helpTeacherNameText">
+                                                <option value="张老师"> 张老师</option>
+                                                <option value="李老师"> 李老师</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="clear: both;"></div>
+                                <div class="studentsDetailDivs" style="padding-top: 10px;">
+                                    <div class="studentsDetailTitle"
+                                         style="background-color: lavender; border: 1px solid #e4e4e4 ;height: 50px;">
+                                        <div style="float:left; width:70px; padding-top:17px; padding-left:10px;padding-bottom:10px;">
+                                            <label>批量操作</label>
+                                        </div>
+                                        <div style="float:left;  padding-top:15px;">
+                                            <input value="" name="batchOperationCheckBox" type="checkbox"/>上课
+                                        </div>
+                                        <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                            <input value="" name="batchOperationCheckBox" type="checkbox"/>请假
+                                        </div>
+                                        <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                            <input value="" name="batchOperationCheckBox" type="checkbox"/>旷课
+                                        </div>
+                                        <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                            <input value="" name="batchOperationCheckBox" type="checkbox"/>补课
+                                        </div>
+
+                                        <div style="float:left; width:60px; padding-top:17px;padding-left:20px;">
+                                            <label>扣除课时:</label>
+                                        </div>
+                                        <div style="float:left;  padding-top:10px;">
+                                            <input class="text-input-cpt batchOperationStudentClassHourText" type="text"
+                                                   name="batchOperationStudentClassHourText"
+                                                   placeholder="" value="1.0"/>
+                                        </div>
+                                        <div style="float:right; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
+                                            <label id='studentClassingCountText'>DDDDD</label>
+                                        </div>
+                                        <div style="float:right; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
+                                            <label>上课人数:</label>
+                                        </div>
+                                    </div>
+                                    <!--学生1-->
+                                    <div style="clear: both;"></div>
+                                    <div class="studentsDetailDiv">
+                                        <div class="studentsDetailImageDiv">
+                                            <div>
+                                                <img src="image/employee.png" class="studentIamge">
+                                            </div>
+                                            <div style="padding-left: 35px;">
+                                                <label class="studentName">XXXX</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="studentsDetailInfoDiv">
+                                            <div style="float:left;  padding-top:15px;">
+                                                <input value="" name="studentCheckBox" type="checkbox"/>上课
+                                            </div>
+                                            <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                                <input value="" name="studentCheckBox" type="checkbox"/>请假
+                                            </div>
+                                            <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                                <input value="" name="studentCheckBox" type="checkbox"/>旷课
+                                            </div>
+                                            <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                                <input value="" name="studentCheckBox" type="checkbox"/>补课
+                                            </div>
+
+                                            <div style="float:left; width:60px; padding-top:17px;padding-left:20px;">
+                                                <label>扣除课时:</label>
+                                            </div>
+                                            <div style="float:left;  padding-top:10px;">
+                                                <input class="text-input-cpt studentClassHourText" type="text"
+                                                       name="studentClassHourText"
+                                                       placeholder="" value="1.0"/>
+                                            </div>
+                                            <div style="float:left; width:100px; padding-top:17px;">
+                                                <span class="remark">（*当前剩余</span><span class="remark">XX</span><span
+                                                    class="remark">课时)</span>
+                                            </div>
+                                            <div style="clear: both;"></div>
+                                            <div style="float:left; width:60px; padding-top:17px;padding-left:10px;">
+                                                <label>老师留言:</label>
+                                            </div>
+                                            <div style="float:left;  padding-top:15px;">
+                                                <div>
+                                                    <textarea class="teacherLeavingMessage" placeholder=""></textarea>
+                                                </div>
+                                            </div>
+                                            <div style="clear: both;"></div>
+                                            <div style="float:left; width:60px; padding-top:17px;padding-left:10px;">
+                                                <label>添加图片:</label>
+                                            </div>
+                                            <div style="float:left; width:100px;  height: 100px; border:solid; margin-top: 20px;">
+                                                <a
+                                                        target="_blank" href="image/addimage.png"
+                                                        class="classInfoImageHref"> <img
+                                                        src="image/addimage.png" class="classInfoImage"> </a>
+                                                <input type="button" value="上传照片" style="width:100px; "
+                                                       class="imageselect"/>
+                                                <input style="display: none;" type="file" class="fileDialog"/>
+                                            </div>
+                                            <div style="float:left; width:660px; padding-top:100px;padding-left:10px;">
+                                                <label style="font-size: 11px;color: #003eff;">上传图片不可超过2M</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--学生2-->
+                                    <div style="clear: both;"></div>
+                                    <div class="studentsDetailDiv">
+                                        <div class="studentsDetailImageDiv">
+                                            <div>
+                                                <img src="image/employee.png" class="studentIamge">
+                                            </div>
+                                            <div style="padding-left: 35px;">
+                                                <label class="studentName">XXXX</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="studentsDetailInfoDiv">
+                                            <div style="float:left;  padding-top:15px;">
+                                                <input value="" name="studentCheckBox" type="checkbox"/>上课
+                                            </div>
+                                            <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                                <input value="" name="studentCheckBox" type="checkbox"/>请假
+                                            </div>
+                                            <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                                <input value="" name="studentCheckBox" type="checkbox"/>旷课
+                                            </div>
+                                            <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                                <input value="" name="studentCheckBox" type="checkbox"/>补课
+                                            </div>
+
+                                            <div style="float:left; width:60px; padding-top:17px;padding-left:20px;">
+                                                <label>扣除课时:</label>
+                                            </div>
+                                            <div style="float:left;  padding-top:10px;">
+                                                <input class="text-input-cpt studentClassHourText" type="text"
+                                                       name="studentClassHourText"
+                                                       placeholder="" value="1.0"/>
+                                            </div>
+                                            <div style="float:left; width:100px; padding-top:17px;">
+                                                <span class="remark">（*当前剩余</span><span class="remark">XX</span><span
+                                                    class="remark">课时)</span>
+                                            </div>
+                                            <div style="clear: both;"></div>
+                                            <div style="float:left; width:60px; padding-top:17px;padding-left:10px;">
+                                                <label>老师留言:</label>
+                                            </div>
+                                            <div style="float:left;  padding-top:15px;">
+                                                <div>
+                                                    <textarea class="teacherLeavingMessage" placeholder=""></textarea>
+                                                </div>
+                                            </div>
+                                            <div style="clear: both;"></div>
+                                            <div style="float:left; width:60px; padding-top:17px;padding-left:10px;">
+                                                <label>添加图片:</label>
+                                            </div>
+                                            <div style="float:left; width:100px;  height: 100px; border:solid; margin-top: 20px;">
+                                                <a
+                                                        target="_blank" href="image/addimage.png"
+                                                        class="classInfoImageHref"> <img
+                                                        src="image/addimage.png" class="classInfoImage"> </a>
+                                                <input type="button" value="上传照片" style="width:100px; "
+                                                       class="imageselect"/>
+                                                <input style="display: none;" type="file" class="fileDialog"/>
+                                            </div>
+                                            <div style="float:left; width:660px; padding-top:100px;padding-left:10px;">
+                                                <label style="font-size: 11px;color: #003eff;">上传图片不可超过2M</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!--学生3-->
+                                    <div style="clear: both;"></div>
+                                    <div class="studentsDetailDiv">
+                                        <div style="clear: both;"></div>
+                                        <div class="studentsDetailImageDiv">
+                                            <div>
+                                                <img src="image/employee.png" class="studentIamge">
+                                            </div>
+                                            <div style="padding-left: 35px;">
+                                                <label class="studentName">XXXX</label>
+                                            </div>
+
+                                        </div>
+                                        <div class="studentsDetailInfoDiv">
+                                            <div style="float:left;  padding-top:15px;">
+                                                <input value="" name="studentCheckBox" type="checkbox"/>上课
+                                            </div>
+                                            <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                                <input value="" name="studentCheckBox" type="checkbox"/>请假
+                                            </div>
+                                            <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                                <input value="" name="studentCheckBox" type="checkbox"/>旷课
+                                            </div>
+                                            <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                                <input value="" name="studentCheckBox" type="checkbox"/>补课
+                                            </div>
+
+                                            <div style="float:left; width:60px; padding-top:17px;padding-left:20px;">
+                                                <label>扣除课时:</label>
+                                            </div>
+                                            <div style="float:left;  padding-top:10px;">
+                                                <input class="text-input-cpt studentClassHourText" type="text"
+                                                       name="studentClassHourText"
+                                                       placeholder="" value="1.0"/>
+                                            </div>
+                                            <div style="float:left; width:100px; padding-top:17px;">
+                                                <span class="remark">（*当前剩余</span><span class="remark">XX</span><span
+                                                    class="remark">课时)</span>
+                                            </div>
+                                            <div style="clear: both;"></div>
+                                            <div style="float:left; width:60px; padding-top:17px;padding-left:10px;">
+                                                <label>老师留言:</label>
+                                            </div>
+                                            <div style="float:left;  padding-top:15px;">
+                                                <div>
+                                                    <textarea class="teacherLeavingMessage" placeholder=""></textarea>
+                                                </div>
+                                            </div>
+                                            <div style="clear: both;"></div>
+                                            <div style="float:left; width:60px; padding-top:17px;padding-left:10px;">
+                                                <label>添加图片:</label>
+                                            </div>
+                                            <div style="float:left; width:100px;  height: 100px; border:solid; margin-top: 20px;">
+                                                <a
+                                                        target="_blank" href="image/addimage.png"
+                                                        class="classInfoImageHref"> <img
+                                                        src="image/addimage.png" class="classInfoImage"> </a>
+                                                <input type="button" value="上传照片" style="width:100px; "
+                                                       class="imageselect"/>
+                                                <input style="display: none;" type="file" class="fileDialog"/>
+                                            </div>
+                                            <div style="float:left; width:660px; padding-top:100px;padding-left:10px;">
+                                                <label style="font-size: 11px;color: #003eff;">上传图片不可超过2M</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style="clear: both;"></div>
+                                    <div class="classContentDetailDiv">
+                                        <div style="float:left; width:60px; padding-top:15px;padding-left:10px;">
+                                            <label>上课内容:</label>
+                                        </div>
+                                        <div style="float:left;  padding-top:15px;">
+                                            <div>
+                                                <textarea class="classContentDetailText" placeholder=""></textarea>
+                                            </div>
+                                        </div>
+                                        <div style="clear: both;"></div>
+                                        <div style="float:left; width:60px; padding-top:17px;padding-left:10px;">
+                                            <label>备注:</label>
+                                        </div>
+                                        <div style="float:left;  padding-top:10px;">
+                                            <input class="text-input-cpt classContentRemarkText" type="text"
+                                                   name="classContentRemarkText"
+                                                   placeholder="" value=""/>
+                                        </div>
+                                        <div style="clear: both;"></div>
+                                        <div style="float:left; width:60px; padding-top:17px;padding-left:10px;">
+                                            <label>添加图片:</label>
+                                        </div>
+                                        <div style="float:left; width:100px;  height: 100px; border:solid; margin-top: 20px;">
+                                            <a
+                                                    target="_blank" href="image/addimage.png"
+                                                    class="classInfoImageHref"> <img
+                                                    src="image/addimage.png" class="classInfoImage"> </a>
+                                            <input type="button" value="上传照片" style="width:100px; "
+                                                   class="imageselect"/>
+                                            <input style="display: none;" type="file" class="fileDialog"/>
+                                        </div>
+                                        <div style="float:left; width:660px; padding-top:100px;padding-left:10px;">
+                                            <label style="font-size: 11px;color: #003eff;">上传图片不可超过2M</label>
+                                        </div>
+                                        <div style="clear: both;"></div>
+                                        <div style="margin-top: 40px;">
+                                            <div style="float:left; width:60px; padding-left:20px;padding-top:5px;">
+                                                <label>创建人:</label>
+                                            </div>
+                                            <div style="float:left;">
+                                                <input class="text-input-cpt createPerson" type="text"
+                                                       name="createPerson"
+                                                       disabled="disabled"/>
+                                            </div>
+
+                                            <div style="float:left; width:60px;padding-left:20px;padding-top:5px;">
+                                                <label>创建日期:</label>
+                                            </div>
+                                            <div style="float:left;">
+                                                <input class="text-input-cpt createDate" type="text" name="createDate"
+                                                       disabled="disabled"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style=" height: 50px; margin-top: 10px;">
+                                        <div style="float:left; width:100px; padding-top:10px; padding-left: 500px;">
+                                            <button name="Save" class="button button-middle" id="Save">保存</button>
+                                        </div>
+                                        <div style="float:left; width:100px; padding-top:10px;">
+                                            <button name="Cancel" class="button button-middle" id="Cancel">取消</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
