@@ -137,7 +137,7 @@ $(function () {
                 $.ajax({
                     url: "/px/updateSchool",//servlet文件的名称
                     type: "POST",
-                    data:JSON.stringify({ id:$("#idText").val(), address:$("#addressText").val(),
+                    data:JSON.stringify({ id:$("#idText").val(), address:$("#addressText").val(),school_name:$("#updateSchoolNameTitle").val(),institution_code:$("#updateCodeTitle").val(),
                         phone:$("#phoneText").val(), principal_name:$("#schoolMasterText").val() , principal_sfz_code:$("#schoolMasterCodeText").val(), type:$("#typeText").val()}),
                     contentType: "application/json; charset=utf-8",
                     success: function (data, textStatus) {
@@ -209,6 +209,8 @@ function EditData(editRow) {
     byId("schoolMasterCodeText").value = (tr.cells[5]).innerHTML;
     byId("phoneText").value = (tr.cells[6]).innerHTML;
     byId("addressText").value = (tr.cells[7]).innerHTML;
+    byId("updateSchoolNameTitle").value=(tr.cells[1]).innerHTML;
+    byId("updateCodeTitle").value=(tr.cells[2]).innerHTML;
     //byId("schoolTypeText").value = (tr.cells[2]).innerHTML;
     var all_options = document.getElementById("typeText").options;
     for (i = 0; i < all_options.length; i++) {
@@ -222,10 +224,12 @@ function EditData(editRow) {
 function DeleteData(delRow) {
     var tr = delRow.parentNode.parentNode;
     var idTxt=(tr.cells[0]).innerText;
+    var schoolName=(tr.cells[1]).innerText;
+    var institutionCode=(tr.cells[2]).innerText;
     $.ajax({
         url: "/px/deleteSchool",//servlet文件的名称
         type: "POST",
-        data:JSON.stringify({id:idTxt}),
+        data:JSON.stringify({id:idTxt,school_name:schoolName,institution_code:institutionCode,}),
         contentType: "application/json; charset=utf-8",
         success: function (data, textStatus) {
             if(data.success){

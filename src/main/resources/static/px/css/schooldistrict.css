@@ -1,12 +1,12 @@
 @charset "utf-8";
 /* CSS Document */
 #schoolNameTitle, #schoolCodeTitle, #schoolTypeTitle, #schoolPhoneTitle, #schoolAddressTitle,#schoolContactCode, #schoolContactTitle ,
-#schoolMasterTitle,#schoolMasterCodeTitle,#phoneTitle,#addressTitle,#typeTitle,#idTitle{
+#schoolMasterTitle,#schoolMasterCodeTitle,#phoneTitle,#addressTitle,#typeTitle,#idTitle,#schoolNameUpdateTitle,#codeTitleUpdate{
     font-size: 12px;
 }
 
 #schoolNameText, #schoolCodeText, #schoolTypeText, #schoolPhoneText, #schoolAddressText, #schoolContactText,#schoolContactPersonText
-,#schoolMasterText,#schoolMasterCodeText,#phoneText,#addressText,#typeText,#idText{
+,#schoolMasterText,#schoolMasterCodeText,#phoneText,#addressText,#typeText,#idText,#updateSchoolNameTitle,#updateCodeTitle{
     width: 300px;
     font-size: 12px;
 }
