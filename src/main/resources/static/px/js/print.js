@@ -28,9 +28,7 @@
         var frameWindow = iframe.contentWindow;
         frameWindow.close();
         frameWindow.focus();
-        pagesetup_null();
         frameWindow.print();
-        pagesetup_default();
     }
     var removePrintArea = function (id) {
         $("iframe#" + id).remove();

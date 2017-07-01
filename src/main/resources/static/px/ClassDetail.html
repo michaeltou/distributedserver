@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>助教宝 - 管理后台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="baidu-site-verification" content="elXuCAMAW3">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index_style.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/yp_style.css">
+    <link rel="stylesheet" href="css/classdetail.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/print.js"></script>
+    <script type="text/javascript" src="js/classdetail.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body style="background-color: #fff;" onload="load()">
+<div class="mainContainer">
+    <div class="rightmain clearfix tplSettingDome signSetting" data-page="domesticRegister">
+        <div class="app-framework-cpt">
+            <div class="domestic-register-manager-cpt">
+                <div class="tab-cpt">
+                    <div class="tab-body-group-cpt">
+                        <div class="tab-body-cpt tab-body-show">
+                            <div class="sign-setting-cpt clearfix">
+                                <div style="float:left; width:100%;">
+                                    <div style="float:left; width:10%; height:30px; margin-top:10px; padding-top: 8px; background-color:#9CF;">
+                                        <label style="font-size:14px; color: #f4f6f9; margin-left:10px;">基本信息</label>
+                                    </div>
+                                    <div style="float:left; width:90%; height:30px; margin-top:10px; padding-top: 8px; background-color: ThreeDFace;">
+                                        <label id='classNameText'
+                                               style="font-size:14px; margin-left:10px;">美术一班</label>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label>所属校区:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="schoolNameText"
+                                               value=""
+                                               id="schoolNameText" disabled="disabled"/>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:30px;">
+                                        <label>所属课程:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="courseNameText"
+                                               value=""
+                                               id="courseNameText" disabled="disabled"/>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:30px;">
+                                        <label>开班日期:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="startClassDateText"
+                                               value=""
+                                               id="startClassDateText" disabled="disabled"/>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:30px;">
+                                        <label>结班日期:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="endClassDateText"
+                                               value=""
+                                               id="endClassDateText" disabled="disabled"/>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label>预招人数:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="planStudentsCountText"
+                                               value=""
+                                               id="planStudentsCountText" disabled="disabled"/>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:30px;">
+                                        <label>实际人数:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="realStudentsCountText"
+                                               value=""
+                                               id="realStudentsCountText" disabled="disabled"/>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:30px;">
+                                        <label>收费模式:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="rechargingModeText"
+                                               value=""
+                                               id="rechargingModeText" disabled="disabled"/>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:30px;">
+                                        <label>收费标准:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="rechargingMoneyText"
+                                               value=""
+                                               id="rechargingMoneyText" disabled="disabled"/>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label>招生状态:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="recruitStudentStatus"
+                                               value=""
+                                               id="recruitStudentStatus" disabled="disabled"/>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:30px;">
+                                        <label>教师:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="teacherNameText"
+                                               value=""
+                                               id="teacherNameText" disabled="disabled"/>
+                                    </div>
+
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:30px;">
+                                        <label>助教:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="helpTeacherNameText"
+                                               value=""
+                                               id="helpTeacherNameText" disabled="disabled"/>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:30px;">
+                                        <label>教室:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="classroomNameText"
+                                               value=""
+                                               id="classroomNameText" disabled="disabled"/>
+                                    </div>
+
+                                    <div style="clear: both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label>上课时间:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="classTimesText"
+                                               value=""
+                                               id="classTimesText" disabled="disabled"/>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div style="float:left; width:10%; height:30px; margin-top:10px; padding-top: 8px; background-color:#9CF;">
+                                        <label style="font-size:14px; color: #f4f6f9; margin-left:10px;">统计信息</label>
+                                    </div>
+                                    <div style="float:left; width:90%; height:30px; margin-top:10px; padding-top: 8px; background-color: ThreeDFace;">
+                                        <div style="float:left; width:60px; padding-top:3px;padding-left:10px;color: #6F7082;">
+                                            <label>在读学生:</label>
+                                        </div>
+                                        <div style="float:left; width:50px; padding-top:3px;">
+                                            <label id="studyingStudentCount">123</label>
+                                        </div>
+                                        <div style="float:left; width:60px; padding-top:3px;padding-left:10px;color: #6F7082;">
+                                            <label>转出率:</label>
+                                        </div>
+                                        <div style="float:left; width:50px; padding-top:3px;">
+                                            <label id="turnOutRate">0.00%</label>
+                                        </div>
+                                        <div style="float:left; width:60px; padding-top:3px;padding-left:10px;color: #6F7082;">
+                                            <label>停课率:</label>
+                                        </div>
+                                        <div style="float:left; width:50px; padding-top:3px;">
+                                            <label id="stopClassRate">0.00%</label>
+                                        </div>
+                                        <div style="float:left; width:60px; padding-top:3px;padding-left:10px;color: #6F7082;">
+                                            <label>退费率:</label>
+                                        </div>
+                                        <div style="float:left; width:50px; padding-top:3px;">
+                                            <label id="refountRate">0.00%</label>
+                                        </div>
+                                        <div style="float:left; width:60px; padding-top:3px;padding-left:10px;color: #6F7082;">
+                                            <label>升期率:</label>
+                                        </div>
+                                        <div style="float:left; width:50px; padding-top:3px;">
+                                            <label id="upgradeRate">0.00%</label>
+                                        </div>
+                                        <div style="float:left; width:60px; padding-top:3px;padding-left:10px;color: #6F7082;">
+                                            <label>出勤率:</label>
+                                        </div>
+                                        <div style="float:left; width:50px; padding-top:3px;">
+                                            <label id="attendanceRate;">0.00%</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="clear:both;"></div>
+                                <div class="tab-nav-cpt" style="margin-top: 20px;">
+                                    <div class="tab-nav-btn-cpt selected">
+                                        <div class="tab-nav-btn-body"><span> 学员 </span> </a></div>
+                                    </div>
+                                    <div class="tab-nav-btn-cpt ">
+                                        <div class="tab-nav-btn-body"><span> 课程表 </span> </a></div>
+                                    </div>
+                                    <div class="tab-nav-btn-cpt ">
+                                        <div class="tab-nav-btn-body"><span> 上课记录 </span> </a></div>
+                                    </div>
+                                    <div class="tab-nav-btn-cpt">
+                                        <div class="tab-nav-btn-body"><span> 作业 </span> </a></div>
+                                    </div>
+                                    <div class="tab-nav-btn-cpt">
+                                        <div class="tab-nav-btn-body"><span> 点名表 </span> </a></div>
+                                    </div>
+                                    <div class="tab-nav-btn-cpt">
+                                        <div class="tab-nav-btn-body"><span> 信息表 </span> </a></div>
+                                    </div>
+                                </div>
+
+                                <!--学员详情-->
+                                <div class="studentsDetailListDiv" style="padding-top: 10px;">
+                                    <!-- 报名机能暂不对应
+                                    <div class="addNewCoursesDiv">
+                                        <input class="button button-middle  float-left"
+                                               type="button" name="addCourseBtn" value="报名" id="addCourseBtn"/>
+                                    </div>
+                                    -->
+                                    <div class="courseDetailDiv">
+                                        <div style="float:left; width:100%; height:40px;">
+                                            <div class="studentOperationBtnDiv">
+                                                <input class="sendNoticeBtn" type="button" value="发送通知"/>
+                                            </div>
+                                            <div class="studentOperationBtnDiv">
+                                                <input class="changeOtherClassBtn" type="button" value="转班"/>
+                                            </div>
+                                            <div class="studentOperationBtnDiv">
+                                                <input class="renewBtn" type="button" value="续费"/>
+                                            </div>
+                                            <div class="studentOperationBtnDiv">
+                                                <input class="endClassesBtn" type="button" value="节课"/>
+                                            </div>
+                                            <div class="studentOperationBtnDiv">
+                                                <input class="deleteStudentBtn" type="button" value="删除"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="recordList" style="margin-left: 10px; margin-right: 10px">
+                                            <table class="yunmo">
+                                                <thead>
+                                                <tr>
+                                                    <th style="width:5%;">选择</th>
+                                                    <th style="width:10%;">学员名称</th>
+                                                    <th style="width:10%;">联系电话</th>
+                                                    <th style="width:10%;">母亲电话</th>
+                                                    <th style="width:10%;">年龄</th>
+                                                    <th style="width:10%;">性别</th>
+                                                    <th style="width:10%;">已用课时</th>
+                                                    <th style="width:10%;">剩余课时</th>
+                                                    <th style="width:10%;">学员状态</th>
+                                                    <th style="width:15%;">分班日期</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td><input type="checkbox" value="" name=""/></td>
+                                                    <td>小明</td>
+                                                    <td>18717947096</td>
+                                                    <td>18717947096</td>
+                                                    <td>12</td>
+                                                    <td>男</td>
+                                                    <td>12</td>
+                                                    <td>28</td>
+                                                    <td>在读</td>
+                                                    <td>2017-6-5</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="checkbox" value="" name=""/></td>
+                                                    <td>小明</td>
+                                                    <td>18717947096</td>
+                                                    <td>18717947096</td>
+                                                    <td>12</td>
+                                                    <td>男</td>
+                                                    <td>12</td>
+                                                    <td>28</td>
+                                                    <td>在读</td>
+                                                    <td>2017-6-5</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--课程表详情-->
+                                <div class="classScheduleListDiv" style="padding-top: 10px;">
+                                    暂时未对应
+
+                                </div>
+                                <!--上课记录详情-->
+                                <div class="classRecordListDiv" style="padding-top: 10px;">
+
+                                    <div>
+                                        <input style="margin-bottom: 10px;margin-left: 10px;" class="button button-middle  float-left"
+                                               type="button" name="rememberClassBtn" value="记上课" id="rememberClassBtn"></input>
+                                    </div>
+
+                                    <div class="recordList" style="margin-left: 10px;margin-right: 10px;">
+                                        <table class="yunmo">
+                                            <thead>
+                                            <tr>
+                                                <th style="width:10%;">上课日期</th>
+                                                <th style="width:10%;">上课时间</th>
+                                                <th style="width:10%;">教师</th>
+                                                <th style="width:10%;">应到人数</th>
+                                                <th style="width:10%;">出勤率</th>
+                                                <th style="width:5%;">上课</th>
+                                                <th style="width:5%;">请假</th>
+                                                <th style="width:5%;">旷课</th>
+                                                <th style="width:5%;">补课</th>
+                                                <th style="width:10%;">学员课时</th>
+                                                <th style="width:10%;">创建日期</th>
+                                                <th style="width:10%; min-width: 150px; text-align: center;">操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>2017-06-30</td>
+                                                <td>10:00-12:00</td>
+                                                <td>张老师</td>
+                                                <td>23</td>
+                                                <td>90%</td>
+                                                <td>20</td>
+                                                <td>1</td>
+                                                <td>2</td>
+                                                <td>3</td>
+                                                <td>23</td>
+                                                <td>2017-06-30</td>
+                                                <td style='text-align: center;'>
+                                                    <button class="editButton icon iconfont icon-edit">编辑</button>
+                                                    <button class="deleteButton icon iconfont icon-delete">删除</button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <!--作业-->
+                                <div class="homeworkListDiv" style="padding-top: 10px;">
+                                    作业暂未对应
+                                </div>
+
+                                <!--点名表-->
+                                <div class="pointTableDiv" style="padding-top: 10px;">
+                                    <div class="printDataDiv">
+                                        <div style="text-align: center; font-size: 16px; padding-bottom: 10px;">美术一班 点名表</div>
+                                        <table class="printData" align="center">
+                                            <thead>
+                                            <tr>
+                                                <th style="width:10px;">No.</th>
+                                                <th style="width:80px;">姓名</th>
+                                                <th style="width:80px;">性别</th>
+                                                <th style="width:80px;">联系电话</th>
+                                                <th style="width:80px;">母亲电话</th>
+                                                <th style="width:5px;">1</th>
+                                                <th style="width:5px;">2</th>
+                                                <th style="width:5px;">3</th>
+                                                <th style="width:5px;">4</th>
+                                                <th style="width:5px;">5</th>
+                                                <th style="width:5px;">6</th>
+                                                <th style="width:5px;">7</th>
+                                                <th style="width:5px;">8</th>
+                                                <th style="width:5px;">9</th>
+                                                <th style="width:5px;">10</th>
+                                                <th style="width:5px;">11</th>
+                                                <th style="width:5px;">12</th>
+                                                <th style="width:5px;">13</th>
+                                                <th style="width:5px;">14</th>
+                                                <th style="width:5px;">15</th>
+                                                <th style="width:5px;">16</th>
+                                                <th style="width:5px;">17</th>
+                                                <th style="width:5px;">18</th>
+                                                <th style="width:5px;">19</th>
+                                                <th style="width:5px;">20</th>
+                                                <th style="width:5px;">21</th>
+                                                <th style="width:5px;">22</th>
+                                                <th style="width:5px;">23</th>
+                                                <th style="width:5px;">24</th>
+                                                <th style="width:5px;">25</th>
+                                                <th style="width:5px;">26</th>
+                                                <th style="width:5px;">27</th>
+                                                <th style="width:5px;">28</th>
+                                                <th style="width:5px;">29</th>
+                                                <th style="width:5px;">30</th>
+                                                <th style="width:5px;">31</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>小明</td>
+                                                <td>男</td>
+                                                <td>18718947096</td>
+                                                <td>18718947096</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div style="margin-left: 550px;margin-top: 20px;">
+                                        <input type="button" class="btnPrint" value="打印"
+                                               onmouseover="this.style.backgroundPosition='left -40px'"
+                                               onmouseout="this.style.backgroundPosition='left top'"/>
+                                    </div>
+                                </div>
+                                <!--信息表-->
+                                <div class="studentsInfoDiv" style="padding-top: 10px;">
+                                    <div class="printDataDiv">
+                                        <div style="text-align: center; font-size: 16px; padding-bottom: 10px;">美术一班 学员信息表</div>
+                                        <table class="printData" align="center">
+                                            <thead>
+                                            <tr>
+                                                <th style="width:10px;">No.</th>
+                                                <th style="width:80px;">姓名</th>
+                                                <th style="width:80px;">性别</th>
+                                                <th style="width:80px;">年龄</th>
+                                                <th style="width:80px;">联系电话</th>
+                                                <th style="width:80px;">母亲电话</th>
+                                                <th style="width:80px;">父亲电话</th>
+                                                <th style="width:80px;">学员生日</th>
+                                                <th style="width:400px;">居住区域</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>小明</td>
+                                                <td>男</td>
+                                                <td>22</td>
+                                                <td>18718947096</td>
+                                                <td>18718947096</td>
+                                                <td>18718947096</td>
+                                                <td>89-09-08</td>
+                                                <td>秋溢路1101号</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div style="margin-left: 550px;margin-top: 20px;">
+                                        <input type="button" class="btnPrint" value="打印"
+                                               onmouseover="this.style.backgroundPosition='left -40px'"
+                                               onmouseout="this.style.backgroundPosition='left top'"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

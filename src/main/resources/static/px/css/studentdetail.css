@@ -7,12 +7,12 @@
      min-height: 520px;
  }
 
-.courseDetailDiv {
+.courseDetailDiv,.classRecordListDiv {
     border: 1px solid #e4e4e4;
     margin: 10px 10px 10px 0px;
     padding: 0px 0px 20px 0px;
-    //background-color: ThreeDFace;
 }
+
 
 #studentNameText,
 #studentPhoneText,
@@ -32,14 +32,15 @@
 
 .printClassCardBtn,.renewBtn,.buyTextbooksBtn,.classTransferBtn,.suspendClassesBtn,.refundBtn,.endClassesBtn,.placementClassesBtn{
     height: 20px;
-    //width: 60px;
     color: blue;
     background: transparent;
     display: inline-block;
     color: royalblue !important;
     cursor: pointer;
     border: 1px solid silver;
+    border-radius: 5px;
     margin-right: 10px;
+    margin-top: -5px;
 }
 
 .courseDetailTitleDiv{
@@ -61,3 +62,13 @@
     margin-left:10px;
     color: #007fff;
 }
+
+
+/*
+.yunmo th {
+    padding: 10px;
+    text-align: left;
+    //background-color: mintcream;
+    background-color: seashell;
+}
+*/
