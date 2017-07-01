@@ -36,7 +36,10 @@ $(function () {
     });
 
     $(".coursesDetailListDiv").on('click', ".printClassCardBtn", function () {
-        window.location.href = "Student_Saved.html";
+        window.location.href = "PrintCourseRegistrationCard.html";
+    });
+    $(".ordersDetailListDiv").on('click', ".printButton", function () {
+        window.location.href = "PrinntFeeVoucher.html";
     });
 
 });
