@@ -69,7 +69,7 @@
                                         </div>
                                         <div style="float:left;  padding-top:15px;">
                                             <input class="text-input-cpt" type="text" name="studentIDText"
-                                                   placeholder="请输入您的年龄(必填)" value="" id="studentIDText"/>
+                                                   placeholder="请输入您的身份证(必填)" value="" id="studentIDText"/>
                                         </div>
                                         <div style="float:left; width:70px; padding-top:20px;padding-left:30px;">
                                             <label id='studentSexTitle'>性别:</label>
@@ -99,6 +99,15 @@
                                         </div>
                                     </div>
                                     <div style="clear:both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
+                                        <label id='birthdayTitle'>生日:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="birthdayText"
+                                               placeholder="请输入生日(必填)" value="" id="birthdayText"/>
+                                    </div>
+                                    <div style="clear:both;"></div>
+
                                     <div style="float:left; width:100%; height:30px; padding-top:8px; margin-top:18px; background-color:#9CF;">
                                         <label id='employeeDetailedTitle' style="font-size:14px; margin-left:10px;">详细信息（选填）</label>
                                     </div>
@@ -208,6 +217,21 @@
                                         </div>
                                     </div>
                                     <div style="clear:both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='weixinTitle'>微信:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="studentEmailText"
+                                               placeholder="请输入微信号" value="" id="weixinText"/>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='qqTitle'>QQ:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="studentEmailText"
+                                               placeholder="请输入QQ号" value="" id="qqText"/>
+                                    </div>
+                                    <div style="clear:both;"></div>
                                 </form>
 
                                 <div class="sign-list-cpt" style="min-width: 1200px;">
@@ -259,6 +283,8 @@
                                                 <th style="width:12%;">微信号</th>
                                                 <th style="width:12%;">性别</th>
                                                 <th style="width:12%;">生日</th>
+                                                <th style="width:12%;">身份证</th>
+                                                <th style="width:12%;">机构编码</th>
                                                 <th style="width:12%;min-width:150px;text-align: center;">操作</th>
                                             </tr>
                                             </thead>
@@ -273,6 +299,8 @@
                                                 <td th:text="${prod.weixinhao}">2017/1/1</td>
                                                 <td th:text="${prod.gender}">2</td>
                                                 <td th:text="${prod.birthday}">ss</td>
+                                                <td th:text="${prod.sfzCode}">ss</td>
+                                                <td th:text="${prod.institution_code}">ss</td>
                                                 <td style='text-align: center;'>
                                                     <button class="deleteButton icon iconfont icon-delete">删除</button>
                                                     <button class="editButton icon iconfont icon-edit">编辑</button>

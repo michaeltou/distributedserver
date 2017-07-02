@@ -77,7 +77,7 @@ $(function () {
                 $.ajax({
                     url: "/px/insertSchool",//servlet文件的名称
                     type: "POST",
-                    data:JSON.stringify({ school_name:$("#schoolNameText").val(), institution_code:$("#schoolCodeText").val(), address:$("#schoolAddressText").val(),
+                    data:JSON.stringify({ school_name:$("#schoolNameText").val(), phone:$("#schoolCodeText").val(), address:$("#schoolAddressText").val(),
                         phone:$("#schoolPhoneText").val(), principal_name:$("#schoolContactText").val() , principal_sfz_code:$("#schoolContactPersonText").val(), type:$("#schoolTypeText").val()}),
                     contentType: "application/json; charset=utf-8",
                     success: function (data, textStatus) {

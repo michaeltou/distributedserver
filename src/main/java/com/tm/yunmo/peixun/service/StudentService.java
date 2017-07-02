@@ -39,6 +39,11 @@ public class StudentService {
         return Student;
     }
 
+    public List<Student> queryStudentByPhone(String institution_code,String phone){
+        return studentDAO.queryStudentByPhone(institution_code,phone);
+
+    }
+
 
     public int insertStudent(Student student) {
         int result = studentDAO.insertStudent(student);

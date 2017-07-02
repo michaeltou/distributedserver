@@ -12,6 +12,9 @@
 #politicalStatusText,
 #academyText,
 #majorText,
+#weixinText,
+#birthdayText,
+#qqText,
 #educationText {
     width: 300px;
 }

@@ -91,9 +91,10 @@ public class StudentApi {
      * @param student
      * @return
      */
-    @RequestMapping("/insertStudent")
+    @RequestMapping("/px/insertStudent")
     public ResultModel insertStudent(@RequestBody Student student) {
         ResultModel resultModel = new ResultModel();
+
 
         int result = studentService.insertStudent(student);
         if (result > 0) {
@@ -185,7 +186,7 @@ public class StudentApi {
      * @param student
      * @return
      */
-    @RequestMapping("/deleteStudent")
+    @RequestMapping("/px/deleteStudent")
     public ResultModel deleteStudent(@RequestBody Student student) {
         ResultModel resultModel = new ResultModel();
         int result = studentService.deleteStudent(student);
