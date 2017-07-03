@@ -29,19 +29,17 @@
                         <div class="tab-body-cpt tab-body-show">
                             <div class="sign-setting-cpt clearfix">
                                 <div class="add-new-sign-cpt">
-                                    <div style="float: left; padding-top: 10px;">
-                                        <input style="margin-left: 10px;background-color: #4fc0e8;" class="button button-middle  float-left"
-                                               type="button" name="newExpenditureItems" value="支出大类"
-                                               id="selectedExpenditureItems">
-                                    </div>
-                                    <div style="float: left;padding-top: 10px;">
-                                        <input style="margin-left: 10px;" class="button button-middle  float-left"
-                                               type="button" name="newSubExpenditureItems" value="支出小类"
-                                               id="selectedSubExpenditureItems" onclick="window.location.href ='SubExpenditureItems.html'">
+                                    <div class="tab-nav-cpt" style="margin-top: 0px;">
+                                        <div class="tab-nav-btn-cpt selected">
+                                            <div class="tab-nav-btn-body"><span> 支出大类 </span> </a></div>
+                                        </div>
+                                        <div class="tab-nav-btn-cpt ">
+                                            <div class="tab-nav-btn-body"><span> 支出小类 </span> </a></div>
+                                        </div>
                                     </div>
                                 <div style="clear: both;"></div>
                                 </div>
-                                <form class="addExpenditureItems" title="新建支出大类" id="addExpenditureItems">
+                                <form class="addExpenditureItems" title="新建" id="addExpenditureItems">
                                     <div style="float:left; width:70px; padding-top:20px;padding-left:50px;">
                                         <label>排序:</label>
                                     </div>
@@ -66,10 +64,10 @@
                                     </div>
                                 </form>
                                 <div class="sign-list-cpt" style="min-width: 700px;">
-                                    <div class="block-title-cpt"> 支出项目大类</div>
+                                    <div class="block-title-cpt"> 支出大类</div>
                                     <div style="float: left; padding-top: 2px;padding-bottom: 10px;">
                                         <input style="margin-left: 10px;" class="button button-middle  float-left"
-                                               type="button" name="newExpenditureItems" value="新建支出大类"
+                                               type="button" name="newExpenditureItems" value="新建"
                                                id="newExpenditureItems">
                                     </div>
                                     <div class="recordList" style="width: 60%">

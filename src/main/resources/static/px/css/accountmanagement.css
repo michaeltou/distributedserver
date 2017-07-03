@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+#courseTypeCodeText, #courseTypeNameText {
+    width: 200px;
+}
+
+.mainContainer {
+    border: 2px solid #e4e4e4;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 100px 10px;
+    min-height: 520px;
+}

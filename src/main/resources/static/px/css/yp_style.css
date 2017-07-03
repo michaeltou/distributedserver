@@ -1450,7 +1450,7 @@
     color: #16a085
 }
 
-.deleteButton, .editButton, .editTimesButton, .discountButton, .teachingMaterialButton, .placementButton ,.printButton{
+.deleteButton, .editButton, .editTimesButton, .discountButton, .teachingMaterialButton, .placementButton ,.printButton,.confirmButton,.detailButton{
     height: 20px;
     width: 60px;
     color: blue;

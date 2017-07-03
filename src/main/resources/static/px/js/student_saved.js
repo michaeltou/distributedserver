@@ -10,6 +10,6 @@ $(function () {
 
     $("#back").click(function () {
         //alert("");
-        window.location.href = "Student.html";
+        window.location.href = "/px/defaultStudentSerach";
     });
 });

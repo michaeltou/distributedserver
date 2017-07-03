@@ -285,7 +285,7 @@
                                                 <th style="width:12%;">生日</th>
                                                 <th style="width:12%;">身份证</th>
                                                 <th style="width:12%;">机构编码</th>
-                                                <th style="width:12%;min-width:150px;text-align: center;">操作</th>
+                                                <th style="width:12%;min-width:200px;text-align: center;">操作</th>
                                             </tr>
                                             </thead>
                                             <tbody>
@@ -302,8 +302,9 @@
                                                 <td th:text="${prod.sfzCode}">ss</td>
                                                 <td th:text="${prod.institution_code}">ss</td>
                                                 <td style='text-align: center;'>
-                                                    <button class="deleteButton icon iconfont icon-delete">删除</button>
                                                     <button class="editButton icon iconfont icon-edit">编辑</button>
+                                                    <button class="deleteButton icon iconfont icon-delete">删除</button>
+                                                    <button class="detailButton icon iconfont icon-viewlist">详情</button>
                                                 </td>
                                             </tr>
                                             </tbody>

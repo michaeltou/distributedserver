@@ -1,5 +1,15 @@
 $(function () {
 
+    $(".tab-nav-btn-cpt").click(function () {
+        $(".tab-nav-btn-cpt").removeClass("selected");
+        $(this).addClass("selected");
+        if($(this).is( $(".tab-nav-btn-cpt").eq(0))){
+            window.location.href = "ExpenditureItems.html";
+        }else if($(this).is( $(".tab-nav-btn-cpt").eq(1))){
+            window.location.href = "SubExpenditureItems.html";
+        }
+    });
+
     $('#newExpenditureItems').click(function () {
         $('.addExpenditureItems').dialog("option", "title", "新建支出项目大类").dialog('open');
     });

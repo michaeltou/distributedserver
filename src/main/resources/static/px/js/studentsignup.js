@@ -307,6 +307,10 @@ $(function () {
         $('.AddEmplyee').dialog("option", "title", "编辑社员").dialog('open');
     });
 
+    $("body").on('click', ".detailButton", function () {
+        window.location.href = "StudentDetail.html";
+    });
+
 
     $('.AddStudent').dialog({
         autoOpen: false,

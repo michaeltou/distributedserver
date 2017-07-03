@@ -55,6 +55,10 @@ $(function () {
         $('.AddClassesTimes').dialog("option", "title", "编辑上课时间").dialog('open');
     });
 
+    $("body").on('click', ".detailButton", function () {
+        window.location.href = "ClassDetail.html";
+    });
+
     var $editClassDataTr;
     $("body").on('click', ".editButton", function () {
         EditData($(this).get(0));

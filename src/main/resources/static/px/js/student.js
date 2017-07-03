@@ -292,6 +292,10 @@ $(function () {
         $('.AddEmplyee').dialog("option", "title", "编辑学员").dialog('open');
     });
 
+    $("body").on('click', ".detailButton", function () {
+        window.location.href = "StudentDetail.html";
+    });
+
     $('#searchStudent').click(function () {
         var studentName = $("#studentNameForSearchText").val();
         var phone = $("#studentPhoneForSearchText").val();
