@@ -18,6 +18,7 @@ public class SchoolPage {
     @Autowired
     SchoolService schoolService;
 
+    // TODO
     @RequestMapping("/px/serachSchool")
     public String getSearchSchool(Model model){
         List<School> schoolList = schoolService.querySchoolListByInstitution("tm");
@@ -26,11 +27,20 @@ public class SchoolPage {
     }
 
     @RequestMapping("/px/querySchoolListByInstitution")
-    public String querySchoolListByInstitution(HttpServletRequest request,Model model) {
+    // TODO
+    public String querySchoolListByInstitution2(HttpServletRequest request,Model model) {
         String institution_code = request.getParameter("institution_code");
         List<School> schoolList = schoolService.querySchoolListByInstitution(institution_code);
         model.addAttribute("data",schoolList);
         return "px/SchoolDistrict";
+    }
+
+
+    @RequestMapping("/xiaobao/querySchoolListByInstitution")
+    public String querySchoolListByInstitution(HttpServletRequest request,Model model){
+        List<School> schoolList = schoolService.querySchoolListByInstitution("tm");
+        model.addAttribute("schoolList",schoolList);
+        return "xiaobao/schoolList";
     }
 
 }
