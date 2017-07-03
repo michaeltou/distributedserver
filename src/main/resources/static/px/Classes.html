@@ -464,14 +464,13 @@
                                 <div class="sign-list-cpt" style="min-width: 1200px;">
                                     <div class="block-title-cpt"> 班级一览</div>
                                     <div style="float:left; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
-                                        <label id='classNameForSearchTitle'>班级名称:</label>
+                                        <label>班级名称:</label>
                                     </div>
                                     <div style="float:left;  padding-top:15px; padding-bottom:30px;">
-                                        <input class="text-input-cpt" type="text" name="classNameForSearchText"
-                                               placeholder="请输入班级名称" value="" id="classNameForSearchText">
+                                        <input class="text-input-cpt" type="text" name="classNameForSearchText"  value="" id="classNameForSearchText">
                                     </div>
-                                    <div style="float:left; width:70px; padding-top:20px; padding-left:20px;padding-bottom:10px;">
-                                        <label id='teacherForSearchTitle'>班主任:</label>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:20px;">
+                                        <label>教师:</label>
                                     </div>
                                     <div style="float:left;  padding-top:15px;">
                                         <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
@@ -484,10 +483,25 @@
                                             </select>
                                         </div>
                                     </div>
+
                                     <div style="float:left; width:70px; padding-top:20px; padding-left:20px;">
-                                        <label id='schoolDistrictForSearchTitle'>所属校区:</label>
+                                        <label>招生状态:</label>
                                     </div>
                                     <div style="float:left;  padding-top:15px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
+                                            <select name="recruitStudentsStatsuForSearchText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;"
+                                                    id="recruitStudentsStatsuForSearchText">
+                                                <option value="开放招生"> 开放招生</option>
+                                                <option value="停止招生"> 停止招生</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div style="float:left; width:70px; margin-top:-8px; padding-left:10px;">
+                                        <label>所属校区:</label>
+                                    </div>
+                                    <div style="float:left;  margin-top:-12px;">
                                         <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
                                             <select name="schoolDistrictForSearchText"
                                                     style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;"
@@ -498,10 +512,10 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div style="float:left; width:70px; padding-top:20px; padding-left:20px;">
-                                        <label id='courseForSearchTitle'>所属课程:</label>
+                                    <div style="float:left; width:70px; margin-top:-8px; padding-left:20px;">
+                                        <label>所属课程:</label>
                                     </div>
-                                    <div style="float:left;  padding-top:15px;">
+                                    <div style="float:left;  margin-top:-12px;">
                                         <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
                                             <select name="courseForSearchText"
                                                     style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;"
@@ -512,11 +526,11 @@
                                             </select>
                                         </div>
                                     </div>
-                                    <div style="clear:both;"></div>
-                                    <div style="float:left; width:70px; margin-top:-1px; padding-left:10px; margin-bottom:20px;">
-                                        <label id='classStartDateForSearchTitle'>开课日期:</label>
+
+                                    <div style="float:left; width:70px; margin-top:-8px; padding-left:20px; padding-bottom:30px;">
+                                        <label>开课日期:</label>
                                     </div>
-                                    <div style="float:left;  margin-top:-10px; ">
+                                    <div style="float:left;  margin-top:-15px;">
                                         <div class="date-picker">
                                             <input class="text-input-cpt" placeholder="" value="" type="text"
                                                    name='date1' id="classStartDateForSearchStart">
@@ -527,20 +541,8 @@
                                                    name='date' id="classStartDateForSearchEnd">
                                         </div>
                                     </div>
-                                    <div style="float:left; width:70px; margin-top:-1px; padding-left:20px;">
-                                        <label id='recruitStudentsStatsuForSearchTitle'>招生状态:</label>
-                                    </div>
-                                    <div style="float:left;  margin-top:-8px;">
-                                        <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
-                                            <select name="recruitStudentsStatsuForSearchText"
-                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;"
-                                                    id="recruitStudentsStatsuForSearchText">
-                                                <option value="开放招生"> 开放招生</option>
-                                                <option value="停止招生"> 停止招生</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div style="float:left;  padding-top:0px;padding-left:25px;">
+
+                                    <div style="float:left;  margin-top:-6px;padding-left:50px;">
                                         <input style="margin-left: 10px; margin-top: -100px;"
                                                class="button button-middle    float-left" type="button" name="search"
                                                value="查询" id="searchClasses">

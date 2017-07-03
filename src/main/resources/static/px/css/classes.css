@@ -42,3 +42,7 @@
 a.hover-color:hover{
     color:blue;
 }
+
+#classNameForSearchText{
+    width: 200px;
+}
