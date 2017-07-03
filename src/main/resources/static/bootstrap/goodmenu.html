@@ -110,7 +110,9 @@
                 url: "/bootstrap/" + href,
                 success: function(data) {
                     $('#mainContents').empty();
-                    $('#mainContents').append(data);
+                    //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
+                    var data2= data.replace(/ \<script src=\"js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
+                    $('#mainContents').append(data2);
                 }
             });
 
