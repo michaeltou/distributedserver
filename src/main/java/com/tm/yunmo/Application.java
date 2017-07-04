@@ -4,6 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.ConfigurableEmbeddedServletContainer;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -28,9 +30,26 @@ public class Application {
 
         logger.info("bootstrap 页面设计工具：http://www.layoutit.com/   ");
 
+        logger.info("系统拦截器配置在类  com.tm.yunmo.peixun.control.login.WebMvcConf 中。 ");
 
 
         return new Object();
+    }
+
+    /**
+     *这里是设置系统session的超时时间.
+     * @return
+     */
+    @Bean
+    public EmbeddedServletContainerCustomizer containerCustomizer(){
+        return new EmbeddedServletContainerCustomizer() {
+            @Override
+            public void customize(ConfigurableEmbeddedServletContainer container) {
+                int seconds = 1800;//单位为S
+                logger.info("系统session的超时时间为:   "+1800+"秒");
+                container.setSessionTimeout(seconds);//单位为S
+            }
+        };
     }
 
     public static void main(String[] args) {

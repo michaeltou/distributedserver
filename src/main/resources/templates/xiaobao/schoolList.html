@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/bootstrap.css"/>
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/bootstrap.js"></script>
-
+    <script src="js/schoolList.js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -26,36 +26,108 @@
                 您的校区数量已达到购买上线，无法再新建校区，如有需要请联系助教宝客服人员
             </span>
 
-            <!-- 模态框（Modal） -->
-            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                 aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header" style="color:white;background-color:green;">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                &times;
-                            </button>
-                            <h4 class="modal-title" id="myModalLabel">
-                                模态框（Modal）标题
-                            </h4>
-                        </div>
-                        <div class="modal-body">
-                            在这里添加一些文本
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                            </button>
-                            <button id="save" type="button" class="btn btn-primary">
-                                提交更改
-                            </button>
-                        </div>
-                    </div><!-- /.modal-content -->
-                </div><!-- /.modal -->
-            </div>
+
+
+
+
             <div style="height: 20px;"></div>
         </div>
 
     </div>
+
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header" style="color:white;background-color:#449d44;">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        新建校区
+                    </h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form role="form">
+                                    <div class="form-group">
+
+                                        <label for="school_name">
+                                            校区名称
+                                        </label>
+                                        <input type="text" class="form-control" id="school_name"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="type">
+                                            校区类型
+                                        </label>
+                                        <select name="type" class="form-control" id="type">
+                                            <option value="自营">自营</option>
+                                            <option value="加盟">加盟</option>
+                                            <option value="代理">代理</option>
+                                            <option value="合作">合作</option>
+                                        </select>
+                                        <div class="check_tips"></div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="principal_name">
+                                            校长姓名
+                                        </label>
+                                        <input type="text" class="form-control" id="principal_name"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="principal_sfz_code">
+                                            校长身份证号
+                                        </label>
+                                        <input type="text" class="form-control" id="principal_sfz_code"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="phone">
+                                            电话
+                                        </label>
+                                        <input type="text" class="form-control" id="phone"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="address">
+                                            地址
+                                        </label>
+                                        <input type="text" class="form-control" id="address"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+
+                                </form>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                    </button>
+                    <button id="save" type="button" class="btn btn-primary">
+                        保存
+                    </button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal -->
+    </div>
+
+
     <div class="row">
         <div class="col-md-12" style="background-color: transparent;">
             <h3>校区一览表</h3>
