@@ -1,19 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8"/>
     <title>在线尝试 Bootstrap 实例</title>
     <meta name="viewport" content="width=device-width,
                                      initial-scale=1.0,
                                      maximum-scale=1.0,
-                                     user-scalable=no">
+                                     user-scalable=no"/>
 
-    <link rel="stylesheet" href="css/bootstrap.css">
-
+    <link rel="stylesheet" href="css/bootstrap.css"/>
     <script src="js/jquery-3.2.1.js"></script>
-
     <script src="js/bootstrap.js"></script>
-    <script src="js/content.js"></script>
+
 
     <style>
 
@@ -59,7 +57,7 @@
                 </div>
                 <div id="panel-people-management" class="panel-collapse collapse">
                     <div class="list-group">
-                        <a href="xiaoqu.html" class="list-group-item "><span class="glyphicon glyphicon-star"
+                        <a href="/xiaobao/querySchoolListByInstitution" class="list-group-item "><span class="glyphicon glyphicon-star"
                                                                               aria-hidden="true"></span>校区管理</a>
                         <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
                                                                    aria-hidden="true"></span>校长管理</a>
@@ -333,27 +331,23 @@
     $("#panel-people-management a").on('click', function () {
         var href = $(this).attr('href');
 
-        /**  这是第一种加载页面方式 **/
-        //  $('#mainContents').load("/bootstrap/" + href);
 
 
         /**  这是第二种加载页面方式 **/
         $.ajax({
-//  beforeSend: function(){
-//        $('#mainContents').html('正在请求');
-//   },
-//    complete: function(){
-//          $('#mainContents').html('加载完毕');
-//      },
             type: "GET",
             url:   href,
             success: function (data) {
 
                 $('#mainContents').empty();
                 //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
-                var data2 = data.replace(/ \<script src=\"js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
-                var data3 = data2.replace(/ \<link rel=\"stylesheet\" href=\"css\/bootstrap.css\"\>/, "");
-                $('#mainContents').append(data3);
+                var data2 = data.replace(/\<script src=\"js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
+
+                var data3= data2.replace(/\<script src=\"js\/bootstrap.js\"\>\<\/script\>/, "");
+
+                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"css\/bootstrap.css\"\/\>/, "");
+
+                $('#mainContents').append(data4);
 
 
             }

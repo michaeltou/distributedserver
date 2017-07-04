@@ -1,0 +1,7 @@
+http://localhost/px/index.html
+
+http://localhost/xiaobao/index.html
+
+http://localhost/xiaobao/addSchool.html
+
+http://localhost/xiaobao/querySchoolListByInstitution
