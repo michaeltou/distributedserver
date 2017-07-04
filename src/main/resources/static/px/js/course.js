@@ -80,6 +80,11 @@ $(function () {
         $('.addCourse').dialog("option", "title", "编辑课程").dialog('open');
     });
 
+    $("body").on('click', ".detailButton", function () {
+        //EditData($(this).get(0));
+        window.location.href = "CourseDetail.html";
+    });
+
 
     $('.addCourse').dialog({
         autoOpen: false,

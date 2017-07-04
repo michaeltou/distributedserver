@@ -170,18 +170,18 @@
                                             <div class="courseDetailTitleBtnDiv">
                                                 <input class="printClassCardBtn" type="button" value="打印听课证"/>
                                             </div>
-                                            <div class="courseDetailTitleBtnDiv">
+                                            <!--<div class="courseDetailTitleBtnDiv">
                                                 <input class="renewBtn" type="button" value="续费"/>
-                                            </div>
+                                            </div>-->
                                             <div class="courseDetailTitleBtnDiv">
                                                 <input class="buyTextbooksBtn" type="button" value="买教材"/>
                                             </div>
-                                            <div class="courseDetailTitleBtnDiv">
+                                            <!--<div class="courseDetailTitleBtnDiv">
                                                 <input class="classTransferBtn" type="button" value="转班"/>
-                                            </div>
-                                            <div class="courseDetailTitleBtnDiv">
+                                            </div>-->
+                                            <!--<div class="courseDetailTitleBtnDiv">
                                                 <input class="suspendClassesBtn" type="button" value="停课"/>
-                                            </div>
+                                            </div>-->
                                             <div class="courseDetailTitleBtnDiv">
                                                 <input class="refundBtn" type="button" value="退费"/>
                                             </div>
@@ -263,18 +263,18 @@
                                             <div class="courseDetailTitleBtnDiv">
                                                 <input class="printClassCardBtn" type="button" value="打印听课证"/>
                                             </div>
-                                            <div class="courseDetailTitleBtnDiv">
+                                            <!--<div class="courseDetailTitleBtnDiv">
                                                 <input class="renewBtn" type="button" value="续费"/>
-                                            </div>
+                                            </div>-->
                                             <div class="courseDetailTitleBtnDiv">
                                                 <input class="buyTextbooksBtn" type="button" value="买教材"/>
                                             </div>
-                                            <div class="courseDetailTitleBtnDiv">
+                                            <!--<div class="courseDetailTitleBtnDiv">
                                                 <input class="classTransferBtn" type="button" value="转班"/>
-                                            </div>
-                                            <div class="courseDetailTitleBtnDiv">
+                                            </div>-->
+                                            <!--<div class="courseDetailTitleBtnDiv">
                                                 <input class="suspendClassesBtn" type="button" value="停课"/>
-                                            </div>
+                                            </div>-->
                                             <div class="courseDetailTitleBtnDiv">
                                                 <input class="refundBtn" type="button" value="退费"/>
                                             </div>
@@ -316,6 +316,12 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
+                                                <tr>
+                                                    <td style="text-align: center;">在读</td>
+                                                    <td style="text-align: center;">张老师</td>
+                                                    <td style="text-align: center;">2017-6-5</td>
+                                                    <td style="text-align: center;">1</td>
+                                                </tr>
                                                 <tr>
                                                     <td style="text-align: center;">在读</td>
                                                     <td style="text-align: center;">张老师</td>
@@ -380,6 +386,149 @@
                                         </table>
                                     </div>
                                 </div>
+
+                                <!-- =====================班级选择Dialog===========================-->
+                                <form class="selectClasses" title="选择班级" id="selectClasses">
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label>班级名称:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="classNameForSelText"
+                                               placeholder="" value="" id="classNameForSelText">
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px;">
+                                        <label id='classDatePeriodTitle'>上课日期:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <div class="date-picker">
+                                            <input class="text-input-cpt" placeholder="" value="2017-05-19" type="text"
+                                                   name='date1' id="classDatePeriodStart">
+                                        </div>
+                                        -
+                                        <div class="date-picker">
+                                            <input class="text-input-cpt" placeholder="" value="2017-05-19" type="text"
+                                                   name='date' id="classDatePeriodEnd">
+                                        </div>
+                                    </div>
+                                    <div style="clear:both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-bottom:20px;">
+                                        <label id='repeatSettingTitle'>上课星期:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input value="" name="classesWeekAll" type="checkbox" id="classesWeekAll">全选
+                                    </div>
+                                    <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                        <input value="" name="classesWeek" type="checkbox" id="classesWeek1">周一
+                                    </div>
+                                    <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                        <input value="" name="classesWeek" type="checkbox" id="classesWeek2">周二
+                                    </div>
+                                    <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                        <input value="" name="classesWeek" type="checkbox" id="classesWeek3">周三
+                                    </div>
+                                    <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                        <input value="" name="classesWeek" type="checkbox" id="classesWeek4">周四
+                                    </div>
+                                    <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                        <input value="" name="classesWeek" type="checkbox" id="classesWeek5">周五
+                                    </div>
+                                    <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                        <input value="" name="classesWeek" type="checkbox" id="classesWeek6">周六
+                                    </div>
+                                    <div style="float:left;  padding-top:15px; padding-left:15px;">
+                                        <input value="" name="classesWeek" type="checkbox" id="classesWeek7">周日
+                                    </div>
+
+                                    <div style="float:left;  padding-top:11px;padding-left:25px;">
+                                        <input style="margin-left: 10px; margin-top: -100px;"
+                                               class="button button-middle    float-left" type="button" name="search"
+                                               value="查询" id="searchClasses">
+                                    </div>
+                                    <div class="recordList">
+                                        <table class="yunmo" id="classList">
+                                            <thead>
+                                            <tr>
+                                                <th style="width:25%;">班级名称</th>
+                                                <th style="width:15%;">课程</th>
+                                                <th style="width:20%;">人数</th>
+                                                <th style="width:15%;">学费标准</th>
+                                                <th style="width:15%;">开班日期</th>
+                                                <th style="width:10%;">上课时间</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>美术高级班</td>
+                                                <td>美术</td>
+                                                <td>20</td>
+                                                <td>2000元/期</td>
+                                                <td>2017-6-5</td>
+                                                <td><span>周四10:00~12:00</span></br><span>周五10:00~12:00</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>美术高级班</td>
+                                                <td>美术</td>
+                                                <td>20</td>
+                                                <td>2000元/期</td>
+                                                <td>2017-6-5</td>
+                                                <td><span>周四10:00~12:00</span></br><span>周五10:00~12:00</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>美术高级班</td>
+                                                <td>美术</td>
+                                                <td>20</td>
+                                                <td>2000元/期</td>
+                                                <td>2017-6-5</td>
+                                                <td><span>周四10:00~12:00</span></br><span>周五10:00~12:00</span></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </form>
+                                <!-- =====================班级选择Dialog===========================-->
+
+                                <!-- =====================节课Dialog===========================-->
+                                <form class="endClass" title="节课Dialog" id="endClass">
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:10px;">
+                                        <label>结课课程:</label>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; ">
+                                        <label id="refundCourseNameText">XXXXXX</label>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:10px;">
+                                        <label>收费模式:</label>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; ">
+                                        <label id="rechargeModeText">按期</label>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:10px;">
+                                        <label>收费标准:</label>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; ">
+                                        <label id="rechargeStandardText">XXXXXX</label>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:10px;">
+                                        <label>剩余学费:</label>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; ">
+                                        <label id="surplusAmountText">XXXXXX</label>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:10px;">
+                                        <label id="totalCourseCountTitle">总计课时:</label>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; ">
+                                        <label id="totalCourseCountText">XXXXXX</label>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left:10px;">
+                                        <label id="surplusClassesTitle">剩余课时:</label>
+                                    </div>
+                                    <div style="float:left; width:70px; padding-top:20px; ">
+                                        <label id="surplusClassesText">XXXXXX</label>
+                                    </div>
+                                </form>
+                                <!-- =====================班级选择Dialog===========================-->
 
                             </div>
                         </div>

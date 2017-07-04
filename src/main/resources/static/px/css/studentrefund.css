@@ -1,0 +1,142 @@
+@charset "utf-8";
+/* CSS Document */
+#studentNameText,
+#studentPhoneText,
+#studentIDText,
+#motherPhoneText,
+#residenceText,
+#fatherPhoneText,
+#studentEmailText,
+#nativePlaceText,
+#nationText,
+#politicalStatusText,
+#academyText,
+#majorText,
+#educationText {
+    width: 300px;
+}
+
+#discountMoney {
+    width: 100px;
+}
+
+.gw_num {
+    border: 1px solid #dbdbdb;
+    width: 80px;
+    line-height: 20px;
+    height: 20px;
+    overflow: hidden;
+    margin-bottom: -6px;
+}
+
+.gw_price {
+    border: 1px solid #dbdbdb;
+    width: 60px;
+    line-height: 20px;
+    height: 20px;
+    overflow: hidden;
+    margin-bottom: -6px;
+}
+
+.payAcountDiv {
+    border: 1px solid #dbdbdb;
+    width: 150px;
+    line-height: 20px;
+    height: 20px;
+    overflow: hidden;
+    margin-bottom: -6px;
+}
+
+.orderCodeDiv {
+    border: 1px solid #dbdbdb;
+    width: 150px;
+    line-height: 20px;
+    height: 20px;
+    overflow: hidden;
+    margin-bottom: -6px;
+}
+
+.gw_num em {
+    display: block;
+    height: 20px;
+    width: 20px;
+    float: left;
+    color: #7A7979;
+    border-right: 1px solid #dbdbdb;
+    text-align: center;
+    cursor: pointer;
+}
+
+.gw_num .num {
+    display: block;
+    float: left;
+    text-align: center;
+    width: 32px;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 20px;
+    border: 0;
+}
+
+.classHourNum {
+    float: left;
+    text-align: center;
+    width: 32px;
+    font-style: normal;
+    font-size: 12px;
+    border: 1px solid silver;
+}
+
+.ClassHourUnit{
+    padding-left: -20px;
+}
+
+.gw_price .price {
+    display: block;
+    float: left;
+    text-align: center;
+    width: 60px;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 20px;
+    border: 0;
+}
+
+.payAcountDiv .payAcount {
+    display: block;
+    float: left;
+    text-align: left;
+    width: 150px;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 20px;
+    border: 0;
+}
+
+.orderCodeDiv .orderCode {
+    display: block;
+    float: left;
+    text-align: left;
+    width: 150px;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 20px;
+    border: 0;
+}
+
+.gw_num em.add {
+    float: right;
+    border-right: 0;
+    border-left: 1px solid #dbdbdb;
+}
+
+.mainContainer {
+    border: 2px solid #e4e4e4;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 100px 10px;
+    min-height: 520px;
+}
+
+a.hover-color:hover{
+    color:blue;
+}

@@ -338,7 +338,7 @@ $(function () {
                 $lastClickTr.css("background-color", "#ecf0f1");
             }
         }
-        $(this).css("background-color", "#6FF");
+        $(this).css("background-color", "#00CCFF");
         $lastClickTr = $(this);
     });
 });

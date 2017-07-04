@@ -94,8 +94,8 @@ $(function () {
     $("input[name='sex']").eq(0).attr("checked", "checked");
     $("input[name='sex']").eq(0).click();
 
-    $('.AddStudent input[type=radio]').button();
-    $('.AddStudent input[title]').tooltip({
+    $('input[type=radio]').button();
+    $('input[title]').tooltip({
         show: false,
         hide: false,
         position: {
@@ -104,9 +104,6 @@ $(function () {
         }
     });
 
-    $('#NewStudent').click(function () {
-        $('.AddStudent').dialog("option", "title", "新建学员").dialog('open');
-    });
 
     //课程选择dialog
     $('#accordingCourse').click(function () {
@@ -172,6 +169,20 @@ $(function () {
         }
         $(this).css("background-color", "#00CCFF");
         $lastSelectedCourse = $(this);
+    });
+
+    var $lastSelectedStudent;
+    $(".selectStudent .yunmo tr").click(function () {
+        if ($lastSelectedStudent) {
+            var trSeq = $lastSelectedStudent.parent().find("tr").index($lastSelectedStudent);
+            if (trSeq % 2 == 0) {
+                $lastSelectedStudent.css("background-color", "white");
+            } else {
+                $lastSelectedStudent.css("background-color", "#ecf0f1");
+            }
+        }
+        $(this).css("background-color", "#00CCFF");
+        $lastSelectedStudent = $(this);
     });
 
     $("body").on('click', "#teachingMaterialUse", function () {
@@ -289,95 +300,11 @@ $(function () {
 
     $("body").on('click', ".editButton", function () {
         EditData($(this).get(0));
-        $('.AddEmplyee').dialog("option", "title", "编辑学员").dialog('open');
+        $('.AddEmplyee').dialog("option", "title", "编辑社员").dialog('open');
     });
 
     $("body").on('click', ".detailButton", function () {
         window.location.href = "StudentDetail.html";
-    });
-
-    $('#searchStudent').click(function () {
-        var studentName = $("#studentNameForSearchText").val();
-        var phone = $("#studentPhoneForSearchText").val();
-        var xiaoqu = $("#managementScopeForSearchText").val();
-        if(studentName !== ""){
-            window.location.href="/px/queryStudentByName?institution_code=tm&name="+studentName;
-            return ;
-        }
-        if(phone !== ""){
-            window.location.href="/px/queryStudentByPhone?institution_code=tm&phone="+phone;
-            return;
-        }
-    });
-
-
-
-    $('.AddStudent').dialog({
-        autoOpen: false,
-        resizable: false,
-        modal: true,
-        width: 1270,
-        height: 600,
-        title: '新建学员',
-        buttons: {
-            '保存': function () {
-                
-                 if($("#studentNameText").val() === ""){
-                 alert("姓名不能为空。");
-                 $("#studentNameText").focus();
-                 return;
-                 }else if($("#studentPhoneText").val() === ""){
-                 alert("手机号码不能为空。");
-                 $("#studentPhoneText").focus();
-                 return;
-                 }else if($("#studentIDText").val() === ""){
-                 alert("身份证不能为空。");
-                 $("#studentIDText").focus();
-                 return;
-                 }else if($("#motherPhoneText").val() === ""){
-                     alert("母亲手机号码不能为空。");
-                     $("#motherPhoneText").focus();
-                     return;
-                 }else if($("#residenceText").val() === ""){
-                     alert("住所不能为空。");
-                     $("#residenceText").focus();
-                     return;
-                 }
-
-                var gender= $("input[name='sex']:checked").val();
-
-                $.ajax({
-                    url: "/px/insertStudent",//servlet文件的名称
-                    type: "POST",
-                    data:JSON.stringify({ name:$("#studentNameText").val(), sfzCode:$("#studentIDText").val(), phone:$("#studentPhoneText").val(),gender:gender,
-                        birthday:$("#birthdayText").val(),motherPhone:$("#motherPhoneText").val(),fatherPhone:$("#fatherPhoneText").val(),
-                        address:$("#residenceText").val(), email:$("#studentEmailText").val() , weixinhao:$("#weixinText").val(),  qq:$("#qqText").val() , qudao_source:$("#channelSourceText").val(),
-                        current_school_level:$("#educationText").val(), current_school_grade:$("#gradeText").val() , jiguan:$("#nativePlaceText").val(),  minzu:$("#nationText").val() , zheng_zhi_mian_miao:$("#politicalStatusText").val(),
-                        institution_code:"tm"}),
-                    contentType: "application/json; charset=utf-8",
-                    success: function (data, textStatus) {
-                        if(data.success){
-                            alert("添加学员成功");
-                            window.location.href="/px/defaultStudentSerach";
-                        }
-                        else{
-                            window.alert("添加学员失败");
-                        }
-                    }
-                });
-                 
-                //$(this).submit();
-                $(this).dialog('close');
-
-            },
-            '取消': function () {
-                $(this).dialog('close');
-            }
-        },
-        open: function (event, ui) {
-            $(".ui-dialog-titlebar-close", $(this).parent()).hide();
-        },
-
     });
 
 
@@ -620,7 +547,7 @@ $(function () {
     });
 
 
-    $("#search").click(function () {
+    $("#Save").click(function () {
         $.ajax({
             type: "POST",
             url: "XXXXXX",
@@ -629,6 +556,11 @@ $(function () {
 
             }
         });
+        window.location.href = "StudentSignUp.html";
+    });
+
+    $("#Cancel").click(function () {
+        window.location.href = "StudentSignUp.html";
     });
 
     //加的效果
@@ -699,26 +631,8 @@ function EditData(editRow) {
 }
 
 function DeleteData(delRow) {
-    var tr =delRow.parentNode.parentNode;
-    var name = (tr.cells[1]).innerText;
-    var sfzCode = (tr.cells[9]).innerText;
-    var instutionCode= (tr.cells[10]).innerText;
-    $.ajax({
-        url: "/px/deleteStudent",//servlet文件的名称
-        type: "POST",
-        data:JSON.stringify({name:name,sfzCode:sfzCode,institution_code:instutionCode,}),
-        contentType: "application/json; charset=utf-8",
-        success: function (data, textStatus) {
-            if(data.success){
-                alert("删除学员成功");
-                window.location.href="/px/defaultStudentSerach";
-            }
-            else{
-                window.alert("删除学员失败");
-            }
-        }
-    });
-
+    var table = delRow.parentNode.parentNode.parentNode;
+    table.removeChild(delRow.parentNode.parentNode);
 }
 
 function byId(id) {
@@ -749,6 +663,10 @@ function load() {
 
     object = byId("socialSecurityText");
     object.selectedIndex = -1;
+}
+
+function setRadioChecked(id, value) {
+    document.getElementById(id).checked = value;
 }
 
 var filechange = function (event) {
