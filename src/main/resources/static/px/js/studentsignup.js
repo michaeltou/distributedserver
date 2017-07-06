@@ -1,7 +1,7 @@
 $(function () {
 
     $('#NewStudent').click(function () {
-        $('.selectStudent').dialog("option", "title", "新生报名").dialog('open');
+        $('.selectStudent').dialog("option", "title", "选择学员").dialog('open');
 
     });
 
@@ -57,7 +57,7 @@ $(function () {
         modal: true,
         width: 670,
         height: 500,
-        title: '选择课程',
+        title: '选择学员',
         buttons: {
             '选择': function () {
                 if ($lastSelectedStudent) {

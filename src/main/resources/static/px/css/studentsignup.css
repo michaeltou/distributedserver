@@ -16,6 +16,10 @@
     width: 300px;
 }
 
+#studentNameForSearchText,#studentPhoneForSearchText {
+    width: 200px;
+}
+
 #discountMoney {
     width: 100px;
 }

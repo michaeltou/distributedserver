@@ -118,7 +118,6 @@ $(function () {
             }
         }
     });
-
     //=============================================
     $("#authorifyselect").treeMultiselect({searchable: false, hideSidePanel: false, freeze: false, collapsible: false,});
     $("#accessRoleDelete").hide();

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>助教宝 - 管理后台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <meta name="baidu-site-verification" content="elXuCAMAW3"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+    <meta name="renderer" content="webkit"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <link rel="stylesheet" href="css/reset.css"></link>
+    <link rel="stylesheet" href="css/index_style.css"></link>
+    <link rel="stylesheet" href="css/yp_style.css"></link>
+
+    <link rel="stylesheet" href="css/iconfont.css"></link>
+    <link rel="stylesheet" href="css/jquery.tree-multiselect.min.css"/>
+    <link rel="stylesheet" href="css/addmessagenotice.css"></link>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.tree-multiselect.min.js"></script>
+    <script type="text/javascript" src="js/doT.js"></script>
+
+    <script type="text/javascript" src="js/addmessagenotice.js"></script>
+
+</head>
+
+<body style="background-color: #fff;" onload="load()">
+<div class="mainContainer">
+    <div class="rightmain clearfix tplSettingDome signSetting" data-page="domesticRegister">
+        <div class="app-framework-cpt">
+            <div class="domestic-register-manager-cpt">
+                <div class="tab-cpt">
+                    <div class="tab-body-group-cpt">
+                        <div class="tab-body-cpt tab-body-show">
+                            <div class="sign-setting-cpt">
+                                <div style="float: left; width: 400px;height: 600px; margin-right: 10px; border: 1px solid silver">
+                                    <div id="conditionDiv" style="padding-bottom: 50px;">
+                                        <div style="float:left; width:40px; padding-top:10px; padding-left:10px;">
+                                            <label>课程:</label>
+                                        </div>
+                                        <div style="float:left;  padding-top:5px; padding-left: 10px">
+                                            <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
+                                                <select name="courseNameText"
+                                                        style="position:absolute; clip:rect(2px 202px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;"
+                                                        id="courseNameText">
+                                                    <option value="全部课程"> 全部课程</option>
+                                                    <option value="美术初级课程"> 美术初级课程</option>
+                                                    <option value="美术中级课程"> 美术中级课程</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div style="clear: both"></div>
+                                        <div style="float:left; width:40px; padding-top:10px; padding-left:10px;">
+                                            <label>班级:</label>
+                                        </div>
+                                        <div style="float:left;  padding-top:5px; padding-left: 10px">
+                                            <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
+                                                <select name="classNameText"
+                                                        style="position:absolute; clip:rect(2px 202px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;"
+                                                        id="classNameText">
+                                                    <option value="全部班级"> 全部班级</option>
+                                                    <option value="美术初级一班"> 美术初级一班</option>
+                                                    <option value="美术初级二班"> 美术初级二班</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div style="clear: both"></div>
+                                        <div style="float:left; width:40px; padding-top:10px; padding-left:10px;">
+                                            <label>校区:</label>
+                                        </div>
+                                        <div style="float:left;  padding-top:5px; padding-left: 10px">
+                                            <div style="position:relative; border:1px solid #cccccc; width:118px; height:26px;">
+                                                <select name="schoolNameText"
+                                                        style="position:absolute; clip:rect(2px 122px 28px 2px); margin:-2px; width:122px; height:31px; line-height:28px; background:#fff;"
+                                                        id="schoolNameText">
+                                                    <option value="全部校区"> 全部校区</option>
+                                                    <option value="东校区"> 东校区</option>
+                                                    <option value="西校区"> 西校区</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div style="float:left; width:40px; padding-top:10px; padding-left:20px;">
+                                            <label>老师:</label>
+                                        </div>
+                                        <div style="float:left;  padding-top:5px; padding-left: 10px">
+                                            <div style="position:relative; border:1px solid #cccccc; width:118px; height:26px;">
+                                                <select name="teacherNameText"
+                                                        style="position:absolute; clip:rect(2px 122px 28px 2px); margin:-2px; width:122px; height:31px; line-height:28px; background:#fff;"
+                                                        id="teacherNameText">
+                                                    <option value="全部老师"> 全部老师</option>
+                                                    <option value="张老师"> 张老师</option>
+                                                    <option value="李老师"> 李老师</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div style="clear: both"></div>
+                                        <div style="float:left; width:40px; padding-top:10px; padding-left:10px;">
+                                            <label>模式:</label>
+                                        </div>
+                                        <div style="float:left;  padding-top:5px; padding-left: 10px">
+                                            <div style="position:relative; border:1px solid #cccccc; width:118px; height:26px;">
+                                                <select name="rechargeModeText"
+                                                        style="position:absolute; clip:rect(2px 122px 28px 2px); margin:-2px; width:122px; height:31px; line-height:28px; background:#fff;"
+                                                        id="rechargeModeText">
+                                                    <option value="全部模式"> 全部模式</option>
+                                                    <option value="按课时"> 按课时</option>
+                                                    <option value="按时间"> 按时间</option>
+                                                    <option value="按期"> 按期</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div style="float:left; width:40px; padding-top:10px; padding-left:20px;">
+                                            <label>状态:</label>
+                                        </div>
+                                        <div style="float:left;  padding-top:5px; padding-left: 10px">
+                                            <div style="position:relative; border:1px solid #cccccc; width:118px; height:26px;">
+                                                <select name="classSatusText"
+                                                        style="position:absolute; clip:rect(2px 122px 28px 2px); margin:-2px; width:122px; height:31px; line-height:28px; background:#fff;"
+                                                        id="classSatusText">
+                                                    <option value="全部"> 全部</option>
+                                                    <option value="未开班"> 按课时</option>
+                                                    <option value="开班中"> 按时间</option>
+                                                    <option value="已结班"> 按期</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div >
+                                        <div style="background-color: #fcf8e3;padding-left: 25px;height: 20px;padding-top: 5px;padding-bottom: 5px;">
+                                            <input type="checkbox" name="sendToAll" value="全员送信" class="sendToAll"><label class="sendToAllText">全员送信</label>
+                                        </div>
+                                        <div id="authorityBody">
+                                            <select id="authorifyselect" multiple="multiple">
+                                                <option value="monitor_index" data-section="未报名">学员1</option>
+                                                <option value="monitor_index" data-section="未报名">学员2</option>
+                                                <option value="monitor_index" data-section="未报名">学员3</option>
+                                                <option value="monitor_index" data-section="未分班">学员11</option>
+                                                <option value="monitor_index" data-section="未分班">学员22</option>
+                                                <option value="monitor_index" data-section="未分班">学员33</option>
+                                                <option value="monitor_index" data-section="美术一班">学员111</option>
+                                                <option value="monitor_index" data-section="美术一班">学员222</option>
+                                                <option value="monitor_index" data-section="美术一班">学员333</option>
+                                                <option value="monitor_index" data-section="美术二班">学员1111</option>
+                                                <option value="monitor_index" data-section="美术二班">学员2222</option>
+                                                <option value="monitor_index" data-section="美术二班">学员3333</option>
+                                                <option value="monitor_index" data-section="美术三班">学员4444</option>
+                                                <option value="monitor_index" data-section="美术三班">学员5555</option>
+                                                <option value="monitor_index" data-section="美术三班">学员6666</option>
+                                                <option value="monitor_index" data-section="美术四班">学员7777</option>
+                                                <option value="monitor_index" data-section="美术四班">学员8888</option>
+                                                <option value="monitor_index" data-section="美术四班">学员9999</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="float: left; width: 820px;">
+                                    <div style="float:left; width:70px; padding-top:10px; padding-left:10px; padding-bottom:10px;">
+                                        <label style="font-weight: bold;">发送对象:</label>
+                                    </div>
+                                    <div class="sendObjectsDiv">
+
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                    <div style="float:left; width:40px; padding-top:32px; padding-left:10px;">
+                                        <label style="font-weight: bold;">标题:</label>
+                                    </div>
+                                    <div style="float:left; width:350px; padding-top:25px;padding-left:10px;">
+                                        <input class="text-input-cpt" type="text" name="noticeTargetText"
+                                               value="" id="noticeTargetText"></input>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                    <div style="float:left; width:40px; padding-top:20px; padding-left:10px;">
+                                        <label style="font-weight: bold;">摘要:</label>
+                                    </div>
+                                    <div style="float:left; width:350px; padding-top:15px;padding-left:10px;">
+                                        <input class="text-input-cpt" type="text" name="noticeTargetText"
+                                               value="" id="noticeSummarytText"></input>
+                                    </div>
+
+                                    <div style="clear: both; padding-top: 10px;"></div>
+                                    <div style="float:left; width:40px; padding-left:10px; padding-right:10px;padding-top: 5px; ">
+                                        <label style="font-weight: bold;">内容:</label>
+                                    </div>
+                                    <div class="section" style="padding-top: 5px;"><textarea id="preview" name="preview"
+                                                                                             rows="20"
+                                                                                             cols="100"></textarea>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                    <div style=" height: 50px; margin-top: 10px;">
+                                        <div style="float:left; width:100px; padding-top:10px; padding-left:300px;">
+                                            <button class="button button-middle" id="Send" onclick="onSendlClick();">发送
+                                            </button>
+                                        </div>
+                                        <div style="float:left; width:100px; padding-top:10px;">
+                                            <button class="button button-middle" id="Cancel" onclick="onCancelClick();">
+                                                取消
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

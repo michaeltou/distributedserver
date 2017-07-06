@@ -1,0 +1,104 @@
+@charset "utf-8";
+/* CSS Document */
+
+.mainContainer {
+    border: 2px solid #e4e4e4;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+    min-height: 420px;
+}
+
+#noticeTargetText,#noticeSummarytText{
+    width: 740px;
+    border-radius: 5px;
+}
+
+#preview{
+    width: 740px;
+    height: 400px;
+    min-height:400px;
+    min-width:740px;
+    max-height:400px;
+    max-width:740px;
+    border:1px solid silver;
+}
+
+div.tree-multiselect .auxiliary input.search {
+    padding: 5px;
+    margin-top: 10px;
+    border: 2px solid silver;
+    display: table-cell;
+    width: 353px;
+}
+
+div.tree-multiselect>div.selected, div.tree-multiselect>div.selections {
+    width: 100px;
+    border:none;
+}
+
+#conditionDiv{
+    border-bottom: 1px solid silver;
+}
+
+.selections{
+    border: none;
+}
+
+#authorityBody{
+    width:390px;
+    height:400px;
+    float:left;
+    margin-left:10px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    border: 1px solid silver;
+
+}
+
+div.tree-multiselect {
+    border: none;
+
+}
+
+.scroll {
+    width: 100px;
+    height: 100px;
+}
+
+.deleteButton{
+    width:20px;
+    color: blue;
+    background: transparent;
+    //display: inline-block;
+    color: royalblue !important;
+    cursor: pointer;
+    border: none;
+    padding: 0px;
+}
+
+.icon-close:hover{
+    color: red;
+}
+
+.sendObjectsDiv {
+    width: 720px;
+    float:left;
+    height:100%;
+    overflow:hidden;!important;
+    background-color: seashell;
+}
+
+.sendObjectDiv{
+    margin: 5px;
+    float: left;
+    border: 1px solid silver;
+    padding-top: 5px;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+
+.sendToAllText{
+    padding-left: 5px;;
+}
+
+
