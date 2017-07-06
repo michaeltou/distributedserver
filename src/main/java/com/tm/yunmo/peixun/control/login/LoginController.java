@@ -3,12 +3,6 @@ package com.tm.yunmo.peixun.control.login;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by daoying on 2017/7/4.
@@ -19,11 +13,11 @@ public class LoginController {
 
     @GetMapping("/")
     public String index( Model model) {
-        return "index/index";
+        return "jianli/jianli";
     }
 
 
-    @GetMapping("/login")
+  /**  @GetMapping("/login")
     public String login() {
         return "login/login";
     }
@@ -52,4 +46,6 @@ public class LoginController {
         session.removeAttribute(LoginConst.SESSION_KEY);
         return "login/login";
     }
+
+    */
 }
