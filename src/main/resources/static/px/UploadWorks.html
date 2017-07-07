@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>助教宝 - 管理后台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="baidu-site-verification" content="elXuCAMAW3">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index_style.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/yp_style.css">
+    <link rel="stylesheet" href="css/uploadworks.css">
+    <link rel="stylesheet" href="css/iconfont.css"></link>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/uploadworks.js"></script>
+</head>
+
+<body style="background-color: #fff;">
+<div class="mainContainer">
+    <div>
+        <div class="rightmain clearfix tplSettingDome signSetting" data-page="domesticRegister">
+            <div class="app-framework-cpt">
+                <div class="domestic-register-manager-cpt">
+                    <div class="tab-cpt">
+                        <div class="tab-body-group-cpt">
+                            <div class="tab-body-cpt tab-body-show" style="min-width: 1100px;">
+                                <div class="upload-title">上传照片</div>
+                                <div class="upload-setting">
+                                    <div style="float:left; width:50px; padding-top:3px;">
+                                        <label>上传到</label>
+
+                                    </div>
+                                    <div style="float:left;  padding-top:12px;">
+                                        <div style="position:relative; border:1px solid #cccccc; width:198px; height:26px;">
+                                            <select name="albumNameText"
+                                                    style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:202px; height:31px; line-height:28px; background:#fff;"
+                                                    id="albumNameText">
+                                                <option value="相册1"> 相册1</option>
+                                                <option value="相册2"> 相册2</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="clear: both;"></div>
+                            <div class="addPicturesDiv">
+                                <div class="addBtnDiv" style="padding: 180px 0 0 550px;">
+                                    <button class="button button-middle addPicturesbutton icon iconfont icon-add" id="addPicturesbutton">添加作品</button>
+                                    <input style="display: none;" type="file" onchange="filechange(event)" multiple/>
+                                </div>
+                                <!--<div class="addPictureDiv">
+                                    <img src="image/addimage.png">
+                                    <div style="margin-top: -25px; margin-left: 130px;">
+                                        <span title="删除" class="deleteButton icon iconfont icon-close"></span>
+                                    </div>
+                                </div>
+                                <div class="addPictureDiv">
+                                    <img src="image/addimage.png">
+                                    <div style="margin-top: -25px; margin-left: 130px;">
+                                        <span title="删除" class="deleteButton icon iconfont icon-close"></span>
+                                    </div>
+                                </div>
+                                <div class="addPictureDiv">
+                                    <img src="image/addimage.png">
+                                    <div style="margin-top: -25px; margin-left: 130px;">
+                                        <span title="删除" class="deleteButton icon iconfont icon-close"></span>
+                                    </div>
+                                </div>-->
+                            </div>
+                            <div style="clear: both;"></div>
+                            <div class="upload-footer">
+                                <button class="button button-middle uploadbutton icon iconfont icon-share" id="uploadbutton">开始上传</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.tree-multiselect.min.js"></script>
+<script src="js/doT.js"></script>
+</body>
+</html>

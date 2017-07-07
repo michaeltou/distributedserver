@@ -11,13 +11,11 @@
     <link rel="stylesheet" href="css/index_style.css">
     <link rel="stylesheet" href="css/jquery-ui.css">
     <link rel="stylesheet" href="css/yp_style.css">
-    <link rel="stylesheet" href="css/messagenoticelist.css">
+    <link rel="stylesheet" href="css/studentleavelist.css">
     <link rel="stylesheet" href="css/iconfont.css"></link>
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
-    <script type="text/javascript" src="js/messagenoticelist.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-
+    <script type="text/javascript" src="js/studentleavelist.js"></script>
 </head>
 
 <body style="background-color: #fff;">
@@ -31,33 +29,42 @@
                             <div class="sign-setting-cpt clearfix">
                                 <div class="add-new-sign-cpt" style="height: 30px;">
                                     <div>
-                                        <button class="button button-middle" id="NewNotice">新建通知</button>
+                                        <button class="button button-middle" id="NewLeave">新建请假单</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="sign-list-cpt" parent-account="">
-                                <div class="block-title-cpt"> 通知一览</div>
+                                <div class="block-title-cpt"> 请假单一览</div>
                             </div>
                             <div class="recordList">
                                 <table class="yunmo" id="classesList">
                                     <thead>
                                     <tr>
-                                        <th style="width:10%;">标题</th>
-                                        <th style="width:15%;">摘要</th>
-                                        <th style="width:15%;">发送对象</th>
-                                        <th style="width:15%;">发送者</th>
-                                        <th style="width:15%;">发送时间</th>
-                                        <th style="width:15%; min-width: 100px; text-align: center;">操作</th>
+                                        <th style="width:10%;">请假学员</th>
+                                        <th style="width:10%;">请假日期</th>
+                                        <th style="width:10%;">请假时间</th>
+                                        <th style="width:10%;">请假班级</th>
+                                        <th style="width:10%;">请假课程</th>
+                                        <th style="width:10%;">请假原因</th>
+                                        <th style="width:10%;">确认状态</th>
+                                        <th style="width:10%;">创建人</th>
+                                        <th style="width:10%;">创建时间</th>
+                                        <th style="width:10%; min-width: 150px; text-align: center;">操作</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <td>公告</td>
-                                        <td>放假通知</td>
-                                        <td>美术一般全体</td>
-                                        <td>张老师</td>
+                                        <td>小明</td>
+                                        <td>2017-06-05</td>
+                                        <td>10:00-12:00</td>
+                                        <td>美术初级1班</td>
+                                        <td>美术初级课程</td>
+                                        <td>病假</td>
+                                        <td>未确认</td>
+                                        <td>小明</td>
                                         <td>2017-06-05</td>
                                         <td style='text-align: center;'>
+                                            <button class="confirmButton icon iconfont icon-account">确认</button>
                                             <button class="deleteButton icon iconfont icon-delete">删除</button>
                                         </td>
                                     </tr>
