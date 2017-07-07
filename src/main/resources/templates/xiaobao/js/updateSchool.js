@@ -103,7 +103,7 @@ $(document).ready(function () {
 
 
 
-    $("#save").click(function () {
+    $("#update").click(function () {
 
         $("#school_name").focus();
         $("#type").focus();
@@ -119,16 +119,17 @@ $(document).ready(function () {
             return;
         }
 
-        var url = "/px/insertSchool";
+        var url = "/px/updateSchool";
         $.ajax({
             type: "post",
-            async: false,
             url: url,
             /**     * 关键点：获取post请求的参数，有2个关键点：
              * 1、java接口需要加上@RequestBody这个注解.
              * 2、js里面的ajax请求的data要使用 data:  JSON.stringify({name: $("#name").val(), age: $("#age").val()}), 传递json字符串，而不json对象.
              * */
             data: JSON.stringify({
+                id: $("#school_id").val(),
+                institution_code: $("#institution_code").val(),
                 school_name: $("#school_name").val(),
                 type: $("#type").val(),
                 principal_name: $("#principal_name").val(),
@@ -140,7 +141,11 @@ $(document).ready(function () {
             contentType: "application/json; charset=utf-8",//(可以)
             success: function (data, textStatus) {
                 if (data.success) {
-                    $('#myModal').modal('hide')
+                    $("#myform")[0].reset();
+                    $("#successLabel").show();
+                    $("#backBtn").show();
+                    $("#submitAreaDiv").empty();
+                    $("#formdiv").empty();
                 }
                 else {
                     alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
@@ -154,118 +159,21 @@ $(document).ready(function () {
 
     });
 
-
-    $("#createSchool").click(function () {
-
-        $.ajax({
-            type: "GET",
-            url: "/xiaobao/createSchool",
-            success: function (data) {
-                $('#mainContents').empty();
-                //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
-                var data2 = data.replace(/\<script src=\"js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
-
-                var data3= data2.replace(/\<script src=\"js\/bootstrap.js\"\>\<\/script\>/, "");
-
-                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"css\/bootstrap.css\"\/\>/, "");
-                $('#mainContents').append(data4);
-            }
-        });
-    });
-
-    $(".updateSchoolLinkClass").on('click', function () {
-        var href = $(this).attr('href');
-
-
-
-        /**  这是第二种加载页面方式 **/
-        $.ajax({
-            type: "GET",
-            url:   href,
-            success: function (data) {
-
-                $('#mainContents').empty();
-                //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
-                var data2 = data.replace(/\<script src=\"js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
-
-                var data3= data2.replace(/\<script src=\"js\/bootstrap.js\"\>\<\/script\>/, "");
-
-                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"css\/bootstrap.css\"\/\>/, "");
-
-                $('#mainContents').append(data4);
-
-
-            }
-        });
-
-     //阻止跳转
-        return false;
-    });
-
-    $(".deleteSchoolLinkClass").on('click', function () {
-        var href = $(this).attr('href');
-
-        var school_id = $(this).attr('school_id');
-        var institution_code = $(this).attr('institution_code');
-        var school_name = $(this).attr('school_name');
-        $("#school_id").val(school_id);
-        $("#institution_code").val(institution_code);
-        $("#school_name").val(school_name);
-
-        $('#myDeleteModal').modal('show');
-        return false;
+    $("#formBackBtn").click(function () {
+        $("#xiaoquguanli").click();
 
     });
 
-    $("#deleteSchoolBtn").click(function () {
-
-
-
-
-
-        var school_id =   $("#school_id").val();
-        var institution_code =$("#institution_code").val();
-        var school_name = $("#school_name").val();
-
-
-
-        var url = "/px/deleteSchool";
-        $.ajax({
-            type: "post",
-            url: url,
-            /**     * 关键点：获取post请求的参数，有2个关键点：
-             * 1、java接口需要加上@RequestBody这个注解.
-             * 2、js里面的ajax请求的data要使用 data:  JSON.stringify({name: $("#name").val(), age: $("#age").val()}), 传递json字符串，而不json对象.
-             * */
-            data: JSON.stringify({
-                id: $("#school_id").val(),
-                institution_code: $("#institution_code").val(),
-                school_name: $("#school_name").val()
-            }),
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",//(可以)
-            success: function (data, textStatus) {
-                if (data.success) {
-                    $('#myDeleteModal').modal('hide');
-                    //$("#xiaoquguanli").click();
-                }
-                else {
-                    alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
-                }
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert("系统异常！");
-            }
-        });
-
-
+    $("#xiaoquguanlibread").click(function () {
+        $("#xiaoquguanli").click();
 
     });
 
-    $('#myDeleteModal').on('hidden.bs.modal', function () {
-        // 执行一些动作...
-         $("#xiaoquguanli").click();
-    })
+    $("#backBtn").click(function () {
+        $("#xiaoquguanli").click();
+
+    });
+
 
 
 });

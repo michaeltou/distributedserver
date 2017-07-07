@@ -80,7 +80,10 @@ public class SchoolApi {
      * @return
      */
     @RequestMapping("/px/insertSchool")
-    public ResultModel insertSchool(@RequestBody School school) {
+    public ResultModel insertSchool(@RequestBody School school,HttpServletRequest request) {
+   /*     String institution_code = (String) request.getSession().getAttribute("institution_code");
+        school.setInstitution_code(institution_code);*/
+
         ResultModel resultModel = new ResultModel();
 
         int result = schoolService.insertSchool(school);

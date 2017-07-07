@@ -14,117 +14,67 @@
     <script src="js/schoolList.js"></script>
 </head>
 <body>
+
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="color:white;background-color:#449d44;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    确认操作
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="hidden" id="school_id"  />
+                            <input type="hidden" id="institution_code"  />
+                            <input type="hidden" id="school_name"  />
+                            确认删除该校区吗?
+                            <div class="text-danger">数据删除后，将不可恢复！</div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+                <button id="deleteSchoolBtn" type="button" class="btn btn-primary"  >
+                    确定
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
             <div style="height: 20px;"></div>
-            <!-- 按钮触发模态框 -->
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+
+
+            <button type="button" class="btn btn-success" id="createSchool">
                 新建校区
             </button>
+
             <span class="text-info">
                 您的校区数量已达到购买上线，无法再新建校区，如有需要请联系助教宝客服人员
             </span>
 
 
-
-
-
             <div style="height: 20px;"></div>
         </div>
 
-    </div>
-
-    <!-- 模态框（Modal） -->
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header" style="color:white;background-color:#449d44;">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                    </button>
-                    <h4 class="modal-title" id="myModalLabel">
-                        新建校区
-                    </h4>
-                </div>
-                <div class="modal-body">
-
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <form role="form">
-                                    <div class="form-group">
-
-                                        <label for="school_name">
-                                            校区名称
-                                        </label>
-                                        <input type="text" class="form-control" id="school_name"/>
-                                        <div class="check_tips"></div>
-                                    </div>
-                                    <div class="form-group">
-
-                                        <label for="type">
-                                            校区类型
-                                        </label>
-                                        <select name="type" class="form-control" id="type">
-                                            <option value="自营">自营</option>
-                                            <option value="加盟">加盟</option>
-                                            <option value="代理">代理</option>
-                                            <option value="合作">合作</option>
-                                        </select>
-                                        <div class="check_tips"></div>
-                                    </div>
-                                    <div class="form-group">
-
-                                        <label for="principal_name">
-                                            校长姓名
-                                        </label>
-                                        <input type="text" class="form-control" id="principal_name"/>
-                                        <div class="check_tips"></div>
-                                    </div>
-                                    <div class="form-group">
-
-                                        <label for="principal_sfz_code">
-                                            校长身份证号
-                                        </label>
-                                        <input type="text" class="form-control" id="principal_sfz_code"/>
-                                        <div class="check_tips"></div>
-                                    </div>
-                                    <div class="form-group">
-
-                                        <label for="phone">
-                                            电话
-                                        </label>
-                                        <input type="text" class="form-control" id="phone"/>
-                                        <div class="check_tips"></div>
-                                    </div>
-                                    <div class="form-group">
-
-                                        <label for="address">
-                                            地址
-                                        </label>
-                                        <input type="text" class="form-control" id="address"/>
-                                        <div class="check_tips"></div>
-                                    </div>
-
-
-                                </form>
-                            </div>
-
-
-                        </div>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
-                    </button>
-                    <button id="save" type="button" class="btn btn-primary">
-                        保存
-                    </button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal -->
     </div>
 
 
@@ -163,7 +113,8 @@
                         <th> 操作</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="mytablebody">
+
                     <tr th:each="school : ${schoolList}">
                         <td th:text="${school.school_name}">null</td>
                         <td th:text=" ${school.type}">null</td>
@@ -171,7 +122,13 @@
                         <td th:text=" ${school.principal_sfz_code}">null</td>
                         <td th:text=" ${school.phone}">null</td>
                         <td th:text=" ${school.address}">null</td>
-                        <td>删除、编辑</td>
+                        <td><a id="deleteSchoolLink"  class="deleteSchoolLinkClass"
+                               href="#"
+                               th:attr="school_name=${school.school_name},institution_code=${school.institution_code},school_id=${school.id}" >删除</a>
+                            &nbsp;&nbsp;
+                            <a id="updateSchoolLink" href="#" class="updateSchoolLinkClass"
+                               th:href="@{/xiaobao/updateSchool(institution_code=${school.institution_code},school_name=${school.school_name} )}">编辑</a>
+                        </td>
 
 
                     </tr>
@@ -182,6 +139,11 @@
         </div>
     </div>
 </div>
+
+
+
+
+
 
 </body>
 </html>
