@@ -155,7 +155,7 @@ $(document).ready(function () {
     });
 
 
-    $("#createSchool").click(function () {
+    $("#createSchoolBtnForSchoolList").click(function () {
 
         $.ajax({
             type: "GET",

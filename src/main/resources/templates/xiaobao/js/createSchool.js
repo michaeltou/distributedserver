@@ -164,7 +164,7 @@ $(document).ready(function () {
     });
 
 
-    $("#createSchool").click(function () {
+    $("#createSchoolBtnForCreateSchoolPage").click(function () {
 
         $.ajax({
             type: "GET",
