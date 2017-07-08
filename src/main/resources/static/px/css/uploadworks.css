@@ -2,9 +2,9 @@
 /* CSS Document */
 
 .mainContainer {
-    border: 2px solid #e4e4e4;
+    border: 2px solid lightpink;
     margin: 0px 10px 10px 10px;
-    padding: 0px 0px 50px 0px;
+    padding: 0px 0px 0px 0px;
     min-height: 550px;
 }
 
@@ -12,11 +12,10 @@
     padding: 0 0 0 10px;
     font-size: 18px;
     line-height: 40px;
-    color: #333;
-    background-color: ivory;
     border-bottom: 1px solid #e4e4e4;
-    margin: 10px 0 0px 0;
-    color: #6cdaff;
+    margin: 0;
+    color: #007EFF;
+    background-color: lavender;
 
 }
 
@@ -26,8 +25,9 @@
     height: 45px;
     line-height: 45px;
     color: #333;
-    background: #f9f9f9;
-    border-bottom: 1px solid #e4e4e4;
+   /* background: #f9f9f9;*/
+    background-color: oldlace;
+    border-top: 2px solid #e4e4e4;
     margin: 0px 0 0px 0;
 
 }
@@ -49,31 +49,20 @@
     float:left;
     height:100%;
     overflow:hidden;!important;
-    min-height: 400px;
+    min-height: 450px;
 }
 
-.button.button-middle.uploadbutton{
-    padding-left: 15px;
-    padding-right: 15px;
-    background-color: #33ffff;
-    margin-bottom: 15px;
-}
-
-.button.button-middle.addPicturesbutton{
-    height: 50px;
-    font-size: 16px;
+.button.button-middle{
     padding-left: 30px;
     padding-right: 30px;
-    background-color: #33ffff;
-    margin-bottom: 15px;;
-    font-weight: bold;
+    background-color: dodgerblue;
+    margin-bottom: 15px;
+    margin-top: 5px;
+    font-size: 14px;
+    color: whitesmoke;
 }
 
-.button.button-middle.uploadbutton:hover {
-    background-color: #6699FF;
-}
-
-.button.button-middle.addPicturesbutton:hover {
+.button.button-middle:hover {
     background-color: #6699FF;
 }
 
@@ -108,5 +97,16 @@
 .icon-close:hover{
     font-size: 20px;
     background-color: #4A515B;
+}
+
+.block-title-cpt{
+    color: #007EFF;
+    background-color: lavender;
+}
+
+.add-new-sign-cpt,.tab-body-cpt, .tab-body-show{
+    margin: 0px;
+    padding: 0px;
+    background-color: #edffe5;
 }
 

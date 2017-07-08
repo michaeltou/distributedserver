@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>助教宝 - 管理后台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="baidu-site-verification" content="elXuCAMAW3">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index_style.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/yp_style.css">
+    <link rel="stylesheet" href="css/studentworksshow.css">
+    <link rel="stylesheet" href="css/iconfont.css"></link>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/studentworksshow.js"></script>
+</head>
+
+<body style="background-color: #fff;">
+<div class="mainContainer">
+    <div class="tab-body-cpt tab-body-show" style="min-width: 1100px;">
+            <div class="add-new-sign-cpt">
+                <div style="float:left;  padding-top:15px;">
+                    <input type="radio" name="worksGroup" value="全部" id="allGroup">
+                    <label for='allGroup'>全部</label>
+                    </input>
+                    <input type="radio" name="worksGroup" value="按校区" id="schoolGroup">
+                    <label for='schoolGroup'>按校区</label>
+                    </input>
+                    <input type="radio" name="worksGroup" value="按班级" id="classGroup">
+                    <label for='classGroup'>按班级</label>
+                    </input>
+                    <input type="radio" name="worksGroup" value="按课程" id="courseGroup">
+                    <label for='courseGroup'>按课程</label>
+                    </input>
+                    <input type="radio" name="worksGroup" value="按学员(全部)" id="studentAllGroup">
+                    <label for='studentAllGroup'>按学员(全部)</label>
+                    </input>
+                    <input type="radio" name="worksGroup" value="按学员(个人)" id="studentSingleGroup">
+                    <label for='studentSingleGroup'>按学员(个人)</label>
+                    </input>
+                </div>
+                <div style="clear: both;"></div>
+                <div class="studentSelectDiv" style="float: left; padding-top: 10px;">
+                    <button class="button button-middle icon iconfont icon-account" id="studentSelectBtn">选择学员
+                    </button>
+                    <span class="remarks" style="font-size: 10px;color: #6AC5FF;">(*必须先选择一名学员)</span>
+                </div>
+                <div class="courseSelectDiv" style="float: left; padding-top: 10px;">
+                    <button class="button button-middle icon iconfont icon-text" id="courseSelectBtn">选择课程
+                    </button>
+                </div>
+                <div class="classSelectDiv" style="float: left; padding-top: 10px;">
+                    <button class="button button-middle icon iconfont icon-office" id="classSelectBtn">选择班级
+                    </button>
+                </div>
+            </div>
+        <div class="block-title-cpt">全部作品</div>
+
+        <div class="albumListDiv">
+            <div class="albumDiv">
+                <div class="albumPanelDiv">
+                    <img src="image/albumcover.jpg" class="backgroundimg"></img>
+                    <span>全部作品</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- =====================学生选择Dialog===========================-->
+        <form class="selectStudent" title="选择学员">
+            <div style="float:left; width:70px; padding-top:20px;">
+                <label>学员名称:</label>
+            </div>
+            <div style="float:left;  padding-top:15px;padding-bottom:15px;">
+                <input class="text-input-cpt" type="text" name="studentNameForSelText"
+                       placeholder="" value="" id="studentNameForSelText">
+            </div>
+            <div style="float:left; width:70px; padding-top:20px; padding-left: 20px;">
+                <label>身份证号:</label>
+            </div>
+            <div style="float:left;  padding-top:15px;">
+                <input class="text-input-cpt" type="text" name="studentIDForSelText"
+                       placeholder="" value="" id="studentIDForSelText">
+            </div>
+
+            <div style="float:left;  padding-top:11px;padding-left:25px;">
+                <input style="margin-left: 10px; margin-top: 0px;"
+                       class="button button-middle    float-left" type="button" name="search"
+                       value="查询" id="searchDialogStudent">
+            </div>
+            <div class="recordList">
+                <table class="yunmo" id="studentList">
+                    <thead>
+                    <tr>
+                        <th style="width:25%;">学员姓名</th>
+                        <th style="width:15%;">手机号码</th>
+                        <th style="width:20%;">身份证号</th>
+                        <th style="width:15%;">性别</th>
+                        <th style="width:15%;">母亲手机</th>
+                        <th style="width:10%;">住所</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>安迪</td>
+                        <td>18717947096</td>
+                        <td>187179470961871794</td>
+                        <td>男</td>
+                        <td>18717947096</td>
+                        <td>滨江西可科技园</td>
+                    </tr>
+                    <tr>
+                        <td>安迪</td>
+                        <td>18717947096</td>
+                        <td>187179470961871794</td>
+                        <td>男</td>
+                        <td>18717947096</td>
+                        <td>滨江西可科技园</td>
+                    </tr>
+                    <tr>
+                        <td>安迪</td>
+                        <td>18717947096</td>
+                        <td>187179470961871794</td>
+                        <td>男</td>
+                        <td>18717947096</td>
+                        <td>滨江西可科技园</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+        <!-- =====================学生选择Dialog===========================-->
+
+        <!-- =====================课程选择Dialog===========================-->
+        <form class="selectCourse" title="选择课程" id="selectCourse">
+            <div style="float:left; width:70px; padding-top:20px;">
+                <label id='courseNameForSelTitle'>课程名称:</label>
+            </div>
+            <div style="float:left;  padding-top:15px;">
+                <input class="text-input-cpt" type="text" name="courseNameForSelText"
+                       placeholder="" value="" id="courseNameForSelText">
+            </div>
+            <div style="clear:both;"></div>
+            <div style="float:left; width:70px; padding-top:20px; ">
+                <label>课程类别:</label>
+            </div>
+            <div style="float:left;  padding-top:15px; margin-bottom:30px">
+                <div style="position:relative; border:1px solid #cccccc; width:98px; height:26px;">
+                    <select name="courseTypeForSelText"
+                            style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:102px; height:31px; line-height:28px; background:#fff;"
+                            id="courseTypeForSelText">
+                        <option value="全部 "> 全部</option>
+                        <option value="美术 "> 美术</option>
+                        <option value="音乐 "> 音乐</option>
+                    </select>
+                </div>
+            </div>
+            <div style="float:left; width:70px; padding-top:20px; padding-left:20px;">
+                <label id='courseTypeForSelTitle'>收费模式:</label>
+            </div>
+            <div style="float:left;  padding-top:15px;">
+                <div style="position:relative; border:1px solid #cccccc; width:98px; height:26px;">
+                    <select name="courseTypeForSelText"
+                            style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:102px; height:31px; line-height:28px; background:#fff;"
+                            id="classTimeTypeForSelText">
+                        <option value="全部 "> 全部</option>
+                        <option value="按课时 "> 按课时</option>
+                        <option value="按期 "> 按期</option>
+                        <option value="按时间 "> 按时间</option>
+                    </select>
+                </div>
+            </div>
+            <div style="float:left;  padding-top:21px;padding-left:25px;">
+                <input style="margin-left: 10px; margin-top: -100px;"
+                       class="button button-middle    float-left" type="button" name="search"
+                       value="查询" id="search">
+            </div>
+            <div class="recordList">
+                <table class="yunmo" id="courseList">
+                    <thead>
+                    <tr>
+                        <th style="width:25%;">课程名称</th>
+                        <th style="width:15%;">课程类别</th>
+                        <th style="width:20%;">学费标准</th>
+                        <th style="width:15%;">收费模式</th>
+                        <th style="width:15%;">开课形式</th>
+                        <th style="width:10%;">开班数量</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>美术高级班1</td>
+                        <td>美术</td>
+                        <td>2000元/期</td>
+                        <td>按期收费</td>
+                        <td>班课</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>美术高级班2</td>
+                        <td>美术</td>
+                        <td>2000元/期</td>
+                        <td>按期收费</td>
+                        <td>班课</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>美术高级班3</td>
+                        <td>美术</td>
+                        <td>2000元/期</td>
+                        <td>按期收费</td>
+                        <td>班课</td>
+                        <td>3</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+        <!-- =====================课程选择Dialog===========================-->
+
+        <!-- =====================班级选择Dialog===========================-->
+        <form class="selectClasses" title="选择班级" id="selectClasses">
+            <div style="float:left; width:70px; padding-top:20px;">
+                <label>班级名称:</label>
+            </div>
+            <div style="float:left;  padding-top:15px;">
+                <input class="text-input-cpt" type="text" name="classNameForSelText"
+                       placeholder="" value="" id="classNameForSelText">
+            </div>
+            <div style="clear:both;"></div>
+            <div style="float:left; width:70px; padding-top:20px;">
+                <label id='classDatePeriodTitle'>上课日期:</label>
+            </div>
+            <div style="float:left;  padding-top:15px;">
+                <div class="date-picker">
+                    <input class="text-input-cpt" placeholder="" value="2017-05-19" type="text"
+                           name='date1' id="classDatePeriodStart">
+                </div>
+                -
+                <div class="date-picker">
+                    <input class="text-input-cpt" placeholder="" value="2017-05-19" type="text"
+                           name='date' id="classDatePeriodEnd">
+                </div>
+            </div>
+            <div style="clear:both;"></div>
+            <div style="float:left; width:70px; padding-top:20px; padding-bottom:20px;">
+                <label id='repeatSettingTitle'>上课星期:</label>
+            </div>
+            <div style="float:left;  padding-top:15px;">
+                <input value="" name="classesWeekAll" type="checkbox" id="classesWeekAll">全选
+            </div>
+            <div style="float:left;  padding-top:15px; padding-left:15px;">
+                <input value="" name="classesWeek" type="checkbox" id="classesWeek1">周一
+            </div>
+            <div style="float:left;  padding-top:15px; padding-left:15px;">
+                <input value="" name="classesWeek" type="checkbox" id="classesWeek2">周二
+            </div>
+            <div style="float:left;  padding-top:15px; padding-left:15px;">
+                <input value="" name="classesWeek" type="checkbox" id="classesWeek3">周三
+            </div>
+            <div style="float:left;  padding-top:15px; padding-left:15px;">
+                <input value="" name="classesWeek" type="checkbox" id="classesWeek4">周四
+            </div>
+            <div style="float:left;  padding-top:15px; padding-left:15px;">
+                <input value="" name="classesWeek" type="checkbox" id="classesWeek5">周五
+            </div>
+            <div style="float:left;  padding-top:15px; padding-left:15px;">
+                <input value="" name="classesWeek" type="checkbox" id="classesWeek6">周六
+            </div>
+            <div style="float:left;  padding-top:15px; padding-left:15px;">
+                <input value="" name="classesWeek" type="checkbox" id="classesWeek7">周日
+            </div>
+
+            <div style="float:left;  padding-top:11px;padding-left:25px;">
+                <input style="margin-left: 10px; margin-top: -100px;"
+                       class="button button-middle    float-left" type="button" name="search"
+                       value="查询" id="searchClasses">
+            </div>
+            <div class="recordList">
+                <table class="yunmo" id="classList">
+                    <thead>
+                    <tr>
+                        <th style="width:25%;">班级名称</th>
+                        <th style="width:15%;">课程</th>
+                        <th style="width:20%;">人数</th>
+                        <th style="width:15%;">学费标准</th>
+                        <th style="width:15%;">开班日期</th>
+                        <th style="width:10%;">上课时间</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>美术高级班</td>
+                        <td>美术</td>
+                        <td>20</td>
+                        <td>2000元/期</td>
+                        <td>2017-6-5</td>
+                        <td><span>周四10:00~12:00</span></br><span>周五10:00~12:00</span></td>
+                    </tr>
+                    <tr>
+                        <td>美术高级班</td>
+                        <td>美术</td>
+                        <td>20</td>
+                        <td>2000元/期</td>
+                        <td>2017-6-5</td>
+                        <td><span>周四10:00~12:00</span></br><span>周五10:00~12:00</span></td>
+                    </tr>
+                    <tr>
+                        <td>美术高级班</td>
+                        <td>美术</td>
+                        <td>20</td>
+                        <td>2000元/期</td>
+                        <td>2017-6-5</td>
+                        <td><span>周四10:00~12:00</span></br><span>周五10:00~12:00</span></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+        <!-- =====================班级选择Dialog===========================-->
+    </div>
+</div>
+</body>
+</html>

@@ -11,8 +11,9 @@ $(function () {
         window.location.href = "UploadWorks.html";
     });
 
-    $(".albumListDiv").on("click",".backgroundbutton",function () {
-        alert("作品展示画面跳转");
+    $(".albumListDiv").on("click",".backgroundimg",function () {
+        //alert("作品展示画面跳转");
+        window.location.href = "ShowWorks.html";
     });
 
 // 学员选择dialog
@@ -64,7 +65,7 @@ $(function () {
                     for (var i = 0; i < 10; i++) {
                         $albumDiv = $('<div class="albumDiv"></div>');
                         $albumPanelDiv = $('<div class="albumPanelDiv"></div>');
-                        $imgbutton = $('<button class="backgroundbutton"></button>');
+                        $imgbutton = $('<img src="image/albumcover.jpg" class="backgroundimg"></img>');
                         $nameSpan = $('<span></span>');
                         $nameSpan.html("美术课程");
 

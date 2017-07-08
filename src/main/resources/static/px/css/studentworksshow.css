@@ -4,9 +4,9 @@
 .mainContainer {
     border: 2px solid lightpink;
     margin: 10px 10px 10px 10px;
-    padding: 10px 10px 100px 10px;
+    padding: 10px 10px 10px 10px;
     min-height: 520px;
-    background-color: #edffe5;
+   /* background-color: #edffe5;*/
 }
 
 .button.button-middle{
@@ -30,6 +30,7 @@
     margin-right: 15px;
     margin-bottom: 15px;
     border: 1px solid silver;
+    background-color: white;
 }
 
 .backgroundimg{
@@ -37,7 +38,6 @@
     height: 150px;
     margin: 5px;
     border: none;
-
 }
 
 .albumPanelDiv span{
@@ -49,8 +49,20 @@
 .block-title-cpt{
     color: #007EFF;
     background-color: lavender;
+    margin: 0 0 0px 0;
 }
 
-.add-new-sign-cpt,.tab-body-cpt, .tab-body-show{
+.albumListDiv{
+    padding-top: 10px;
+    height: 100%;
+    overflow:hidden;!important;
+    min-height: 500px;
     background-color: #edffe5;
 }
+
+.add-new-sign-cpt{
+    height: 100%;
+    overflow:hidden;!important;
+    background-color: #edffe5;
+}
+
