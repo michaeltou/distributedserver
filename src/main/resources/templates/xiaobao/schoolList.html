@@ -90,8 +90,8 @@
             <span style="">
                 校区名称:
             </span>
-            <input type="text" name="xiaoqu_name" placeholder="请输入校区名称"/>
-            <button type="button" class="btn btn-success">
+            <input type="text" name="school_name" placeholder="请输入校区名称" id="query_param_school_name"/>
+            <button type="button" class="btn btn-success" id="searchBtnForSchoolListPage">
                 查询
             </button>
         </div>
@@ -129,6 +129,9 @@
                             <a id="updateSchoolLink" href="#" class="updateSchoolLinkClass"
                                th:href="@{/xiaobao/updateSchool(institution_code=${school.institution_code},school_name=${school.school_name} )}">编辑</a>
                         </td>
+
+
+
 
 
                     </tr>

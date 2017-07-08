@@ -60,6 +60,23 @@ public interface SchoolDAO {
     School querySchoolByName(@Param("school_name") String school_name, @Param("institution_code") String institution_code);
 
 
+    @Select("SELECT `px_school`.`id`,\n" +
+            "    `px_school`.`school_name`,\n" +
+            "    `px_school`.`institution_code`,\n" +
+            "    `px_school`.`address`,\n" +
+            "    `px_school`.`phone`,\n" +
+            "    `px_school`.`principal_name`,\n" +
+            "    `px_school`.`principal_sfz_code`,\n" +
+            "    `px_school`.`createDate`,\n" +
+            "    `px_school`.`updateDate`,\n" +
+            "    `px_school`.`type`\n" +
+            "FROM  `px_school` \n" +
+            " where  institution_code = #{institution_code} \n" +
+            " and   school_name like  CONCAT('%',#{school_name},'%') \n")
+    List<School> querySchoolListByNameWithLike(@Param("school_name") String school_name, @Param("institution_code") String institution_code);
+
+
+
     @Insert(" INSERT INTO  `px_school`\n" +
             "( \n" +
             "`school_name`,\n" +

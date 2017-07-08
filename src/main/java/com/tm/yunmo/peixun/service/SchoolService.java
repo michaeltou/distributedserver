@@ -31,6 +31,11 @@ public class SchoolService {
         return School;
     }
 
+    public List<School>  querySchoolListByNameWithLike( String school_name,  String institution_code) {
+        List<School> schoolList = schoolDAO.querySchoolListByNameWithLike(school_name, institution_code);
+        return schoolList;
+    }
+
 
     public int insertSchool(School school) {
         int result = schoolDAO.insertSchool(school);

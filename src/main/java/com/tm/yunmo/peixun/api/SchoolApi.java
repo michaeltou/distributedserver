@@ -57,6 +57,16 @@ public class SchoolApi {
         return school;
     }
 
+    @RequestMapping("/querySchoolByNameWithLike")
+    public ResultModel querySchoolByNameWithLike(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
+        String school_name = request.getParameter("school_name");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        List<School> schoolList = schoolService.querySchoolListByNameWithLike(school_name, institution_code);
+        resultModel.setData(schoolList);
+        return resultModel;
+    }
+
 
     /**
      *

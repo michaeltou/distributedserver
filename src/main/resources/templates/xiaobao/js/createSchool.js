@@ -109,8 +109,7 @@ $(document).ready(function () {
 
         $("#school_name").focus();
         $("#type").focus();
-        $("#principal_name").focus();
-        $("#principal_sfz_code").focus();
+        $("#principal_name").focus();        $("#principal_sfz_code").focus();
         $("#phone").focus();
         $("#address").focus();
         $("#school_name").focus();
