@@ -6,7 +6,7 @@
 $(document).ready(function () {
 
 
-  
+
 
 
     $("#createSchoolBtnForSchoolList").click(function () {
@@ -58,7 +58,6 @@ $(document).ready(function () {
     $(".deleteSchoolLinkClass").on('click', function () {
 
         var href = $(this).attr('href');
-        alert(href);
         var school_id = $(this).attr('school_id');
         var institution_code = $(this).attr('institution_code');
         var school_name = $(this).attr('school_name');

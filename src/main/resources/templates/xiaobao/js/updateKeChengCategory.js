@@ -103,13 +103,12 @@ $(document).ready(function () {
 
 
 
-    $("#save").click(function () {
-
-
+    $("#update").click(function () {
 
         $("#school_name").focus();
         $("#type").focus();
-        $("#principal_name").focus();        $("#principal_sfz_code").focus();
+        $("#principal_name").focus();
+        $("#principal_sfz_code").focus();
         $("#phone").focus();
         $("#address").focus();
         $("#school_name").focus();
@@ -120,7 +119,7 @@ $(document).ready(function () {
             return;
         }
 
-        var url = "/px/insertSchool";
+        var url = "/px/updateSchool";
         $.ajax({
             type: "post",
             url: url,
@@ -129,6 +128,7 @@ $(document).ready(function () {
              * 2、js里面的ajax请求的data要使用 data:  JSON.stringify({name: $("#name").val(), age: $("#age").val()}), 传递json字符串，而不json对象.
              * */
             data: JSON.stringify({
+                id: $("#school_id").val(),
                 institution_code: $("#institution_code").val(),
                 school_name: $("#school_name").val(),
                 type: $("#type").val(),
@@ -143,15 +143,12 @@ $(document).ready(function () {
                 if (data.success) {
                     $("#myform")[0].reset();
                     $("#successLabel").show();
-                    $("#createSchool").show();
-                    $("#backToXiaoquListBtn").show();
+                    $("#backBtn").show();
                     $("#submitAreaDiv").empty();
                     $("#formdiv").empty();
-
                 }
                 else {
-                    $("#failLabel").css("display:block");
-                  //  alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
+                    alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -162,36 +159,7 @@ $(document).ready(function () {
 
     });
 
-
-    $("#createSchoolBtnForCreateSchoolPage").click(function () {
-
-        $.ajax({
-            type: "GET",
-            url: "/xiaobao/createSchool",
-            success: function (data) {
-                $('#mainContents').empty();
-                //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
-                var data2 = data.replace(/\<script src=\"js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
-
-                var data3= data2.replace(/\<script src=\"js\/bootstrap.js\"\>\<\/script\>/, "");
-
-                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"css\/bootstrap.css\"\/\>/, "");
-                $('#mainContents').append(data4);
-            }
-        });
-    });
-
-
-
-
-    $("#backToXiaoquListBtn").click(function () {
-        $("#xiaoquguanli").click();
-
-    });
-
     $("#formBackBtn").click(function () {
-
-
         $("#xiaoquguanli").click();
 
     });
@@ -201,10 +169,10 @@ $(document).ready(function () {
 
     });
 
+    $("#backBtn").click(function () {
+        $("#xiaoquguanli").click();
 
-
-
-
+    });
 
 
 

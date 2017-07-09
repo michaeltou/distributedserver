@@ -48,8 +48,7 @@ public class KeChengCategoryPage {
     @RequestMapping("/xiaobao/updateKeChengCategory")
     public String updateKeChengCategory(@RequestBody KeChengCategory keChengCategory,HttpServletRequest request,Model model){
         String institution_code = (String) request.getSession().getAttribute("institution_code");
-        String kc_category_name = request.getParameter("kc_category_name");
-        KeChengCategory keChengCategoryResult = keChengCategoryService.queryKeChengCategoryByName(kc_category_name,institution_code);
+        KeChengCategory keChengCategoryResult = keChengCategoryService.queryKeChengCategoryByName(keChengCategory.getKc_category_name(),institution_code);
         model.addAttribute("keChengCategory",keChengCategoryResult);
         return "xiaobao/updateKeChengCategory";
     }

@@ -79,9 +79,10 @@ public class KeChengCategoryApi {
      * @return
      */
     @RequestMapping("/insertKeChengCategory")
-    public ResultModel insertKeChengCategory(@RequestBody KeChengCategory keChengCategory) {
+    public ResultModel insertKeChengCategory(@RequestBody KeChengCategory keChengCategory,HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
-
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        keChengCategory.setInstitution_code(institution_code);
         int result = keChengCategoryService.insertKeChengCategory(keChengCategory);
         if (result > 0) {
             return resultModel;
