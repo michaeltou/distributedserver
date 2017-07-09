@@ -5,7 +5,6 @@ import com.tm.yunmo.common.ResultModel;
 import com.tm.yunmo.peixun.model.KeChengCategory;
 import com.tm.yunmo.peixun.service.KeChengCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -137,7 +136,9 @@ public class KeChengCategoryApi {
      * @return
      */
     @RequestMapping("/deleteChengCategory")
-    public ResultModel deleteChengCategory(@RequestBody KeChengCategory keChengCategory) {
+    public ResultModel deleteChengCategory(@RequestBody KeChengCategory keChengCategory,HttpServletRequest request) {
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        keChengCategory.setInstitution_code(institution_code);
         ResultModel resultModel = new ResultModel();
         int result = keChengCategoryService.deleteChengCategory(keChengCategory);
         if (result > 0) {
@@ -148,10 +149,12 @@ public class KeChengCategoryApi {
         }
     }
 
-    @RequestMapping("/px/queryKeChengCategoryListByNameWithLike")
-    public ResultModel queryKeChengCategoryListByNameWithLike(@RequestBody KeChengCategory keChengCategoryForSearch) {
+    @RequestMapping("/queryKeChengCategoryListByNameWithLike")
+    public ResultModel queryKeChengCategoryListByNameWithLike( HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
-        List<KeChengCategory> keChengCategoryList = keChengCategoryService.queryKeChengCategoryByNameWithLike(keChengCategoryForSearch.getKc_category_name(), keChengCategoryForSearch.getInstitution_code());
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        String kc_category_name = request.getParameter("kc_category_name");
+        List<KeChengCategory> keChengCategoryList = keChengCategoryService.queryKeChengCategoryByNameWithLike(kc_category_name, institution_code);
 
         resultModel.setData(keChengCategoryList);
         return resultModel;

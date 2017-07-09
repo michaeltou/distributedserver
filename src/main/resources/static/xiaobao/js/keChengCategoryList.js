@@ -6,9 +6,6 @@
 $(document).ready(function () {
 
 
-  
-
-
     $("#createSchoolBtnForSchoolList").click(function () {
 
         $.ajax({
@@ -27,33 +24,7 @@ $(document).ready(function () {
         });
     });
 
-    $(".updateSchoolLinkClass").on('click', function () {
-        var href = $(this).attr('href');
-
-
-        /**  这是第二种加载页面方式 **/
-        $.ajax({
-            type: "GET",
-            url: href,
-            success: function (data) {
-
-                $('#mainContents').empty();
-                //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
-                var data2 = data.replace(/\<script src=\"js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
-
-                var data3 = data2.replace(/\<script src=\"js\/bootstrap.js\"\>\<\/script\>/, "");
-
-                var data4 = data3.replace(/\<link rel=\"stylesheet\" href=\"css\/bootstrap.css\"\/\>/, "");
-
-                $('#mainContents').append(data4);
-
-
-            }
-        });
-
-        //阻止跳转
-        return false;
-    });
+    
 
     $(".deleteSchoolLinkClass").on('click', function () {
 
