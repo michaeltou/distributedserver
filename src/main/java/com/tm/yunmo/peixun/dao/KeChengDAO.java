@@ -38,6 +38,19 @@ public interface KeChengDAO {
             "    `px_kecheng`.`createDate`,\n" +
             "    `px_kecheng`.`updateDate`\n" +
             "FROM  `px_kecheng` " +
+            " where   institution_code = #{institution_code} and  name like CONCAT('%',#{name},'%') ")
+    List<KeCheng> queryKeChengListWithNameLike(@Param("name")String name,@Param("institution_code")String institution_code);
+
+    @Select(" SELECT `px_kecheng`.`id`,\n" +
+            "    `px_kecheng`.`name`,\n" +
+            "    `px_kecheng`.`kc_category_name`,\n" +
+            "    `px_kecheng`.`note`,\n" +
+            "    `px_kecheng`.`status`,\n" +
+            "    `px_kecheng`.`openSchoolNameList`,\n" +
+            "    `px_kecheng`.`institution_code`,\n" +
+            "    `px_kecheng`.`createDate`,\n" +
+            "    `px_kecheng`.`updateDate`\n" +
+            "FROM  `px_kecheng` " +
              " where name = #{name} and institution_code = #{institution_code}")
     KeCheng queryKeChengByName(@Param("name")String  name,@Param("institution_code")String institution_code);
 

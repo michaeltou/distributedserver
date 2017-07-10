@@ -8,12 +8,10 @@ $(document).ready(function () {
 
     var b_validate_result = true;
     var b_validate_result1 = true;
-
-
     $("#kc_category_name").focusout(function () {
 
         if ($("#kc_category_name").val().length < 2) {
-            $("#kc_category_name").next().text("课程分类名称小于2个字符，不合法!");
+            $("#kc_category_name").next().text("学校名称小于2个字符，不合法!");
             $("#kc_category_name").next().css({"display": "block", "color": "red"});
             b_validate_result1 = false;
         } else {
@@ -26,22 +24,18 @@ $(document).ready(function () {
 
 
 
-
-    $("#save").click(function () {
-
-
+    $("#update").click(function () {
 
         $("#kc_category_name").focus();
-        $("#save").focus();
+        $("#update").focus();
         $("#kc_category_name").focus();
 
-
-        b_validate_result = b_validate_result1;
+        b_validate_result = b_validate_result1 ;
         if (!b_validate_result) {
             return;
         }
 
-        var url = "/insertKeChengCategory";
+        var url = "/updateChengCategory";
         $.ajax({
             type: "post",
             url: url,
@@ -50,26 +44,21 @@ $(document).ready(function () {
              * 2、js里面的ajax请求的data要使用 data:  JSON.stringify({name: $("#name").val(), age: $("#age").val()}), 传递json字符串，而不json对象.
              * */
             data: JSON.stringify({
+                id: $("#keChengCategory_id").val(),
                 kc_category_name: $("#kc_category_name").val()
             }),
             dataType: "json",
             contentType: "application/json; charset=utf-8",//(可以)
             success: function (data, textStatus) {
                 if (data.success) {
-                    //清空表格数据
                     $("#myform")[0].reset();
-                    //显示
                     $("#successLabel").show();
-                    $("#createAgainBtn").show();
-                    $("#backToListBtn").show();
-                    //隐藏
+                    $("#backBtn").show();
                     $("#submitAreaDiv").empty();
                     $("#formdiv").empty();
-
                 }
                 else {
-                    $("#failLabel").css("display:block");
-                  //  alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
+                    alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -80,47 +69,20 @@ $(document).ready(function () {
 
     });
 
-
-    $("#createAgainBtn").click(function () {
-
-        $.ajax({
-            type: "GET",
-            url: "/xiaobao/createKeChengCategory",
-            success: function (data) {
-                $('#mainContents').empty();
-                //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
-                var data2 = data.replace(/\<script src=\"js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
-
-                var data3= data2.replace(/\<script src=\"js\/bootstrap.js\"\>\<\/script\>/, "");
-
-                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"css\/bootstrap.css\"\/\>/, "");
-                $('#mainContents').append(data4);
-            }
-        });
-    });
-
-
-
-
-    $("#backToListBtn").click(function () {
-        $("#kechengleibieguanli").click();
-
-    });
-
     $("#formBackBtn").click(function () {
         $("#kechengleibieguanli").click();
 
     });
 
-    $("#backToListbreadLink").click(function () {
+    $("#xiaoquguanlibread").click(function () {
         $("#kechengleibieguanli").click();
 
     });
 
+    $("#backBtn").click(function () {
+        $("#kechengleibieguanli").click();
 
-
-
-
+    });
 
 
 

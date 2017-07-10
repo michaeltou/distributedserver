@@ -21,6 +21,11 @@ public class KeChengService {
         return keChengList;
     }
 
+
+    public List<KeCheng> queryKeChengListWithNameLike(String name, String institution_code){
+        List<KeCheng> keChengList = keChengDAO.queryKeChengListWithNameLike(name, institution_code);
+        return keChengList;
+    }
     public KeCheng queryKeChengByName( String name,  String institution_code) {
         KeCheng keCheng = keChengDAO.queryKeChengByName(name, institution_code);
         return keCheng;

@@ -19,16 +19,16 @@ public class KeChengCategoryPage {
     @Autowired
     KeChengCategoryService keChengCategoryService;
 
-   //TODO DELETE
+ /*  //TODO DELETE
     @RequestMapping("/px/serachKeChengCategory")
     public String getSearchKeChengCategory(Model model){
         List<KeChengCategory> keChengCategoryList = keChengCategoryService.queryKeChengCategoryByInstitution("tm");
         model.addAttribute("courseTypeList",keChengCategoryList);
         return "px/CourseType";
-    }
+    }*/
 
 
-    @RequestMapping("/xiaobao/querySchoolCategoryListByInstitution")
+    @RequestMapping("/xiaobao/queryKeChengCategoryListByInstitution")
     public String querySchoolCategoryListByInstitution(HttpServletRequest request, Model model){
         String institution_code = (String) request.getSession().getAttribute("institution_code");
         List<KeChengCategory> keChengCategoryList = keChengCategoryService.queryKeChengCategoryByInstitution(institution_code);

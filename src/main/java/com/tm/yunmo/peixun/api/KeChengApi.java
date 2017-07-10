@@ -98,7 +98,9 @@ public class KeChengApi {
      * @return
      */
     @RequestMapping("/updateKeCheng")
-    public ResultModel updateKeCheng(@RequestBody KeCheng keCheng) {
+    public ResultModel updateKeCheng(@RequestBody KeCheng keCheng,HttpServletRequest request) {
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        keCheng.setInstitution_code(institution_code);
         ResultModel resultModel = new ResultModel();
 
         int result =   keChengService.updateKeCheng(keCheng);
@@ -130,7 +132,9 @@ public class KeChengApi {
      * @return
      */
     @RequestMapping("/deleteKeCheng")
-    public ResultModel deleteKeCheng(@RequestBody KeCheng keCheng) {
+    public ResultModel deleteKeCheng(@RequestBody KeCheng keCheng,HttpServletRequest request) {
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        keCheng.setInstitution_code(institution_code);
         ResultModel resultModel = new ResultModel();
 
         int result =   keChengService.deleteKeCheng(keCheng);
@@ -140,5 +144,18 @@ public class KeChengApi {
             resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
             return resultModel;
         }
+    }
+
+
+
+    @RequestMapping("/queryKeChengListWithNameLike")
+    public ResultModel queryKeChengListWithNameLike( HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        String name = request.getParameter("name");
+        List<KeCheng> keChengList = keChengService.queryKeChengListWithNameLike(name, institution_code);
+
+        resultModel.setData(keChengList);
+        return resultModel;
     }
 }

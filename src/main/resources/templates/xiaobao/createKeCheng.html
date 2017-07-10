@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>新建课程类别</title>
+    <meta name="viewport" content="width=device-width,
+                                     initial-scale=1.0,
+                                     maximum-scale=1.0,
+                                     user-scalable=no"/>
+
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/createKeCheng.js"></script>
+</head>
+<body>
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a href="#" id="backToListbreadLink">课程管理</a></li>
+                <li><a href="#">新建课程</a></li>
+
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <h2 class="text-success  ">
+                新建课程
+            </h2>
+            <div style="height: 20px;"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+
+            <div class="text-success" style="display: none;" id="successLabel">恭喜你，新建课程成功！
+                <div style="height: 50px;"></div>
+                <button type="button" class="btn btn-info" id="backToListBtn" style="display: none;">
+                    返回
+                </button>
+
+                <button type="button" class="btn btn-success" id="createAgainBtn" style="display: none;">
+                    再新建一个课程
+                </button>
+                <div style="height: 50px;"></div>
+            </div>
+            <div class="text-danger" style="display: none;" id="failLabel">新建课程失败！
+                <div style="height: 50px;"></div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <div id="formdiv">
+                <form role="form" id="myform">
+                    <div class="form-group">
+
+                        <label for="name">
+                            课程名称
+                        </label>
+                        <input type="text" class="form-control" id="name"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="kc_category_name">
+                            课程类别
+                        </label>
+                        <!--  <option value="1" th:selected="${sex=='1'}">男</option> -->
+                        <select name="kc_category_name" class="form-control" id="kc_category_name">
+                            <option th:each="keChengCategory : ${keChengCategoryList}"
+                                    th:value="${keChengCategory.kc_category_name}"
+                                    th:text="${keChengCategory.kc_category_name}">课程分类
+                            </option>
+                        </select>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="chargeType">
+                            收费模式
+                        </label>
+
+
+                        <select name="type" class="form-control" id="chargeType">
+                            <option value="按元/课时">按元/课时</option>
+                            <option value="按元/天">按元/天</option>
+                            <option value="按元/月">按元/月</option>
+                            <option value="按元/季">按元/季</option>
+                            <option value="按元/年">按元/年</option>
+                            <option value="按元/期">按元/期</option>
+                        </select>
+
+                        <div style="height: 20px"></div>
+
+                        <label for="chargeFee">
+                            收费标准
+                        </label>
+                        <input type="text" class="form-control" id="chargeFee"/>
+
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="note">
+                            课程备注
+                        </label>
+                        <input type="text" class="form-control" id="note"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-md-4">
+
+            <div id="formdiv2">
+
+
+
+                    <div class="form-group">
+
+                        <label for="openSchoolNameList"> 开课分校：</label>
+                        <div></div>
+                        <input type="radio" id="selectALLBtn" value="全选" name="select"/>全选&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="radio" id="unSelectALLBtn" value="取消全选"  name="select"/>取消全选
+
+                        <tr th:each=" school : ${schoolList}">
+                            <td>
+                                <div class="checkbox">
+                                    <label><input type="checkbox" th:value="${school.school_name}"
+                                                  name="openSchoolNameList" class="mycheckbox"/>
+                                        <span th:text="${school.school_name}">分校</span>
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <div class="check_tips" id="schoolTips"></div>
+                    </div>
+
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-2 text-center">
+            <div id="submitAreaDiv">
+                <div style="height: 20px;"></div>
+
+                <button type="button" class="btn btn-default" id="formBackBtn">返回
+                </button>
+                &nbsp; &nbsp; &nbsp;
+                <button id="save" type="button" class="btn btn-success">
+                    保存
+                </button>
+                <div style="height: 80px;"></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+</body>
+</html>
