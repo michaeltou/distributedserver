@@ -110,7 +110,10 @@ public class KeChengCategoryApi {
      * @return
      */
     @RequestMapping("/updateChengCategory")
-    public ResultModel updateChengCategory(@RequestBody KeChengCategory keChengCategory) {
+    public ResultModel updateChengCategory(@RequestBody KeChengCategory keChengCategory,HttpServletRequest request) {
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        keChengCategory.setInstitution_code(institution_code);
+
         ResultModel resultModel = new ResultModel();
         int result = keChengCategoryService.updateChengCategory(keChengCategory);
         if (result > 0) {

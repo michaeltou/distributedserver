@@ -5,7 +5,6 @@ import com.tm.yunmo.peixun.service.KeChengCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +45,7 @@ public class KeChengCategoryPage {
 
 
     @RequestMapping("/xiaobao/updateKeChengCategory")
-    public String updateKeChengCategory(@RequestBody KeChengCategory keChengCategory,HttpServletRequest request,Model model){
+    public String updateKeChengCategory( KeChengCategory keChengCategory,HttpServletRequest request,Model model){
         String institution_code = (String) request.getSession().getAttribute("institution_code");
         KeChengCategory keChengCategoryResult = keChengCategoryService.queryKeChengCategoryByName(keChengCategory.getKc_category_name(),institution_code);
         model.addAttribute("keChengCategory",keChengCategoryResult);

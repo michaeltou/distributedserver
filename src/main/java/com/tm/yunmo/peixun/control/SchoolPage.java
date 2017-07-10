@@ -38,7 +38,8 @@ public class SchoolPage {
 
     @RequestMapping("/xiaobao/querySchoolListByInstitution")
     public String querySchoolListByInstitution(HttpServletRequest request,Model model){
-        List<School> schoolList = schoolService.querySchoolListByInstitution("tm");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        List<School> schoolList = schoolService.querySchoolListByInstitution(institution_code);
         model.addAttribute("schoolList",schoolList);
         return "xiaobao/schoolList";
     }

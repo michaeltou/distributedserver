@@ -143,7 +143,7 @@ $(document).ready(function () {
                 if (data.success) {
                     $("#myform")[0].reset();
                     $("#successLabel").show();
-                    $("#createSchool").show();
+                    $("#createAgainBtn").show();
                     $("#backToXiaoquListBtn").show();
                     $("#submitAreaDiv").empty();
                     $("#formdiv").empty();
@@ -163,7 +163,7 @@ $(document).ready(function () {
     });
 
 
-    $("#createSchoolBtnForCreateSchoolPage").click(function () {
+    $("#createAgainBtn").click(function () {
 
         $.ajax({
             type: "GET",

@@ -116,7 +116,9 @@
                         <td><a    class="deleteObjectLinkClass"
                                href="#"
                                th:attr="kc_category_name=${keChengCategory.kc_category_name},id=${keChengCategory.id}" >删除</a>
-
+                            &nbsp;&nbsp;
+                            <a   href="#" class="updateObjectLinkClass"
+                               th:href="@{/xiaobao/updateKeChengCategory(id=${keChengCategory.id},kc_category_name=${keChengCategory.kc_category_name} )}">编辑</a>
                         </td>
 
 
