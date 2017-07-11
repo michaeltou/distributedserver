@@ -29,6 +29,16 @@ public class School {
     //
     private Date updateDate;
 
+    private boolean checked =false;
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
     public int getId() {
         return id;
     }

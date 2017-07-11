@@ -12,6 +12,7 @@
     <script src="js/jquery-3.2.1.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/updateKeCheng.js"></script>
+    <script src="js/util.js"></script>
 </head>
 <body>
 
@@ -20,8 +21,8 @@
     <div class="row">
         <div class="col-md-12">
             <ol class="breadcrumb">
-                <li><a  href="#" id="backToListbreadLink">课程分类管理</a></li>
-                <li><a href="#">编辑课程分类</a></li>
+                <li><a  href="#" id="backToListbreadLink">课程管理</a></li>
+                <li><a href="#">编辑课程</a></li>
 
             </ol>
         </div>
@@ -30,7 +31,7 @@
     <div class="row">
         <div class="col-md-3">
             <h2 class="text-success  ">
-                编辑课程分类
+                编辑课程
             </h2>
             <div style="height: 20px;"></div>
         </div>
@@ -38,14 +39,14 @@
     <div class="row">
         <div class="col-md-3">
 
-            <div class="text-success" style="display: none;" id="successLabel">恭喜你，更新课程分类成功！
+            <div class="text-success" style="display: none;" id="successLabel">恭喜你，更新课程成功！
                 <div style="height: 50px;"></div>
                 <button type="button" class="btn btn-success" id="backBtn" style="display: none;">
                     返回
                 </button>
                 <div style="height: 50px;"></div>
             </div>
-            <div class="text-danger" style="display: none;" id="failLabel">更新课程分类失败！
+            <div class="text-danger" style="display: none;" id="failLabel">更新课程失败！
                 <div style="height: 50px;"></div>
             </div>
 
@@ -63,28 +64,107 @@
             <div id="formdiv">
                 <form role="form" id="myform">
                     <div class="form-group">
-                        <input type="hidden" id="keChengCategory_id" th:value="${keChengCategory.id}"/>
 
-                        <label for="id">
-                            课程分类名称
+                        <label for="name">
+                            课程名称
                         </label>
-                        <input type="text" class="form-control" id="id" th:value="${keChengCategory.id}"  readonly="readonly"/>
-                        <div class="check_tips"></div>
-
-                        <label for="kc_category_name">
-                            课程分类名称
-                        </label>
-                        <input type="text" class="form-control" id="kc_category_name" th:value="${keChengCategory.kc_category_name}" />
+                        <input type="text" class="form-control" id="name" th:value="${keCheng.name}" />
                         <div class="check_tips"></div>
                     </div>
 
 
+                    <div class="form-group">
+
+                        <label for="kc_category_name">
+                            课程类别
+                        </label>
+                        <!--  <option value="1" th:selected="${sex=='1'}">男</option> -->
+                        <select name="kc_category_name" class="form-control" id="kc_category_name">
+                            <option th:each="keChengCategory : ${keChengCategoryList}"
+                                    th:value="${keChengCategory.kc_category_name}"
+                                    th:text="${keChengCategory.kc_category_name}" th:selected="${keChengCategory.kc_category_name}==${keCheng.kc_category_name}">课程分类
+                            </option>
+                        </select>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="chargeType">
+                            收费模式
+                        </label>
+
+
+                        <select name="type" class="form-control" id="chargeType">
+                            <option value="按元/课时" th:selected="${keChengChargeInfo.chargeType=='按元/课时'}" >按元/课时</option>
+                            <option value="按元/天" th:selected="${keChengChargeInfo.chargeType=='按元/天'}" >按元/天</option>
+                            <option value="按元/月" th:selected="${keChengChargeInfo.chargeType=='按元/月'}" >按元/月</option>
+                            <option value="按元/季" th:selected="${keChengChargeInfo.chargeType=='按元/季'}" >按元/季</option>
+                            <option value="按元/年" th:selected="${keChengChargeInfo.chargeType=='按元/年'}" >按元/年</option>
+                            <option value="按元/期" th:selected="${keChengChargeInfo.chargeType=='按元/期'}" >按元/期</option>
+                        </select>
+
+                        <div style="height: 20px"></div>
+
+                        <label for="chargeFee">
+                            收费标准
+                        </label>
+                        <input type="text" class="form-control" id="chargeFee" th:value="${keChengChargeInfo.chargeFee}"/>
+
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="note">
+                            课程备注
+                        </label>
+                        <input type="text" class="form-control" id="note" th:value="${keCheng.note}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
 
                 </form>
+
             </div>
 
+        </div>
+
+
+        <div class="col-md-4">
+
+            <div id="formdiv2">
+
+
+                <input type="hidden" id="openSchoolNameListHidden"  th:value="${keCheng.openSchoolNameList}"/>
+                <div class="form-group">
+
+                    <label for="openSchoolNameList"> 开课分校：</label>
+                    <div></div>
+                    <input type="radio" id="selectALLBtn" value="全选" name="select"/>全选&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" id="unSelectALLBtn" value="取消全选"  name="select"/>取消全选
+
+                    <tr th:each=" school : ${schoolList}">
+                        <td>
+                            <div class="checkbox">
+                                <label><input type="checkbox" th:value="${school.school_name}"
+                                              name="openSchoolNameList" class="mycheckbox" th:checked="${school.checked}"/>
+                                    <span th:text="${school.school_name}">分校</span>
+                                </label>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <div class="check_tips" id="schoolTips"></div>
+                </div>
+
+
+
+            </div>
 
         </div>
+
 
 
     </div>

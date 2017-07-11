@@ -9,14 +9,14 @@ import org.apache.ibatis.annotations.*;
 @Mapper
 public interface KeChengChargeInfoDAO {
 
-    @Select("SELECT `px_charge_info`.`id`,\n" +
-            "    `px_charge_info`.`kecheng_name`,\n" +
-            "    `px_charge_info`.`chargeType`,\n" +
-            "    `px_charge_info`.`chargeFee`,\n" +
-            "    `px_charge_info`.`status`,\n" +
-            "    `px_charge_info`.`institution_code`,\n" +
-            "    `px_charge_info`.`createDate`,\n" +
-            "    `px_charge_info`.`updateDate`\n" +
+    @Select("SELECT `px_kecheng_charge_info`.`id`,\n" +
+            "    `px_kecheng_charge_info`.`kecheng_name`,\n" +
+            "    `px_kecheng_charge_info`.`chargeType`,\n" +
+            "    `px_kecheng_charge_info`.`chargeFee`,\n" +
+            "    `px_kecheng_charge_info`.`status`,\n" +
+            "    `px_kecheng_charge_info`.`institution_code`,\n" +
+            "    `px_kecheng_charge_info`.`createDate`,\n" +
+            "    `px_kecheng_charge_info`.`updateDate`\n" +
             "FROM `px_kecheng_charge_info` \n" +
             " where  kecheng_name = #{kecheng_name}  and institution_code = #{institution_code}")
     KeChengChargeInfo queryKeChengChargeInfoByKechengName(@Param("kecheng_name") String kecheng_name, @Param("institution_code") String institution_code);
@@ -55,8 +55,8 @@ public interface KeChengChargeInfoDAO {
             "#{chargeFee},\n" +
             "#{status},\n" +
             "#{institution_code},\n" +
-            "#{createDate},\n" +
-            "#{updateDate} );\n"
+            "now(),\n" +
+            "now() );\n"
     )
     public int insertKeChengChargeInfo(KeChengChargeInfo keChengChargeInfo);
 
@@ -80,7 +80,7 @@ public interface KeChengChargeInfoDAO {
             "`chargeType` = #{chargeType},\n" +
             "`chargeFee` = #{chargeFee},\n" +
             "`status` = #{status},\n" +
-            "`updateDate` = #{updateDate}\n" +
+            "`updateDate` = now() \n" +
             "WHERE kecheng_name = #{kecheng_name} and institution_code=#{institution_code} ;\n "
     )
     public int updateKeChengChargeInfo(KeChengChargeInfo keChengChargeInfo);

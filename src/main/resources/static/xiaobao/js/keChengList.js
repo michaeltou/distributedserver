@@ -30,12 +30,12 @@ $(document).ready(function () {
         //获取点击链接自定义属性的值
         var href = $(this).attr('href');
         var id = $(this).attr('id');
-        var kc_category_name = $(this).attr('kc_category_name');
+        var name = $(this).attr('name');
 
 
         //将自定义属性的值赋值给modal
         $("#id").val(id);
-        $("#kc_category_name").val(kc_category_name);
+        $("#name").val(name);
 
         //显示属性框.
         $('#myDeleteModal').modal('show');
@@ -71,7 +71,7 @@ $(document).ready(function () {
 
     $("#deleteObjectBtnInModal").click(function () {
 
-        var url = "/deleteChengCategory";
+        var url = "/deleteKeCheng";
         $.ajax({
             type: "post",
             url: url,
@@ -80,8 +80,7 @@ $(document).ready(function () {
              * 2、js里面的ajax请求的data要使用 data:  JSON.stringify({name: $("#name").val(), age: $("#age").val()}), 传递json字符串，而不json对象.
              * */
             data: JSON.stringify({
-                id: $("#id").val(),
-                kc_category_name: $("#kc_category_name").val()
+                name: $("#name").val()
             }),
             dataType: "json",
             contentType: "application/json; charset=utf-8",//(可以)
@@ -104,17 +103,17 @@ $(document).ready(function () {
 
     $('#myDeleteModal').on('hidden.bs.modal', function () {
         // 执行一些动作...
-        $("#kechengleibieguanli").click();
+        $("#kechengguanli").click();
     })
 
 
     $("#searchBtn").click(function () {
 
-        var query_param_kc_category_name = $("#query_param_kc_category_name").val();
+        var query_param_kc_name = $("#query_param_kc_name").val();
         $.ajax({
-            url: "/queryKeChengCategoryListByNameWithLike",
+            url: "/queryKeChengListWithNameLike",
             type: "GET",
-            data: {kc_category_name: query_param_kc_category_name},
+            data: {name: query_param_kc_name},
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data, textStatus) {
@@ -128,22 +127,28 @@ $(document).ready(function () {
                     $("#mytablebody").empty();
 
                     //动态构建表格数据.
-                    $.each(data.data, function (id, keChengCategory) {
+                    $.each(data.data, function (id, keCheng) {
                         var $tr = $("<tr ></tr>");
-                        var $td1 = $("<td >" + keChengCategory.id + "</td>");
-                        var $td2 = $("<td >" + keChengCategory.kc_category_name + "</td>");
+                        var $td1 = $("<td >" + keCheng.name + "</td>");
+                        var $td2 = $("<td >" + keCheng.kc_category_name + "</td>");
+                        var $td3 = $("<td >" + keCheng.openSchoolNameList + "</td>");
+                        var $td4 = $("<td >" + keCheng.note + "</td>");
 
-                        var $td3 = $("   <td><a    class='deleteObjectLinkClass' href='#' kc_category_name='" + keChengCategory.kc_category_name +
-                             "' id='" + keChengCategory.id + 　"'   >删除</a>" +
+
+                        var $td5 = $("   <td><a    class='deleteObjectLinkClass' href='#' name='" + keCheng.name +
+                             "' id='" + keCheng.id + 　"'   >删除</a>" +
                             " &nbsp;&nbsp; " +
                             "<a  class='updateObjectLinkClass'  " +
-                            " href='/xiaobao/updateKeChengCategory?id=" +
-                            keChengCategory.id + "&kc_category_name=" +
-                            keChengCategory.kc_category_name + "  '>编辑</a> </td>");
+                            " href='/xiaobao/updateKeCheng?id=" +
+                            keCheng.id + "&name=" +
+                            keCheng.name + "  '>编辑</a> </td>");
 
                         $tr.append($td1);
                         $tr.append($td2);
                         $tr.append($td3);
+                        $tr.append($td4);
+                        $tr.append($td5);
+
                         $tr.appendTo($("#mytablebody"));
 
 
@@ -154,12 +159,12 @@ $(document).ready(function () {
                         //获取点击链接自定义属性的值
                         var href = $(this).attr('href');
                         var id = $(this).attr('id');
-                        var kc_category_name = $(this).attr('kc_category_name');
+                        var name = $(this).attr('name');
 
 
                         //将自定义属性的值赋值给modal
                         $("#id").val(id);
-                        $("#kc_category_name").val(kc_category_name);
+                        $("#name").val(name);
 
                         //显示属性框.
                         $('#myDeleteModal').modal('show');

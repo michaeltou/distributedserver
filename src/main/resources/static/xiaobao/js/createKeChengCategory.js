@@ -13,7 +13,7 @@ $(document).ready(function () {
     $("#kc_category_name").focusout(function () {
 
         if ($("#kc_category_name").val().length < 2) {
-            $("#kc_category_name").next().text("课程分类名称小于2个字符，不合法!");
+            $("#kc_category_name").next().text("学校名称小于2个字符，不合法!");
             $("#kc_category_name").next().css({"display": "block", "color": "red"});
             b_validate_result1 = false;
         } else {

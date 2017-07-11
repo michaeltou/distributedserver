@@ -3,8 +3,12 @@ package com.tm.yunmo.peixun.api;
 import com.tm.yunmo.common.ErrorCode;
 import com.tm.yunmo.common.ResultModel;
 import com.tm.yunmo.peixun.model.KeCheng;
+import com.tm.yunmo.peixun.model.KeChengChargeInfo;
+import com.tm.yunmo.peixun.model.KeChengComposeModel;
+import com.tm.yunmo.peixun.service.KeChengChargeInfoService;
 import com.tm.yunmo.peixun.service.KeChengService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,11 +20,17 @@ import java.util.List;
  * Created by daoying on 2017/6/20.
  * 课程rest接口
  */
+@Transactional
 @RestController
 public class KeChengApi {
 
     @Autowired
     private KeChengService keChengService;
+
+
+
+    @Autowired
+    private KeChengChargeInfoService keChengChargeInfoService;
 
     /**
      * http://localhost:9999/queryKeChengListByInstitution?institution_code=tm
@@ -66,7 +76,10 @@ public class KeChengApi {
      * @return
      */
     @RequestMapping("/insertKeCheng")
-    public ResultModel insertKeCheng(@RequestBody KeCheng keCheng) {
+    public ResultModel insertKeCheng(@RequestBody KeCheng keCheng,HttpServletRequest request) {
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        keCheng.setInstitution_code(institution_code);
+
         ResultModel resultModel = new ResultModel();
 
         int result =   keChengService.insertKeCheng(keCheng);
@@ -77,6 +90,79 @@ public class KeChengApi {
             return resultModel;
         }
     }
+
+
+    @RequestMapping("/insertKeChengAndChargeInfo")
+    public ResultModel insertKeChengAndChargeInfo(@RequestBody KeChengComposeModel keChengComposeModel, HttpServletRequest request) {
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+
+        KeCheng keCheng = new KeCheng();
+        keCheng.setInstitution_code(institution_code);
+        keCheng.setName(keChengComposeModel.getName());
+        keCheng.setKc_category_name(keChengComposeModel.getKc_category_name());
+        keCheng.setNote(keChengComposeModel.getNote());
+        keCheng.setOpenSchoolNameList(keChengComposeModel.getOpenSchoolNameList());
+        keCheng.setStatus("1");
+        //创建课程基本信息
+        int result1 =   keChengService.insertKeCheng(keCheng);
+
+
+        KeChengChargeInfo keChengChargeInfo = new KeChengChargeInfo();
+        keChengChargeInfo.setKecheng_name(keChengComposeModel.getName());
+        keChengChargeInfo.setChargeType(keChengComposeModel.getChargeType());
+        keChengChargeInfo.setChargeFee(keChengComposeModel.getChargeFee());
+        keChengChargeInfo.setInstitution_code(institution_code);
+        keChengChargeInfo.setStatus("1");
+        //创建课程的收费信息.
+        int result2 =  keChengChargeInfoService.insertKeChengChargeInfo(keChengChargeInfo);
+
+        ResultModel resultModel = new ResultModel();
+        if (result1>0 && result2>0 ){
+            return resultModel;
+        }else{
+            resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+            return resultModel;
+        }
+    }
+
+    /**
+     * 更新课程信息和收费信息
+     * @param keCheng
+     * @param request
+     * @return
+     */
+    @RequestMapping("/updateKeChengComposeChargeInfo")
+    public ResultModel updateKeChengComposeChargeInfo(@RequestBody KeChengComposeModel keChengComposeModel,HttpServletRequest request) {
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+
+        KeCheng keCheng = new KeCheng();
+        keCheng.setInstitution_code(institution_code);
+        keCheng.setName(keChengComposeModel.getName());
+        keCheng.setKc_category_name(keChengComposeModel.getKc_category_name());
+        keCheng.setNote(keChengComposeModel.getNote());
+        keCheng.setOpenSchoolNameList(keChengComposeModel.getOpenSchoolNameList());
+        keCheng.setStatus("1");
+        //更新课程基本信息
+        int result1 =   keChengService.updateKeCheng(keCheng);
+
+        KeChengChargeInfo keChengChargeInfo = new KeChengChargeInfo();
+        keChengChargeInfo.setKecheng_name(keChengComposeModel.getName());
+        keChengChargeInfo.setChargeType(keChengComposeModel.getChargeType());
+        keChengChargeInfo.setChargeFee(keChengComposeModel.getChargeFee());
+        keChengChargeInfo.setInstitution_code(institution_code);
+        keChengChargeInfo.setStatus("1");
+        //更新课程的收费信息.
+        int result2 =  keChengChargeInfoService.updateKeChengChargeInfo(keChengChargeInfo);
+
+        ResultModel resultModel = new ResultModel();
+        if (result1>0 && result2 > 0){
+            return resultModel;
+        }else{
+            resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+            return resultModel;
+        }
+    }
+
 
     /**
      * POST http://localhost:9999/updateKeCheng HTTP/1.1
@@ -136,9 +222,18 @@ public class KeChengApi {
         String institution_code = (String) request.getSession().getAttribute("institution_code");
         keCheng.setInstitution_code(institution_code);
         ResultModel resultModel = new ResultModel();
+        //删除课程信息.
+        int result1 =   keChengService.deleteKeCheng(keCheng);
 
-        int result =   keChengService.deleteKeCheng(keCheng);
-        if (result>0 ){
+
+        KeChengChargeInfo keChengChargeInfo = new KeChengChargeInfo();
+        keChengChargeInfo.setInstitution_code(institution_code);
+        keChengChargeInfo.setKecheng_name(keCheng.getName());
+        //删除课程的收费信息.
+        int result2 =  keChengChargeInfoService.deleteKeChengChargeInfoByKeChengName(keChengChargeInfo);
+
+
+        if (result1>0 && result2>0 ){
             return resultModel;
         }else{
             resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
