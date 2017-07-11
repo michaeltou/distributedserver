@@ -72,8 +72,8 @@ public interface KeChengDAO {
             "#{note},\n" +
             "#{status},\n" +
             "#{openSchoolNameList},\n" +
-            "#{createDate},\n" +
-            "#{updateDate},\n" +
+            "now(),\n" +
+            "now(),\n" +
             "#{institution_code});\n"    )
     public int insertKeCheng(KeCheng keCheng);
 
@@ -83,7 +83,7 @@ public interface KeChengDAO {
             "`note` = #{note},\n" +
             "`status` =#{status},\n" +
             "`openSchoolNameList` = #{openSchoolNameList},\n" +
-            "`updateDate` = #{updateDate} \n" +
+            "`updateDate` = now() \n" +
             "WHERE  name = #{name} and institution_code = #{institution_code} \n")
     public int updateKeCheng(KeCheng keCheng);
 
