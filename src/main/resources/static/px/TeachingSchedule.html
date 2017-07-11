@@ -13,12 +13,14 @@
     <link rel="stylesheet" href="css/index_style.css">
     <link rel="stylesheet" href="css/jquery-ui.css">
     <link rel="stylesheet" href="css/yp_style.css">
+    <link rel='stylesheet' href='css/jquery.qtip_3.0.3.min.css'/>
     <link rel='stylesheet' href='css/teachingSchedule.css' />
     <script type="text/javascript"  src='js/moment.min.js'></script>
     <script type="text/javascript"  src='js/jquery.js'></script>
     <script type="text/javascript"  src='js/fullcalendar.min.js'></script>
     <script type="text/javascript"  src='js/locale-all.js'></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript"  src='js/jquery.qtip_3.0.3.min.js'></script>
     <script type="text/javascript"  src='js/teachingSchedule.js'></script>
     <script type="text/javascript" src="js/main.js"></script>
 </head>
@@ -82,9 +84,10 @@
                 <select name="classTimeStartMinText"
                         style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:61px; height:31px; line-height:28px; background:#fff;"
                         id="classTimeStartMinText">
-                    <option value="00"> 00</option>
-                    <option value="10"> 10</option>
-                    <option value="20"> 20</option>
+                    <option value="00">00</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
                 </select>
             </div>
         </div>
@@ -119,9 +122,10 @@
                 <select name="classTimeEndMinText"
                         style="position:absolute; clip:rect(2px 302px 28px 2px); margin:-2px; width:60px; height:31px; line-height:28px; background:#fff;"
                         id="classTimeEndMinText">
-                    <option value="00"> 00</option>
-                    <option value="10"> 10</option>
-                    <option value="20"> 20</option>
+                    <option value="00">00</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
                 </select>
             </div>
         </div>
@@ -175,6 +179,12 @@
                    value="" id="mainSubjectText">
         </div>
         <input type="hidden" id="operationType" value="0"/>
+    </form>
+
+    <form class="confirmDialog" title = "确认">
+
+        <div id = "confirmContent">是否要去创建日程？</div>
+
     </form>
 </div>
 </body>

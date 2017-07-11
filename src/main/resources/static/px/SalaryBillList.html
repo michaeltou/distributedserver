@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>助教宝 - 管理后台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="baidu-site-verification" content="elXuCAMAW3">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index_style.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/yp_style.css">
+    <link rel="stylesheet" href="css/salarybilllist.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/jquery.tree-multiselect.min.css"/>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/jquery.form.js"></script>
+    <script type="text/javascript" src="js/salarybilllist.js"></script>
+
+</head>
+
+<body style="background-color: #fff;">
+<div class="mainContainer">
+    <div class="rightmain clearfix tplSettingDome signSetting" data-page="domesticRegister">
+        <div class="app-framework-cpt">
+            <div class="domestic-register-manager-cpt">
+                <div class="tab-cpt">
+                    <div class="tab-body-group-cpt">
+                        <div class="tab-body-cpt tab-body-show">
+                            <div class="sign-setting-cpt clearfix">
+                                <div class="add-new-sign-cpt">
+                                    <div>
+                                        <input style="margin-left: 10px;" class="button button-middle  float-left"
+                                               type="button" name="NewEmployee" value="创建工资单" id="NewEmployee">
+                                    </div>
+                                </div>
+
+                                <div class="sign-list-cpt" style="min-width: 1200px;">
+                                    <div class="block-title-cpt"> 工资单一览</div>
+                                    <div style="float:left; width:70px; margin-top:20px; padding-left:20px; padding-bottom:30px;">
+                                        <label>发放月份:</label>
+                                    </div>
+                                    <div style="float:left;  margin-top:15px;">
+                                        <div class="date-picker">
+                                            <input class="text-input-cpt" placeholder="" value="" type="text"
+                                                   name='date' id="classStartDateForSearchStart">
+                                        </div>
+                                        -
+                                        <div class="date-picker">
+                                            <input class="text-input-cpt" placeholder="" value="" type="text"
+                                                   name='date' id="classStartDateForSearchEnd">
+                                        </div>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;padding-left:25px;">
+                                        <input style="margin-left: 10px;" class="button button-middle    float-left"
+                                               type="button" name="search" value="查询" id="search">
+                                    </div>
+
+                                    <div class="recordList" style="width: 60%;">
+                                        <table class="yunmo">
+                                            <thead>
+                                            <tr>
+                                                <th style="width:25%;">发放月份</th>
+                                                <th style="width:25%;">已发送员工</th>
+                                                <th style="width:25%;">已确认员工</th>
+                                                <th style="width:25%; min-width:200px;text-align: center;">操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td>2017年6月</td>
+                                                <td>111</td>
+                                                <td>222</td>
+                                                <td style='text-align: center;'>
+                                                    <button class="editButton icon iconfont icon-edit">编辑</button>
+                                                    <button class="deleteButton icon iconfont icon-delete">删除</button>
+                                                    <button class="detailButton icon iconfont icon-viewlist">详情</button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.tree-multiselect.min.js"></script>
+<script src="js/doT.js"></script>
+</body>
+</html>

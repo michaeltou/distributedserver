@@ -1,0 +1,72 @@
+.qtip {
+	padding: 0px; left: -28000px; top: -28000px; line-height: 12px; font-size: 10.5px; display: none; position: absolute; direction: ltr; min-width: 50px; max-width: 280px; box-shadow: none;
+}
+.qtip-content {
+	overflow: hidden; position: relative;
+}
+.qtip-titlebar {
+	overflow: hidden; position: relative;
+}
+.qtip-content {
+	padding: 5px 9px; text-align: left; -ms-word-wrap: break-word;
+}
+.qtip-titlebar {
+	border-width: 0px 0px 1px; padding: 5px 35px 5px 10px; font-weight: 700;
+}
+.qtip-titlebar + .qtip-content {
+	border-top-width: 0px !important;
+}
+.qtip-close {
+	outline: 0px; border: 1px solid transparent; border-image: none; top: -9px; right: -9px; position: absolute; z-index: 11; cursor: pointer;
+}
+.qtip-titlebar .qtip-close {
+	top: 50%; right: 4px; margin-top: -9px;
+}
+* html .qtip-titlebar .qtip-close {
+	top: 16px;
+}
+.qtip-icon .ui-icon {
+	text-indent: -1000em; display: block; direction: ltr;
+}
+.qtip-titlebar .ui-icon {
+	text-indent: -1000em; display: block; direction: ltr;
+}
+.qtip-icon {
+	border-radius: 3px; text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px;
+}
+.qtip-icon .ui-icon {
+	border-radius: 3px; text-decoration: none; -webkit-border-radius: 3px; -moz-border-radius: 3px;
+}
+.qtip-icon .ui-icon {
+	background: no-repeat -100em -100em; font: 700 10px/13px Tahoma, sans-serif; width: 18px; height: 14px; text-align: center; color: inherit; text-indent: 0px; font-size-adjust: none; font-stretch: normal;
+}
+.qtip-default {
+	border: 1px solid rgb(241, 208, 49); border-image: none; color: rgb(85, 85, 85); background-color: rgb(255, 255, 163);
+}
+.qtip-default .qtip-titlebar {
+	background-color: rgb(255, 239, 147);
+}
+.qtip-default .qtip-icon {
+	background: rgb(241, 241, 241); border-color: rgb(204, 204, 204); color: rgb(119, 119, 119);
+}
+.qtip-default .qtip-titlebar .qtip-close {
+	border-color: rgb(170, 170, 170); color: rgb(17, 17, 17);
+}
+.qtip .qtip-tip {
+	margin: 0px auto; overflow: hidden; z-index: 10;
+}
+.qtip .qtip-tip {
+	background: 0px 0px; border: 0px dashed transparent; border-image: none; color: rgb(18, 52, 86); position: absolute;
+}
+.qtip .qtip-tip .qtip-vml {
+	background: 0px 0px; border: 0px dashed transparent; border-image: none; color: rgb(18, 52, 86); position: absolute;
+}
+.qtip .qtip-tip canvas {
+	background: 0px 0px; border: 0px dashed transparent; border-image: none; color: rgb(18, 52, 86); position: absolute;
+}
+.qtip .qtip-tip canvas {
+	left: 0px; top: 0px;
+}
+.qtip .qtip-tip .qtip-vml {
+	display: inline-block; visibility: visible; behavior: url(#default#VML);
+}
