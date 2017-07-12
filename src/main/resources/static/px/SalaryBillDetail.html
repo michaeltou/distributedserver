@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>助教宝 - 管理后台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="baidu-site-verification" content="elXuCAMAW3">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index_style.css">
+    <link rel="stylesheet" href="css/yp_style.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/salaryBillDetail.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/salaryBillDetail.js"></script>
+
+</head>
+
+<body style="background-color: #fff;">
+<div class="mainContainer">
+    <div class="rightmain clearfix tplSettingDome signSetting" data-page="domesticRegister">
+        <div class="app-framework-cpt">
+            <div class="domestic-register-manager-cpt">
+                <div class="tab-cpt">
+                    <div class="tab-body-group-cpt">
+                        <div class="tab-body-cpt tab-body-show">
+                            <div class="sign-setting-cpt clearfix">
+                                <div class="sign-list-cpt" style="min-width: 1400px;">
+                                    <div class="block-title-cpt"> 发薪月份：2017年6月</div>
+                                    <div style="border-bottom: 2px solid silver; height: 60px;">
+                                        <div style="float:left; width:70px; padding-top:20px; padding-left:10px;padding-bottom:10px;">
+                                            <label>员工姓名:</label>
+                                        </div>
+                                        <div style="float:left;  padding-top:15px; padding-bottom:30px;">
+                                            <input class="text-input-cpt" type="text" name="employeeNameForSearchText"
+                                                   value="" id="employeeNameForSearchText">
+                                        </div>
+
+                                        <div style="float:left; width:70px; padding-top:20px; padding-left:20px;padding-bottom:10px;">
+                                            <label>手机号码:</label>
+                                        </div>
+                                        <div style="float:left;  padding-top:15px; padding-bottom:30px;">
+                                            <input class="text-input-cpt" type="text" name="employeePhoneForSearchText"
+                                                   value="" id="employeePhoneForSearchText">
+                                        </div>
+                                        <div style="float:left;  padding-top:15px;padding-left:25px;">
+                                            <input style="margin-left: 10px;" class="button button-middle    float-left"
+                                                   type="button" name="search" value="查询" id="search">
+                                        </div>
+                                    </div>
+                                    <div style="float:left; width:100%; height:40px;">
+                                        <div class="operationBtnDiv">
+                                            <input class="deleteBtn" type="button" value="删除"/>
+                                        </div>
+                                        <div class="operationBtnDiv">
+                                            <input class="sendBtn" type="button" value="发送"/>
+                                        </div>
+                                        <div class="operationBtnDiv">
+                                            <input class="unDoBtn" type="button" value="撤回"/>
+                                        </div>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                    <div class="recordList-left" style="width: 220px;float: left;">
+                                        <table class="yunmo">
+                                            <thead>
+                                            <tr>
+                                                <th style="width:10px;"><input value="" name="selectedEmployee"
+                                                                               type="checkbox" class="selectedEmployee">
+                                                </th>
+                                                <th style="width: 30px;">员工姓名</th>
+                                                <th style="width: 80px; ">联系电话</th>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td><input value="" name="selectedEmployee" type="checkbox"
+                                                           class="selectedEmployee"></td>
+                                                <td>小王</td>
+                                                <td>18717947096</td>
+                                            </tr>
+                                            <tr>
+                                                <td><input value="" name="selectedEmployee" type="checkbox"
+                                                           class="selectedEmployee"></td>
+                                                <td>小张</td>
+                                                <td>18717947096</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="recordList-middle">
+                                        <table class="yunmo">
+                                            <thead>
+                                            <tr>
+                                                <th style="width:10%;height: 19px;">状态</th>
+                                                <th style="width:10%;">实发工资</th>
+                                                <th style="width:10%;">应发工资</th>
+                                                <th style="width:10%;">加班工资</th>
+                                                <th style="width:10%;">岗位工资</th>
+                                                <th style="width:10%;">绩效工资</th>
+                                                <th style="width:10%;">课时费</th>
+                                                <th style="width:10%;">介绍费</th>
+                                                <th style="width:10%;">绩效奖金</th>
+                                                <th style="width:10%;">加班费</th>
+                                                <th style="width:10%;">全勤奖</th>
+                                                <th style="width:10%;">补课费</th>
+                                                <th style="width:10%;">通讯补贴</th>
+                                                <th style="width:10%;">交通补贴</th>
+                                                <th style="width:10%;">餐费补贴</th>
+                                                <th style="width:10%;">工龄工资</th>
+                                                <th style="width:10%;">其他奖金</th>
+                                                <th style="width:10%;">请假扣款</th>
+                                                <th style="width:10%;">退费扣款</th>
+                                                <th style="width:10%;">养老保险</th>
+                                                <th style="width:10%;">医疗保险</th>
+                                                <th style="width:10%;">失业保险</th>
+                                                <th style="width:10%;">工伤保险</th>
+                                                <th style="width:10%;">生育保险</th>
+                                                <th style="width:10%;">公积金</th>
+                                                <th style="width:10%;">个人所得税</th>
+                                                <th style="width:10%;">其他支出</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td height="19px">未确认</td>
+                                                <td>99999</td>
+                                                <td>99998</td>
+                                                <td>1000</td>
+                                                <td>1001</td>
+                                                <td>1002</td>
+                                                <td>1003</td>
+                                                <td>1004</td>
+                                                <td>1005</td>
+                                                <td>1006</td>
+                                                <td>1007</td>
+                                                <td>1008</td>
+                                                <td>1009</td>
+                                                <td>1010</td>
+                                                <td>1011</td>
+                                                <td>1012</td>
+                                                <td>1013</td>
+                                                <td>1014</td>
+                                                <td>1015</td>
+                                                <td>1016</td>
+                                                <td>1017</td>
+                                                <td>1018</td>
+                                                <td>1019</td>
+                                                <td>1020</td>
+                                                <td>1021</td>
+                                                <td>1022</td>
+                                                <td>1023</td>
+                                            </tr>
+                                            <tr>
+                                                <td height="19px">未确认</td>
+                                                <td>99999</td>
+                                                <td>99998</td>
+                                                <td>1000</td>
+                                                <td>1001</td>
+                                                <td>1002</td>
+                                                <td>1003</td>
+                                                <td>1004</td>
+                                                <td>1005</td>
+                                                <td>1006</td>
+                                                <td>1007</td>
+                                                <td>1008</td>
+                                                <td>1009</td>
+                                                <td>1010</td>
+                                                <td>1011</td>
+                                                <td>1012</td>
+                                                <td>1013</td>
+                                                <td>1014</td>
+                                                <td>1015</td>
+                                                <td>1016</td>
+                                                <td>1017</td>
+                                                <td>1018</td>
+                                                <td>1019</td>
+                                                <td>1020</td>
+                                                <td>1021</td>
+                                                <td>1022</td>
+                                                <td>1023</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="recordList-right" style="width: 120px;float: left;">
+                                        <table class="yunmo">
+                                            <thead>
+                                            <tr>
+                                                <th style="width:120px; height: 19px;text-align: center;">操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td style='text-align: center;'>
+                                                    <button class="editButton icon iconfont icon-edit">编辑</button>
+                                                    <button class="detailButton icon iconfont icon-viewlist">详情</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style='text-align: center;'>
+                                                    <button class="editButton icon iconfont icon-edit">编辑</button>
+                                                    <button class="detailButton icon iconfont icon-viewlist">详情</button>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <form class="salaryBillDetails" title="工资单详情">
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>实发工资:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="shiFaGongZi"
+                                               placeholder="" value="" id="shiFaGongZi" disabled/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>应发工资:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="yingFaGongZi"
+                                               placeholder="" value="" id="yingFaGongZi" disabled/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>加班工资:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="jiaBanGongZi"
+                                               placeholder="请输入加班工资" value="" id="jiaBanGongZi"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>岗位工资:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="gangWeiGongZi"
+                                               placeholder="请输入岗位工资" value="" id="gangWeiGongZi"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>绩效工资:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="jiXiaoGongZi"
+                                               placeholder="请输入绩效工资" value="" id="jiXiaoGongZi"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>课时费:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="keShiFei"
+                                               placeholder="请输入课时费" value="" id="keShiFei"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>介绍费:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="jieShaoFei"
+                                               placeholder="请输入介绍费" value="" id="jieShaoFei"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>绩效奖金:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="jiXiaoJiangJin"
+                                               placeholder="请输入绩效奖金" value="" id="jiXiaoJiangJin"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>加班费:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="jiaBanFei"
+                                               placeholder="请输入加班费" value="" id="jiaBanFei"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>全勤奖:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="quanQinJiang"
+                                               placeholder="请输入全勤奖" value="" id="quanQinJiang"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>补课费:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="buKeFei"
+                                               placeholder="请输入补课费" value="" id="buKeFei"/>
+                                    </div>
+
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>通讯补贴:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="tongXunBuTie"
+                                               placeholder="请输入通讯补贴" value="" id="tongXunBuTie"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>交通补贴:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="jiaoTongBuTie"
+                                               placeholder="请输入交通补贴" value="" id="jiaoTongBuTie"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>餐费补贴:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="canFeiBuTie"
+                                               placeholder="请输入餐费补贴" value="" id="canFeiBuTie"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>工龄工资:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="gongLingGongZi"
+                                               placeholder="请输入工龄工资" value="" id="gongLingGongZi"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>其他奖金:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="otherBonus"
+                                               placeholder="请输入其他奖金" value="" id="otherBonus"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>请假扣款:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="qingJiaKouKuan"
+                                               placeholder="请输入请假扣款" value="" id="qingJiaKouKuan"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>退费扣款:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="tuiFeiKouKuan"
+                                               placeholder="请输入退费扣款" value="" id="tuiFeiKouKuan"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>养老保险:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="yangLaoBaoXian"
+                                               placeholder="请输入养老保险" value="" id="yangLaoBaoXian"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>医疗保险:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="yiLiaoBaoXian"
+                                               placeholder="请输入医疗保险" value="" id="yiLiaoBaoXian"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>失业保险:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="shiYeBaoXian"
+                                               placeholder="请输入失业保险" value="" id="shiYeBaoXian"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>工伤保险:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="gongShangBaoXian"
+                                               placeholder="请输入工伤保险" value="" id="gongShangBaoXian"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>生育保险:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="shengYuBaoXian"
+                                               placeholder="请输入生育保险" value="" id="shengYuBaoXian"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>公积金:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="gongJiJin"
+                                               placeholder="请输入公积金" value="" id="gongJiJin"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>个税:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="tax"
+                                               placeholder="请输入个人所得税" value="" id="tax"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                    <div style="float:left; width:70px; padding-top:20px; padding-left: 40px;">
+                                        <label>其他支出:</label>
+                                    </div>
+                                    <div style="float:left;  padding-top:15px;">
+                                        <input class="text-input-cpt" type="text" name="otherKK"
+                                               placeholder="请输入其他支出" value="" id="otherKK"/>
+                                    </div>
+                                    <div style="clear: both"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+@charset "utf-8";
+/* CSS Document */
+.mainContainer {
+    border: 2px solid #e4e4e4;
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 100px 10px;
+    min-height: 520px;
+
+}
+
+
+table th{
+    white-space: nowrap;
+}
+table td{
+    white-space: nowrap;
+}
+
+.recordList-middle{
+    overflow: auto;
+    width: 880px;
+    float: left;
+}
+
+.recordList-middle .yunmo{
+    border-left: none;
+    border-right: none;
+}
+
+.operationBtnDiv{
+    float: left;
+    padding-top:12px;
+}
+.deleteBtn,.sendBtn,.unDoBtn{
+    height: 20px;
+    color: blue;
+    background: transparent;
+    display: inline-block;
+    color: royalblue !important;
+    cursor: pointer;
+    border: 1px solid silver;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+form .text-input-cpt{
+    width: 200px;
+
+}

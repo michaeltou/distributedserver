@@ -11,9 +11,16 @@
     <link rel="stylesheet" href="css/index_style.css">
     <link rel="stylesheet" href="css/jquery-ui.css">
     <link rel="stylesheet" href="css/yp_style.css">
+    <link rel='stylesheet' href='css/fullcalendar.min.css'/>
+    <link rel='stylesheet' href='css/jquery.qtip_3.0.3.min.css'/>
+    <link rel='stylesheet' href='css/fullcalendar.print.min.css' media='print'/>
     <link rel="stylesheet" href="css/classdetail.css">
     <link rel="stylesheet" href="css/iconfont.css">
-    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src='js/moment.min.js'></script>
+    <script type="text/javascript" src='js/jquery.js'></script>
+    <script type="text/javascript" src='js/fullcalendar.min.js'></script>
+    <script type="text/javascript" src='js/locale-all.js'></script>
+    <script type="text/javascript" src='js/jquery.qtip_3.0.3.min.js'></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script>
     <script type="text/javascript" src="js/print.js"></script>
     <script type="text/javascript" src="js/classdetail.js"></script>
@@ -287,7 +294,7 @@
 
                                 <!--课程表详情-->
                                 <div class="classScheduleListDiv" style="padding-top: 10px;">
-                                    暂时未对应
+                                    <div id='calendar'></div>
 
                                 </div>
                                 <!--上课记录详情-->

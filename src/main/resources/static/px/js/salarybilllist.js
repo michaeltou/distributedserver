@@ -20,6 +20,25 @@ $(function () {
     });
 
 
+    $("body").on('click', ".deleteButton", function () {
+        if (window.confirm('你确定要删除吗？')) {
+            //alert("确定");
+            DeleteData($(this).get(0));
+            return true;
+        } else {
+            //alert("取消");
+            return false;
+        }
+    });
+
+    $("body").on('click', ".detailButton", function () {
+        window.location.href = "SalaryBillDetail.html";
+    });
+
+    $("#createSalaryBill").click(function () {
+        window.location.href = "CreateSalaryBill.html";
+    });
+
     $("#search").click(function () {
         $.ajax({
             type: "POST",
@@ -31,26 +50,6 @@ $(function () {
         });
     });
 });
-
-function EditData(editRow) {
-    var tr = editRow.parentNode.parentNode;
-    byId("employeeNameText").value = (tr.cells[0]).innerHTML;
-    byId("employeePhoneText").value = (tr.cells[1]).innerHTML;
-    var all_options = document.getElementById("schoolTypeText").options;
-    for (i = 0; i < all_options.length; i++) {
-        if (all_options[i].value == (tr.cells[2]).innerHTML)  // 根据option标签的ID来进行断  测试的代码这里是两个等号
-        {
-            all_options[i].selected = true;
-        }
-
-        if (tr.cells[3].innerHTML == "女") {
-            byId("female").click();
-        } else {
-            byId("male").click();
-        }
-    }
-    byId("employeeAgeText").value = (tr.cells[4]).innerHTML;
-}
 
 function DeleteData(delRow) {
     var table = delRow.parentNode.parentNode.parentNode;
