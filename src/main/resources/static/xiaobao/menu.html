@@ -80,7 +80,7 @@
                     <div class="list-group">
                         <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
                                                                    aria-hidden="true"></span>员工管理</a>
-                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                        <a href="/xiaobao/queryStudentByInstitution" class="list-group-item "><span class="glyphicon glyphicon-star"
                                                                    aria-hidden="true"></span>学员管理</a>
                         <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
                                                                    aria-hidden="true"></span>学员报名</a>
@@ -274,7 +274,9 @@
 
 <script>
 
-    $("#panel-people-management a").on('click', function () {
+   // $("#panel-people-management a").on('click', function () {
+    $("a.list-group-item").on('click', function () {
+
         var href = $(this).attr('href');
 
 
