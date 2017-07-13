@@ -55,8 +55,9 @@ $(document).ready(function () {
 
     $("#chargeFee").focusout(function () {
 
-        if ($("#chargeFee").val().length < 2) {
-            $("#chargeFee").next().text("课程名称小于2个字符，不合法!");
+        var telReg = /^\d+\.\d\d$/i;
+        if (!telReg.test($("#chargeFee").val())) {
+            $("#chargeFee").next().text("收费标准输入数据不合法!");
             $("#chargeFee").next().css({"display": "block", "color": "red"});
             b_validate_result3 = false;
         } else {

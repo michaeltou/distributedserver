@@ -34,8 +34,8 @@ public class StudentService {
     }
 
 
-    public Student queryStudentByName(  String institution_code,String name) {
-        Student Student = studentDAO.queryStudentByName(institution_code,name);
+    public Student queryStudentBySFZCode(  String institution_code,String sfzCode) {
+        Student Student = studentDAO.queryStudentBySFZCode(institution_code,sfzCode);
         return Student;
     }
 

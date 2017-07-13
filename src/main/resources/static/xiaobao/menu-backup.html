@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>在线尝试 Bootstrap 实例</title>
+    <meta name="viewport" content="width=device-width,
+                                     initial-scale=1.0,
+                                     maximum-scale=1.0,
+                                     user-scalable=no"/>
+
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+
+    <style>
+
+        .panel-group .panel + .panel {
+            margin-top: 0px;
+
+        }
+
+        .panel-group  > .panel > .panel-heading{
+
+        /*    background-color: rgba(243, 250, 229, 0.22);*/
+            background-color: rgba(243, 250, 229, 0.22);
+
+        }
+        a.list-group-item  {
+            color: green;
+        }
+
+        a.list-group-item:hover{
+            color: green;
+        }
+        a.list-group-item:focus {
+            color:#003eff;
+            text-decoration: none;
+            background-color: #f5f5f5;
+        }
+
+    </style>
+
+</head>
+<body>
+
+
+
+        <div class="panel-group" id="panel-tm-menu" >
+            <div class="panel panel-default  ">
+                <div class="panel-heading">
+
+                    <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
+                       href="#panel-people-management"  >
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> 学 校 管 理
+                    </a>
+                </div>
+                <div id="panel-people-management" class="panel-collapse collapse">
+                    <div class="list-group">
+                        <a href="/xiaobao/querySchoolListByInstitution" class="list-group-item " id="xiaoquguanli"><span class="glyphicon glyphicon-star"
+                                                                              aria-hidden="true"></span>校区管理</a>
+                        <a href="/xiaobao/queryKeChengCategoryListByInstitution" class="list-group-item " id="kechengleibieguanli"><span class="glyphicon glyphicon-star"
+                                                                                                                         aria-hidden="true"></span>课程类别管理</a>
+                        <a href="/xiaobao/queryKeChengListByInstitution" class="list-group-item " id="kechengguanli"><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>课程管理</a>
+                        <a href="/xiaobao/queryClassroomByInstitution" class="list-group-item " id="classroomguanli"><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>教室管理</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>教务老师管理</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>学生管理</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>家长管理</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>权限管理</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>审批管理</a>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default  ">
+                <div class="panel-heading">
+                    <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
+                       href="#panel-baoming-jiaofei">
+                        <span class="glyphicon glyphicon-yen" aria-hidden="true"></span> 报 名 缴 费
+                    </a>
+                </div>
+                <div id="panel-baoming-jiaofei" class="panel-collapse collapse">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>家长咨询</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>预约试听</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>学员报名</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>缴费查询</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>教材订购</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>活动发布</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>学员会员卡</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>教材出入库</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
+                       href="#panel-paike">
+                        <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 排&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;课
+                    </a>
+                </div>
+
+                <div id="panel-paike" class="panel-collapse collapse">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>课程管理</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>班级管理</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>学生调课</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>排班看板</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>转班</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>课程表</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
+                       href="#panel-qiandao">
+                        <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 签&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;到
+                    </a>
+                </div>
+
+                <div id="panel-qiandao" class="panel-collapse collapse">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>老师开课</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>课堂签到</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>签到统计</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>缺课查询</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>请假管理</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
+                       href="#panel-shangke">
+                        <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 上&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;课
+                    </a>
+                </div>
+
+                <div id="panel-shangke" class="panel-collapse collapse">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>课程实到统计</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>上课时间统计</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>签到统计</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>学员课堂展示</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>课程记录</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>评价</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>练习素材</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
+                       href="#panel-student-product">
+                        <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 学生作品
+                    </a>
+                </div>
+
+                <div id="panel-student-product" class="panel-collapse collapse">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>作品展示</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>作品装裱</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>绘画作品</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>家长互动</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>作品销售</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>优秀教学视频</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>活动专辑</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
+                       href="#panel-jiaowu">
+                        <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 教务相关
+                    </a>
+                </div>
+
+                <div id="panel-jiaowu" class="panel-collapse collapse">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>教师招聘</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>工资规则</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>工资计算</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>教师绩效</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>课堂情况</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>优秀教学视频</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>请假</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
+                       href="#panel-shequ">
+                        <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 社区
+                    </a>
+                </div>
+
+                <div id="panel-shequ" class="panel-collapse collapse">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>常见问题</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>家长社区</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>家长分享</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
+                       href="#panel-remind">
+                        <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 提醒功能
+                    </a>
+                </div>
+
+                <div id="panel-remind" class="panel-collapse collapse">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>生日提醒</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>通知放假</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>预约提醒</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>上课提醒</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
+                       href="#panel-guanggaowei">
+                        <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 广告位
+                    </a>
+                </div>
+
+                <div id="panel-guanggaowei" class="panel-collapse collapse">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>装修</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>设计</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
+                       href="#panel-tongji">
+                        <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 统&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;计
+                    </a>
+                </div>
+
+                <div id="panel-tongji" class="panel-collapse collapse">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>日上课人次统计</a>
+                        <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
+                                                                   aria-hidden="true"></span>营业额统计</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+<script>
+
+    $("#panel-people-management a").on('click', function () {
+        var href = $(this).attr('href');
+
+
+
+        /**  这是第二种加载页面方式 **/
+        $.ajax({
+            type: "GET",
+            url:   href,
+            success: function (data) {
+
+                $('#mainContents').empty();
+                //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
+                var data2 = data.replace(/\<script src=\"js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
+
+                var data3= data2.replace(/\<script src=\"js\/bootstrap.js\"\>\<\/script\>/, "");
+
+                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"css\/bootstrap.css\"\/\>/, "");
+
+                $('#mainContents').append(data4);
+
+
+            }
+        });
+
+//阻止跳转
+        return false;
+    });
+
+    //   bootstrap 页面设计工具：http://www.layoutit.com/
+
+</script>
+
+</body>
+</html>

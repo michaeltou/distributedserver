@@ -13,14 +13,14 @@ $(document).ready(function () {
     var b_validate_result4 = true;
     var b_validate_result5 = true;
 
-    $("#name").focusout(function () {
+    $("#classroom_name").focusout(function () {
 
-        if ($("#name").val().length < 2) {
-            $("#name").next().text("教室名称小于2个字符，不合法!");
-            $("#name").next().css({"display": "block", "color": "red"});
+        if ($("#classroom_name").val().length < 2) {
+            $("#classroom_name").next().text("教室名称小于2个字符，不合法!");
+            $("#classroom_name").next().css({"display": "block", "color": "red"});
             b_validate_result1 = false;
         } else {
-            $("#name").next().css("display", "none");
+            $("#classroom_name").next().css("display", "none");
             b_validate_result1 = true;
         }
 
@@ -87,25 +87,22 @@ $(document).ready(function () {
 
 
 
-    $("#save").click(function () {
+    $("#update").click(function () {
 
-
-
-        $("#name").focus();
+        $("#classroom_name").focus();
         $("#school_name").focus();
         $("#capacity").focus();
         $("#address").focus();
         $("#note").focus();
-        $("#name").focus();
-
-
-
+        $("#classroom_name").focus();
+ 
         b_validate_result = b_validate_result1 & b_validate_result2 & b_validate_result3 & b_validate_result4 &b_validate_result5;
         if (!b_validate_result) {
+
             return;
         }
 
-        var url = "/insertClassroom";
+        var url = "/updateClassroom";
         $.ajax({
             type: "post",
             url: url,
@@ -114,8 +111,9 @@ $(document).ready(function () {
              * 2、js里面的ajax请求的data要使用 data:  JSON.stringify({name: $("#name").val(), age: $("#age").val()}), 传递json字符串，而不json对象.
              * */
             data: JSON.stringify({
-                name: $("#name").val(),
+                id: $("#id").val(),
                 school_name: $("#school_name").val(),
+                name: $("#classroom_name").val(),
                 capacity: $("#capacity").val(),
                 address: $("#address").val(),
                 note: $("#note").val()
@@ -124,20 +122,14 @@ $(document).ready(function () {
             contentType: "application/json; charset=utf-8",//(可以)
             success: function (data, textStatus) {
                 if (data.success) {
-                    //清空表格数据
                     $("#myform")[0].reset();
-                    //显示
                     $("#successLabel").show();
-                    $("#createAgainBtn").show();
-                    $("#backToListBtn").show();
-                    //隐藏
+                    $("#backBtn").show();
                     $("#submitAreaDiv").empty();
                     $("#formdiv").empty();
-
                 }
                 else {
-                    $("#failLabel").css("display:block");
-                  //  alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
+                    alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -148,47 +140,20 @@ $(document).ready(function () {
 
     });
 
-
-    $("#createAgainBtn").click(function () {
-
-        $.ajax({
-            type: "GET",
-            url: "/xiaobao/createClassroom",
-            success: function (data) {
-                $('#mainContents').empty();
-                //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
-                var data2 = data.replace(/\<script src=\"js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
-
-                var data3= data2.replace(/\<script src=\"js\/bootstrap.js\"\>\<\/script\>/, "");
-
-                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"css\/bootstrap.css\"\/\>/, "");
-                $('#mainContents').append(data4);
-            }
-        });
-    });
-
-
-
-
-    $("#backToListBtn").click(function () {
-        $("#classroomguanli").click();
-
-    });
-
     $("#formBackBtn").click(function () {
         $("#classroomguanli").click();
 
     });
 
-    $("#backToListbreadLink").click(function () {
+    $("#classroomguanlibread").click(function () {
         $("#classroomguanli").click();
 
     });
 
+    $("#backBtn").click(function () {
+        $("#classroomguanli").click();
 
-
-
-
+    });
 
 
 

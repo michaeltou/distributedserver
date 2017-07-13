@@ -44,6 +44,23 @@ public interface ClassroomDAO {
             " where  institution_code = #{institution_code} and school_name = #{school_name} ")
     List<Classroom> queryClassroomListByInstitutionAndSchoolName(@Param("institution_code") String institution_code, @Param("school_name") String school_name);
 
+
+    @Select("  SELECT `px_classroom`.`id`,\n" +
+            "    `px_classroom`.`name`,\n" +
+            "    `px_classroom`.`school_name`,\n" +
+            "    `px_classroom`.`institution_code`,\n" +
+            "    `px_classroom`.`capacity`,\n" +
+            "    `px_classroom`.`address`,\n" +
+            "    `px_classroom`.`picUrl`,\n" +
+            "    `px_classroom`.`note`,\n" +
+            "    `px_classroom`.`createDate`,\n" +
+            "    `px_classroom`.`updateDate`\n" +
+            "FROM  `px_classroom` \n" +
+            " where  institution_code = #{institution_code} and  name like  CONCAT('%',#{name},'%') ")
+    List<Classroom> queryClassroomListByNameWithLike(@Param("institution_code") String institution_code, @Param("name") String name);
+
+
+
     @Select("  SELECT `px_classroom`.`id`,\n" +
             "    `px_classroom`.`name`,\n" +
             "    `px_classroom`.`school_name`,\n" +
@@ -79,8 +96,8 @@ public interface ClassroomDAO {
         "#{address},\n" +
         "#{picUrl},\n" +
         "#{note},\n" +
-        "#{createDate},\n" +
-        "#{updateDate});\n")
+        "now(),\n" +
+        "now() );\n")
     public int insertClassroom(Classroom classroom);
 
 
@@ -90,13 +107,13 @@ public interface ClassroomDAO {
              "`address` = #{address},\n" +
              "`picUrl` = #{picUrl},\n" +
              "`note` = #{note},\n" +
-             "`updateDate` = #{updateDate}\n" +
+             "`updateDate` = now() \n" +
              " where  institution_code = #{institution_code} and school_name = #{school_name} and name = #{name} ")
     public int updateClassroom(Classroom classroom);
 
 
     @Delete(" DELETE FROM  `px_classroom`\n" +
-            " where  institution_code = #{institution_code} and school_name = #{school_name} and name = #{name} ")
+            " where  institution_code = #{institution_code} and  school_name = #{school_name} and name = #{name} ")
     public int deleteClassroom(Classroom classroom);
 
 

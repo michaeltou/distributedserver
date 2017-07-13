@@ -28,6 +28,14 @@ public class ClassroomService {
         return classroomList;
     }
 
+    public List<Classroom> queryClassroomListByNameWithLike(String institution_code,String name) {
+        List<Classroom> classroomList = classroomDAO.queryClassroomListByNameWithLike(institution_code,name);
+        return classroomList;
+    }
+
+
+
+
     public Classroom queryClassroomByName(String institution_code,String school_name,String name) {
         Classroom classroom = classroomDAO.queryClassroomByName(institution_code, school_name,name);
         return classroom;

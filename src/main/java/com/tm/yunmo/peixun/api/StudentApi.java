@@ -32,28 +32,32 @@ public class StudentApi {
 
     //http://localhost:9999/queryStudentListBySFZCodeWithLike?institution_code=tm&sfzCode=12
     @RequestMapping("/queryStudentListBySFZCodeWithLike")
-    public List<Student> queryStudentListBySFZCodeWithLike(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+    public ResultModel queryStudentListBySFZCodeWithLike(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String sfzCode = request.getParameter("sfzCode");
         List<Student> studentList = studentService.queryStudentListBySFZCodeWithLike(institution_code, sfzCode);
-        return studentList;
+        resultModel.setData(studentList);
+        return resultModel;
     }
 
   //http://localhost:9999/queryStudentListByNameWithLike?institution_code=tm&name=%E6%98%8E
     @RequestMapping("/queryStudentListByNameWithLike")
-    public List<Student> queryStudentListByNameWithLike(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+    public ResultModel queryStudentListByNameWithLike(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String name = request.getParameter("name");
         List<Student> studentList = studentService.queryStudentListByNameWithLike(institution_code, name);
-        return studentList;
+        resultModel.setData(studentList);
+        return resultModel;
     }
 
     //http://localhost:9999/queryStudentByName?institution_code=tm&name=%E9%92%AD%E6%98%8E
     @RequestMapping("/queryStudentByName")
-    public Student queryStudentByName(HttpServletRequest request) {
-        String name = request.getParameter("name");
-        String institution_code = request.getParameter("institution_code");
-        Student student = studentService.queryStudentByName(institution_code, name);
+    public Student queryStudentBySFZCode(HttpServletRequest request) {
+        String sfzCode = request.getParameter("SFZCode");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        Student student = studentService.queryStudentBySFZCode(institution_code, sfzCode);
         return student;
     }
 
@@ -91,11 +95,12 @@ public class StudentApi {
      * @param student
      * @return
      */
-    @RequestMapping("/px/insertStudent")
-    public ResultModel insertStudent(@RequestBody Student student) {
+    @RequestMapping("/insertStudent")
+    public ResultModel insertStudent(@RequestBody Student student,HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
 
-
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        student.setInstitution_code(institution_code);
         int result = studentService.insertStudent(student);
         if (result > 0) {
             return resultModel;
@@ -141,8 +146,10 @@ public class StudentApi {
      * @return
      */
     @RequestMapping("/updateStudent")
-    public ResultModel updateStudent(@RequestBody Student student) {
+    public ResultModel updateStudent(@RequestBody Student student,HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        student.setInstitution_code(institution_code);
         int result = studentService.updateStudent(student);
         if (result > 0) {
             return resultModel;
@@ -186,9 +193,11 @@ public class StudentApi {
      * @param student
      * @return
      */
-    @RequestMapping("/px/deleteStudent")
-    public ResultModel deleteStudent(@RequestBody Student student) {
+    @RequestMapping("/deleteStudent")
+    public ResultModel deleteStudent(@RequestBody Student student,HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        student.setInstitution_code(institution_code);
         int result = studentService.deleteStudent(student);
         if (result > 0) {
             return resultModel;

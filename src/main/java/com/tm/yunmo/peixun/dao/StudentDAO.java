@@ -116,8 +116,8 @@ public interface StudentDAO {
             "    `px_student`.`createDate`,\n" +
             "    `px_student`.`updateDate`\n" +
             "FROM  `px_student` \n" +
-            " where  institution_code = #{institution_code} and name = #{name} ")
-    Student queryStudentByName(  @Param("institution_code") String institution_code ,@Param("name") String name);
+            " where  institution_code = #{institution_code} and sfzCode = #{sfzCode} ")
+    Student queryStudentBySFZCode(  @Param("institution_code") String institution_code ,@Param("sfzCode") String sfzCode);
 
     @Select(" SELECT `px_student`.`id`,\n" +
             "    `px_student`.`name`,\n" +
