@@ -14,6 +14,22 @@ import java.util.List;
 public interface ClassroomDAO {
 
 
+
+    @Select("  SELECT `px_classroom`.`id`,\n" +
+            "    `px_classroom`.`name`,\n" +
+            "    `px_classroom`.`school_name`,\n" +
+            "    `px_classroom`.`institution_code`,\n" +
+            "    `px_classroom`.`capacity`,\n" +
+            "    `px_classroom`.`address`,\n" +
+            "    `px_classroom`.`picUrl`,\n" +
+            "    `px_classroom`.`note`,\n" +
+            "    `px_classroom`.`createDate`,\n" +
+            "    `px_classroom`.`updateDate`\n" +
+            "FROM  `px_classroom` \n" +
+            " where  institution_code = #{institution_code}   ")
+    List<Classroom> queryClassroomListByInstitution(@Param("institution_code") String institution_code);
+
+
     @Select("  SELECT `px_classroom`.`id`,\n" +
             "    `px_classroom`.`name`,\n" +
             "    `px_classroom`.`school_name`,\n" +
