@@ -31,9 +31,9 @@ public class ClassroomPage {
     }
 
 
-    @RequestMapping("/xiaobao/createClassrom")
+    @RequestMapping("/xiaobao/createClassroom")
     public String createClassrom(HttpServletRequest request,Model model){
-        return "xiaobao/createClassrom";
+        return "xiaobao/createClassroom";
     }
 
 
@@ -43,8 +43,9 @@ public class ClassroomPage {
         String institution_code = (String) request.getSession().getAttribute("institution_code");
         String school_name =  classroom.getSchool_name();
         String classroom_name = classroom.getName();
+
         Classroom classroomResult = classroomService.queryClassroomByName( institution_code,school_name,classroom_name);
-        model.addAttribute("classroomResult",classroomResult);
+        model.addAttribute("classroom",classroomResult);
         return "xiaobao/updateClassroom";
     }
 

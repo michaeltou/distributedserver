@@ -18,10 +18,9 @@ $(document).ready(function () {
 
     var b_validate_result = true;
     var b_validate_result1 = true;
-    var b_validate_result1 = true;
-    var b_validate_result1 = true;
-    var b_validate_result1 = true;
-    var b_validate_result1 = true;
+    var b_validate_result2 = true;
+    var b_validate_result3 = true;
+    var b_validate_result4 = true;
 
     $("#name").focusout(function () {
 
@@ -55,8 +54,12 @@ $(document).ready(function () {
 
 
     $("#chargeFee").focusout(function () {
-        var telReg = /^\d+\.\d\d$/i;
-        if (!telReg.test($("#chargeFee").val())) {
+        //float
+        var telReg1 = /^\d+\.\d\d$/i;
+        //整数
+        var telReg2 = /^\+?[1-9][0-9]*$/i;
+
+        if (!telReg1.test($("#chargeFee").val()) || !telReg2.test($("#chargeFee").val())   ) {
             $("#chargeFee").next().text("收费标准输入数据不合法!");
             $("#chargeFee").next().css({"display": "block", "color": "red"});
             b_validate_result3 = false;
