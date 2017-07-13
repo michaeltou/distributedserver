@@ -16,6 +16,13 @@ public class ClassroomService {
     @Autowired
     private ClassroomDAO classroomDAO;
 
+
+
+
+    public List<Classroom> queryClassroomListByInstitution(String institution_code) {
+        List<Classroom> classroomList = classroomDAO.queryClassroomListByInstitution(institution_code);
+        return classroomList;
+    }
     public List<Classroom> queryClassroomListByInstitutionAndSchoolName(String institution_code,String school_name) {
         List<Classroom> classroomList = classroomDAO.queryClassroomListByInstitutionAndSchoolName(institution_code,school_name);
         return classroomList;
