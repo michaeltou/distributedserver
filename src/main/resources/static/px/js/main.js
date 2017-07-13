@@ -19,6 +19,3 @@ $(function () {
 });
 
 
-function exitmanagesys() {
-    window.parent.location = "index.html";
-}
