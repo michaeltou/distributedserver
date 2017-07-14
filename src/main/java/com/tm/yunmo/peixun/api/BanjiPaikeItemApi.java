@@ -26,7 +26,7 @@ public class BanjiPaikeItemApi {
     //http://localhost:9999/queryBanjiPaikeRuleListByInstitutionAndBanjiName?institution_code=tm&xiaoqu_name=%E8%A5%BF%E5%8F%AF%E6%A0%A1%E5%8C%BA&banji_name=%E8%A5%BF%E5%8F%AF1%E7%8F%AD
     @RequestMapping("/queryBanjiPaikeItemListByInstitutionAndBanjiName")
     public List<BanjiPaikeItem> queryBanjiPaikeItemListByInstitutionAndBanjiName(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String xiaoqu_name = request.getParameter("xiaoqu_name");
         String banji_name = request.getParameter("banji_name");
         List<BanjiPaikeItem> banjiPaikeItemList = banjiPaikeItemService.queryBanjiPaikeItemListByInstitutionAndBanjiName(institution_code,xiaoqu_name,banji_name);
@@ -38,7 +38,7 @@ public class BanjiPaikeItemApi {
     //http://localhost:9999/queryBanjiPaikeItemByInstitutionAndBanjiNameAndId?institution_code=tm&xiaoqu_name=%E8%A5%BF%E5%8F%AF%E6%A0%A1%E5%8C%BA&banji_name=%E8%A5%BF%E5%8F%AF1%E7%8F%AD&id=1
     @RequestMapping("/queryBanjiPaikeItemByInstitutionAndBanjiNameAndId")
     public BanjiPaikeItem queryBanjiPaikeItemByInstitutionAndBanjiNameAndId(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String xiaoqu_name = request.getParameter("xiaoqu_name");
         String banji_name = request.getParameter("banji_name");
         int id = Integer.valueOf(request.getParameter("id")).intValue();

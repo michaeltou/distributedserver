@@ -30,7 +30,7 @@ public class SchoolApi {
      */
     @RequestMapping("/querySchoolListByInstitution")
     public List<School> querySchoolListByInstitution(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         List<School> schoolList = schoolService.querySchoolListByInstitution(institution_code);
         return schoolList;
     }
@@ -43,7 +43,7 @@ public class SchoolApi {
     @RequestMapping("/querySchoolById")
     public School querySchoolById(HttpServletRequest request) {
         int id = Integer.valueOf(request.getParameter("id")).intValue();
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         School school = schoolService.querySchoolById(id, institution_code);
         return school;
     }
@@ -52,7 +52,7 @@ public class SchoolApi {
     @RequestMapping("/querySchoolByName")
     public School querySchoolByName(HttpServletRequest request) {
         String school_name = request.getParameter("school_name");
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         School school = schoolService.querySchoolByName(school_name, institution_code);
         return school;
     }

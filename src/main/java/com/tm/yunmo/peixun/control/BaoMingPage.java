@@ -24,8 +24,8 @@ public class BaoMingPage {
     public String queryBaoMingByInstitution(HttpServletRequest request, Model model){
         String institution_code = (String) request.getSession().getAttribute("institution_code");
         List<BaoMing> baomingList = baomingService.queryBaoMingListByInstitution(institution_code);
-        model.addAttribute("baomingList",baomingList);
-        return "xiaobao/baomingList";
+        model.addAttribute("baoMingList",baomingList);
+        return "xiaobao/baoMingList";
     }
 
 
@@ -41,7 +41,7 @@ public class BaoMingPage {
         String institution_code = (String) request.getSession().getAttribute("institution_code");
         int id =  baoming.getId();
         BaoMing baomingResult = baomingService.queryBaoMingByInstitutionAndId( institution_code,id);
-        model.addAttribute("baoming",baomingResult);
+        model.addAttribute("baoMing",baomingResult);
         return "xiaobao/updateBaoMing";
     }
 

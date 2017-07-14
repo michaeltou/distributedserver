@@ -26,7 +26,7 @@ public class UserRoleApi {
     //http://localhost:9999/queryUserRoleListByUserName?institution_code=tm&username=18658160158
     @RequestMapping("/queryUserRoleListByUserName")
     public List<UserRole> queryUserRoleListByUserName(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String username = request.getParameter("username");
         List<UserRole> userRoleList = userRoleService.queryUserRoleListByUserName(institution_code,username);
         return userRoleList;
@@ -40,7 +40,7 @@ public class UserRoleApi {
      */
     @RequestMapping("/queryUserRoleListByUsernameWithLike")
     public List<UserRole> queryUserRoleListByUsernameWithLike(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String username = request.getParameter("username");
         List<UserRole> userRoleList = userRoleService.queryUserRoleListByUsernameWithLike(institution_code, username);
         return userRoleList;

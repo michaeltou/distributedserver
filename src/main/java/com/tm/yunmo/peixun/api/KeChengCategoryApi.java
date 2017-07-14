@@ -40,7 +40,7 @@ public class KeChengCategoryApi {
      */
     @RequestMapping("/queryKeChengCategoryByInstitution")
     public List<KeChengCategory> queryKeChengCategoryByInstitution(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         List<KeChengCategory> keChengCategoryList = keChengCategoryService.queryKeChengCategoryByInstitution(institution_code);
         return keChengCategoryList;
     }
@@ -49,7 +49,7 @@ public class KeChengCategoryApi {
     @RequestMapping("/queryKeChengCategoryById")
     public KeChengCategory queryKeChengById(HttpServletRequest request) {
         int id = Integer.valueOf(request.getParameter("id")).intValue();
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         KeChengCategory keChengCategory = keChengCategoryService.queryKeChengCategoryById(id, institution_code);
         return keChengCategory;
     }
@@ -57,7 +57,7 @@ public class KeChengCategoryApi {
     @RequestMapping("/queryKeChengCategoryByName")
     public KeChengCategory queryKeChengByName(HttpServletRequest request) {
         String name = request.getParameter("name");
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         KeChengCategory keChengCategory = keChengCategoryService.queryKeChengCategoryByName(name, institution_code);
         return keChengCategory;
     }

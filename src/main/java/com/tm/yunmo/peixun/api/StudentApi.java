@@ -25,7 +25,7 @@ public class StudentApi {
 
     @RequestMapping("/queryStudentListByInstitution")
     public List<Student> queryStudentListByInstitution(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         List<Student> studentList = studentService.queryStudentListByInstitution(institution_code);
         return studentList;
     }

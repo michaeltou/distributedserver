@@ -25,7 +25,7 @@ public class BanJiApi {
     //http://localhost:9999/queryBanJiListByInstitution?institution_code=tm
     @RequestMapping("/queryBanJiListByInstitution")
     public List<BanJi> queryBanJiListByInstitution(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         List<BanJi> banJiList = banJiService.queryBanJiListByInstitution(institution_code);
         return banJiList;
     }
@@ -36,7 +36,7 @@ public class BanJiApi {
     @RequestMapping("/queryBanJiByName")
     public BanJi queryBanJiByName(HttpServletRequest request) {
         String school_name = request.getParameter("school_name");
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         BanJi banJi = banJiService.queryBanJiByName(school_name, institution_code);
         return banJi;
     }
@@ -68,9 +68,10 @@ public class BanJiApi {
      * @return
      */
     @RequestMapping("/insertBanJi")
-    public ResultModel insertBanJi(@RequestBody BanJi banJi) {
+    public ResultModel insertBanJi(@RequestBody BanJi banJi, HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
-
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        banJi.setInstitution_code(institution_code);
         int result = banJiService.insertBanJi(banJi);
         if (result > 0) {
             return resultModel;
@@ -109,8 +110,10 @@ public class BanJiApi {
      * @return
      */
     @RequestMapping("/updateBanJi")
-    public ResultModel updateBanJi(@RequestBody BanJi banJi) {
+    public ResultModel updateBanJi(@RequestBody BanJi banJi, HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        banJi.setInstitution_code(institution_code);
         int result = banJiService.updateBanJi(banJi);
         if (result > 0) {
             return resultModel;
@@ -148,8 +151,10 @@ public class BanJiApi {
      * @return
      */
     @RequestMapping("/deleteBanJi")
-    public ResultModel deleteBanJi(@RequestBody  BanJi banJi) {
+    public ResultModel deleteBanJi(@RequestBody  BanJi banJi, HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        banJi.setInstitution_code(institution_code);
         int result = banJiService.deleteBanJi(banJi);
         if (result > 0) {
             return resultModel;

@@ -25,7 +25,7 @@ public class BaoMingApi {
 //http://localhost:9999/queryBaoMingListBySFZCodeWithLike?institution_code=tm
     @RequestMapping("/queryBaoMingListByInstitution")
     public List<BaoMing> queryBaoMingListByInstitution(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         List<BaoMing> baoMingList = baoMingService.queryBaoMingListByInstitution(institution_code);
         return baoMingList;
     }

@@ -25,7 +25,7 @@ public class ClassRecordDetailApi {
    //http://localhost:9999/queryClassRecordDetailListByInstitutionAndMainId?institution_code=tm&main_id=1
     @RequestMapping("/queryClassRecordDetailListByInstitutionAndMainId")
     public List<ClassRecordDetail> queryClassRecordDetailListByInstitutionAndMainId(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String main_id = request.getParameter("main_id");
         List<ClassRecordDetail> classRecordDetailList = classRecordDetailService.queryClassRecordDetailListByInstitutionAndMainId(institution_code,main_id);
         return classRecordDetailList;
@@ -34,7 +34,7 @@ public class ClassRecordDetailApi {
 //http://localhost:9999/queryClassRecordDetailListByInstitutionAndBanjiNameAndStudentSfzCode?institution_code=tm&banji_name=%E8%A5%BF%E5%8F%AF%E6%A0%A1%E5%8C%BA1%E7%8F%AD&student_sfzCode=362529
     @RequestMapping("/queryClassRecordDetailListByInstitutionAndBanjiNameAndStudentSfzCode")
     public List<ClassRecordDetail> queryClassRecordDetailListByInstitutionAndBanjiNameAndStudentSfzCode(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String banji_name = request.getParameter("banji_name");
         String student_sfzCode = request.getParameter("student_sfzCode");
         List<ClassRecordDetail> classRecordDetailList = classRecordDetailService.queryClassRecordDetailListByInstitutionAndBanjiNameAndStudentSfzCode(institution_code, banji_name,student_sfzCode);
@@ -44,7 +44,7 @@ public class ClassRecordDetailApi {
 //http://localhost:9999/queryClassRecordDetailByInstitutionAndId?institution_code=tm&id=1
     @RequestMapping("/queryClassRecordDetailByInstitutionAndId")
     public ClassRecordDetail queryClassRecordDetailByInstitutionAndId(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         int id = Integer.valueOf(request.getParameter("id")).intValue();
         ClassRecordDetail classRecordDetail = classRecordDetailService.queryClassRecordDetailByInstitutionAndId(institution_code, id);
         return classRecordDetail;

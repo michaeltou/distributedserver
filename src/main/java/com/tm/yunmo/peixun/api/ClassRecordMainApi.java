@@ -25,7 +25,7 @@ public class ClassRecordMainApi {
    //http://localhost:9999/queryClassRecordMainListByInstitution?institution_code=tm
     @RequestMapping("/queryClassRecordMainListByInstitution")
     public List<ClassRecordMain> queryClassRecordMainListByInstitution(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         List<ClassRecordMain> classRecordMainList = classRecordMainService.queryClassRecordMainListByInstitution(institution_code);
         return classRecordMainList;
     }
@@ -33,7 +33,7 @@ public class ClassRecordMainApi {
     //http://localhost:9999/queryClassRecordMainListByInstitutionAndXiaoquName?institution_code=tm&xiaoqu_name=%E8%A5%BF%E5%8F%AF%E6%A0%A1%E5%8C%BA
     @RequestMapping("/queryClassRecordMainListByInstitutionAndXiaoquName")
     public List<ClassRecordMain> queryClassRecordMainListByInstitutionAndXiaoquName(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String xiaoqu_name = request.getParameter("xiaoqu_name");
         List<ClassRecordMain> classRecordMainList = classRecordMainService.queryClassRecordMainListByInstitutionAndXiaoquName(institution_code, xiaoqu_name);
         return classRecordMainList;
@@ -42,7 +42,7 @@ public class ClassRecordMainApi {
     //http://localhost:9999/queryClassRecordMainListByInstitutionAndBanjiName?institution_code=tm&banji_name=%E8%A5%BF%E5%8F%AF%E6%A0%A1%E5%8C%BA1%E7%8F%AD
     @RequestMapping("/queryClassRecordMainListByInstitutionAndBanjiName")
     public List<ClassRecordMain> queryClassRecordMainListByInstitutionAndBanjiName(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String banji_name = request.getParameter("banji_name");
         List<ClassRecordMain> classRecordMainList = classRecordMainService.queryClassRecordMainListByInstitutionAndBanjiName(institution_code, banji_name);
         return classRecordMainList;
@@ -51,7 +51,7 @@ public class ClassRecordMainApi {
     //http://localhost:9999/queryClassRecordMainListByInstitutionAndBanjiNameWithBanjiNameLike?institution_code=tm&banji_name=%E8%A5%BF%E5%8F%AF%E6%A0%A1%E5%8C%BA1%E7%8F%AD
     @RequestMapping("/queryClassRecordMainListByInstitutionAndBanjiNameWithBanjiNameLike")
     public List<ClassRecordMain> queryClassRecordMainListByInstitutionAndBanjiNameWithBanjiNameLike(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String banji_name = request.getParameter("banji_name");
         List<ClassRecordMain> classRecordMainList = classRecordMainService.queryClassRecordMainListByInstitutionAndBanjiName(institution_code, banji_name);
         return classRecordMainList;
@@ -63,7 +63,7 @@ public class ClassRecordMainApi {
     @RequestMapping("/queryClassRecordMainByInstitutionAndId")
     public ClassRecordMain queryClassRecordMainByInstitutionAndId(HttpServletRequest request) {
         int id = Integer.valueOf(request.getParameter("id")).intValue();
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         ClassRecordMain classRecordMain = classRecordMainService.queryClassRecordMainByInstitutionAndId(institution_code, id);
         return classRecordMain;
     }
