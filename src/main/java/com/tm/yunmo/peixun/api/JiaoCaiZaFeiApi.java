@@ -30,7 +30,7 @@ public class JiaoCaiZaFeiApi {
      */
     @RequestMapping("/queryJiaoCaiZaFeiListByInstitution")
     public List<JiaoCaiZaFei> queryJiaoCaiZaFeiListByInstitution(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         List<JiaoCaiZaFei> jiaoCaiZaFeiList = jiaoCaiZaFeiService.queryJiaoCaiZaFeiListByInstitution(institution_code);
         return jiaoCaiZaFeiList;
     }
@@ -39,8 +39,17 @@ public class JiaoCaiZaFeiApi {
     @RequestMapping("/queryJiaoCaiZaFeiById")
     public JiaoCaiZaFei queryJiaoCaiZaFeiById(HttpServletRequest request) {
         int id = Integer.valueOf(request.getParameter("id")).intValue();
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         JiaoCaiZaFei jiaoCaiZaFei = jiaoCaiZaFeiService.queryJiaoCaiZaFeiById(id, institution_code);
+        return jiaoCaiZaFei;
+    }
+
+
+    @RequestMapping("/queryJiaoCaiZaFeiByName")
+    public JiaoCaiZaFei queryJiaoCaiZaFeiByName(HttpServletRequest request) {
+        String name =  request.getParameter("name");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        JiaoCaiZaFei jiaoCaiZaFei = jiaoCaiZaFeiService.queryJiaoCaiZaFeiByName(name, institution_code);
         return jiaoCaiZaFei;
     }
 
@@ -66,9 +75,10 @@ public class JiaoCaiZaFeiApi {
      * @return
      */
     @RequestMapping("/insertJiaoCaiZaFei")
-    public ResultModel insertJiaoCaiZaFei(@RequestBody JiaoCaiZaFei jiaoCaiZaFei) {
+    public ResultModel insertJiaoCaiZaFei(@RequestBody JiaoCaiZaFei jiaoCaiZaFei, HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
-
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        jiaoCaiZaFei.setInstitution_code(institution_code);
         int result = jiaoCaiZaFeiService.insertJiaoCaiZaFei(jiaoCaiZaFei);
         if (result > 0) {
             return resultModel;
@@ -99,8 +109,10 @@ public class JiaoCaiZaFeiApi {
      * @return
      */
     @RequestMapping("/updateJiaoCaiZaFei")
-    public ResultModel updateJiaoCaiZaFei(@RequestBody JiaoCaiZaFei jiaoCaiZaFei) {
+    public ResultModel updateJiaoCaiZaFei(@RequestBody JiaoCaiZaFei jiaoCaiZaFei, HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        jiaoCaiZaFei.setInstitution_code(institution_code);
         int result = jiaoCaiZaFeiService.updateJiaoCaiZaFei(jiaoCaiZaFei);
         if (result > 0) {
             return resultModel;
@@ -132,8 +144,10 @@ public class JiaoCaiZaFeiApi {
      * @return
      */
     @RequestMapping("/deleteJiaoCaiZaFei")
-    public ResultModel deleteJiaoCaiZaFei(@RequestBody JiaoCaiZaFei jiaoCaiZaFei) {
+    public ResultModel deleteJiaoCaiZaFei(@RequestBody JiaoCaiZaFei jiaoCaiZaFei, HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        jiaoCaiZaFei.setInstitution_code(institution_code);
         int result = jiaoCaiZaFeiService.deleteJiaoCaiZaFei(jiaoCaiZaFei);
         if (result > 0) {
             return resultModel;

@@ -43,6 +43,20 @@ public interface JiaoCaiZaFeiDAO {
     JiaoCaiZaFei queryJiaoCaiZaFeiById(@Param("id") int id, @Param("institution_code") String institution_code);
 
 
+    @Select("SELECT `px_jiaocai_zafei`.`id`,\n" +
+            "    `px_jiaocai_zafei`.`name`,\n" +
+            "    `px_jiaocai_zafei`.`jin_jia`,\n" +
+            "    `px_jiaocai_zafei`.`sou_jia`,\n" +
+            "    `px_jiaocai_zafei`.`kecheng_category`,\n" +
+            "    `px_jiaocai_zafei`.`jifeng_duihuang`,\n" +
+            "    `px_jiaocai_zafei`.`institution_code`,\n" +
+            "    `px_jiaocai_zafei`.`createDate`,\n" +
+            "    `px_jiaocai_zafei`.`updateDate`\n" +
+            "FROM  `px_jiaocai_zafei` \n" +
+            " where  institution_code = #{institution_code} \n" +
+            " and name = #{name} \n")
+    JiaoCaiZaFei queryJiaoCaiZaFeiByName(@Param("name") String name, @Param("institution_code") String institution_code);
+
 
 
     @Insert("  INSERT INTO  `px_jiaocai_zafei`\n" +
@@ -76,12 +90,12 @@ public interface JiaoCaiZaFeiDAO {
             "`kecheng_category` = #{kecheng_category},\n" +
             "`jifeng_duihuang` = #{jifeng_duihuang},\n" +
             "`updateDate` = #{updateDate}\n" +
-            "WHERE id = #{id} and name=#{name} and institution_code=#{institution_code} ;\n "   )
+            "WHERE   name=#{name} and institution_code=#{institution_code} ;\n "   )
     public int updateJiaoCaiZaFei(JiaoCaiZaFei jiaoCaiZaFei);
 
 
     @Delete(" DELETE FROM  `px_jiaocai_zafei`\n" +
-            " WHERE `id` = #{id} and name=#{name} and  institution_code=#{institution_code}  ; ")
+            " WHERE  name=#{name} and  institution_code=#{institution_code}  ; ")
     public int deleteJiaoCaiZaFei(JiaoCaiZaFei jiaoCaiZaFei);
 
 
