@@ -17,6 +17,13 @@ public class EmployeeService {
     @Autowired
     private EmployeeDAO employeeDAO;
 
+
+    public Employee queryEmployeeByInstitutionAndSFZCode(String institution_code,String sfzCode){
+        Employee employee = employeeDAO.queryEmployeeByInstitutionAndSFZCode( institution_code,sfzCode);
+        return employee;
+    }
+
+
     public List<Employee> queryEmployeeListByInstitution(String institution_code){
         List<Employee> employeeList = employeeDAO.queryEmployeeListByInstitution( institution_code);
         return employeeList;
