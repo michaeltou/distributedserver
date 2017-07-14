@@ -23,13 +23,34 @@ public class BanjiPaikeItemApi {
     private BanjiPaikeItemService banjiPaikeItemService;
 
 
-    //http://localhost:9999/queryBanjiPaikeRuleListByInstitutionAndBanjiName?institution_code=tm&xiaoqu_name=%E8%A5%BF%E5%8F%AF%E6%A0%A1%E5%8C%BA&banji_name=%E8%A5%BF%E5%8F%AF1%E7%8F%AD
-    @RequestMapping("/queryBanjiPaikeItemListByInstitutionAndBanjiName")
-    public List<BanjiPaikeItem> queryBanjiPaikeItemListByInstitutionAndBanjiName(HttpServletRequest request) {
+
+    @RequestMapping("/queryBanjiPaikeItemListByInstitution")
+    public List<BanjiPaikeItem> queryBanjiPaikeItemListByInstitution(HttpServletRequest request) {
         String institution_code = (String) request.getSession().getAttribute("institution_code");
         String xiaoqu_name = request.getParameter("xiaoqu_name");
         String banji_name = request.getParameter("banji_name");
-        List<BanjiPaikeItem> banjiPaikeItemList = banjiPaikeItemService.queryBanjiPaikeItemListByInstitutionAndBanjiName(institution_code,xiaoqu_name,banji_name);
+        List<BanjiPaikeItem> banjiPaikeItemList = banjiPaikeItemService.queryBanjiPaikeItemListByInstitution(institution_code);
+        return banjiPaikeItemList;
+    }
+
+    @RequestMapping("/queryBanjiPaikeItemListByInstitutionAndSchoolname")
+    public List<BanjiPaikeItem> queryBanjiPaikeItemListByInstitutionAndSchoolname(HttpServletRequest request) {
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        String xiaoqu_name = request.getParameter("xiaoqu_name");
+        List<BanjiPaikeItem> banjiPaikeItemList = banjiPaikeItemService.queryBanjiPaikeItemListByInstitutionAndSchoolname(institution_code,xiaoqu_name);
+        return banjiPaikeItemList;
+    }
+
+
+
+
+    //http://localhost:9999/queryBanjiPaikeRuleListByInstitutionAndBanjiName?institution_code=tm&xiaoqu_name=%E8%A5%BF%E5%8F%AF%E6%A0%A1%E5%8C%BA&banji_name=%E8%A5%BF%E5%8F%AF1%E7%8F%AD
+    @RequestMapping("/queryBanjiPaikeItemListByInstitutionAndXiaoquNameAndBanjiName")
+    public List<BanjiPaikeItem> queryBanjiPaikeItemListByInstitutionAndXiaoquNameAndBanjiName(HttpServletRequest request) {
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        String xiaoqu_name = request.getParameter("xiaoqu_name");
+        String banji_name = request.getParameter("banji_name");
+        List<BanjiPaikeItem> banjiPaikeItemList = banjiPaikeItemService.queryBanjiPaikeItemListByInstitutionAndXiaoquNameAndBanjiName(institution_code,xiaoqu_name,banji_name);
         return banjiPaikeItemList;
     }
 
@@ -74,9 +95,10 @@ public class BanjiPaikeItemApi {
      * @return
      */
     @RequestMapping("/insertBanjiPaikeItem")
-    public ResultModel insertBanjiPaikeItem(@RequestBody BanjiPaikeItem banjiPaikeItem) {
+    public ResultModel insertBanjiPaikeItem(@RequestBody BanjiPaikeItem banjiPaikeItem,HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
-
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        banjiPaikeItem.setInstitution_code(institution_code);
         int result = banjiPaikeItemService.insertBanjiPaikeItem(banjiPaikeItem);
         if (result > 0) {
             return resultModel;
@@ -115,8 +137,10 @@ public class BanjiPaikeItemApi {
      * @return
      */
     @RequestMapping("/updateBanjiPaikeItem")
-    public ResultModel updateBanjiPaikeItem(@RequestBody BanjiPaikeItem banjiPaikeItem) {
+    public ResultModel updateBanjiPaikeItem(@RequestBody BanjiPaikeItem banjiPaikeItem,HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        banjiPaikeItem.setInstitution_code(institution_code);
         int result = banjiPaikeItemService.updateBanjiPaikeItem(banjiPaikeItem);
         if (result > 0) {
             return resultModel;
@@ -154,8 +178,10 @@ public class BanjiPaikeItemApi {
      * @return
      */
     @RequestMapping("/deleteBanjiPaikeItem")
-    public ResultModel deleteBanjiPaikeItem(@RequestBody BanjiPaikeItem banjiPaikeItem) {
+    public ResultModel deleteBanjiPaikeItem(@RequestBody BanjiPaikeItem banjiPaikeItem,HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        banjiPaikeItem.setInstitution_code(institution_code);
         int result = banjiPaikeItemService.deleteBanjiPaikeItem(banjiPaikeItem);
         if (result > 0) {
             return resultModel;
