@@ -221,32 +221,35 @@ $(function () {
     });
 
     $("#exportReport").click(function () {
-        if ($(".accordingToSchool .yunmo tbody tr").length > 0) {
-            PrintTableToExcel($(".accordingToSchool .yunmo").get(0));
+        if ($(".accordingToSchool .yunmo tbody tr").length == 0) {
+            alert("没有要导出的数据");
+            return;
+
         }
+        table2excel("yunmo", selectedTabIndex);
 
     });
 
-    function  initialHtml() {
-        var html = '<div class="chartContainer">'+
-                ' <canvas class="canvas"></canvas>'+
-                '</div>'+
-                ' <div style="clear: both;height: 20px;width: 100%;"></div>'+
-                '<div class="recordList" style="padding-top: 20px;">'+
-                '<table class="yunmo">'+
-                '<thead>'+
-                '<tr>'+
-                '<th style="width:20%;">经办校区</th>'+
-                '<th style="width:20%;">学费</th>'+
-                '<th style="width:20%;">教材费</th>'+
-                '<th style="width:20%;">杂费</th>'+
-                '<th style="width:20%;">总计</th>'+
-                '</tr>'+
-                '</thead>'+
-                '<tbody>'+
-                '</tbody>'+
-                '</table>'+
-                '</div>';
+    function initialHtml() {
+        var html = '<div class="chartContainer">' +
+            ' <canvas class="canvas"></canvas>' +
+            '</div>' +
+            ' <div style="clear: both;height: 20px;width: 100%;"></div>' +
+            '<div class="recordList" style="padding-top: 20px;">' +
+            '<table class="yunmo" id = "yunmo">' +
+            '<thead>' +
+            '<tr>' +
+            '<th style="width:20%;">经办校区</th>' +
+            '<th style="width:20%;">学费</th>' +
+            '<th style="width:20%;">教材费</th>' +
+            '<th style="width:20%;">杂费</th>' +
+            '<th style="width:20%;">总计</th>' +
+            '</tr>' +
+            '</thead>' +
+            '<tbody>' +
+            '</tbody>' +
+            '</table>' +
+            '</div>';
         $(".accordingToSchool").empty().append(html);
 
     }
@@ -267,9 +270,9 @@ $(function () {
         });
 
     }
-    
+
     function tableAccordingToSchool() {
-        for(var  i = 0;i< 10;i++) {
+        for (var i = 0; i < 10; i++) {
             $tr = $('<tr></tr>');
             $td = $('<td></td>');
             $tr.append($td.clone().html("东校区"));
@@ -298,10 +301,10 @@ $(function () {
     }
 
     function tableAccordingToMonth() {
-        for(var  i = 0;i< 10;i++) {
+        for (var i = 0; i < 10; i++) {
             $tr = $('<tr></tr>');
             $td = $('<td></td>');
-            $tr.append($td.clone().html("2017-06"));
+            $tr.append($td.clone().html("2017年06月"));
             $tr.append($td.clone().html("12345"));
             $tr.append($td.clone().html("111"));
             $tr.append($td.clone().html("2222"));
@@ -312,29 +315,216 @@ $(function () {
 });
 
 
-function PrintTableToExcel(objTab) {
-    try {
-        var xls = new ActiveXObject("Excel.Application");
-    }
-    catch (e) {
-        alert(e)
-        //alert( "要打印该表，您必须安装Excel电子表格软件，同时浏览器须使用“ActiveX 控件”，您的浏览器须允许执行控件。 请点击【帮助】了解浏览器设置方法！");
-        return false;
-    }
-    xls.visible = true;
-    var xlBook = xls.Workbooks.Add;
-    var xlsheet = xlBook.Worksheets(1);
-    var x = 1;
-    var y = 1;
-    for (var i = 0; i < objTab.rows.length; i++) {
-        y = 1;
-        for (var j = 0; j < objTab.rows[i].cells.length; j++) {
-            xlsheet.Cells(x, y).Value = objTab.rows[i].cells[j].innerHTML;
-            xlsheet.Cells(x, y).Borders.LineStyle = 1;
-            y++;
-        }
-        x++;
-    }
-    xlsheet.Columns.AutoFit; //自动适应大小
-    return;
+function table2excel(tableid, reportType) {
+    tableToExcel(tableid, reportType);
 }
+var tableToExcel = (function () {
+    var uri = 'data:text/xls;charset=utf-8,\ufeff,',
+        template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+        base64 = function (s) {
+            return window.btoa(encodeURIComponent(s))
+        },
+        format = function (s, c) {
+            return s.replace(/{(\w+)}/g,
+                function (m, p) {
+                    return c[p];
+                }
+            )
+        }
+    return function (table, reportType) {
+        var sheetName = "Worksheet";
+        var xlsName = "财务收入.xls";
+        if (reportType == 1) {
+            var obj = document.getElementById("reportYear");
+            var index = obj.selectedIndex; // 选中索引
+            sheetName = obj.options[index].text; // 选中文本
+            //var value = obj.options[index].value; // 选中值
+            xlsName = "财务收入" + "_" + obj.options[index].text + ".xls";
+        }
+        else if (reportType == 0) {
+            var start = document.getElementById("reportStartDate").value;
+            var end = document.getElementById("reportEndDate").value;
+            if (start == "" && end == "") {
+                sheetName = "全部";
+            } else {
+                sheetName = start + "-" + end;
+            }
+            xlsName = "财务收入_按校区" + "(" + sheetName + ")" + ".xls";
+
+        }
+        if (!table.nodeType)
+            table = document.getElementById(table)
+        var ctx =
+            {
+                worksheet: sheetName,
+                table: table.innerHTML
+            }
+        //window.location.href = uri + base64(format(template, ctx))
+
+        var downloadLink = document.createElement("a");
+        downloadLink.href = uri + format(template, ctx);
+
+        downloadLink.download = xlsName;
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+    }
+})()
+
+
+/* 方案二 IE和其他浏览器分不同方式进行处理.
+ var idTmr;
+ function getExplorer()
+ {
+ var explorer = window.navigator.userAgent;
+ //ie
+ if (explorer.indexOf("MSIE") >= 0)
+ {
+ return 'ie';
+ }
+ //firefox
+ else if (explorer.indexOf("Firefox") >= 0)
+ {
+ return 'Firefox';
+ }
+ //Chrome
+ else if (explorer.indexOf("Chrome") >= 0)
+ {
+ return 'Chrome';
+ }
+ //Opera
+ else if (explorer.indexOf("Opera") >= 0)
+ {
+ return 'Opera';
+ }
+ //Safari
+ else if (explorer.indexOf("Safari") >= 0)
+ {
+ return 'Safari';
+ }
+ }
+ function table2excel(tableid)
+ { //整个表格拷贝到EXCEL中
+ if (getExplorer() == 'ie')
+ {
+ var curTbl = document.getElementById(tableid);
+ var oXL = new ActiveXObject("Excel.Application");
+
+ //创建AX对象excel
+ var oWB = oXL.Workbooks.Add();
+ //获取workbook对象
+ var xlsheet = oWB.Worksheets(1);
+ //激活当前sheet
+ var sel = document.body.createTextRange();
+ sel.moveToElementText(curTbl);
+ //把表格中的内容移到TextRange中
+ sel.select();
+ //全选TextRange中内容
+ sel.execCommand("Copy");
+ //复制TextRange中内容
+ xlsheet.Paste();
+ //粘贴到活动的EXCEL中
+ oXL.Visible = true;
+ //设置excel可见属性
+
+ try
+ {
+ var fname = oXL.Application.GetSaveAsFilename("Excel.xls", "Excel Spreadsheets (*.xls), *.xls");
+ }
+ catch (e)
+ {
+ print("Nested catch caught " + e);
+ }
+ finally
+ {
+ oWB.SaveAs(fname);
+ oWB.Close(savechanges = false);
+ //xls.visible = false;
+ oXL.Quit();
+ oXL = null;
+ //结束excel进程，退出完成
+ //window.setInterval("Cleanup();",1);
+ idTmr = window.setInterval("Cleanup();", 1);
+
+ }
+
+ }
+ else
+ {
+ tableToExcel(tableid);
+ }
+ }
+ function Cleanup()
+ {
+ window.clearInterval(idTmr);
+ CollectGarbage();
+ }
+ var tableToExcel = (function ()
+ {
+ var uri = 'data:text/xls;charset=utf-8,\ufeff,',
+ template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+ base64 = function (s)
+ {
+ return window.btoa(encodeURIComponent(s))
+ },
+ format = function (s, c)
+ {
+ return s.replace(/{(\w+)}/g,
+ function (m, p)
+ {
+ return c[p];
+ }
+ )
+ }
+ return function (table, name)
+ {
+ if (!table.nodeType)
+ table = document.getElementById(table)
+ var ctx =
+ {
+ worksheet : name || 'Worksheet',
+ table : table.innerHTML
+ }
+ //window.location.href = uri + base64(format(template, ctx))
+
+ var downloadLink = document.createElement("a");
+ downloadLink.href = uri + format(template, ctx);
+
+ downloadLink.download = '财务收入.xls';
+ document.body.appendChild(downloadLink);
+ downloadLink.click();
+ document.body.removeChild(downloadLink);
+ }
+ }
+ )()
+ */
+
+/* 方案三.
+ function PrintTableToExcel(objTab) {
+ try {
+ var xls = new ActiveXObject("Excel.Application");
+ }
+ catch (e) {
+ alert(e)
+ //alert( "要打印该表，您必须安装Excel电子表格软件，同时浏览器须使用“ActiveX 控件”，您的浏览器须允许执行控件。 请点击【帮助】了解浏览器设置方法！");
+ return false;
+ }
+ xls.visible = true;
+ var xlBook = xls.Workbooks.Add;
+ var xlsheet = xlBook.Worksheets(1);
+ var x = 1;
+ var y = 1;
+ for (var i = 0; i < objTab.rows.length; i++) {
+ y = 1;
+ for (var j = 0; j < objTab.rows[i].cells.length; j++) {
+ xlsheet.Cells(x, y).Value = objTab.rows[i].cells[j].innerHTML;
+ xlsheet.Cells(x, y).Borders.LineStyle = 1;
+ y++;
+ }
+ x++;
+ }
+ xlsheet.Columns.AutoFit; //自动适应大小
+ return;
+ }
+ */
+

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>助教宝 - 管理后台</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+    <meta name="baidu-site-verification" content="elXuCAMAW3"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+    <meta name="renderer" content="webkit"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+    <link rel="stylesheet" href="css/reset.css"></link>
+    <link rel="stylesheet" href="css/index_style.css"></link>
+    <link rel="stylesheet" href="css/jquery-ui.css"></link>
+    <link rel="stylesheet" href="css/yp_style.css"></link>
+    <link rel="stylesheet" href="css/createPerformanceRule.css"></link>
+    <link rel="stylesheet" href="css/iconfont.css"></link>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/createPerformanceRule.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</head>
+
+<body style="background-color: #fff;">
+<div class="mainContainer">
+    <div class="sign-list-cpt" parent-account="">
+        <div class="block-title-cpt"> 规则设定</div>
+    </div>
+    <div style="height: 100%; overflow:hidden;!important; min-height: 500px; background-color: whitesmoke; margin: 5px; border: 1px solid silver;">
+        <div style="float:left; width:70px; padding-top:20px;padding-left:20px;">
+            <label>规则名称:</label>
+        </div>
+        <div style="float:left; width:350px; padding-top:15px;">
+            <input class="text-input-cpt" type="text" name="ruleName"
+                   placeholder="请输入规则名称" value="" id="ruleName"></input>
+        </div>
+
+        <div style="clear: both; float:left; width:70px; padding-top:30px;padding-left:20px;">
+            <label>提成方式:</label>
+        </div>
+        <div style="float:left;  padding-top:30px; font-size: 13px;color: #5f3f3f">
+            <input type="radio" name="ruleType" value="1" id="ruleType1">
+            <label for='ruleType1'>1</label><label> 按教师课时：根据教师上课课时数计算课时费，公式：教师课时数 X 每课时金额</label>
+        </div>
+        <div style="clear: both; float:left;  padding-top:20px;padding-left:90px; font-size: 13px;color: #5f3f3f">
+            <input type="radio" name="ruleType" value="2" id="ruleType2">
+            <label for='ruleType2'>2</label><label> 按学员课时：根据学员消耗课时数计算课时费，公式：学员课时数 X 每课时金额</label>
+        </div>
+        <div style="clear: both; float:left;  padding-top:20px;padding-left:90px; font-size: 13px;color: #5f3f3f">
+            <input type="radio" name="ruleType" value="3" id="ruleType3">
+            <label for='ruleType3'>3</label><label> 按学费消耗：根据教师上课产生的学费消耗计算课时费，公式：学费消耗 X 提成比例</label>
+        </div>
+        <div style="clear: both; float:left; width:70px; padding-top:30px;padding-left:20px;">
+            <label>提成比例:</label>
+        </div>
+        <div style="float:left; width:50px; padding-top:30px;">
+            <label class="percentageType">每课时</label>
+        </div>
+        <div style="float:left; width:110px; padding-top:25px;">
+            <input class="text-input-cpt" type="text" name="percentage"
+                   placeholder="" value="" id="percentage">
+        </div>
+        <div style="float:left; width:10px; padding-top:30px;">
+            <label class="percentageUnit">元</label>
+        </div>
+        <div style="clear: both; float:left; width:70px; padding-top:30px;padding-left:20px;">
+            <label>应用范围:</label>
+        </div>
+        <div style="float:left; width:400px; padding-top:20px;padding-left:0px;">
+            <button class="button button-middle" id="SelectEmployee">选择员工</button>
+            <span style="color: #6AC5FF;font-size: 12px; margin-left: 5px;">*一个员工只能对应一条规则</span>
+        </div>
+        <div class="seletedEmployeesDiv">
+            <!--<div class="seletedEmployeeDiv">
+                <label>wwww</label>
+                <span class="deleteButton icon iconfont icon-close"></span>
+            </div>-->
+        </div>
+        <div style="clear: both; float:left; width:70px; padding-top:30px;padding-left:20px;">
+            <label>备注:</label>
+        </div>
+        <div style="float:left; width:350px; padding-top:25px;padding-bottom:30px;">
+            <input class="text-input-cpt" type="text" name="remarks"
+                   placeholder="" value="" id="remarks"></input>
+        </div>
+
+        <div style="clear: both; height: 100px;padding-top: 40px; border-top: 2px solid silver;">
+            <div style="float:left; width:100px; padding-left:550px;">
+                <button class="button button-middle" id="Send">保存</button>
+            </div>
+            <div style="float:left; width:100px;">
+                <button class="button button-middle" id="Cancel">取消</button>
+            </div>
+        </div>
+    </div>
+    <!-- =====================员工选择Dialog===========================-->
+    <form class="employeeDialog" title="选择员工">
+        <div style="float:left; width:70px; padding-top:20px;">
+            <label>员工姓名:</label>
+        </div>
+        <div style="float:left;  padding-top:15px;padding-bottom:15px;">
+            <input class="text-input-cpt" type="text" name="employeeNameForSelText"
+                   placeholder="" value="" id="employeeNameForSelText">
+        </div>
+        <div style="float:left; width:70px; padding-top:20px; padding-left: 20px;">
+            <label>身份证号:</label>
+        </div>
+        <div style="float:left;  padding-top:15px;">
+            <input class="text-input-cpt" type="text" name="employeeIDForSelText"
+                   placeholder="" value="" id="employeeIDForSelText">
+        </div>
+
+        <div style="float:left;  padding-top:11px;padding-left:25px;">
+            <input style="margin-left: 10px; margin-top: 0px;"
+                   class="button button-middle    float-left" type="button" name="search"
+                   value="查询" id="searchDialogStudent">
+        </div>
+        <div class="recordList">
+            <table class="yunmo" id="employeeList">
+                <thead>
+                <tr>
+                    <th style="width:5%;"><input value="" name="selectedEmployee"
+                                                  type="checkbox" class="selectedEmployee"></th>
+                    <th style="width:15%;">员工姓名</th>
+                    <th style="width:20%;">联系电话</th>
+                    <th style="width:30%;">身份证号</th>
+                    <th style="width:10%;">性别</th>
+                    <th style="width:20%;">所属校区</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input value="" name="selectedEmployee" type="checkbox"
+                               class="selectedEmployee"></td>
+                    <td>小王</td>
+                    <td>18717947096</td>
+                    <td>187179470961871794</td>
+                    <td>男</td>
+                    <td>东校区</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+    <!-- =====================员工选择Dialog===========================-->
+</div>
+</body>
+</html>
