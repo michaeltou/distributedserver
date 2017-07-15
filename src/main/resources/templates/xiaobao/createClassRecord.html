@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>新建课程</title>
+    <meta name="viewport" content="width=device-width,
+                                     initial-scale=1.0,
+                                     maximum-scale=1.0,
+                                     user-scalable=no"/>
+
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <script src="js/jquery-3.2.1.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/createJiShangKe.js"></script>
+</head>
+<body>
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a  href="#" id="backToListbreadLink">上课记录管理</a></li>
+                <li><a href="#">新建上课记录</a></li>
+
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <h2 class="text-success  ">
+                新建上课记录
+            </h2>
+            <div style="height: 20px;"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+
+            <div class="text-success" style="display: none;" id="successLabel">恭喜你，新建上课成功！
+                <div style="height: 50px;"></div>
+                <button type="button" class="btn btn-info" id="backToListBtn" style="display: none;">
+                    返回
+                </button>
+
+                <button type="button" class="btn btn-success" id="createAgainBtn" style="display: none;">
+                    再新建一个上课记录
+                </button>
+                <div style="height: 50px;"></div>
+            </div>
+            <div class="text-danger" style="display: none;" id="failLabel">新建上课记录失败！
+                <div style="height: 50px;"></div>
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <div id="formdiv">
+                <form role="form" id="myform">
+                    <div class="form-group">
+
+                        <label for="banji_name">
+                            班级名称
+                        </label>
+                        <input type="text" class="form-control" id="banji_name"/>
+                        <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="xiaoqu_name">
+                            校区
+                        </label>
+                        <input type="text" class="form-control" id="xiaoqu_name"/>
+                        <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="shangke_start_date">
+                            上课开始时间
+                        </label>
+                        <input type="text" class="form-control" id="shangke_start_date"/>
+                        <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="shangke_end_date">
+                            上课结束时间
+                        </label>
+                        <input type="text" class="form-control" id="shangke_end_date"/>
+                        <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="jiaoshi_keshi">
+                            教师课时
+                        </label>
+                        <input type="text" class="form-control" id="jiaoshi_keshi"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="teacher_name">
+                            教师姓名
+                        </label>
+                        <input type="text" class="form-control" id="teacher_name"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="teacher_sfzCode">
+                            教师身份证
+                        </label>
+                        <input type="text" class="form-control" id="teacher_sfzCode"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="assist_teacher_name">
+                            助教姓名
+                        </label>
+                        <input type="text" class="form-control" id="assist_teacher_name"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="assist_teacher_sfzCode">
+                            助教身份证
+                        </label>
+                        <input type="text" class="form-control" id="assist_teacher_sfzCode"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="shangke_content">
+                            上课内容
+                        </label>
+                        <input type="text" class="form-control" id="shangke_content"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="shangke_note">
+                            上课备注
+                        </label>
+                        <input type="text" class="form-control" id="shangke_note"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+
+                        <label for="shangke_pic_list">
+                            上课图片列表
+                        </label>
+                        <input type="text" class="form-control" id="shangke_pic_list"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-2 text-center">
+            <div id="submitAreaDiv">
+                <div style="height: 20px;"></div>
+
+                <button type="button" class="btn btn-default" id="formBackBtn">返回
+                </button>
+                &nbsp; &nbsp; &nbsp;
+                <button id="save" type="button" class="btn btn-success">
+                    保存
+                </button>
+                <div style="height: 80px;"></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+</body>
+</html>

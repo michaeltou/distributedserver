@@ -196,31 +196,4 @@ public class ClassRecordMainApi {
         }
     }
 
-
-    //-----------------------whole-------------------------------------
-
-    @RequestMapping("/queryClassRecordListByInstitutionAndBanjiName")
-    public ResultModel queryClassRecordListByInstitutionAndBanjiName(HttpServletRequest request) {
-        ResultModel resultModel = new ResultModel();
-
-        String institution_code = (String) request.getSession().getAttribute("institution_code");
-        String banji_name = request.getParameter("banji_name");
-        List<ClassRecordMain> classRecordMainList = classRecordMainService.queryClassRecordMainListByInstitutionAndBanjiName(institution_code, banji_name);
-        resultModel.setData(classRecordMainList);
-        return resultModel;
-    }
-
-
-    @RequestMapping("/deleteClassRecord")
-    public ResultModel deleteClassRecord(@RequestBody ClassRecordMain classRecordMain) {
-        ResultModel resultModel = new ResultModel();
-        int result = classRecordMainService.deleteClassRecordMain(classRecordMain);
-        if (result > 0) {
-            return resultModel;
-        } else {
-            resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
-            return resultModel;
-        }
-    }
-
 }

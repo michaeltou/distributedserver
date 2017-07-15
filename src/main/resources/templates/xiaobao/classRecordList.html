@@ -33,11 +33,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            <input type="hidden" id="name"  />
+                            <input type="hidden" id="banji_name"  />
                             <input type="hidden" id="id"  />
-                            <input type="hidden" id="school_name"  />
 
-                            确认删除该教室吗?
+
+                            确认删除该上课记录吗?
                             <div class="text-danger">数据删除后，将不可恢复！</div>
                         </div>
 
@@ -65,7 +65,7 @@
 
 
             <button type="button" class="btn btn-success" id="createObjectBtnInList">
-                新建教室
+                新建上课记录
             </button>
 
 
@@ -79,7 +79,7 @@
 
     <div class="row">
         <div class="col-md-12" style="background-color: transparent;">
-            <h3>教室一览表</h3>
+            <h3>上课记录一览表</h3>
         </div>
 
     </div>
@@ -87,9 +87,9 @@
         <div style="height: 10px;"></div>
         <div class="col-md-12">
             <span style="">
-                教室名称:
+                班级:
             </span>
-            <input type="text" name="classroom_name" placeholder="请输入教室名称" id="query_param_classroom_name"/>
+            <input type="text" name="classroom_name" placeholder="请输入班级名称" id="query_param_banji_name"/>
             <button type="button" class="btn btn-success" id="searchBtn">
                 查询
             </button>
@@ -103,29 +103,36 @@
                 <table class="table table-striped table-hover">
                     <thead style="  background-color: rgba(113,210,113,0.36);  border-color: #71ce71;">
                     <tr>
-                        <th> 教室名称</th>
+                        <th> 班级名称</th>
                         <th> 校区</th>
-                        <th> 容纳人数</th>
-                        <th> 地址</th>
-                        <th> 备注</th>
-                        <th> 操作</th>
+                        <th> 上课开始时间</th>
+                        <th> 上课结束时间</th>
+                        <th> 教师课时</th>
+                        <th> 教师名称</th>
+                        <th> 上课内容</th>
+                        <th> 上课备注</th>
                     </tr>
                     </thead>
                     <tbody id="mytablebody">
 
-                    <tr th:each="classroom : ${classroomList}">
-                        <td th:text="${classroom.name}">null</td>
-                        <td th:text=" ${classroom.school_name}">null</td>
-                        <td th:text="${classroom.capacity}">null</td>
-                        <td th:text="${classroom.address}">null</td>
-                        <td th:text="${classroom.note}">null</td>
+                    <tr th:each="classRecordMain : ${classRecordMainList}">
+                        <td th:text="${classRecordMain.banji_name}"></td>
+                        <td th:text=" ${classRecordMain.xiaoqu_name}"></td>
+                        <td th:text="${classRecordMain.shangke_start_date}"></td>
+                        <td th:text="${classRecordMain.shangke_end_date}"></td>
+                        <td th:text="${classRecordMain.jiaoshi_keshi}"></td>
+                        <td th:text="${classRecordMain.teacher_name}"></td>
+                        <td th:text="${classRecordMain.shangke_content}"></td>
+                        <td th:text="${classRecordMain.shangke_note}"></td>
+
+
 
                         <td><a    class="deleteObjectLinkClass"
                                href="#"
-                               th:attr="name=${classroom.name},id=${classroom.id},school_name=${classroom.school_name}" >删除</a>
+                               th:attr=" id=${classRecordMain.id},banji_name=${classRecordMain.banji_name}" >删除</a>
                             &nbsp;&nbsp;
                             <a   href="#" class="updateObjectLinkClass"
-                               th:href="@{/xiaobao/updateClassroom(id=${classroom.id},name=${classroom.name},school_name=${classroom.school_name} )}">编辑</a>
+                               th:href="@{/xiaobao/updateClassRecord(id=${classRecordMain.id},banji_name=${classRecordMain.banji_name} )}">编辑</a>
                         </td>
 
 
