@@ -199,7 +199,51 @@ public interface BaoMingDAO {
             " where  institution_code = #{institution_code} and xuehao like CONCAT('%',#{xuehao},'%') ")
     List<BaoMing> queryBaoMingListByXuehaoWithLike(@Param("institution_code") String institution_code, @Param("xuehao") String xuehao);
 
-
+    @Select(" SELECT `px_baoming`.`id`,\n" +
+            "    `px_baoming`.`sfzCode`,\n" +
+            "    `px_baoming`.`institution_code`,\n" +
+            "    `px_baoming`.`name`,\n" +
+            "    `px_baoming`.`xuehao`,\n" +
+            "    `px_baoming`.`kecheng_name`,\n" +
+            "    `px_baoming`.`xiaoqu_name`,\n" +
+            "    `px_baoming`.`banji_name`,\n" +
+            "    `px_baoming`.`chargeType`,\n" +
+            "    `px_baoming`.`chargeFee`,\n" +
+            "    `px_baoming`.`quantity`,\n" +
+            "    `px_baoming`.`expireDate`,\n" +
+            "    `px_baoming`.`originFee`,\n" +
+            "    `px_baoming`.`youhui_type`,\n" +
+            "    `px_baoming`.`youhui_quantity`,\n" +
+            "    `px_baoming`.`youhui_fee`,\n" +
+            "    `px_baoming`.`yingshou_zongji_fee`,\n" +
+            "    `px_baoming`.`shoukuang_type`,\n" +
+            "    `px_baoming`.`duifang_zhanghu`,\n" +
+            "    `px_baoming`.`liushui_danhao`,\n" +
+            "    `px_baoming`.`shishou_kuang`,\n" +
+            "    `px_baoming`.`jiaocai_zafei_name1`,\n" +
+            "    `px_baoming`.`jiaocai_zafei_name2`,\n" +
+            "    `px_baoming`.`jiaocai_zafei_name3`,\n" +
+            "    `px_baoming`.`jiaocai_zafei_name4`,\n" +
+            "    `px_baoming`.`jiaocai_zafei_name5`,\n" +
+            "    `px_baoming`.`jiaocai_zafei_price1`,\n" +
+            "    `px_baoming`.`jiaocai_zafei_price2`,\n" +
+            "    `px_baoming`.`jiaocai_zafei_price3`,\n" +
+            "    `px_baoming`.`jiaocai_zafei_price4`,\n" +
+            "    `px_baoming`.`jiaocai_zafei_price5`,\n" +
+            "    `px_baoming`.`jiaocai_zafei_quantity1`,\n" +
+            "    `px_baoming`.`jiaocai_zafei_quantity2`,\n" +
+            "    `px_baoming`.`jiaocai_zafei_quantity3`,\n" +
+            "    `px_baoming`.`jiaocai_zafei_quantity4`,\n" +
+            "    `px_baoming`.`jiaocai_zafei_quantity5`,\n" +
+            "    `px_baoming`.`jingban_xiaoqu_name`,\n" +
+            "    `px_baoming`.`xiaoshou_source`,\n" +
+            "    `px_baoming`.`xiaoshou_yuan_name`,\n" +
+            "    `px_baoming`.`xiaoshou_yuan_sfz_code`,\n" +
+            "    `px_baoming`.`createDate`,\n" +
+            "    `px_baoming`.`updateDate`\n" +
+            "FROM  `px_baoming` \n" +
+            " where  institution_code = #{institution_code} and id=#{id} ")
+     BaoMing queryBaoMingByInstitutionAndId(@Param("institution_code") String institution_code, @Param("id") int id);
 
 
 

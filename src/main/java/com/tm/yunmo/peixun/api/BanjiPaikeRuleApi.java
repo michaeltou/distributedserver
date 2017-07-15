@@ -25,7 +25,7 @@ public class BanjiPaikeRuleApi {
 //http://localhost:9999/queryBanjiPaikeRuleListByInstitutionAndBanjiName?institution_code=tm&xiaoqu_name=%E8%A5%BF%E5%8F%AF%E6%A0%A1%E5%8C%BA&banji_name=%E8%A5%BF%E5%8F%AF1%E7%8F%AD
     @RequestMapping("/queryBanjiPaikeRuleListByInstitutionAndBanjiName")
     public List<BanjiPaikeRule> queryBanjiPaikeRuleListByInstitutionAndBanjiName(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String xiaoqu_name = request.getParameter("xiaoqu_name");
         String banji_name = request.getParameter("banji_name");
         List<BanjiPaikeRule> banjiPaikeRuleList = banjiPaikeRuleService.queryBanjiPaikeRuleListByInstitutionAndBanjiName(institution_code,xiaoqu_name,banji_name);

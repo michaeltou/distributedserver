@@ -29,7 +29,7 @@ public class SchoolPage {
     @RequestMapping("/px/querySchoolListByInstitution")
     // TODO delete
     public String querySchoolListByInstitution2(HttpServletRequest request,Model model) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         List<School> schoolList = schoolService.querySchoolListByInstitution(institution_code);
         model.addAttribute("data",schoolList);
         return "px/SchoolDistrict";
@@ -54,7 +54,7 @@ public class SchoolPage {
     public String updateSchool(HttpServletRequest request,Model model){
 
         String school_name = request.getParameter("school_name");
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         School school = schoolService.querySchoolByName(school_name, institution_code);
         model.addAttribute("school",school);
         return "xiaobao/updateSchool";

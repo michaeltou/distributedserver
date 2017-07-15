@@ -25,7 +25,7 @@ public class BaoMingApi {
 //http://localhost:9999/queryBaoMingListBySFZCodeWithLike?institution_code=tm
     @RequestMapping("/queryBaoMingListByInstitution")
     public List<BaoMing> queryBaoMingListByInstitution(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         List<BaoMing> baoMingList = baoMingService.queryBaoMingListByInstitution(institution_code);
         return baoMingList;
     }
@@ -34,7 +34,7 @@ public class BaoMingApi {
   //http://localhost:9999/queryBaoMingListBySFZCodeWithLike?institution_code=tm&sfzCode=362528
     @RequestMapping("/queryBaoMingListBySFZCodeWithLike")
     public List<BaoMing> queryBaoMingListBySFZCodeWithLike(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String sfzCode = request.getParameter("sfzCode");
         List<BaoMing> baoMingList = baoMingService.queryBaoMingListBySFZCodeWithLike(institution_code, sfzCode);
         return baoMingList;
@@ -43,7 +43,7 @@ public class BaoMingApi {
 //http://localhost:9999/queryBaoMingListByNameWithLike?institution_code=tm&name=%E6%98%8E
     @RequestMapping("/queryBaoMingListByNameWithLike")
     public List<BaoMing> queryBaoMingListByNameWithLike(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String name = request.getParameter("name");
         List<BaoMing> baoMingList = baoMingService.queryBaoMingListByNameWithLike(institution_code, name);
         return baoMingList;
@@ -52,7 +52,7 @@ public class BaoMingApi {
     //http://localhost:9999/queryBaoMingListByXuehaoWithLike?institution_code=tm&xuehao=01
     @RequestMapping("/queryBaoMingListByXuehaoWithLike")
     public List<BaoMing> queryBaoMingListByXuehaoWithLike(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String xuehao = request.getParameter("xuehao");
         List<BaoMing> baoMingList = baoMingService.queryBaoMingListByXuehaoWithLike(institution_code, xuehao);
         return baoMingList;
@@ -113,9 +113,10 @@ public class BaoMingApi {
      * @return
      */
     @RequestMapping("/insertBaoMing")
-    public ResultModel insertBaoMing(@RequestBody BaoMing baoMing) {
+    public ResultModel insertBaoMing(@RequestBody BaoMing baoMing,HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
-
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        baoMing.setInstitution_code(institution_code);
         int result = baoMingService.insertBaoMing(baoMing);
         if (result > 0) {
             return resultModel;
@@ -181,8 +182,10 @@ public class BaoMingApi {
      * @return
      */
     @RequestMapping("/updateBaoMing")
-    public ResultModel updateBaoMing(@RequestBody BaoMing baoMing) {
+    public ResultModel updateBaoMing(@RequestBody BaoMing baoMing,HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        baoMing.setInstitution_code(institution_code);
         int result = baoMingService.updateBaoMing(baoMing);
         if (result > 0) {
             return resultModel;
@@ -246,8 +249,10 @@ public class BaoMingApi {
      * @return
      */
     @RequestMapping("/deleteBaoMing")
-    public ResultModel deleteBaoMing(@RequestBody BaoMing baoMing) {
+    public ResultModel deleteBaoMing(@RequestBody BaoMing baoMing,HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        baoMing.setInstitution_code(institution_code);
         int result = baoMingService.deleteBaoMing(baoMing);
         if (result > 0) {
             return resultModel;

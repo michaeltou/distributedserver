@@ -17,6 +17,13 @@ public class BaoMingService {
     @Autowired
     private BaoMingDAO baoMingDAO;
 
+
+    public BaoMing queryBaoMingByInstitutionAndId(String institution_code,int id){
+        BaoMing baoMing = baoMingDAO.queryBaoMingByInstitutionAndId( institution_code,id);
+        return baoMing;
+    }
+
+
     public List<BaoMing> queryBaoMingListByInstitution(String institution_code){
         List<BaoMing> baoMingList = baoMingDAO.queryBaoMingListByInstitution( institution_code);
         return baoMingList;

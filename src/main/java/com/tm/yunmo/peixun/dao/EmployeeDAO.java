@@ -42,6 +42,39 @@ public interface EmployeeDAO {
             "    `px_employee`.`create_date`,\n" +
             "    `px_employee`.`update_date`\n" +
             " FROM  `px_employee`  \n" +
+            " where  institution_code = #{institution_code} adn sfzCode = #{sfzCode} ")
+    Employee  queryEmployeeByInstitutionAndSFZCode(@Param("institution_code") String institution_code,@Param("sfzCode") String sfzCode);
+
+
+
+    @Select(" SELECT `px_employee`.`id`,\n" +
+            "    `px_employee`.`name`,\n" +
+            "    `px_employee`.`phone`,\n" +
+            "    `px_employee`.`sfzCode`,\n" +
+            "    `px_employee`.`institution_code`,\n" +
+            "    `px_employee`.`xiaoqu_name`,\n" +
+            "    `px_employee`.`gender`,\n" +
+            "    `px_employee`.`birthday`,\n" +
+            "    `px_employee`.`english_name`,\n" +
+            "    `px_employee`.`email`,\n" +
+            "    `px_employee`.`ji_guan`,\n" +
+            "    `px_employee`.`nationality`,\n" +
+            "    `px_employee`.`zhengzhi_mianmao`,\n" +
+            "    `px_employee`.`is_married`,\n" +
+            "    `px_employee`.`biye_yuanxiao`,\n" +
+            "    `px_employee`.`zhuanye`,\n" +
+            "    `px_employee`.`xueli`,\n" +
+            "    `px_employee`.`peixun_jingli`,\n" +
+            "    `px_employee`.`renshi_zhuangtai`,\n" +
+            "    `px_employee`.`employ_start_date`,\n" +
+            "    `px_employee`.`employ_end_date`,\n" +
+            "    `px_employee`.`laodong_guanxi`,\n" +
+            "    `px_employee`.`zhuanzheng_date`,\n" +
+            "    `px_employee`.`bank_card`,\n" +
+            "    `px_employee`.`bank`,\n" +
+            "    `px_employee`.`create_date`,\n" +
+            "    `px_employee`.`update_date`\n" +
+            " FROM  `px_employee`  \n" +
             " where  institution_code = #{institution_code} ")
     List<Employee> queryEmployeeListByInstitution(@Param("institution_code") String institution_code);
 

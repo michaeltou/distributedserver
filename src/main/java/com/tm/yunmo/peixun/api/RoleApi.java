@@ -26,7 +26,7 @@ public class RoleApi {
     //http://localhost:9999/queryRoleListByInstitution?institution_code=tm
     @RequestMapping("/queryRoleListByInstitution")
     public List<Role> queryRoleListByInstitution(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         List<Role> roleList = roleService.queryRoleListByInstitution(institution_code);
         return roleList;
     }
@@ -34,7 +34,7 @@ public class RoleApi {
     @RequestMapping("/queryRoleByName")
     public Role queryRoleByName(HttpServletRequest request) {
         String role_name = request.getParameter("role_name");
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         Role role = roleService.queryRoleByName(institution_code, role_name);
         return role;
     }

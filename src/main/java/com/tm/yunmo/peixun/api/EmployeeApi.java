@@ -26,7 +26,7 @@ public class EmployeeApi {
     //http://localhost:9999/queryEmployeeListByInstitution?institution_code=tm
     @RequestMapping("/queryEmployeeListByInstitution")
     public List<Employee> queryEmployeeListByInstitution(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         List<Employee> employeeList = employeeService.queryEmployeeListByInstitution(institution_code);
         return employeeList;
     }
@@ -35,7 +35,7 @@ public class EmployeeApi {
    //http://localhost:9999/queryEmployeeListBySFZCodeWithLike?institution_code=tm&sfzCode=36
     @RequestMapping("/queryEmployeeListBySFZCodeWithLike")
     public List<Employee> queryEmployeeListBySFZCodeWithLike(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String sfzCode = request.getParameter("sfzCode");
         List<Employee> employeeList = employeeService.queryEmployeeListBySFZCodeWithLike(institution_code, sfzCode);
         return employeeList;
@@ -44,7 +44,7 @@ public class EmployeeApi {
 //http://localhost:9999/queryEmployeeListByNameWithLike?institution_code=tm&name=%E6%98%8E
     @RequestMapping("/queryEmployeeListByNameWithLike")
     public List<Employee> queryEmployeeListByNameWithLike(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String name = request.getParameter("name");
         List<Employee> employeeList = employeeService.queryEmployeeListByNameWithLike(institution_code, name);
         return employeeList;
@@ -53,7 +53,7 @@ public class EmployeeApi {
 //http://localhost:9999/queryEmployeeListByPhoneWithLike?institution_code=tm&phone=186
     @RequestMapping("/queryEmployeeListByPhoneWithLike")
     public List<Employee> queryEmployeeListByPhoneWithLike(HttpServletRequest request) {
-        String institution_code = request.getParameter("institution_code");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String phone = request.getParameter("phone");
         List<Employee> employeeList = employeeService.queryEmployeeListByPhoneWithLike(institution_code, phone);
         return employeeList;
@@ -99,9 +99,10 @@ public class EmployeeApi {
      * @return
      */
     @RequestMapping("/insertEmployee")
-    public ResultModel insertEmployee(@RequestBody Employee employee) {
+    public ResultModel insertEmployee(@RequestBody Employee employee, HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
-
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        employee.setInstitution_code(institution_code);
         int result = employeeService.insertEmployee(employee);
         if (result > 0) {
             return resultModel;
@@ -152,8 +153,12 @@ public class EmployeeApi {
      * @return
      */
     @RequestMapping("/updateEmployee")
-    public ResultModel updateEmployee(@RequestBody Employee employee) {
+    public ResultModel updateEmployee(@RequestBody Employee employee, HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
+
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        employee.setInstitution_code(institution_code);
+
         int result = employeeService.updateEmployee(employee);
         if (result > 0) {
             return resultModel;
@@ -203,8 +208,11 @@ public class EmployeeApi {
      * @return
      */
     @RequestMapping("/deleteEmployee")
-    public ResultModel deleteEmployee(@RequestBody Employee employee) {
+    public ResultModel deleteEmployee(@RequestBody Employee employee, HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
+
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        employee.setInstitution_code(institution_code);
         int result = employeeService.deleteEmployee(employee);
         if (result > 0) {
             return resultModel;

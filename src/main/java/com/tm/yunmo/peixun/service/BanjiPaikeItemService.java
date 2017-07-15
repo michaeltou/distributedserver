@@ -18,10 +18,25 @@ public class BanjiPaikeItemService {
     private BanjiPaikeItemDAO banjiPaikeItemDAO;
 
 
-
-    public List<BanjiPaikeItem> queryBanjiPaikeItemListByInstitutionAndBanjiName(String institution_code,  String xiaoqu_name,  String banji_name){
-        List<BanjiPaikeItem> banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemListByInstitutionAndBanjiName( institution_code,xiaoqu_name,banji_name);
+    public List<BanjiPaikeItem> queryBanjiPaikeItemListByInstitution(String institution_code ){
+        List<BanjiPaikeItem> banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemListByInstitution( institution_code);
         return banjiPaikeItemList;
+    }
+
+    public List<BanjiPaikeItem> queryBanjiPaikeItemListByInstitutionAndSchoolname(String institution_code,String xiaoqu_name ){
+        List<BanjiPaikeItem> banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemListByInstitutionAndSchoolname( institution_code,xiaoqu_name);
+        return banjiPaikeItemList;
+    }
+
+    public List<BanjiPaikeItem> queryBanjiPaikeItemListByInstitutionAndXiaoquNameAndBanjiName(String institution_code,  String xiaoqu_name,  String banji_name){
+        List<BanjiPaikeItem> banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemListByInstitutionAndXiaoquNameAndBanjiName( institution_code,xiaoqu_name,banji_name);
+        return banjiPaikeItemList;
+    }
+
+
+    public BanjiPaikeItem queryBanjiPaikeItemByInstitutionAndId(String institution_code,  int id){
+        BanjiPaikeItem banjiPaikeItem = banjiPaikeItemDAO.queryBanjiPaikeItemByInstitutionAndId( institution_code,id);
+        return banjiPaikeItem;
     }
 
     public BanjiPaikeItem queryBanjiPaikeItemByInstitutionAndBanjiNameAndId(String institution_code,  String xiaoqu_name,  String banji_name,int id){
