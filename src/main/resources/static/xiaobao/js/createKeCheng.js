@@ -177,7 +177,7 @@ $(document).ready(function () {
             success: function (data) {
                 $('#mainContents').empty();
                 //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
-                var data2 = data.replace(/\<script src=\"js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
+                var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
 
                 var data3= data2.replace(/\<script src=\"js\/bootstrap.js\"\>\<\/script\>/, "");
 
