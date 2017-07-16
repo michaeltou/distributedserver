@@ -13,28 +13,28 @@ $(document).ready(function () {
     var b_validate_result4 = true;
     var b_validate_result5 = true;
 
-    $("#name").focusout(function () {
+    $("#banji_name").focusout(function () {
 
-        if ($("#name").val().length < 2) {
-            $("#name").next().text("教室名称小于2个字符，不合法!");
-            $("#name").next().css({"display": "block", "color": "red"});
+        if ($("#banji_name").val().length < 2) {
+            $("#banji_name").next().text("班级名称小于2个字符，不合法!");
+            $("#banji_name").next().css({"display": "block", "color": "red"});
             b_validate_result1 = false;
         } else {
-            $("#name").next().css("display", "none");
+            $("#banji_name").next().css("display", "none");
             b_validate_result1 = true;
         }
 
 
     });
 
-    $("#school_name").focusout(function () {
+    $("#xiaoqu_name").focusout(function () {
 
-        if ($("#school_name").val().length < 2) {
-            $("#school_name").next().text("校区名称小于2个字符，不合法!");
-            $("#school_name").next().css({"display": "block", "color": "red"});
+        if ($("#xiaoqu_name").val().length < 2) {
+            $("#xiaoqu_name").next().text("校区名称小于2个字符，不合法!");
+            $("#xiaoqu_name").next().css({"display": "block", "color": "red"});
             b_validate_result2 = false;
         } else {
-            $("#school_name").next().css("display", "none");
+            $("#xiaoqu_name").next().css("display", "none");
             b_validate_result2 = true;
         }
 

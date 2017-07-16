@@ -223,4 +223,15 @@ public class ClassRecordMainApi {
         }
     }
 
+
+
+    @RequestMapping("/queryClassRecordListByBanjiNameWithBanjiNameLike")
+    public List<ClassRecordMain> queryClassRecordListByBanjiNameWithBanjiNameLike(HttpServletRequest request) {
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        String banji_name = request.getParameter("banji_name");
+        List<ClassRecordMain> classRecordMainList = classRecordMainService.queryClassRecordMainListByInstitutionAndBanjiName(institution_code, banji_name);
+        return classRecordMainList;
+    }
+
+
 }

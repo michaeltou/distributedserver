@@ -112,7 +112,7 @@ $(document).ready(function () {
 
         var query_param_banji_name = $("#query_param_banji_name").val();
         $.ajax({
-            url: "/queryClassroomListByNameWithLike",
+            url: "/queryClassRecordListByBanjiNameWithBanjiNameLike",
             type: "GET",
             data: {banji_name: query_param_banji_name},
             contentType: "application/json; charset=utf-8",
