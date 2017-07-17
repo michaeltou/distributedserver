@@ -25,7 +25,6 @@ $(document).ready(function () {
 
 
     $(".deleteObjectLinkClass").on('click', function () {
-    	alert("ddddddddddd");
         //获取点击链接自定义属性的值
         var href = $(this).attr('href');
         var id = $(this).attr('id');
@@ -42,8 +41,6 @@ $(document).ready(function () {
 
     });
 
-<<<<<<< HEAD
-=======
     $(".updateObjectLinkClass").on('click', function () {
         var href = $(this).attr('href');
 
@@ -69,7 +66,6 @@ $(document).ready(function () {
         //阻止跳转
         return false;
     });
->>>>>>> 3172689a95e4f7da2000681ac577b1fbfcd7b5d1
 
     $("#deleteObjectBtnInModal").click(function () {
         var url = "/deleteSRDaLei";
@@ -105,7 +101,7 @@ $(document).ready(function () {
 
     $('#myDeleteModal').on('hidden.bs.modal', function () {
         // 执行一些动作...
-        //$("#classroomguanli").click();
+        $("#shouRuDaLeiguanli").click();
     })
 
 
@@ -140,7 +136,7 @@ $(document).ready(function () {
 
                     });//each
 
-                   /* $(".deleteObjectLinkClass").on('click', function () {
+                    $(".deleteObjectLinkClass").on('click', function () {
 
                         //获取点击链接自定义属性的值
                         var href = $(this).attr('href');
@@ -156,10 +152,6 @@ $(document).ready(function () {
                         //显示属性框.
                         $('#myDeleteModal').modal('show');
                         return false;
-
-<<<<<<< HEAD
-                    });*/
-=======
                     });
 
                     $(".updateObjectLinkClass").on('click', function () {
@@ -187,8 +179,6 @@ $(document).ready(function () {
                         //阻止跳转
                         return false;
                     });
-
->>>>>>> 3172689a95e4f7da2000681ac577b1fbfcd7b5d1
                 }
                 else {
                     alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);

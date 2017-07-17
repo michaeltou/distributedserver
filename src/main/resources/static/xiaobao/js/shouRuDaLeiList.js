@@ -101,7 +101,7 @@ $(document).ready(function () {
 
     $('#myDeleteModal').on('hidden.bs.modal', function () {
         // 执行一些动作...
-        //$("#classroomguanli").click();
+        $("#shouRuDaLeiguanli").click();
     })
 
 
@@ -136,7 +136,7 @@ $(document).ready(function () {
 
                     });//each
 
-                   /* $(".deleteObjectLinkClass").on('click', function () {
+                    $(".deleteObjectLinkClass").on('click', function () {
 
                         //获取点击链接自定义属性的值
                         var href = $(this).attr('href');
@@ -152,7 +152,7 @@ $(document).ready(function () {
                         //显示属性框.
                         $('#myDeleteModal').modal('show');
                         return false;
-                    });*/
+                    });
 
                     $(".updateObjectLinkClass").on('click', function () {
                         var href = $(this).attr('href');
@@ -179,7 +179,6 @@ $(document).ready(function () {
                         //阻止跳转
                         return false;
                     });
-
                 }
                 else {
                     alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
