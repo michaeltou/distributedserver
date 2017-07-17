@@ -12,11 +12,11 @@ $(document).ready(function () {
             success: function (data) {
                 $('#mainContents').empty();
                 //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
-                var data2 = data.replace(/\<script src=\"js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
+                var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
 
-                var data3 = data2.replace(/\<script src=\"js\/bootstrap.js\"\>\<\/script\>/, "");
+                var data3= data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
 
-                var data4 = data3.replace(/\<link rel=\"stylesheet\" href=\"css\/bootstrap.css\"\/\>/, "");
+                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
                 $('#mainContents').append(data4);
             }
         });
@@ -41,6 +41,31 @@ $(document).ready(function () {
 
     });
 
+    $(".updateObjectLinkClass").on('click', function () {
+        var href = $(this).attr('href');
+
+        $.ajax({
+            type: "GET",
+            url: href,
+            success: function (data) {
+
+                $('#mainContents').empty();
+                //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
+                var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
+
+                var data3= data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
+
+                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
+
+                $('#mainContents').append(data4);
+
+
+            }
+        });
+
+        //阻止跳转
+        return false;
+    });
 
     $("#deleteObjectBtnInModal").click(function () {
         var url = "/deleteSRDaLei";
@@ -76,7 +101,7 @@ $(document).ready(function () {
 
     $('#myDeleteModal').on('hidden.bs.modal', function () {
         // 执行一些动作...
-        $("#classroomguanli").click();
+        //$("#classroomguanli").click();
     })
 
 
@@ -127,8 +152,34 @@ $(document).ready(function () {
                         //显示属性框.
                         $('#myDeleteModal').modal('show');
                         return false;
-
                     });*/
+
+                    $(".updateObjectLinkClass").on('click', function () {
+                        var href = $(this).attr('href');
+
+                        $.ajax({
+                            type: "GET",
+                            url: href,
+                            success: function (data) {
+
+                                $('#mainContents').empty();
+                                //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
+                                var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
+
+                                var data3= data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
+
+                                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
+
+                                $('#mainContents').append(data4);
+
+
+                            }
+                        });
+
+                        //阻止跳转
+                        return false;
+                    });
+
                 }
                 else {
                     alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);

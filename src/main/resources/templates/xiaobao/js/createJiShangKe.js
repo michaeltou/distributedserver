@@ -13,72 +13,161 @@ $(document).ready(function () {
     var b_validate_result4 = true;
     var b_validate_result5 = true;
 
-    $("#name").focusout(function () {
+    var b_validate_result6 = true;
+    var b_validate_result7 = true;
+    var b_validate_result8 = true;
+    var b_validate_result9 = true;
+    var b_validate_result10 = true;
 
-        if ($("#name").val().length < 2) {
-            $("#name").next().text("教室名称小于2个字符，不合法!");
-            $("#name").next().css({"display": "block", "color": "red"});
+
+    $("#banji_name").focusout(function () {
+
+        if ($("#banji_name").val().length < 2) {
+            $("#banji_name").next().text("班级名称小于2个字符，不合法!");
+            $("#banji_name").next().css({"display": "block", "color": "red"});
             b_validate_result1 = false;
         } else {
-            $("#name").next().css("display", "none");
+            $("#banji_name").next().css("display", "none");
             b_validate_result1 = true;
         }
 
 
     });
 
-    $("#school_name").focusout(function () {
+    $("#xiaoqu_name").focusout(function () {
 
-        if ($("#school_name").val().length < 2) {
-            $("#school_name").next().text("校区名称小于2个字符，不合法!");
-            $("#school_name").next().css({"display": "block", "color": "red"});
+        if ($("#xiaoqu_name").val().length < 2) {
+            $("#xiaoqu_name").next().text("校区名称小于2个字符，不合法!");
+            $("#xiaoqu_name").next().css({"display": "block", "color": "red"});
             b_validate_result2 = false;
         } else {
-            $("#school_name").next().css("display", "none");
+            $("#xiaoqu_name").next().css("display", "none");
             b_validate_result2 = true;
         }
 
 
     });
 
-    $("#capacity").focusout(function () {
+    $("#shangke_start_date").focusout(function () {
 
-
-
-        var telReg = /^\+?[1-9][0-9]*$/i;
-        if ( !telReg.test($("#capacity").val()) ) {
-            $("#capacity").next().text("非数字,不合法!");
-            $("#capacity").next().css({"display": "block", "color": "red"});
+        if ($("#shangke_start_date").val().length < 2) {
+            $("#shangke_start_date").next().text("地址信息小于2个字符，不够详细!");
+            $("#shangke_start_date").next().css({"display": "block", "color": "red"});
             b_validate_result3 = false;
         } else {
-            $("#capacity").next().css("display", "none");
+            $("#shangke_start_date").next().css("display", "none");
             b_validate_result3 = true;
         }
 
 
     });
-    $("#address").focusout(function () {
 
-        if ($("#address").val().length < 2) {
-            $("#address").next().text("地址信息小于2个字符，不够详细!");
-            $("#address").next().css({"display": "block", "color": "red"});
+
+    $("#shangke_end_date").focusout(function () {
+
+        if ($("#shangke_end_date").val().length < 2) {
+            $("#shangke_end_date").next().text("地址信息小于2个字符，不够详细!");
+            $("#shangke_end_date").next().css({"display": "block", "color": "red"});
             b_validate_result4 = false;
         } else {
-            $("#address").next().css("display", "none");
+            $("#shangke_end_date").next().css("display", "none");
             b_validate_result4 = true;
         }
 
 
     });
-    $("#note").focusout(function () {
+    $("#jiaoshi_keshi").focusout(function () {
 
-        if ($("#note").val().length < 2) {
-            $("#note").next().text("备注信息小于2个字符，不合法!");
-            $("#note").next().css({"display": "block", "color": "red"});
+        if ($("#jiaoshi_keshi").val().length < 2) {
+            $("#jiaoshi_keshi").next().text("备注信息小于2个字符，不合法!");
+            $("#jiaoshi_keshi").next().css({"display": "block", "color": "red"});
             b_validate_result5 = false;
         } else {
-            $("#note").next().css("display", "none");
+            $("#jiaoshi_keshi").next().css("display", "none");
             b_validate_result5 = true;
+        }
+
+
+    });
+
+    $("#teacher_name").focusout(function () {
+
+        if ($("#teacher_name").val().length < 2) {
+            $("#teacher_name").next().text("备注信息小于2个字符，不合法!");
+            $("#teacher_name").next().css({"display": "block", "color": "red"});
+            b_validate_result6 = false;
+        } else {
+            $("#teacher_name").next().css("display", "none");
+            b_validate_result6 = true;
+        }
+
+
+    });
+
+    $("#teacher_sfzCode").focusout(function () {
+
+        if ($("#teacher_sfzCode").val().length < 2) {
+            $("#teacher_sfzCode").next().text("备注信息小于2个字符，不合法!");
+            $("#teacher_sfzCode").next().css({"display": "block", "color": "red"});
+            b_validate_result6 = false;
+        } else {
+            $("#teacher_sfzCode").next().css("display", "none");
+            b_validate_result6 = true;
+        }
+
+
+    });
+
+    $("#assist_teacher_name").focusout(function () {
+
+        if ($("#assist_teacher_name").val().length < 2) {
+            $("#assist_teacher_name").next().text("备注信息小于2个字符，不合法!");
+            $("#assist_teacher_name").next().css({"display": "block", "color": "red"});
+            b_validate_result7 = false;
+        } else {
+            $("#assist_teacher_name").next().css("display", "none");
+            b_validate_result7 = true;
+        }
+
+
+    });
+
+    $("#assist_teacher_sfzCode").focusout(function () {
+
+        if ($("#assist_teacher_sfzCode").val().length < 2) {
+            $("#assist_teacher_sfzCode").next().text("备注信息小于2个字符，不合法!");
+            $("#assist_teacher_sfzCode").next().css({"display": "block", "color": "red"});
+            b_validate_result8 = false;
+        } else {
+            $("#assist_teacher_sfzCode").next().css("display", "none");
+            b_validate_result8 = true;
+        }
+
+
+    });
+    $("#shangke_content").focusout(function () {
+
+        if ($("#shangke_content").val().length < 2) {
+            $("#shangke_content").next().text("备注信息小于2个字符，不合法!");
+            $("#shangke_content").next().css({"display": "block", "color": "red"});
+            b_validate_result9 = false;
+        } else {
+            $("#shangke_content").next().css("display", "none");
+            b_validate_result9 = true;
+        }
+
+
+    });
+
+    $("#shangke_note").focusout(function () {
+
+        if ($("#shangke_note").val().length < 2) {
+            $("#shangke_note").next().text("备注信息小于2个字符，不合法!");
+            $("#shangke_note").next().css({"display": "block", "color": "red"});
+            b_validate_result10 = false;
+        } else {
+            $("#shangke_note").next().css("display", "none");
+            b_validate_result10 = true;
         }
 
 
@@ -157,7 +246,7 @@ $(document).ready(function () {
             success: function (data) {
                 $('#mainContents').empty();
                 //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
-                var data2 = data.replace(/\<script src=\"js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
+                var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
 
                 var data3= data2.replace(/\<script src=\"js\/bootstrap.js\"\>\<\/script\>/, "");
 
