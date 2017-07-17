@@ -12,6 +12,9 @@
     <script src="/xiaobao/js/jquery-3.2.1.js"></script>
     <script src="/xiaobao/js/bootstrap.js"></script>
     <script src="/xiaobao/js/updateClassRecord.js"></script>
+
+    <script src="/xiaobao/js/bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="/xiaobao/css/bootstrap-datetimepicker.css"/>
 </head>
 <body>
 
@@ -20,8 +23,8 @@
     <div class="row">
         <div class="col-md-12">
             <ol class="breadcrumb">
-                <li><a  href="#" id="classroomguanlibread">教室管理</a></li>
-                <li><a href="#">编辑教室</a></li>
+                <li><a  href="#" id="classroomguanlibread">上课记录管理</a></li>
+                <li><a href="#">编辑上课记录</a></li>
 
             </ol>
         </div>
@@ -30,7 +33,7 @@
     <div class="row">
         <div class="col-md-3">
             <h2 class="text-success  ">
-                编辑教室
+                编辑上课记录
             </h2>
             <div style="height: 20px;"></div>
         </div>
@@ -38,14 +41,14 @@
     <div class="row">
         <div class="col-md-3">
 
-            <div class="text-success" style="display: none;" id="successLabel">恭喜你，更新教室成功！
+            <div class="text-success" style="display: none;" id="successLabel">恭喜你，更新上课记录成功！
                 <div style="height: 50px;"></div>
                 <button type="button" class="btn btn-success" id="backBtn" style="display: none;">
                     返回
                 </button>
                 <div style="height: 50px;"></div>
             </div>
-            <div class="text-danger" style="display: none;" id="failLabel">更新教室失败！
+            <div class="text-danger" style="display: none;" id="failLabel">更新上课记录失败！
                 <div style="height: 50px;"></div>
             </div>
 
@@ -64,58 +67,140 @@
                 <form role="form" id="myform">
 
 
-                    <div class="form-group">
-                        <input type="hidden" class="form-control" id="id" th:value="${classroom.id}"/>
+                    <input type="hidden" class="form-control" id="id" th:value="${classRecordMain.id}"/>
 
-                        <label for="classroom_name">
-                            教室名称
-                        </label>
-                        <input type="text" class="form-control" id="classroom_name" th:value="${classroom.name}"/>
-                        <div class="check_tips"></div>
-                    </div>
-                    <div class="form-group">
+                        <div class="form-group">
 
-                        <label for="school_name">
-                            校区
-                        </label>
-                        <input type="text" class="form-control" id="school_name" th:value="${classroom.school_name}"/>
-                        <div class="check_tips"></div>
-                    </div>
-                    <div class="form-group">
+                            <label for="banji_name">
+                                班级名称
+                            </label>
+                            <input type="text" class="form-control" id="banji_name" th:value="${classRecordMain.banji_name}"/>
+                            <div class="check_tips"></div>
+                        </div>
+                        <div class="form-group">
 
-                        <label for="capacity">
-                            容纳人数
-                        </label>
-                        <input type="text" class="form-control" id="capacity" th:value="${classroom.capacity}"/>
-                        <div class="check_tips"></div>
-                    </div>
-                    <div class="form-group">
+                            <label for="xiaoqu_name">
+                                校区
+                            </label>
+                            <input type="text" class="form-control" id="xiaoqu_name" th:value="${classRecordMain.xiaoqu_name}"/>
+                            <div class="check_tips"></div>
+                        </div>
+                        <div class="form-group">
 
-                        <label for="address">
-                            地址
-                        </label>
-                        <input type="text" class="form-control" id="address" th:value="${classroom.address}"/>
-                        <div class="check_tips"></div>
-                    </div>
-                    <div class="form-group">
+                            <label for="shangke_start_date">
+                                上课开始时间
+                            </label>
 
-                        <label for="note">
-                            备注
-                        </label>
-                        <input type="text" class="form-control" id="note" th:value="${classroom.note}"/>
-                        <div class="check_tips"></div>
-                    </div>
+                            <input type="text"  class="form-control"  id="shangke_start_date" th:value="${#dates.format(classRecordMain.shangke_start_date, 'yyyy-MM-dd HH:mm:ss')}" />
+
+
+                            <div class="check_tips"></div>
+                        </div>
+                        <div class="form-group">
+
+                            <label for="shangke_end_date">
+                                上课结束时间
+                            </label>
+
+                            <input type="text"  class="form-control"   id="shangke_end_date" th:value="${#dates.format(classRecordMain.shangke_end_date, 'yyyy-MM-dd HH:mm:ss')}" />
+
+                            <div class="check_tips"></div>
+                        </div>
 
 
 
+                        <div class="form-group">
 
+                            <label for="jiaoshi_keshi">
+                                教师课时
+                            </label>
+                            <input type="text" class="form-control" id="jiaoshi_keshi" th:value="${classRecordMain.jiaoshi_keshi}"/>
+                            <div class="check_tips"></div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <label for="teacher_name">
+                                教师姓名
+                            </label>
+                            <input type="text" class="form-control" id="teacher_name" th:value="${classRecordMain.teacher_name}"/>
+                            <div class="check_tips"></div>
+                        </div>
                 </form>
+
             </div>
 
 
         </div>
 
+        <div class="col-md-4">
 
+            <div id="formdiv2">
+                <form role="form" id="myform2">
+                    <div class="form-group">
+
+                        <label for="teacher_sfzCode">
+                            教师身份证
+                        </label>
+                        <input type="text" class="form-control" id="teacher_sfzCode" th:value="${classRecordMain.teacher_sfzCode}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="assist_teacher_name">
+                            助教姓名
+                        </label>
+                        <input type="text" class="form-control" id="assist_teacher_name" th:value="${classRecordMain.assist_teacher_name}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="assist_teacher_sfzCode">
+                            助教身份证
+                        </label>
+                        <input type="text" class="form-control" id="assist_teacher_sfzCode" th:value="${classRecordMain.assist_teacher_sfzCode}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="shangke_content">
+                            上课内容
+                        </label>
+                        <input type="text" class="form-control" id="shangke_content" th:value="${classRecordMain.shangke_content}" />
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="shangke_note">
+                            上课备注
+                        </label>
+                        <input type="text" class="form-control" id="shangke_note" th:value="${classRecordMain.shangke_note}" />
+                        <div class="check_tips"></div>
+                    </div>
+
+
+
+
+                    <div class="form-group">
+
+                        <label for="shangke_pic_list">
+                            上课图片列表
+                        </label>
+                        <input type="text" class="form-control" id="shangke_pic_list" th:value="${classRecordMain.shangke_pic_list}" />
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                </form>
+
+            </div>
+
+        </div>
     </div>
 
     <div class="row">

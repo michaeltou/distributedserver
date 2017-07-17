@@ -166,8 +166,8 @@ public interface ClassRecordMainDAO {
             "#{shangke_pic_list},\n" +
             "#{creator_username},\n" +
             "#{creator_name},\n" +
-            "#{createDate},\n" +
-            "#{updateDate}) \n"   
+            "now(),\n" +
+            "now()) \n"
     )
     public int insertClassRecordMain(ClassRecordMain classRecordMain);
 
@@ -186,15 +186,15 @@ public interface ClassRecordMainDAO {
             "`shangke_pic_list` = #{shangke_pic_list},\n" +
             "`creator_username` = #{creator_username},\n" +
             "`creator_name` = #{creator_name},\n" +
-            "`updateDate` = #{updateDate}\n" +
+            "`updateDate` = now() \n" +
             " where  id  = #{id} and  institution_code = #{institution_code} and  " +
-            " xiaoqu_name = #{xiaoqu_name} and banji_name = #{banji_name}  "   )
+            "  banji_name = #{banji_name}  "   )
     public int updateClassRecordMain(ClassRecordMain classRecordMain);
 
 
     @Delete(" DELETE FROM  `px_class_record_main`\n" +
-            " where  id  = #{id} and  institution_code = #{institution_code} and  " +
-            " xiaoqu_name = #{xiaoqu_name} and banji_name = #{banji_name}  "   )
+            " where  id  = #{id} and  institution_code = #{institution_code} " +
+            "   and   banji_name = #{banji_name}  "   )
     public int deleteClassRecordMain(ClassRecordMain classRecordMain);
 
 

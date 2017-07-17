@@ -99,9 +99,11 @@ public class ClassRecordMainApi {
      * @return
      */
     @RequestMapping("/insertClassRecordMain")
-    public ResultModel insertClassRecordMain(@RequestBody ClassRecordMain classRecordMain) {
+    public ResultModel insertClassRecordMain(@RequestBody ClassRecordMain classRecordMain, HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
 
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        classRecordMain.setInstitution_code(institution_code);
         int result = classRecordMainService.insertClassRecordMain(classRecordMain);
         if (result > 0) {
             return resultModel;
@@ -143,8 +145,10 @@ public class ClassRecordMainApi {
      * @return
      */
     @RequestMapping("/updateClassRecordMain")
-    public ResultModel updateClassRecordMain(@RequestBody ClassRecordMain classRecordMain) {
+    public ResultModel updateClassRecordMain(@RequestBody ClassRecordMain classRecordMain, HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        classRecordMain.setInstitution_code(institution_code);
         int result = classRecordMainService.updateClassRecordMain(classRecordMain);
         if (result > 0) {
             return resultModel;
@@ -185,8 +189,10 @@ public class ClassRecordMainApi {
      * @return
      */
     @RequestMapping("/deleteClassRecordMain")
-    public ResultModel deleteClassRecordMain(@RequestBody ClassRecordMain classRecordMain) {
+    public ResultModel deleteClassRecordMain(@RequestBody ClassRecordMain classRecordMain, HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        classRecordMain.setInstitution_code(institution_code);
         int result = classRecordMainService.deleteClassRecordMain(classRecordMain);
         if (result > 0) {
             return resultModel;
@@ -198,6 +204,10 @@ public class ClassRecordMainApi {
 
 
     //-----------------------whole-------------------------------------
+
+
+
+
 
     @RequestMapping("/queryClassRecordListByInstitutionAndBanjiName")
     public ResultModel queryClassRecordListByInstitutionAndBanjiName(HttpServletRequest request) {
@@ -211,9 +221,47 @@ public class ClassRecordMainApi {
     }
 
 
-    @RequestMapping("/deleteClassRecord")
-    public ResultModel deleteClassRecord(@RequestBody ClassRecordMain classRecordMain) {
+    @RequestMapping("/insertClassRecord")
+    public ResultModel insertClassRecord(@RequestBody ClassRecordMain classRecordMain, HttpServletRequest request) {
+
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        classRecordMain.setInstitution_code(institution_code);
         ResultModel resultModel = new ResultModel();
+
+        int result = classRecordMainService.insertClassRecordMain(classRecordMain);
+        if (result > 0) {
+            return resultModel;
+        } else {
+            resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+            return resultModel;
+        }
+
+    }
+
+    @RequestMapping("/updateClassRecord")
+    public ResultModel updateClassRecord(@RequestBody ClassRecordMain classRecordMain, HttpServletRequest request) {
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        classRecordMain.setInstitution_code(institution_code);
+
+        ResultModel resultModel = new ResultModel();
+        int result = classRecordMainService.updateClassRecordMain(classRecordMain);
+        if (result > 0) {
+            return resultModel;
+        } else {
+            resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+            return resultModel;
+        }
+    }
+
+
+    @RequestMapping("/deleteClassRecord")
+    public ResultModel deleteClassRecord(@RequestBody ClassRecordMain classRecordMain, HttpServletRequest request) {
+
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        classRecordMain.setInstitution_code(institution_code);
+
+        ResultModel resultModel = new ResultModel();
+
         int result = classRecordMainService.deleteClassRecordMain(classRecordMain);
         if (result > 0) {
             return resultModel;
@@ -226,11 +274,14 @@ public class ClassRecordMainApi {
 
 
     @RequestMapping("/queryClassRecordListByBanjiNameWithBanjiNameLike")
-    public List<ClassRecordMain> queryClassRecordListByBanjiNameWithBanjiNameLike(HttpServletRequest request) {
+    public ResultModel queryClassRecordListByBanjiNameWithBanjiNameLike(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
+
         String institution_code = (String) request.getSession().getAttribute("institution_code");
         String banji_name = request.getParameter("banji_name");
-        List<ClassRecordMain> classRecordMainList = classRecordMainService.queryClassRecordMainListByInstitutionAndBanjiName(institution_code, banji_name);
-        return classRecordMainList;
+        List<ClassRecordMain> classRecordMainList = classRecordMainService.queryClassRecordMainListByInstitutionAndBanjiNameWithBanjiNameLike(institution_code, banji_name);
+        resultModel.setData(classRecordMainList);
+        return resultModel;
     }
 
 

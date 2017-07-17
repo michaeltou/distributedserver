@@ -27,7 +27,11 @@ public class ClassRecordPage {
 
 
     @RequestMapping("/xiaobao/queryClassRecord")
-    public String queryClassRecord(HttpServletRequest request, Model model){
+    public String queryClassRecord(HttpServletRequest request, Model model ){
+
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        List<ClassRecordMain> classRecordMainList = classRecordMainService.queryClassRecordMainListByInstitution(institution_code);
+        model.addAttribute("classRecordMainList",classRecordMainList);
         return "xiaobao/classRecordList";
     }
 

@@ -104,7 +104,7 @@ $(document).ready(function () {
 
     $('#myDeleteModal').on('hidden.bs.modal', function () {
         // 执行一些动作...
-        $("#classroomguanli").click();
+        $("#createClassRecordMenu").click();
     })
 
 

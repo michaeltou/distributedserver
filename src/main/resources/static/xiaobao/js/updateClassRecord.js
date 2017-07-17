@@ -6,79 +6,166 @@
 $(document).ready(function () {
 
 
+    $('#shangke_start_date').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii:ss',
+        autoclose: true,//选中自动关闭
+        todayBtn: true//显示今日按钮
+    });
+
+    $('#shangke_end_date').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii:ss',
+        autoclose: true,//选中自动关闭
+        todayBtn: true//显示今日按钮
+    });
+
+
     var b_validate_result = true;
     var b_validate_result1 = true;
     var b_validate_result2 = true;
     var b_validate_result3 = true;
     var b_validate_result4 = true;
     var b_validate_result5 = true;
+    var b_validate_result6 = true;
+    var b_validate_result7 = true;
+    var b_validate_result8 = true;
+    var b_validate_result9 = true;
 
-    $("#classroom_name").focusout(function () {
+    $("#banji_name").focusout(function () {
 
-        if ($("#classroom_name").val().length < 2) {
-            $("#classroom_name").next().text("教室名称小于2个字符，不合法!");
-            $("#classroom_name").next().css({"display": "block", "color": "red"});
+        if ($("#banji_name").val().length < 2) {
+            $("#banji_name").next().text("班级名称小于2个字符，不合法!");
+            $("#banji_name").next().css({"display": "block", "color": "red"});
             b_validate_result1 = false;
         } else {
-            $("#classroom_name").next().css("display", "none");
+            $("#banji_name").next().css("display", "none");
             b_validate_result1 = true;
         }
 
 
     });
 
-    $("#school_name").focusout(function () {
+    $("#xiaoqu_name").focusout(function () {
 
-        if ($("#school_name").val().length < 2) {
-            $("#school_name").next().text("校区名称小于2个字符，不合法!");
-            $("#school_name").next().css({"display": "block", "color": "red"});
+        if ($("#xiaoqu_name").val().length < 2) {
+            $("#xiaoqu_name").next().text("校区名称小于2个字符，不合法!");
+            $("#xiaoqu_name").next().css({"display": "block", "color": "red"});
             b_validate_result2 = false;
         } else {
-            $("#school_name").next().css("display", "none");
+            $("#xiaoqu_name").next().css("display", "none");
             b_validate_result2 = true;
         }
 
 
     });
 
-    $("#capacity").focusout(function () {
+    $("#shangke_start_date").change(function () {
 
 
+        var telReg = /(\d{4}-\d{2}-\d{2}\d{2}:\d{2}:\d{2})|(\d{2}-\d{2}\d{2}:\d{2}:\d{2})|(\d{2}:\d{2}:\d{2})/;
+        if ( !telReg.test($("#shangke_start_date").val()) ) {
 
-        var telReg = /^\+?[1-9][0-9]*$/i;
-        if ( !telReg.test($("#capacity").val()) ) {
-            $("#capacity").next().text("非数字,不合法!");
-            $("#capacity").next().css({"display": "block", "color": "red"});
+            $("#shangke_start_date").next().text("时间格式有误!正确时间格式为yyyy-mm-dd hh:ii:ss");
+            $("#shangke_start_date").next().css({"display": "block", "color": "red"});
             b_validate_result3 = false;
         } else {
-            $("#capacity").next().css("display", "none");
+            $("#shangke_start_date").next().css("display", "none");
             b_validate_result3 = true;
         }
 
 
     });
-    $("#address").focusout(function () {
 
-        if ($("#address").val().length < 2) {
-            $("#address").next().text("地址信息小于2个字符，不够详细!");
-            $("#address").next().css({"display": "block", "color": "red"});
+
+    $("#shangke_end_date").change(function () {
+        var telReg = /(\d{4}-\d{2}-\d{2}\d{2}:\d{2}:\d{2})|(\d{2}-\d{2}\d{2}:\d{2}:\d{2})|(\d{2}:\d{2}:\d{2})/;
+        if ( !telReg.test($("#shangke_end_date").val()) ) {
+            $("#shangke_end_date").next().text("时间格式有误!正确时间格式为yyyy-mm-dd hh:ii:ss");
+            $("#shangke_end_date").next().css({"display": "block", "color": "red"});
             b_validate_result4 = false;
         } else {
-            $("#address").next().css("display", "none");
+            $("#shangke_end_date").next().css("display", "none");
             b_validate_result4 = true;
         }
 
 
     });
-    $("#note").focusout(function () {
+    $("#jiaoshi_keshi").focusout(function () {
 
-        if ($("#note").val().length < 2) {
-            $("#note").next().text("备注信息小于2个字符，不合法!");
-            $("#note").next().css({"display": "block", "color": "red"});
+        var telReg = /^\+?[1-9][0-9]*$/i;
+        if ( !telReg.test($("#jiaoshi_keshi").val()) ) {
+            $("#jiaoshi_keshi").next().text("非数字,不合法!");
+            $("#jiaoshi_keshi").next().css({"display": "block", "color": "red"});
             b_validate_result5 = false;
         } else {
-            $("#note").next().css("display", "none");
+            $("#jiaoshi_keshi").next().css("display", "none");
             b_validate_result5 = true;
+        }
+
+
+    });
+
+    $("#teacher_name").focusout(function () {
+
+        if ($("#teacher_name").val().length < 2) {
+            $("#teacher_name").next().text("教师姓名小于2个字符，不合法!");
+            $("#teacher_name").next().css({"display": "block", "color": "red"});
+            b_validate_result6 = false;
+        } else {
+            $("#teacher_name").next().css("display", "none");
+            b_validate_result6 = true;
+        }
+
+
+    });
+
+    $("#teacher_sfzCode").focusout(function () {
+
+        if ($("#teacher_sfzCode").val().length < 2) {
+            $("#teacher_sfzCode").next().text("身份证信息小于2个字符，不合法!");
+            $("#teacher_sfzCode").next().css({"display": "block", "color": "red"});
+            b_validate_result6 = false;
+        } else {
+            $("#teacher_sfzCode").next().css("display", "none");
+            b_validate_result6 = true;
+        }
+
+
+    });
+
+  /*  $("#assist_teacher_name").focusout(function () {
+        if ($("#assist_teacher_name").val().length < 2) {
+            $("#assist_teacher_name").next().text("助教姓名小于2个字符，不合法!");
+            $("#assist_teacher_name").next().css({"display": "block", "color": "red"});
+            b_validate_result7 = false;
+        } else {
+            $("#assist_teacher_name").next().css("display", "none");
+            b_validate_result7 = true;
+        }
+
+    });
+
+    $("#assist_teacher_sfzCode").focusout(function () {
+
+        if ($("#assist_teacher_sfzCode").val().length < 2) {
+            $("#assist_teacher_sfzCode").next().text("助教身份证信息小于2个字符，不合法!");
+            $("#assist_teacher_sfzCode").next().css({"display": "block", "color": "red"});
+            b_validate_result8 = false;
+        } else {
+            $("#assist_teacher_sfzCode").next().css("display", "none");
+            b_validate_result8 = true;
+        }
+
+
+    });*/
+    $("#shangke_content").focusout(function () {
+
+        if ($("#shangke_content").val().length < 10) {
+            $("#shangke_content").next().text("上课内容小于10个字符，不合法!");
+            $("#shangke_content").next().css({"display": "block", "color": "red"});
+            b_validate_result9 = false;
+        } else {
+            $("#shangke_content").next().css("display", "none");
+            b_validate_result9 = true;
         }
 
 
@@ -89,20 +176,27 @@ $(document).ready(function () {
 
     $("#update").click(function () {
 
-        $("#classroom_name").focus();
-        $("#school_name").focus();
-        $("#capacity").focus();
-        $("#address").focus();
-        $("#note").focus();
-        $("#classroom_name").focus();
+        $("#banji_name").focus();
+        $("#xiaoqu_name").focus();
+        $("#shangke_start_date").change();
+        $("#shangke_end_date").change();
+        $("#jiaoshi_keshi").focus();
+        $("#teacher_name").focus();
+        $("#teacher_sfzCode").focus();
+        $("#assist_teacher_name").focus();
+        $("#assist_teacher_sfzCode").focus();
+        $("#shangke_content").focus();
+        $("#shangke_note").focus();
+        $("#shangke_pic_list").focus();
+        $("#banji_name").focus();
 
-        b_validate_result = b_validate_result1 & b_validate_result2 & b_validate_result3 & b_validate_result4 &b_validate_result5;
+        b_validate_result = b_validate_result1 & b_validate_result2 & b_validate_result3 & b_validate_result4
+            &b_validate_result5&b_validate_result6&b_validate_result7&b_validate_result8&b_validate_result9;
         if (!b_validate_result) {
-
             return;
         }
 
-        var url = "/updateClassroom";
+        var url = "/updateClassRecord";
         $.ajax({
             type: "post",
             url: url,
@@ -112,21 +206,32 @@ $(document).ready(function () {
              * */
             data: JSON.stringify({
                 id: $("#id").val(),
-                school_name: $("#school_name").val(),
-                name: $("#classroom_name").val(),
-                capacity: $("#capacity").val(),
-                address: $("#address").val(),
-                note: $("#note").val()
+                banji_name: $("#banji_name").val(),
+                xiaoqu_name: $("#xiaoqu_name").val(),
+                shangke_start_date: $("#shangke_start_date").val(),
+                shangke_end_date: $("#shangke_end_date").val(),
+                jiaoshi_keshi: $("#jiaoshi_keshi").val(),
+                teacher_name: $("#teacher_name").val(),
+                teacher_sfzCode: $("#teacher_sfzCode").val(),
+                assist_teacher_name: $("#assist_teacher_name").val(),
+                assist_teacher_sfzCode: $("#assist_teacher_sfzCode").val(),
+                shangke_content: $("#shangke_content").val(),
+                shangke_note: $("#shangke_note").val(),
+                shangke_pic_list: $("#shangke_pic_list").val()
             }),
             dataType: "json",
             contentType: "application/json; charset=utf-8",//(可以)
             success: function (data, textStatus) {
                 if (data.success) {
-                    $("#myform")[0].reset();
+
+
+
                     $("#successLabel").show();
                     $("#backBtn").show();
+
                     $("#submitAreaDiv").empty();
                     $("#formdiv").empty();
+                    $("#formdiv2").empty();
                 }
                 else {
                     alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
@@ -141,17 +246,17 @@ $(document).ready(function () {
     });
 
     $("#formBackBtn").click(function () {
-        $("#classroomguanli").click();
+        $("#createClassRecordMenu").click();
 
     });
 
     $("#classroomguanlibread").click(function () {
-        $("#classroomguanli").click();
+        $("#createClassRecordMenu").click();
 
     });
 
     $("#backBtn").click(function () {
-        $("#classroomguanli").click();
+        $("#createClassRecordMenu").click();
 
     });
 
