@@ -6,6 +6,13 @@
 $(document).ready(function () {
 
 
+
+    $('#datetimepicker').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii'
+    });
+
+
+    
     var b_validate_result = true;
     var b_validate_result1 = true;
     var b_validate_result2 = true;
