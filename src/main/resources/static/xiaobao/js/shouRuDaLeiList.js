@@ -24,7 +24,7 @@ $(document).ready(function () {
 
 
 
-    $(".deleteObjectLinkClass").on('click', function () {
+    $("body").on('click',".deleteObjectLinkClass", function () {
         //获取点击链接自定义属性的值
         var href = $(this).attr('href');
         var id = $(this).attr('id');
@@ -39,32 +39,6 @@ $(document).ready(function () {
         $('#myDeleteModal').modal('show');
         return false;
 
-    });
-
-    $(".updateObjectLinkClass").on('click', function () {
-        var href = $(this).attr('href');
-
-        $.ajax({
-            type: "GET",
-            url: href,
-            success: function (data) {
-
-                $('#mainContents').empty();
-                //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
-                var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
-
-                var data3= data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
-
-                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
-
-                $('#mainContents').append(data4);
-
-
-            }
-        });
-
-        //阻止跳转
-        return false;
     });
 
     $("#deleteObjectBtnInModal").click(function () {
@@ -96,7 +70,6 @@ $(document).ready(function () {
             }
         });
 
-
     });
 
     $('#myDeleteModal').on('hidden.bs.modal', function () {
@@ -126,59 +99,18 @@ $(document).ready(function () {
                     //动态构建表格数据.
                     $.each(data.data, function (id, shouRuDaLei) {
                         var $tr = $("<tr ></tr>");
-                        var $td1 = $("<td >" + shouRuDaLei.name + "</td>");
-                        var $td2 = ('<td><a class="deleteObjectLinkClass" href="#" th:attr="name=${shouRuDaLei.name},id=${shouRuDaLei.id}" >删除</a></td>');
+                        var $td1 = $("<td >" + shouRuDaLei.id + "</td>");
+                        var $td2 = $("<td >" + shouRuDaLei.name + "</td>");
+                        var $td3 = $("<td><a class='deleteObjectLinkClass' href='#' name='" + shouRuDaLei.name +
+                            "' institution_code = '" + shouRuDaLei.institution_code + "'  id = '" + shouRuDaLei.id + "'>删除</a></td>");
 
                         $tr.append($td1);
                         $tr.append($td2);
+                        $tr.append($td3);
                         $tr.appendTo($("#mytablebody"));
 
 
                     });//each
-
-                    $(".deleteObjectLinkClass").on('click', function () {
-
-                        //获取点击链接自定义属性的值
-                        var href = $(this).attr('href');
-                        var id = $(this).attr('id');
-                        var name = $(this).attr('name');
-
-
-                        //将自定义属性的值赋值给modal
-                        $("#id").val(id);
-                        $("#name").val(name);
-
-
-                        //显示属性框.
-                        $('#myDeleteModal').modal('show');
-                        return false;
-                    });
-
-                    $(".updateObjectLinkClass").on('click', function () {
-                        var href = $(this).attr('href');
-
-                        $.ajax({
-                            type: "GET",
-                            url: href,
-                            success: function (data) {
-
-                                $('#mainContents').empty();
-                                //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
-                                var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
-
-                                var data3= data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
-
-                                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
-
-                                $('#mainContents').append(data4);
-
-
-                            }
-                        });
-
-                        //阻止跳转
-                        return false;
-                    });
                 }
                 else {
                     alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);

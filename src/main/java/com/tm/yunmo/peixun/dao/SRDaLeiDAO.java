@@ -73,6 +73,6 @@ public interface SRDaLeiDAO {
     public int updateSRDaLei(SRDaLei srDaLei);
 
     @Delete(" DELETE FROM  `px_sr_dalei`\n" +
-            " WHERE  name=#{name} and institution_code=#{institution_code} ; ")
+            " WHERE id=#{id} and   name=#{name} and institution_code=#{institution_code} ; ")
     public int deleteSRDaLei(SRDaLei srDaLei);
 }

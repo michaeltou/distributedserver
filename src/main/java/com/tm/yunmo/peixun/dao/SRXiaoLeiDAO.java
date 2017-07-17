@@ -79,6 +79,6 @@ public interface SRXiaoLeiDAO {
     public int updateSRXiaoLei(SRXiaoLei srXiaoLei);
 
     @Delete(" DELETE FROM  `px_sr_xiaolei`\n" +
-            " WHERE  name=#{name} and institution_code=#{institution_code} ; ")
+            " WHERE id=#{id} and   name=#{name} and institution_code=#{institution_code} ; ")
     public int deleteSRXiaoLei(SRXiaoLei srXiaoLei);
 }

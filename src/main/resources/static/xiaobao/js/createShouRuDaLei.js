@@ -92,17 +92,17 @@ $(document).ready(function () {
 
 
     $("#backToListBtn").click(function () {
-        $("#classroomguanli").click();
+        $("#shouRuDaLeiguanli").click();
 
     });
 
     $("#formBackBtn").click(function () {
-        $("#classroomguanli").click();
+        $("#shouRuDaLeiguanli").click();
 
     });
 
     $("#backToListbreadLink").click(function () {
-        $("#classroomguanli").click();
+        $("#shouRuDaLeiguanli").click();
 
     });
 

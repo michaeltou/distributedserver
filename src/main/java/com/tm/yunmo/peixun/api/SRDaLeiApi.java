@@ -25,11 +25,20 @@ public class SRDaLeiApi {
      * @param request
      * @return
      */
-    @RequestMapping("/querySRDaLeiListByInstitution")
+    /*@RequestMapping("/querySRDaLeiListByInstitution")
     public List<SRDaLei> querySRDaLeiListByInstitution(HttpServletRequest request) {
         String institution_code = (String) request.getSession().getAttribute("institution_code");
         List<SRDaLei> srDaLeiList = srDaLeiService.querySRDaLeiListByInstitution(institution_code);
         return srDaLeiList;
+    }*/
+
+    @RequestMapping("/querySRDaLeiListByInstitution")
+    public ResultModel querySRDaLeiListByInstitution(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        List<SRDaLei> srDaLeiList = srDaLeiService.querySRDaLeiListByInstitution(institution_code);
+        resultModel.setData(srDaLeiList);
+        return resultModel;
     }
 
     /**
