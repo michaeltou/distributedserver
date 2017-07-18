@@ -10,26 +10,23 @@ public class JiaoCaiZaFei {
 
 
     private int id;
-
     //'教材名称'
     private String name;
+    //教材杂费类别
+    private String type;
     //''进价''
     private int jin_jia;
-
     //'''售价'''
-    private int sou_jia;
-
+    private int shou_jia;
     //课程分类.
     private String kecheng_category;
-
     //'积分兑换'
     private int jifeng_duihuang;
     //机构代码
     private String institution_code;
-    //
+    //创建时间
     private Date createDate;
-
-    //
+    //最后更新时间
     private Date updateDate;
 
     public int getId() {
@@ -48,6 +45,14 @@ public class JiaoCaiZaFei {
         this.name = name;
     }
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public int getJin_jia() {
         return jin_jia;
     }
@@ -56,12 +61,12 @@ public class JiaoCaiZaFei {
         this.jin_jia = jin_jia;
     }
 
-    public int getSou_jia() {
-        return sou_jia;
+    public int getShou_jia() {
+        return shou_jia;
     }
 
-    public void setSou_jia(int sou_jia) {
-        this.sou_jia = sou_jia;
+    public void setShou_jia(int shou_jia) {
+        this.shou_jia = shou_jia;
     }
 
     public String getKecheng_category() {

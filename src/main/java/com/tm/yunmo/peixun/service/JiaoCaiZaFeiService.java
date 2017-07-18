@@ -31,6 +31,11 @@ public class JiaoCaiZaFeiService {
         return JiaoCaiZaFei;
     }
 
+    public List<JiaoCaiZaFei>  queryJiaoCaiZaFeiListByNameWithLike( String name,  String institution_code) {
+        List<JiaoCaiZaFei> jiaoCaiZaFeiList = jiaoCaiZaFeiDAO.queryJiaoCaiZaFeiListByNameWithLike(name, institution_code);
+        return jiaoCaiZaFeiList;
+    }
+
 
     public int insertJiaoCaiZaFei(JiaoCaiZaFei jiaoCaiZaFei) {
         int result = jiaoCaiZaFeiDAO.insertJiaoCaiZaFei(jiaoCaiZaFei);

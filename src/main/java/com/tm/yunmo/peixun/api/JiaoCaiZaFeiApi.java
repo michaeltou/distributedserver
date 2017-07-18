@@ -53,6 +53,16 @@ public class JiaoCaiZaFeiApi {
         return jiaoCaiZaFei;
     }
 
+    @RequestMapping("/queryJiaoCaiZaFeiByNameWithLike")
+    public ResultModel queryJiaoCaiZaFeiByNameWithLike(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
+        String name = request.getParameter("name");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        List<JiaoCaiZaFei> jiaoCaiZaFeiList = jiaoCaiZaFeiService.queryJiaoCaiZaFeiListByNameWithLike(name, institution_code);
+        resultModel.setData(jiaoCaiZaFeiList);
+        return resultModel;
+    }
+
 
     /**
      * POST http://localhost:9999/insertJiaoCaiZaFei HTTP/1.1

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>新建教材杂费</title>
+    <title>编辑学校账户</title>
     <meta name="viewport" content="width=device-width,
                                      initial-scale=1.0,
                                      maximum-scale=1.0,
@@ -11,18 +11,17 @@
     <link rel="stylesheet" href="/xiaobao/css/bootstrap.css"/>
     <script src="/xiaobao/js/jquery-3.2.1.js"></script>
     <script src="/xiaobao/js/bootstrap.js"></script>
-    <script src="/xiaobao/js/createJiaoCaiZaFei.js"></script>
+    <script src="/xiaobao/js/updateSchoolAccount.js"></script>
 </head>
 <body>
 
 
 <div class="container-fluid">
-
     <div class="row">
         <div class="col-md-12">
             <ol class="breadcrumb">
-                <li><a  href="#" id="backToListbreadLink">教材杂费管理</a></li>
-                <li><a href="#">新建教材杂费</a></li>
+                <li><a href="#" id="classroomguanlibread">学校账户管理</a></li>
+                <li><a href="#">编辑学校账户</a></li>
 
             </ol>
         </div>
@@ -31,7 +30,7 @@
     <div class="row">
         <div class="col-md-3">
             <h2 class="text-success  ">
-                新建教材杂费
+                编辑学校账户
             </h2>
             <div style="height: 20px;"></div>
         </div>
@@ -39,22 +38,16 @@
     <div class="row">
         <div class="col-md-3">
 
-            <div class="text-success" style="display: none;" id="successLabel">恭喜你，新建教材杂费成功！
+            <div class="text-success" style="display: none;" id="successLabel">恭喜你，更新学校账户成功！
                 <div style="height: 50px;"></div>
-                <button type="button" class="btn btn-info" id="backToListBtn" style="display: none;">
+                <button type="button" class="btn btn-success" id="backBtn" style="display: none;">
                     返回
                 </button>
-
-                <button type="button" class="btn btn-success" id="createAgainBtn" style="display: none;">
-                    再新建一个教材杂费
-                </button>
                 <div style="height: 50px;"></div>
             </div>
-            <div class="text-danger" style="display: none;" id="failLabel">新建教材杂费失败！
+            <div class="text-danger" style="display: none;" id="failLabel">更新学校账户失败！
                 <div style="height: 50px;"></div>
             </div>
-
-
 
 
         </div>
@@ -69,45 +62,49 @@
             <div id="formdiv">
                 <form role="form" id="myform">
                     <div class="form-group">
-
-                        <label for="name">
-                            教材杂费名称
+                        <input type="hidden" id="schoolAccoun_id" th:value="${schoolAccount.id}"/>
+                        <input type="hidden" id="status_DB" th:value="${schoolAccount.status}"/>
+                        <label for="accountName">
+                            账户名称
                         </label>
-                        <input type="text" class="form-control" id="name"/>
+                        <input type="text" class="form-control" id="accountName" th:value="${schoolAccount.accountName}" readonly = "readonly"/>
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
 
-                        <label for="keChengCategory">
-                            所属课程
+                        <label for="accountCode">
+                            账户
                         </label>
-
-                        <select name="keChengCategory" class="form-control" id="keChengCategory">
-                            <option value="音乐">音乐</option>
-                            <option value="美术">美术</option>
-                        </select>
+                        <input type="text" class="form-control" id="accountCode" th:value="${schoolAccount.accountCode}"/>
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
 
-                        <label for="jinJia">
-                            进价
+                        <label for="bank">
+                            开户行
                         </label>
-                        <input type="text" class="form-control" id="jinJia"/>
+                        <input type="text" class="form-control" id="bank" th:value="${schoolAccount.bank}"/>
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
 
-                        <label for="shouJia">
-                            售价
+                        <label style="float: left;">
+                            状态
                         </label>
-                        <input type="text" class="form-control" id="shouJia"/>
-                        <div class="check_tips"></div>
+                        <div style="float: left;">
+                            <label class="checkbox-inline">
+                                <input type="radio" name="status" value="有效"/>有效
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="radio" name="status" value="无效"/>无效
+                            </label>
+                        </div>
+
                     </div>
 
                 </form>
-
             </div>
+
 
         </div>
 
@@ -125,15 +122,14 @@
                 <button type="button" class="btn btn-default" id="formBackBtn">返回
                 </button>
                 &nbsp; &nbsp; &nbsp;
-                <button id="save" type="button" class="btn btn-success">
-                    保存
+                <button id="update" type="button" class="btn btn-success">
+                    更新
                 </button>
                 <div style="height: 80px;"></div>
             </div>
         </div>
-
-
     </div>
+
 </div>
 
 

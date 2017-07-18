@@ -45,6 +45,15 @@ public class KeChengCategoryApi {
         return keChengCategoryList;
     }
 
+    @RequestMapping("/queryKeChengCategoryListByInstitution")
+    public ResultModel queryKeChengCategoryListByInstitution(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        List<KeChengCategory> keChengCategoryList = keChengCategoryService.queryKeChengCategoryByInstitution(institution_code);
+        resultModel.setData(keChengCategoryList);
+        return resultModel;
+    }
+
 
     @RequestMapping("/queryKeChengCategoryById")
     public KeChengCategory queryKeChengById(HttpServletRequest request) {

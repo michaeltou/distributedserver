@@ -37,7 +37,7 @@
                             <input type="hidden" id="id"  />
                             <input type="hidden" id="school_name"  />
 
-                            确认删除该教室吗?
+                            确认删除该教材杂费吗?
                             <div class="text-danger">数据删除后，将不可恢复！</div>
                         </div>
 
@@ -65,32 +65,26 @@
 
 
             <button type="button" class="btn btn-success" id="createObjectBtnInList">
-                新建教室
+                新建教材杂费
             </button>
-
-
-
-
             <div style="height: 20px;"></div>
         </div>
-
     </div>
-
 
     <div class="row">
         <div class="col-md-12" style="background-color: transparent;">
-            <h3>教室一览表</h3>
+            <h3>教材杂费一览表</h3>
         </div>
 
     </div>
     <div class="row">
         <div style="height: 10px;"></div>
         <div class="col-md-12">
-            <span style="">
-                教室名称:
+            <span style="float: left; margin: 5px 10px 0 0;">
+                教材杂费名称:
             </span>
-            <input type="text" name="classroom_name" placeholder="请输入教室名称" id="query_param_classroom_name"/>
-            <button type="button" class="btn btn-success" id="searchBtn">
+            <input type="text"  class="form-control" name="jiaoCaiZaFei_name" placeholder="" id="query_param_jiaoCaiZaFei_name" style="float: left; width: 200px; margin-right: 20px;"/>
+            <button type="button" class="btn btn-success" id="searchBtn" style="float: left;">
                 查询
             </button>
         </div>
@@ -103,45 +97,33 @@
                 <table class="table table-striped table-hover">
                     <thead style="  background-color: rgba(113,210,113,0.36);  border-color: #71ce71;">
                     <tr>
-                        <th> 教室名称</th>
-                        <th> 校区</th>
-                        <th> 容纳人数</th>
-                        <th> 地址</th>
-                        <th> 备注</th>
+                        <th> 教材杂费名称</th>
+                        <th> 所属课程</th>
+                        <th> 进价</th>
+                        <th> 售价</th>
                         <th> 操作</th>
                     </tr>
                     </thead>
                     <tbody id="mytablebody">
 
-                    <tr th:each="classroom : ${classroomList}">
-                        <td th:text="${classroom.name}">null</td>
-                        <td th:text=" ${classroom.school_name}">null</td>
-                        <td th:text="${classroom.capacity}">null</td>
-                        <td th:text="${classroom.address}">null</td>
-                        <td th:text="${classroom.note}">null</td>
-
+                    <tr th:each="jiaoCaiZaFei : ${jiaoCaiZaFeiList}">
+                        <td th:text="${jiaoCaiZaFei.name}">null</td>
+                        <td th:text=" ${jiaoCaiZaFei.kecheng_category}">null</td>
+                        <td th:text="${jiaoCaiZaFei.jin_jia}">null</td>
+                        <td th:text="${jiaoCaiZaFei.shou_jia}">null</td>
                         <td><a    class="deleteObjectLinkClass"
                                href="#"
-                               th:attr="name=${classroom.name},id=${classroom.id},school_name=${classroom.school_name}" >删除</a>
+                               th:attr="name=${jiaoCaiZaFei.name},id=${jiaoCaiZaFei.id}" >删除</a>
                             &nbsp;&nbsp;
                             <a   href="#" class="updateObjectLinkClass"
-                               th:href="@{/xiaobao/updateClassroom(id=${classroom.id},name=${classroom.name},school_name=${classroom.school_name} )}">编辑</a>
+                               th:href="@{/xiaobao/updateJiaoCaiZaFei(id=${jiaoCaiZaFei.id},name=${jiaoCaiZaFei.name})}">编辑</a>
                         </td>
-
-
                     </tr>
-
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
-
-
 </body>
 </html>

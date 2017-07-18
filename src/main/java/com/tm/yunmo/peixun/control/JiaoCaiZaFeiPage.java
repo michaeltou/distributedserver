@@ -31,6 +31,8 @@ public class JiaoCaiZaFeiPage {
 
     @RequestMapping("/xiaobao/createJiaoCaiZaFei")
     public String createClassrom(HttpServletRequest request,Model model){
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        model.addAttribute("institution_code",institution_code);
         return "xiaobao/createJiaoCaiZaFei";
     }
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>支出大类</title>
+    <title>学校账户管理</title>
     <meta name="viewport" content="width=device-width,
                                      initial-scale=1.0,
                                      maximum-scale=1.0,
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/xiaobao/css/bootstrap.css"/>
     <script src="/xiaobao/js/jquery-3.2.1.js"></script>
     <script src="/xiaobao/js/bootstrap.js"></script>
-    <script src="/xiaobao/js/zhiChuDaLeiList.js"></script>
+    <script src="/xiaobao/js/schoolAccountList.js"></script>
 </head>
 <body>
 
@@ -35,8 +35,9 @@
                         <div class="col-md-12">
                             <input type="hidden" id="name"  />
                             <input type="hidden" id="id"  />
+                            <input type="hidden" id="school_name"  />
 
-                            确认删除该支出大类吗?
+                            确认删除该账户吗?
                             <div class="text-danger">数据删除后，将不可恢复！</div>
                         </div>
 
@@ -64,21 +65,15 @@
 
 
             <button type="button" class="btn btn-success" id="createObjectBtnInList">
-                新建支出大类
+                新建学校账户
             </button>
-
-
-
-
             <div style="height: 20px;"></div>
         </div>
-
     </div>
-
 
     <div class="row">
         <div class="col-md-12" style="background-color: transparent;">
-            <h3>支出大类一览表</h3>
+            <h3>学校账户一览表</h3>
         </div>
 
     </div>
@@ -86,9 +81,9 @@
         <div style="height: 10px;"></div>
         <div class="col-md-12">
             <span style="float: left; margin: 5px 10px 0 0;">
-                大类名称:
+                账户名称:
             </span>
-            <input type="text"  class="form-control" name="zhiChuDaLei_name" placeholder="" id="query_param_zhiChuDaLei_name" style="float: left; width: 200px; margin-right: 20px;"/>
+            <input type="text"  class="form-control" name="account_name" placeholder="" id="query_param_account_name" style="float: left; width: 200px; margin-right: 20px;"/>
             <button type="button" class="btn btn-success" id="searchBtn" style="float: left;">
                 查询
             </button>
@@ -102,20 +97,26 @@
                 <table class="table table-striped table-hover">
                     <thead style="  background-color: rgba(113,210,113,0.36);  border-color: #71ce71;">
                     <tr>
-                        <th> 编号</th>
-                        <th> 大类名称</th>
+                        <th> 账户名称</th>
+                        <th> 账户</th>
+                        <th> 开户行</th>
+                        <th> 状态</th>
                         <th> 操作</th>
                     </tr>
                     </thead>
                     <tbody id="mytablebody">
 
-                    <tr th:each="zhiChuDaLei : ${zcDaLeiList}">
-                        <td th:text="${zhiChuDaLei.id}">null</td>
-                        <td th:text="${zhiChuDaLei.name}">null</td>
-
+                    <tr th:each="schoolAccount : ${schoolAccountList}">
+                        <td th:text="${schoolAccount.accountName}">null</td>
+                        <td th:text=" ${schoolAccount.accountCode}">null</td>
+                        <td th:text="${schoolAccount.bank}">null</td>
+                        <td th:text="${schoolAccount.status}">null</td>
                         <td><a    class="deleteObjectLinkClass"
                                   href="#"
-                                  th:attr="name=${zhiChuDaLei.name},id=${zhiChuDaLei.id}" >删除</a>
+                                  th:attr="accountName=${schoolAccount.accountName},id=${schoolAccount.id}" >删除</a>
+                            &nbsp;&nbsp;
+                            <a   href="#" class="updateObjectLinkClass"
+                                 th:href="@{/xiaobao/updateSchoolAccount(id=${schoolAccount.id},accountName=${schoolAccount.accountName})}">编辑</a>
                         </td>
                     </tr>
                     </tbody>

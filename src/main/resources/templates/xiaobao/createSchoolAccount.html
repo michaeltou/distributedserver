@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>新建收入小类</title>
+    <title>新建学校账户</title>
     <meta name="viewport" content="width=device-width,
                                      initial-scale=1.0,
                                      maximum-scale=1.0,
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/xiaobao/css/bootstrap.css"/>
     <script src="/xiaobao/js/jquery-3.2.1.js"></script>
     <script src="/xiaobao/js/bootstrap.js"></script>
-    <script src="/xiaobao/js/createShouRuXiaoLei.js"></script>
+    <script src="/xiaobao/js/createSchoolAccount.js"></script>
 </head>
 <body>
 
@@ -21,8 +21,8 @@
     <div class="row">
         <div class="col-md-12">
             <ol class="breadcrumb">
-                <li><a  href="#" id="backToListbreadLink"> 收入小类</a></li>
-                <li><a href="#">新建收入小类</a></li>
+                <li><a  href="#" id="backToListbreadLink">学校账户管理</a></li>
+                <li><a href="#">新建学校账户</a></li>
 
             </ol>
         </div>
@@ -31,7 +31,7 @@
     <div class="row">
         <div class="col-md-3">
             <h2 class="text-success  ">
-                新建收入小类
+                新建学校账户
             </h2>
             <div style="height: 20px;"></div>
         </div>
@@ -39,18 +39,18 @@
     <div class="row">
         <div class="col-md-3">
 
-            <div class="text-success" style="display: none;" id="successLabel">恭喜你，新建收入小类成功！
+            <div class="text-success" style="display: none;" id="successLabel">恭喜你，新建学校账户成功！
                 <div style="height: 50px;"></div>
                 <button type="button" class="btn btn-info" id="backToListBtn" style="display: none;">
                     返回
                 </button>
 
                 <button type="button" class="btn btn-success" id="createAgainBtn" style="display: none;">
-                    再新建一个收入小类
+                    再新建一个学校账户
                 </button>
                 <div style="height: 50px;"></div>
             </div>
-            <div class="text-danger" style="display: none;" id="failLabel">新建收入小类失败！
+            <div class="text-danger" style="display: none;" id="failLabel">新建学校账户失败！
                 <div style="height: 50px;"></div>
             </div>
 
@@ -70,25 +70,42 @@
                 <form role="form" id="myform">
                     <div class="form-group">
 
-                        <label for="daLeiName">
-                            大类名称
+                        <label for="accountName">
+                            账户名称
                         </label>
-
-                        <select name="daLeiName" class="form-control" id="daLeiName">
-                            <option value="自营">自营</option>
-                            <option value="加盟">加盟</option>
-                            <option value="代理">代理</option>
-                            <option value="合作">合作</option>
-                        </select>
+                        <input type="text" class="form-control" id="accountName"/>
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
 
-                        <label for="name">
-                            小类名称
+                        <label for="accountCode">
+                            账户
                         </label>
-                        <input type="text" class="form-control" id="name"/>
+                        <input type="text" class="form-control" id="accountCode"/>
                         <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="bank">
+                            开户行
+                        </label>
+                        <input type="text" class="form-control" id="bank"/>
+                        <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <label style="float: left;">
+                            状态
+                        </label>
+                        <div style="float: left;">
+                            <label class="checkbox-inline">
+                                <input type="radio" name="status" value="有效" checked = "checked"/>有效
+                            </label>
+                            <label class="checkbox-inline">
+                                <input type="radio" name="status" value="无效"/>无效
+                            </label>
+                        </div>
+
                     </div>
 
                 </form>
