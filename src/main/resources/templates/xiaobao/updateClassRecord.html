@@ -91,7 +91,7 @@
                                 上课开始时间
                             </label>
 
-                            <input type="text"  class="form-control"  id="shangke_start_date" th:value="${#dates.format(classRecordMain.shangke_start_date, 'yyyy-MM-dd HH:mm:ss')}" />
+                            <input type="text"  class="form-control"  id="shangke_start_date" th:value="${classRecordMain.shangke_start_date}?${#dates.format(classRecordMain.shangke_start_date, 'yyyy-MM-dd HH:mm:ss')}" />
 
 
                             <div class="check_tips"></div>
@@ -102,7 +102,7 @@
                                 上课结束时间
                             </label>
 
-                            <input type="text"  class="form-control"   id="shangke_end_date" th:value="${#dates.format(classRecordMain.shangke_end_date, 'yyyy-MM-dd HH:mm:ss')}" />
+                            <input type="text"  class="form-control"   id="shangke_end_date" th:value="${classRecordMain.shangke_end_date}?${#dates.format(classRecordMain.shangke_end_date, 'yyyy-MM-dd HH:mm:ss')}" />
 
                             <div class="check_tips"></div>
                         </div>

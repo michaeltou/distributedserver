@@ -42,7 +42,7 @@ public interface EmployeeDAO {
             "    `px_employee`.`create_date`,\n" +
             "    `px_employee`.`update_date`\n" +
             " FROM  `px_employee`  \n" +
-            " where  institution_code = #{institution_code} adn sfzCode = #{sfzCode} ")
+            " where  institution_code = #{institution_code} and sfzCode = #{sfzCode} ")
     Employee  queryEmployeeByInstitutionAndSFZCode(@Param("institution_code") String institution_code,@Param("sfzCode") String sfzCode);
 
 
@@ -270,8 +270,8 @@ public interface EmployeeDAO {
 
 
     @Delete(" DELETE FROM  `px_employee`\n" +
-            "WHERE  name=#{name} and institution_code=#{institution_code} \n " +
-            "     and sfzCode = #{sfzCode}  ;\n "   )
+            "WHERE    institution_code=#{institution_code} \n " +
+            "     and sfzCode = #{sfzCode} and id=#{id} ;\n "   )
     public int deleteEmployee(Employee employee);
 
 

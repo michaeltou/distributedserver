@@ -43,11 +43,14 @@ public class EmployeeApi {
 
 //http://localhost:9999/queryEmployeeListByNameWithLike?institution_code=tm&name=%E6%98%8E
     @RequestMapping("/queryEmployeeListByNameWithLike")
-    public List<Employee> queryEmployeeListByNameWithLike(HttpServletRequest request) {
+    public  ResultModel  queryEmployeeListByNameWithLike(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
         String institution_code = (String) request.getSession().getAttribute("institution_code");
         String name = request.getParameter("name");
         List<Employee> employeeList = employeeService.queryEmployeeListByNameWithLike(institution_code, name);
-        return employeeList;
+
+        resultModel.setData(employeeList);
+        return resultModel;
     }
 
 //http://localhost:9999/queryEmployeeListByPhoneWithLike?institution_code=tm&phone=186

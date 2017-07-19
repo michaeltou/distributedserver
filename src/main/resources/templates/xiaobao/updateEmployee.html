@@ -12,6 +12,11 @@
     <script src="/xiaobao/js/jquery-3.2.1.js"></script>
     <script src="/xiaobao/js/bootstrap.js"></script>
     <script src="/xiaobao/js/updateEmployee.js"></script>
+
+    <script src="/xiaobao/js/bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="/xiaobao/css/bootstrap-datetimepicker.css"/>
+
+    
 </head>
 <body>
 
@@ -20,8 +25,8 @@
     <div class="row">
         <div class="col-md-12">
             <ol class="breadcrumb">
-                <li><a  href="#" id="classroomguanlibread">教室管理</a></li>
-                <li><a href="#">编辑教室</a></li>
+                <li><a  href="#" id="classroomguanlibread">员工管理</a></li>
+                <li><a href="#">编辑员工</a></li>
 
             </ol>
         </div>
@@ -30,7 +35,7 @@
     <div class="row">
         <div class="col-md-3">
             <h2 class="text-success  ">
-                编辑教室
+                编辑员工
             </h2>
             <div style="height: 20px;"></div>
         </div>
@@ -38,14 +43,14 @@
     <div class="row">
         <div class="col-md-3">
 
-            <div class="text-success" style="display: none;" id="successLabel">恭喜你，更新教室成功！
+            <div class="text-success" style="display: none;" id="successLabel">恭喜你，更新员工成功！
                 <div style="height: 50px;"></div>
                 <button type="button" class="btn btn-success" id="backBtn" style="display: none;">
                     返回
                 </button>
                 <div style="height: 50px;"></div>
             </div>
-            <div class="text-danger" style="display: none;" id="failLabel">更新教室失败！
+            <div class="text-danger" style="display: none;" id="failLabel">更新员工失败！
                 <div style="height: 50px;"></div>
             </div>
 
@@ -62,57 +67,235 @@
 
             <div id="formdiv">
                 <form role="form" id="myform">
-
-
                     <div class="form-group">
-                        <input type="hidden" class="form-control" id="id" th:value="${classroom.id}"/>
-
-                        <label for="classroom_name">
-                            教室名称
+                        <input type="hidden" class="form-control" id="id" th:value="${employee.id}"/>
+                        <label for="name">
+                            员工名称
                         </label>
-                        <input type="text" class="form-control" id="classroom_name" th:value="${classroom.name}"/>
+                        <input type="text" class="form-control" id="name" th:value="${employee.name}"/>
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
 
-                        <label for="school_name">
+                        <label for="phone">
+                            电话
+                        </label>
+                        <input type="text" class="form-control" id="phone" th:value="${employee.phone}"/>
+                        <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="sfzCode">
+                            身份证
+                        </label>
+                        <input type="text" class="form-control" id="sfzCode" th:value="${employee.sfzCode}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="xiaoqu_name">
                             校区
                         </label>
-                        <input type="text" class="form-control" id="school_name" th:value="${classroom.school_name}"/>
+                        <input type="text" class="form-control" id="xiaoqu_name" th:value="${employee.xiaoqu_name}"/>
                         <div class="check_tips"></div>
                     </div>
+
+
                     <div class="form-group">
 
-                        <label for="capacity">
-                            容纳人数
+                        <label for="gender">
+                            身份证
                         </label>
-                        <input type="text" class="form-control" id="capacity" th:value="${classroom.capacity}"/>
+                        <input type="text" class="form-control" id="gender" th:value="${employee.gender}"/>
                         <div class="check_tips"></div>
                     </div>
+
+
                     <div class="form-group">
 
-                        <label for="address">
-                            地址
+                        <label for="birthday">
+                            生日
                         </label>
-                        <input type="text" class="form-control" id="address" th:value="${classroom.address}"/>
+                        <input type="text" class="form-control" id="birthday"     th:value="${employee.birthday}?${#dates.format(employee.birthday, 'yyyy-MM-dd')}"/>
                         <div class="check_tips"></div>
                     </div>
+
                     <div class="form-group">
 
-                        <label for="note">
-                            备注
+                        <label for="zhuanzheng_date">
+                            转正日期
                         </label>
-                        <input type="text" class="form-control" id="note" th:value="${classroom.note}"/>
+                        <input type="text" class="form-control" id="zhuanzheng_date"    th:value="${employee.zhuanzheng_date}?${#dates.format(employee.zhuanzheng_date, 'yyyy-MM-dd')}"/>
                         <div class="check_tips"></div>
                     </div>
 
 
+                    <div class="form-group">
+
+                        <label for="laodong_guanxi">
+                            劳动关系
+                        </label>
+                        <input type="text" class="form-control" id="laodong_guanxi"    th:value="${employee.laodong_guanxi}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div id="formdiv2">
+                <form role="form" id="myform2">
+                    <div class="form-group">
+
+                        <label for="english_name">
+                            英文名称
+                        </label>
+                        <input type="text" class="form-control" id="english_name" th:value="${employee.english_name}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            邮箱
+                        </label>
+                        <input type="text" class="form-control" id="email" th:value="${employee.email}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="ji_guan">
+                            籍贯
+                        </label>
+                        <input type="text" class="form-control" id="ji_guan" th:value="${employee.ji_guan}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="nationality">
+                            民族
+                        </label>
+                        <input type="text" class="form-control" id="nationality" th:value="${employee.nationality}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="zhengzhi_mianmao">
+                            政治面貌
+                        </label>
+                        <input type="text" class="form-control" id="zhengzhi_mianmao" th:value="${employee.zhengzhi_mianmao}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="is_married">
+                            婚姻状况
+                        </label>
+                        <input type="text" class="form-control" id="is_married" th:value="${employee.is_married}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="employ_end_date">
+                            劳动合同结束时间
+                        </label>
+                        <input type="text" class="form-control" id="employ_end_date"    th:value="${employee.employ_end_date}?${#dates.format(employee.employ_end_date, 'yyyy-MM-dd')}"/>
+                        <div class="check_tips"></div>
+                    </div>
 
 
                 </form>
             </div>
+        </div>
+        <div class="col-md-4">
+
+            <div id="formdiv3">
+                <form role="form" id="myform3">
+                    <div class="form-group">
+
+                        <label for="biye_yuanxiao">
+                            毕业院校
+                        </label>
+                        <input type="text" class="form-control" id="biye_yuanxiao" th:value="${employee.biye_yuanxiao}"/>
+                        <div class="check_tips"></div>
+                    </div>
 
 
+                    <div class="form-group">
+
+                        <label for="zhuanye">
+                            专业
+                        </label>
+                        <input type="text" class="form-control" id="zhuanye" th:value="${employee.zhuanye}"/>
+                        <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="xueli">
+                            学历
+                        </label>
+                        <input type="text" class="form-control" id="xueli" th:value="${employee.xueli}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="peixun_jingli">
+                            培训经历
+                        </label>
+                        <input type="text" class="form-control" id="peixun_jingli" th:value="${employee.peixun_jingli}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="employ_start_date">
+                            劳动合同开始时间
+                        </label>
+                        <input type="text" class="form-control" id="employ_start_date"     th:value="${employee.employ_start_date}?${#dates.format(employee.employ_start_date, 'yyyy-MM-dd')}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="bank_card">
+                            银行卡号
+                        </label>
+                        <input type="text" class="form-control" id="bank_card" th:value="${employee.bank_card}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="bank">
+                            开户银行
+                        </label>
+                        <input type="text" class="form-control" id="bank" th:value="${employee.bank}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+                </form>
+            </div>
         </div>
 
 

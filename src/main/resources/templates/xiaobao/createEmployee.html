@@ -12,6 +12,10 @@
     <script src="/xiaobao/js/jquery-3.2.1.js"></script>
     <script src="/xiaobao/js/bootstrap.js"></script>
     <script src="/xiaobao/js/createEmployee.js"></script>
+
+    <script src="/xiaobao/js/bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="/xiaobao/css/bootstrap-datetimepicker.css"/>
+
 </head>
 <body>
 
@@ -21,8 +25,8 @@
     <div class="row">
         <div class="col-md-12">
             <ol class="breadcrumb">
-                <li><a  href="#" id="backToListbreadLink">教室管理</a></li>
-                <li><a href="#">新建教室</a></li>
+                <li><a href="#" id="backToListbreadLink">员工管理</a></li>
+                <li><a href="#">新建员工</a></li>
 
             </ol>
         </div>
@@ -31,7 +35,7 @@
     <div class="row">
         <div class="col-md-3">
             <h2 class="text-success  ">
-                新建教室
+                新建员工
             </h2>
             <div style="height: 20px;"></div>
         </div>
@@ -39,22 +43,20 @@
     <div class="row">
         <div class="col-md-3">
 
-            <div class="text-success" style="display: none;" id="successLabel">恭喜你，新建教室成功！
+            <div class="text-success" style="display: none;" id="successLabel">恭喜你，新建员工成功！
                 <div style="height: 50px;"></div>
                 <button type="button" class="btn btn-info" id="backToListBtn" style="display: none;">
                     返回
                 </button>
 
                 <button type="button" class="btn btn-success" id="createAgainBtn" style="display: none;">
-                    再新建一个教室
+                    再新建一个员工
                 </button>
                 <div style="height: 50px;"></div>
             </div>
-            <div class="text-danger" style="display: none;" id="failLabel">新建教室失败！
+            <div class="text-danger" style="display: none;" id="failLabel">新建员工失败！
                 <div style="height: 50px;"></div>
             </div>
-
-
 
 
         </div>
@@ -63,6 +65,7 @@
     </div>
 
     <div class="row">
+
 
         <div class="col-md-4">
 
@@ -71,41 +74,74 @@
                     <div class="form-group">
 
                         <label for="name">
-                            教室名称
+                            员工名称
                         </label>
                         <input type="text" class="form-control" id="name"/>
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
 
-                        <label for="school_name">
+                        <label for="phone">
+                            电话
+                        </label>
+                        <input type="text" class="form-control" id="phone"/>
+                        <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="sfzCode">
+                            身份证
+                        </label>
+                        <input type="text" class="form-control" id="sfzCode"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="xiaoqu_name">
                             校区
                         </label>
-                        <input type="text" class="form-control" id="school_name"/>
+                        <input type="text" class="form-control" id="xiaoqu_name"/>
                         <div class="check_tips"></div>
                     </div>
+
+
                     <div class="form-group">
 
-                        <label for="capacity">
-                            容纳人数
+                        <label for="gender">
+                            身份证
                         </label>
-                        <input type="text" class="form-control" id="capacity"/>
+                        <input type="text" class="form-control" id="gender"/>
                         <div class="check_tips"></div>
                     </div>
+
+
                     <div class="form-group">
 
-                        <label for="address">
-                            地址
+                        <label for="sfzCode">
+                            生日
                         </label>
-                        <input type="text" class="form-control" id="address"/>
+                        <input type="text" class="form-control" id="birthday"/>
                         <div class="check_tips"></div>
                     </div>
+
                     <div class="form-group">
 
-                        <label for="note">
-                            备注
+                        <label for="zhuanzheng_date">
+                            转正日期
                         </label>
-                        <input type="text" class="form-control" id="note"/>
+                        <input type="text" class="form-control" id="zhuanzheng_date"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="laodong_guanxi">
+                            劳动关系
+                        </label>
+                        <input type="text" class="form-control" id="laodong_guanxi"/>
                         <div class="check_tips"></div>
                     </div>
 
@@ -116,6 +152,155 @@
 
         </div>
 
+        <div class="col-md-4">
+
+            <div id="formdiv2">
+                <form role="form" id="myform2">
+                    <div class="form-group">
+
+                        <label for="english_name">
+                            英文名称
+                        </label>
+                        <input type="text" class="form-control" id="english_name"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            邮箱
+                        </label>
+                        <input type="text" class="form-control" id="email"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="ji_guan">
+                            籍贯
+                        </label>
+                        <input type="text" class="form-control" id="ji_guan"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="nationality">
+                            民族
+                        </label>
+                        <input type="text" class="form-control" id="nationality"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="zhengzhi_mianmao">
+                            政治面貌
+                        </label>
+                        <input type="text" class="form-control" id="zhengzhi_mianmao"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="is_married">
+                            婚姻状况
+                        </label>
+                        <input type="text" class="form-control" id="is_married"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="employ_end_date">
+                            劳动合同结束时间
+                        </label>
+                        <input type="text" class="form-control" id="employ_end_date"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div id="formdiv3">
+                <form role="form" id="myform3">
+                    <div class="form-group">
+
+                        <label for="biye_yuanxiao">
+                            毕业院校
+                        </label>
+                        <input type="text" class="form-control" id="biye_yuanxiao"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="zhuanye">
+                            专业
+                        </label>
+                        <input type="text" class="form-control" id="zhuanye"/>
+                        <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="xueli">
+                            学历
+                        </label>
+                        <input type="text" class="form-control" id="xueli"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="peixun_jingli">
+                            培训经历
+                        </label>
+                        <input type="text" class="form-control" id="peixun_jingli"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="employ_start_date">
+                            劳动合同开始时间
+                        </label>
+                        <input type="text" class="form-control" id="employ_start_date"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="bank_card">
+                            银行卡号
+                        </label>
+                        <input type="text" class="form-control" id="bank_card"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="bank">
+                            开户银行
+                        </label>
+                        <input type="text" class="form-control" id="bank"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
 
     </div>
 

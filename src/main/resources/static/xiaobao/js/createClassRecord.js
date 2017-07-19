@@ -234,6 +234,7 @@ $(document).ready(function () {
                     //清空表格数据
                     $("#myform")[0].reset();
                     $("#myform2")[0].reset();
+                    $("#myform3")[0].reset();
                     //显示
                     $("#successLabel").show();
                     $("#createAgainBtn").show();
@@ -242,6 +243,7 @@ $(document).ready(function () {
                     $("#submitAreaDiv").empty();
                     $("#formdiv").empty();
                     $("#formdiv2").empty();
+                    $("#formdiv3").empty();
 
                 }
                 else {
