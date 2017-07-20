@@ -12,6 +12,10 @@
     <script src="/xiaobao/js/jquery-3.2.1.js"></script>
     <script src="/xiaobao/js/bootstrap.js"></script>
     <script src="/xiaobao/js/updateStudent.js"></script>
+    <script src="/xiaobao/js/bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="/xiaobao/css/bootstrap-datetimepicker.css"/>
+
+    
 </head>
 <body>
 
@@ -20,8 +24,8 @@
     <div class="row">
         <div class="col-md-12">
             <ol class="breadcrumb">
-                <li><a  href="#" id="classroomguanlibread">教室管理</a></li>
-                <li><a href="#">编辑教室</a></li>
+                <li><a  href="#" id="classroomguanlibread">学生管理</a></li>
+                <li><a href="#">编辑学生</a></li>
 
             </ol>
         </div>
@@ -30,7 +34,7 @@
     <div class="row">
         <div class="col-md-3">
             <h2 class="text-success  ">
-                编辑教室
+                编辑学生
             </h2>
             <div style="height: 20px;"></div>
         </div>
@@ -38,14 +42,14 @@
     <div class="row">
         <div class="col-md-3">
 
-            <div class="text-success" style="display: none;" id="successLabel">恭喜你，更新教室成功！
+            <div class="text-success" style="display: none;" id="successLabel">恭喜你，更新学生成功！
                 <div style="height: 50px;"></div>
                 <button type="button" class="btn btn-success" id="backBtn" style="display: none;">
                     返回
                 </button>
                 <div style="height: 50px;"></div>
             </div>
-            <div class="text-danger" style="display: none;" id="failLabel">更新教室失败！
+            <div class="text-danger" style="display: none;" id="failLabel">更新学生失败！
                 <div style="height: 50px;"></div>
             </div>
 
@@ -57,52 +61,64 @@
     </div>
 
     <div class="row">
-
         <div class="col-md-4">
 
             <div id="formdiv">
                 <form role="form" id="myform">
-
-
                     <div class="form-group">
-                        <input type="hidden" class="form-control" id="id" th:value="${classroom.id}"/>
-
-                        <label for="classroom_name">
-                            教室名称
+                        <input type="hidden" class="form-control" id="id" th:value="${student.id}"/>
+                        <label for="name">
+                            学生姓名
                         </label>
-                        <input type="text" class="form-control" id="classroom_name" th:value="${classroom.name}"/>
+                        <input type="text" class="form-control" id="name" readonly = "readonly" th:value="${student.name}"/>
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
 
-                        <label for="school_name">
-                            校区
+                        <label for="sfzCode">
+                            身份证
                         </label>
-                        <input type="text" class="form-control" id="school_name" th:value="${classroom.school_name}"/>
+                        <input type="text" class="form-control" id="sfzCode" readonly = "readonly" th:value="${student.sfzCode}"/>
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
 
-                        <label for="capacity">
-                            容纳人数
+                        <label for="phone">
+                            电话
                         </label>
-                        <input type="text" class="form-control" id="capacity" th:value="${classroom.capacity}"/>
+                        <input type="text" class="form-control" id="phone" th:value="${student.phone}"/>
                         <div class="check_tips"></div>
                     </div>
+
+
+
+
+
                     <div class="form-group">
 
-                        <label for="address">
-                            地址
+                        <label for="gender">
+                            性别
                         </label>
-                        <input type="text" class="form-control" id="address" th:value="${classroom.address}"/>
+                        <input type="text" class="form-control" id="gender" th:value="${student.gender}"/>
                         <div class="check_tips"></div>
                     </div>
+
+
                     <div class="form-group">
 
-                        <label for="note">
-                            备注
+                        <label for="birthday">
+                            生日
                         </label>
-                        <input type="text" class="form-control" id="note" th:value="${classroom.note}"/>
+                        <input type="text" class="form-control" id="birthday"  th:value="${student.birthday}?${#dates.format(student.birthday, 'yyyy-MM-dd')}"  />
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="motherPhone">
+                            母亲电话
+                        </label>
+                        <input type="text" class="form-control" id="motherPhone" th:value="${student.motherPhone}"/>
                         <div class="check_tips"></div>
                     </div>
 
@@ -110,10 +126,142 @@
 
 
                 </form>
+
             </div>
 
-
         </div>
+
+        <div class="col-md-4">
+
+            <div id="formdiv2">
+                <form role="form" id="myform2">
+                    <div class="form-group">
+
+                        <label for="address">
+                            地址
+                        </label>
+                        <input type="text" class="form-control" id="address" th:value="${student.address}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            邮箱
+                        </label>
+                        <input type="text" class="form-control" id="email" th:value="${student.email}" />
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="weixinhao">
+                            微信号
+                        </label>
+                        <input type="text" class="form-control" id="weixinhao" th:value="${student.weixinhao}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="qudao_source">
+                            渠道
+                        </label>
+                        <input type="text" class="form-control" id="qudao_source" th:value="${student.qudao_source}"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="header_image_url">
+                            头像
+                        </label>
+                        <input type="text" class="form-control" id="header_image_url" th:value="${student.header_image_url}" />
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="fatherPhone">
+                            父亲电话
+                        </label>
+                        <input type="text" class="form-control" id="fatherPhone" th:value="${student.fatherPhone}" />
+                        <div class="check_tips"></div>
+                    </div>
+
+
+
+                </form>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div id="formdiv3">
+                <form role="form" id="myform3">
+                    <div class="form-group">
+
+                        <label for="qq">
+                            QQ
+                        </label>
+                        <input type="text" class="form-control" id="qq" th:value="${student.qq}" />
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="jiguan">
+                            籍贯
+                        </label>
+                        <input type="text" class="form-control" id="jiguan" th:value="${student.jiguan}" />
+                        <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="minzu">
+                            民族
+                        </label>
+                        <input type="text" class="form-control" id="minzu" th:value="${student.minzu}" />
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="zheng_zhi_mian_miao">
+                            政治面貌
+                        </label>
+                        <input type="text" class="form-control" id="zheng_zhi_mian_miao" th:value="${student.zheng_zhi_mian_miao}" />
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="current_school_level">
+                            在读学校级别
+                        </label>
+                        <input type="text" class="form-control" id="current_school_level" th:value="${student.current_school_level}" />
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="current_school_grade">
+                            在读学校年级
+                        </label>
+                        <input type="text" class="form-control" id="current_school_grade" th:value="${student.current_school_grade}" />
+                        <div class="check_tips"></div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+
 
 
     </div>

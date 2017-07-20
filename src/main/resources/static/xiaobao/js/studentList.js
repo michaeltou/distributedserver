@@ -79,7 +79,7 @@ $(document).ready(function () {
              * 2、js里面的ajax请求的data要使用 data:  JSON.stringify({name: $("#name").val(), age: $("#age").val()}), 传递json字符串，而不json对象.
              * */
             data: JSON.stringify({
-                school_name:$("#sfzCode").val()
+                sfzCode:$("#sfzCode").val()
             }),
             dataType: "json",
             contentType: "application/json; charset=utf-8",//(可以)
@@ -132,15 +132,14 @@ $(document).ready(function () {
                         var $td2 = $("<td >" + student.sfzCode + "</td>");
                         var $td3 = $("<td >" + student.phone + "</td>");
                         var $td4 = $("<td >" + student.gender + "</td>");
-                        var $td5 = $("<td >" + student.birthday + "</td>");
-                        var $td6 = $("<td >" + student.motherPhone + "</td>");
-                        var $td7 = $("<td >" + student.fatherPhone + "</td>");
-                        var $td8 = $("<td >" + student.address + "</td>");
-                        var $td9 = $("<td >" + student.email + "</td>");
-                        var $td10 = $("<td >" + student.weixinhao + "</td>");
+                        var $td5 = $("<td >" + student.motherPhone + "</td>");
+                        var $td6 = $("<td >" + student.fatherPhone + "</td>");
+                        var $td7 = $("<td >" + student.address + "</td>");
+                        var $td8 = $("<td >" + student.email + "</td>");
+                        var $td9 = $("<td >" + student.weixinhao + "</td>");
 
 
-                        var $td11 = $("   <td><a    class='deleteObjectLinkClass' href='#' sfzCode='" + student.sfzCode
+                        var $td10 = $("   <td><a    class='deleteObjectLinkClass' href='#' sfzCode='" + student.sfzCode
                             + "'   >删除</a>" +
                             " &nbsp;&nbsp; " +
                             "<a  class='updateObjectLinkClass'  " +
@@ -157,7 +156,6 @@ $(document).ready(function () {
                         $tr.append($td8);
                         $tr.append($td9);
                         $tr.append($td10);
-                        $tr.append($td11);
                         $tr.appendTo($("#mytablebody"));
 
 
@@ -167,13 +165,13 @@ $(document).ready(function () {
 
                         //获取点击链接自定义属性的值
                         var href = $(this).attr('href');
-                        var id = $(this).attr('id');
-                        var name = $(this).attr('name');
+                        var sfzCode = $(this).attr('sfzCode');
+
 
 
                         //将自定义属性的值赋值给modal
-                        $("#id").val(id);
-                        $("#name").val(name);
+                        $("#sfzCode").val(sfzCode);
+
 
 
                         //显示属性框.
