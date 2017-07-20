@@ -215,13 +215,13 @@ public interface StudentDAO {
             "`minzu` = #{minzu},\n" +
             "`zheng_zhi_mian_miao` = #{zheng_zhi_mian_miao},\n" +
             "`updateDate` = now()\n" +
-            "WHERE  name=#{name} and institution_code=#{institution_code} \n " +
+            "WHERE   institution_code=#{institution_code} \n " +
             "     and sfzCode =#{sfzCode} ;\n "   )
     public int updateStudent(Student student);
 
 
     @Delete(" DELETE FROM  `px_student`\n" +
-            "WHERE  name=#{name} and institution_code=#{institution_code} \n " +
+            "WHERE   institution_code=#{institution_code} \n " +
             "     and sfzCode =#{sfzCode} ;\n "   )
     public int deleteStudent(Student student);
 

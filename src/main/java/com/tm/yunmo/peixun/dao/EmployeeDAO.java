@@ -265,13 +265,13 @@ public interface EmployeeDAO {
             "`bank_card` = #{bank_card},\n" +
             "`bank` = #{bank},\n" +
             "`update_date` = #{update_date}\n" +
-            " where  institution_code = #{institution_code}  and sfzCode = #{sfzCode} and name = #{name} ")
+            " where  institution_code = #{institution_code}  and sfzCode = #{sfzCode}   ")
     public int updateEmployee(Employee employee);
 
 
     @Delete(" DELETE FROM  `px_employee`\n" +
             "WHERE    institution_code=#{institution_code} \n " +
-            "     and sfzCode = #{sfzCode} and id=#{id} ;\n "   )
+            "     and sfzCode = #{sfzCode}  ;\n "   )
     public int deleteEmployee(Employee employee);
 
 
