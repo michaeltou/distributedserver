@@ -33,6 +33,16 @@ public class SRXiaoLeiApi {
         return srXiaoLeiList;
     }
 
+    @RequestMapping("/querySRXiaoLeiListByDaLeiName")
+    public ResultModel querySRXiaoLeiListByDaLeiName(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        String daLeiName = request.getParameter("daLeiName");
+        List<SRXiaoLei> srXiaoLeiList = srXiaoLeiService.querySRXiaoLeiListByDaLeiName(daLeiName,institution_code);
+        resultModel.setData(srXiaoLeiList);
+        return resultModel;
+    }
+
     /**
      * http://localhost:9999/querySRXiaoLeiById?institution_code=tm&id=1
      * @param request

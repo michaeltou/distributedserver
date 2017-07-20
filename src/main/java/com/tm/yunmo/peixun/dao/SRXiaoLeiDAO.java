@@ -29,6 +29,17 @@ public interface SRXiaoLeiDAO {
             "    `px_sr_xiaolei`.`updateDate`\n" +
             " FROM  `px_sr_xiaolei` \n" +
             " WHERE  institution_code = #{institution_code} \n" +
+            " AND daLeiName = #{daLeiName} \n")
+    List<SRXiaoLei> querySRXiaoLeiListByDaLeiName(@Param("daLeiName") String daLeiName, @Param("institution_code") String institution_code);
+
+    @Select("SELECT `px_sr_xiaolei`.`id`,\n" +
+            "    `px_sr_xiaolei`.`institution_code`,\n" +
+            "    `px_sr_xiaolei`.`name`,\n" +
+            "    `px_sr_xiaolei`.`daLeiName`,\n" +
+            "    `px_sr_xiaolei`.`createDate`,\n" +
+            "    `px_sr_xiaolei`.`updateDate`\n" +
+            " FROM  `px_sr_xiaolei` \n" +
+            " WHERE  institution_code = #{institution_code} \n" +
             " AND id = #{id} \n")
     SRXiaoLei  querySRXiaoLeiById(@Param("id") int id, @Param("institution_code") String institution_code);
 

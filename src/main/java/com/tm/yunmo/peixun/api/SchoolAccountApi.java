@@ -31,6 +31,15 @@ public class SchoolAccountApi {
         return schoolAccountList;
     }
 
+    @RequestMapping("/querySchooAccountlListModelByInstitution")
+    public ResultModel querySchooAccountlListModelByInstitution(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        List<SchoolAccount> schoolAccountList = schoolAccountService.querySchoolAccountListByInstitution(institution_code);
+        resultModel.setData(schoolAccountList);
+        return resultModel;
+    }
+
     @RequestMapping("/querySchoolAccountById")
     public SchoolAccount querySchoolAccountById(HttpServletRequest request) {
         int id = Integer.valueOf(request.getParameter("id")).intValue();

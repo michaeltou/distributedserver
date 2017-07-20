@@ -1,6 +1,8 @@
 package com.tm.yunmo.peixun.control;
 
+import com.tm.yunmo.peixun.model.ZCDaLei;
 import com.tm.yunmo.peixun.model.ZCXiaoLei;
+import com.tm.yunmo.peixun.service.ZCDaLeiService;
 import com.tm.yunmo.peixun.service.ZCXiaoLeiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,6 +21,9 @@ public class ZCXiaoLeiPage {
     @Autowired
     private ZCXiaoLeiService zcXiaoLeiService;
 
+    @Autowired
+    private ZCDaLeiService zcDaLeiService;
+
     @RequestMapping("/xiaobao/queryZCXiaoLeiListByInstitution")
     public String queryZCXiaoLeiListByInstitution(HttpServletRequest request, Model model){
         String institution_code = (String) request.getSession().getAttribute("institution_code");
@@ -31,6 +36,10 @@ public class ZCXiaoLeiPage {
     public String createZCXiaoLei(HttpServletRequest request,Model model){
         String institution_code = (String) request.getSession().getAttribute("institution_code");
         model.addAttribute("institution_code",institution_code);
+
+        // 获取支出大类list
+        List<ZCDaLei> zcDaLeiList = zcDaLeiService.queryZCDaLeiListByInstitution(institution_code);
+        model.addAttribute("zcDaLeiList",zcDaLeiList);
         return "xiaobao/createZhiChuXiaoLei";
     }
 }

@@ -83,8 +83,7 @@
                         </label>
 
                         <select name="keChengCategory" class="form-control" id="keChengCategory">
-                            <option value="音乐">音乐</option>
-                            <option value="美术">美术</option>
+                            <option th:each=" keChengCategory : ${keChengCategoryList}" th:value="${keChengCategory.kc_category_name}" th:text="${keChengCategory.kc_category_name}"></option>
                         </select>
                         <div class="check_tips"></div>
                     </div>

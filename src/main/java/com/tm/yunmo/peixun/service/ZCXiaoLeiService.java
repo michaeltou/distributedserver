@@ -20,6 +20,11 @@ public class ZCXiaoLeiService {
         return zcXiaoLeiList;
     }
 
+    public List<ZCXiaoLei> queryZCXiaoLeiListByDaLeiName(String name,  String institution_code){
+        List<ZCXiaoLei> zcXiaoLeiList = zcXiaoLeiDAO.queryZCXiaoLeiListByDaLeiName(name, institution_code);
+        return zcXiaoLeiList;
+    }
+
     public ZCXiaoLei queryZCXiaoLeiById( int id,  String institution_code) {
         ZCXiaoLei zcXiaoLei = zcXiaoLeiDAO.queryZCXiaoLeiById(id, institution_code);
         return zcXiaoLei;

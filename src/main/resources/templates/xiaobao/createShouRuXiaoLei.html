@@ -75,10 +75,7 @@
                         </label>
 
                         <select name="daLeiName" class="form-control" id="daLeiName">
-                            <option value="自营">自营</option>
-                            <option value="加盟">加盟</option>
-                            <option value="代理">代理</option>
-                            <option value="合作">合作</option>
+                            <option th:each=" srDaLei : ${srDaLeiList}" th:value="${srDaLei.name}" th:text="${srDaLei.name}"></option>
                         </select>
                         <div class="check_tips"></div>
                     </div>

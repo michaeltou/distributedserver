@@ -35,6 +35,15 @@ public class SchoolApi {
         return schoolList;
     }
 
+    @RequestMapping("/querySchoolListModelByInstitution")
+    public ResultModel querySchoolListModelByInstitution(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        List<School> schoolList = schoolService.querySchoolListByInstitution(institution_code);
+        resultModel.setData(schoolList);
+        return resultModel;
+    }
+
     /**
      * http://localhost:9999/querySchoolById?institution_code=tm&id=1
      * @param request

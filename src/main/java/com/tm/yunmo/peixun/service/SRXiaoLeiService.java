@@ -20,13 +20,18 @@ public class SRXiaoLeiService {
         return srXiaoLeiList;
     }
 
+    public List<SRXiaoLei> querySRXiaoLeiListByDaLeiName(String name,  String institution_code){
+        List<SRXiaoLei> srXiaoLeiList = srXiaoLeiDAO.querySRXiaoLeiListByDaLeiName(name, institution_code);
+        return srXiaoLeiList;
+    }
+
     public SRXiaoLei querySRXiaoLeiById( int id,  String institution_code) {
         SRXiaoLei srXiaoLei = srXiaoLeiDAO.querySRXiaoLeiById(id, institution_code);
         return srXiaoLei;
     }
 
-    public SRXiaoLei querySRXiaoLeiByName( String school_name,  String institution_code) {
-        SRXiaoLei srXiaoLei = srXiaoLeiDAO.querySRXiaoLeiByName(school_name, institution_code);
+    public SRXiaoLei querySRXiaoLeiByName( String name,  String institution_code) {
+        SRXiaoLei srXiaoLei = srXiaoLeiDAO.querySRXiaoLeiByName(name, institution_code);
         return srXiaoLei;
     }
 

@@ -4,50 +4,8 @@
 
 
 $(document).ready(function () {
-
-
-    $.ajax({
-        url: "/queryKeChengCategoryListByInstitution",
-        type: "POST",
-        data: "",
-        contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        success: function (data, textStatus) {
-            if (data.success) {
-                // alert(JSON.stringify(data)); 调试使用，请勿删除
-
-                //清空当前表格
-                //   document.getElementById("mytablebody").innerHTML = '';
-
-                //清空下拉列表框
-                $("#keChengCategory").empty();
-
-                //动态构建表格数据.
-                $.each(data.data, function (id, keChengCategory) {
-                    var $option = $("<option ></option>");
-                    $option.val(keChengCategory.kc_category_name);
-                    $option.html(keChengCategory.kc_category_name);
-
-                    $option.appendTo($("#keChengCategory"));
-
-
-                });//each
-                var val = $("#keChengCategory").attr("value")
-                $("#keChengCategory").val(val);
-                /*$('#keChengCategory option:contains(' + val + ')').each(function(){
-                    if ($(this).text() == val) {
-                        $(this).attr('selected', true);
-                    }
-                });*/
-            }
-            else {
-                alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
-            }
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-            alert("系统异常！");
-        }
-    });//ajax
+    var val = $("#keChengCategory").attr("value")
+    $("#keChengCategory").val(val);
 
     var b_validate_result = true;
     var b_validate_result1 = true;

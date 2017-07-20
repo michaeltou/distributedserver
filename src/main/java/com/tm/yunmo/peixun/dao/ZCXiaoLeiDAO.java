@@ -29,6 +29,17 @@ public interface ZCXiaoLeiDAO {
             "    `px_zc_xiaolei`.`updateDate`\n" +
             " FROM  `px_zc_xiaolei` \n" +
             " WHERE  institution_code = #{institution_code} \n" +
+            " AND daLeiName = #{daLeiName} \n")
+    List<ZCXiaoLei> queryZCXiaoLeiListByDaLeiName(@Param("daLeiName") String daLeiName, @Param("institution_code") String institution_code);
+
+    @Select("SELECT `px_zc_xiaolei`.`id`,\n" +
+            "    `px_zc_xiaolei`.`institution_code`,\n" +
+            "    `px_zc_xiaolei`.`name`,\n" +
+            "    `px_zc_xiaolei`.`daLeiName`,\n" +
+            "    `px_zc_xiaolei`.`createDate`,\n" +
+            "    `px_zc_xiaolei`.`updateDate`\n" +
+            " FROM  `px_zc_xiaolei` \n" +
+            " WHERE  institution_code = #{institution_code} \n" +
             " AND id = #{id} \n")
     ZCXiaoLei  queryZCXiaoLeiById(@Param("id") int id, @Param("institution_code") String institution_code);
 

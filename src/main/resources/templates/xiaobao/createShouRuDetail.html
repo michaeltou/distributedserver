@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>新建收入账目</title>
+    <meta name="viewport" content="width=device-width,
+                                     initial-scale=1.0,
+                                     maximum-scale=1.0,
+                                     user-scalable=no"/>
+
+    <link rel="stylesheet" href="/xiaobao/css/bootstrap.css"/>
+    <script src="/xiaobao/js/jquery-3.2.1.js"></script>
+    <script src="/xiaobao/js/bootstrap.js"></script>
+    <script src="/xiaobao/js/createShouRuDetail.js"></script>
+
+    <script src="/xiaobao/js/bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="/xiaobao/css/bootstrap-datetimepicker.css"/>
+</head>
+<body>
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a  href="#" id="backToListbreadLink">收支明细</a></li>
+                <li><a href="#">新建收入账目</a></li>
+
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <h2 class="text-success  ">
+                新建收入账目
+            </h2>
+            <div style="height: 20px;"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+
+            <div class="text-success" style="display: none;" id="successLabel">恭喜你，新建账目成功！
+                <div style="height: 50px;"></div>
+                <button type="button" class="btn btn-info" id="backToListBtn" style="display: none;">
+                    返回
+                </button>
+
+                <button type="button" class="btn btn-success" id="createAgainBtn" style="display: none;">
+                    再新建一个账目
+                </button>
+                <div style="height: 50px;"></div>
+            </div>
+            <div class="text-danger" style="display: none;" id="failLabel">新建账目失败！
+                <div style="height: 50px;"></div>
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <div id="formdiv1">
+                <form role="form" id="myform1">
+                    <div class="form-group">
+
+                        <label for="handingSchoolName">
+                            经办校区
+                        </label>
+                        <select name="handingSchoolName" class="form-control" id="handingSchoolName">
+                            <option th:each=" school : ${schoolList}" th:value="${school.school_name}" th:text="${school.school_name}"></option>
+                        </select>
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="shouRuDaLeiName">
+                            收入大类
+                        </label>
+                        <select name="shouRuDaLeiName" class="form-control" id="shouRuDaLeiName">
+                            <option th:each=" srDaLei : ${srDaLeiList}" th:value="${srDaLei.name}" th:text="${srDaLei.name}"></option>
+                        </select>
+                        <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="shouRuAccountName">
+                            收入账户
+                        </label>
+                        <select name="shouRuAccountName" class="form-control" id="shouRuAccountName">
+                            <option th:each=" schoolAccount : ${schoolAccountList}" th:value="${schoolAccount.accountName}" th:text="${schoolAccount.accountName}"></option>
+                        </select>
+                        <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="note">
+                            备注
+                        </label>
+                        <input type="text" class="form-control" id="note"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+        <div class="col-md-4">
+
+            <div id="formdiv2">
+                <form role="form" id="myform2">
+                    <div class="form-group">
+                        <label for="handingDate">
+                            经办日期
+                        </label>
+                        <input type="text"  class="form-control"  id="handingDate" readonly = "readonly" style="background-color: white;" />
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="shouRuXiaoLeiName">
+                            收入小类
+                        </label>
+                        <select name="shouRuXiaoLeiName" class="form-control" id="shouRuXiaoLeiName">
+
+                        </select>
+                        <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="amount">
+                            收入金额
+                        </label>
+                        <input type="text" class="form-control" id="amount"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-2 text-center">
+            <div id="submitAreaDiv">
+                <div style="height: 20px;"></div>
+
+                <button type="button" class="btn btn-default" id="formBackBtn">返回
+                </button>
+                &nbsp; &nbsp; &nbsp;
+                <button id="save" type="button" class="btn btn-success">
+                    保存
+                </button>
+                <div style="height: 80px;"></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+</body>
+</html>
