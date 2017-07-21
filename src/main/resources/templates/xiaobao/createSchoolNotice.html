@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>新建课程</title>
+    <meta name="viewport" content="width=device-width,
+                                     initial-scale=1.0,
+                                     maximum-scale=1.0,
+                                     user-scalable=no"/>
+
+    <link rel="stylesheet" href="/xiaobao/css/bootstrap.css"/>
+
+    <script src="/xiaobao/js/bootstrap.js"></script>
+
+    <script src="/xiaobao/js/jquery-3.2.1.js"></script>
+<!--    <script type="text/javascript" src="/xiaobao/js/xheditoradd.js"></script>
+    <script type="text/javascript" src="/xiaobao/js/xheditor.js"></script>-->
+    <script src="/xiaobao/js/createSchoolNotice.js"></script>
+</head>
+<body>
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-12">
+            <ol class="breadcrumb">
+                <li><a  href="#" id="backToListbreadLink">校内通知</a></li>
+                <li><a href="#">新建通知</a></li>
+
+            </ol>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <h2 class="text-success  ">
+                新建通知
+            </h2>
+            <div style="height: 20px;"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+
+            <div class="text-success" style="display: none;" id="successLabel">恭喜你，新建通知成功！
+                <div style="height: 50px;"></div>
+                <button type="button" class="btn btn-info" id="backToListBtn" style="display: none;">
+                    返回
+                </button>
+
+                <button type="button" class="btn btn-success" id="createAgainBtn" style="display: none;">
+                    再新建一条通知
+                </button>
+                <div style="height: 50px;"></div>
+            </div>
+            <div class="text-danger" style="display: none;" id="failLabel">新建通知失败！
+                <div style="height: 50px;"></div>
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-8">
+
+            <div id="formdiv">
+                <form role="form" id="myform">
+                    <div class="form-group">
+
+                        <label for="title" style="float: left;margin-right: 10px; display: block; height: 35px;line-height: 35px;">
+                            标题
+                        </label>
+                        <select name="type" class="form-control" id="type" style="width: 100px;float: left;margin-right: 10px;">
+                            <option value="公告">公告</option>
+                            <option value="财务">财务</option>
+                            <option value="行政">行政</option>
+                            <option value="人事">人事</option>
+                            <option value="教务">教务</option>
+                        </select>
+                        <input type="text" class="form-control" id="title" style="width: 550px;float: left; margin-bottom: 10px;"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group section">
+                        <textarea id="preview" name="preview" rows="15"  cols="120" style="width:800px;"></textarea>
+                        <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="school" style="margin-right: 10px; display: block; height: 35px;line-height: 35px; float: left; clear: both;">
+                            通知校区
+                        </label>
+                        <select name="school" class="form-control" id="school" style="width: 200px;float: left;margin-right: 10px;">
+                            <option th:each=" school : ${schoolList}" th:value="${school.school_name}" th:text="${school.school_name}"></option>
+                        </select>
+                        <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="isTop" style="clear: both; float: left;margin-right: 10px; display: block; height: 35px;line-height: 35px;">
+                            是否置顶
+                        </label>
+                        <div style=" float: left;width: 20px;height: 35px;line-height: 35px;margin-top: 3px;">
+                            <input type="checkbox" name="isTop" value="0" id = "isTop"/>
+                        </div>
+
+                        <span style="float: left;margin-right: 10px; display: block; height: 35px;line-height: 35px;margin-top: 2px;">置顶</span>
+                    </div>
+
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-2 text-center">
+            <div id="submitAreaDiv">
+                <div style="height: 20px;"></div>
+
+                <button type="button" class="btn btn-default" id="formBackBtn">返回
+                </button>
+                &nbsp; &nbsp; &nbsp;
+                <button id="save" type="button" class="btn btn-success">
+                    保存
+                </button>
+                <div style="height: 80px;"></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+</body>
+</html>
