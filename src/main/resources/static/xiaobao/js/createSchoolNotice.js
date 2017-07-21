@@ -5,107 +5,68 @@
 
 $(document).ready(function () {
 
-
+    //updateAll();
     var b_validate_result = true;
     var b_validate_result1 = true;
     var b_validate_result2 = true;
     var b_validate_result3 = true;
-    var b_validate_result4 = true;
-    var b_validate_result5 = true;
 
-    $("#name").focusout(function () {
+    $("#title").focusout(function () {
 
-        if ($("#name").val().length < 2) {
-            $("#name").next().text("教室名称小于2个字符，不合法!");
-            $("#name").next().css({"display": "block", "color": "red"});
+        if ($("#title").val().length < 2) {
+            $("#title").next().text("通知标题小于2个字符，不合法!");
+            $("#title").next().css({"display": "block", "color": "red"});
             b_validate_result1 = false;
         } else {
-            $("#name").next().css("display", "none");
+            $("#title").next().css("display", "none");
             b_validate_result1 = true;
         }
 
 
     });
 
-    $("#school_name").focusout(function () {
+    $("#school").focusout(function () {
 
-        if ($("#school_name").val().length < 2) {
-            $("#school_name").next().text("校区名称小于2个字符，不合法!");
-            $("#school_name").next().css({"display": "block", "color": "red"});
+        if ($("#school option:selected").val() == undefined ||
+            $("#school option:selected").val().length == 0) {
+            $("#school").next().text("请选择通知校区!");
+            $("#school").next().css({"display": "block", "color": "red"});
             b_validate_result2 = false;
         } else {
-            $("#school_name").next().css("display", "none");
+            $("#school").next().css("display", "none");
             b_validate_result2 = true;
         }
 
 
     });
 
-    $("#capacity").focusout(function () {
+    $("#preview").focusout(function () {
 
-
-
-        var telReg = /^\+?[1-9][0-9]*$/i;
-        if ( !telReg.test($("#capacity").val()) ) {
-            $("#capacity").next().text("非数字,不合法!");
-            $("#capacity").next().css({"display": "block", "color": "red"});
+        if ($("#preview").val().length < 2) {
+            $("#preview").next().text("通知内容小于2个字符，不合法!");
+            $("#preview").next().css({"display": "block", "color": "red"});
             b_validate_result3 = false;
         } else {
-            $("#capacity").next().css("display", "none");
+            $("#preview").next().css("display", "none");
             b_validate_result3 = true;
         }
 
 
     });
-    $("#address").focusout(function () {
-
-        if ($("#address").val().length < 2) {
-            $("#address").next().text("地址信息小于2个字符，不够详细!");
-            $("#address").next().css({"display": "block", "color": "red"});
-            b_validate_result4 = false;
-        } else {
-            $("#address").next().css("display", "none");
-            b_validate_result4 = true;
-        }
-
-
-    });
-    $("#note").focusout(function () {
-
-        if ($("#note").val().length < 2) {
-            $("#note").next().text("备注信息小于2个字符，不合法!");
-            $("#note").next().css({"display": "block", "color": "red"});
-            b_validate_result5 = false;
-        } else {
-            $("#note").next().css("display", "none");
-            b_validate_result5 = true;
-        }
-
-
-    });
-
-
-
 
     $("#save").click(function () {
 
+        $("#title").focus();
+        $("#preview").focus();
+        $("#type").focus();
 
-
-        $("#name").focus();
-        $("#school_name").focus();
-        $("#capacity").focus();
-        $("#address").focus();
-        $("#note").focus();
-        $("#name").focus();
-
-
-
-        b_validate_result = b_validate_result1 & b_validate_result2 & b_validate_result3 & b_validate_result4 &b_validate_result5;
+        b_validate_result = b_validate_result1 & b_validate_result2& b_validate_result3;
         if (!b_validate_result) {
             return;
         }
 
-        var url = "/insertClassroom";
+        var url = "/insertSchoolNotice";
+        var istop = $("#isTop").is(":checked")?1:0;
         $.ajax({
             type: "post",
             url: url,
@@ -114,11 +75,13 @@ $(document).ready(function () {
              * 2、js里面的ajax请求的data要使用 data:  JSON.stringify({name: $("#name").val(), age: $("#age").val()}), 传递json字符串，而不json对象.
              * */
             data: JSON.stringify({
-                name: $("#name").val(),
-                school_name: $("#school_name").val(),
-                capacity: $("#capacity").val(),
-                address: $("#address").val(),
-                note: $("#note").val()
+                notice_type: $("#type option:selected").val(),
+                notice_title: $("#title").val(),
+                notice_content: $("#school option:selected").val(),
+                notice_school: $("#school option:selected").val(),
+                is_top:istop,
+                publisher:"",
+
             }),
             dataType: "json",
             contentType: "application/json; charset=utf-8",//(可以)
@@ -153,7 +116,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "GET",
-            url: "/xiaobao/createClassroom",
+            url: "/xiaobao/createSchoolNotice",
             success: function (data) {
                 $('#mainContents').empty();
                 //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
@@ -171,20 +134,18 @@ $(document).ready(function () {
 
 
     $("#backToListBtn").click(function () {
-        $("#classroomguanli").click();
+        $("#schoolNoticeguanli").click();
 
     });
 
     $("#formBackBtn").click(function () {
-        $("#classroomguanli").click();
+        $("#schoolNoticeguanli").click();
 
     });
 
     $("#backToListbreadLink").click(function () {
-        $("#classroomguanli").click();
-
+        $("#schoolNoticeguanli").click();
     });
-
 
 
 
@@ -193,4 +154,24 @@ $(document).ready(function () {
 
 
 });
+
+function updateAll() {
+    var arrVar = [], sVar, sJSInit, sInit;
+    var textareaID = "elem1";
+    var editor = $('textarea[name=preview]')[0].editor;
+   /* if (editor) editor.getSource();*/
+    $('textarea[name=preview]').attr('id', textareaID).xheditor(false);
+    sJSInit = "$('#" + textareaID + "').xheditor(" + (sVar ? '{' + sVar + '}' : '') + ');';
+    if ($('#editorMode').val() == 1) {
+        sInit = ' class="xheditor' + (sVar ? ' {' + sVar + '}' : '') + '"';
+        sInit = sInit.replace(/(.+?xheditor)(.+?)tools:'(simple|mini)',?(.+?)/i, '$1-$3$2$4');
+    }
+    else sInit = sJSInit;
+    $('link[id^=xheCSS]').remove();
+    try {
+        eval(sJSInit);
+    } catch (e) {
+    }
+    $('#source').val(sInit);
+}
 
