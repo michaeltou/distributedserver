@@ -68,11 +68,11 @@
             <div id="formdiv">
                 <form role="form" id="myform">
                     <div class="form-group">
-                        <input type="hidden" class="form-control" id="id" th:value="${banji.id}"/>
+                        <input type="hidden" class="form-control" id="id" th:value="${banJi.id}"/>
                         <label for="banji_name">
                             班级名称
                         </label>
-                        <input type="text" class="form-control" id="banji_name" th:value="${banji.banji_name}"/>
+                        <input type="text" class="form-control" id="banji_name" th:value="${banJi.banji_name}"/>
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
@@ -80,7 +80,7 @@
                         <label for="school_name">
                             校区
                         </label>
-                        <input type="text" class="form-control" id="school_name" th:value="${banji.school_name}" />
+                        <input type="text" class="form-control" id="school_name" th:value="${banJi.school_name}" />
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
@@ -88,7 +88,7 @@
                         <label for="kecheng_name">
                             课程名称
                         </label>
-                        <input type="text" class="form-control" id="kecheng_name" th:value="${banji.kecheng_name}" />
+                        <input type="text" class="form-control" id="kecheng_name" th:value="${banJi.kecheng_name}" />
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
@@ -96,7 +96,7 @@
                         <label for="pre_recruit_cnt">
                             预招人数
                         </label>
-                        <input type="text" class="form-control" id="pre_recruit_cnt" th:value="${banji.pre_recruit_cnt}" />
+                        <input type="text" class="form-control" id="pre_recruit_cnt" th:value="${banJi.pre_recruit_cnt}" />
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
@@ -104,7 +104,7 @@
                         <label for="start_ban_ji_date">
                             开班日期
                         </label>
-                        <input type="text" class="form-control" id="start_ban_ji_date"   th:value="${banji.start_ban_ji_date}?${#dates.format(banji.start_ban_ji_date, 'yyyy-MM-dd')}" />
+                        <input type="text" class="form-control" id="start_ban_ji_date"   th:value="${banJi.start_ban_ji_date}?${#dates.format(banJi.start_ban_ji_date, 'yyyy-MM-dd')}" />
                         <div class="check_tips"></div>
                     </div>
 
@@ -126,7 +126,7 @@
                         <label for="student_consume_keshi">
                             学生每次上课消耗课时
                         </label>
-                        <input type="text" class="form-control" id="student_consume_keshi" th:value="${banji.student_consume_keshi}" />
+                        <input type="text" class="form-control" id="student_consume_keshi" th:value="${banJi.student_consume_keshi}" />
                         <div class="check_tips"></div>
                     </div>
 
@@ -136,7 +136,7 @@
                         <label for="teacher_consume_keshi">
                             老师每次上课消耗课时
                         </label>
-                        <input type="text" class="form-control" id="teacher_consume_keshi" th:value="${banji.teacher_consume_keshi}" />
+                        <input type="text" class="form-control" id="teacher_consume_keshi" th:value="${banJi.teacher_consume_keshi}" />
                         <div class="check_tips"></div>
                     </div>
 
@@ -145,7 +145,7 @@
                         <label for="teacher">
                             教师姓名
                         </label>
-                        <input type="text" class="form-control" id="teacher" th:value="${banji.teacher}" />
+                        <input type="text" class="form-control" id="teacher" th:value="${banJi.teacher}" />
                         <div class="check_tips"></div>
                     </div>
 
@@ -155,7 +155,7 @@
                         <label for="teacherSFZCode">
                             教师身份证
                         </label>
-                        <input type="text" class="form-control" id="teacherSFZCode" th:value="${banji.teacherSFZCode}" />
+                        <input type="text" class="form-control" id="teacherSFZCode" th:value="${banJi.teacherSFZCode}" />
                         <div class="check_tips"></div>
                     </div>
 
@@ -165,7 +165,7 @@
                         <label for="note">
                             备注
                         </label>
-                        <input type="text" class="form-control" id="note" th:value="${banji.note}" />
+                        <input type="text" class="form-control" id="note" th:value="${banJi.note}" />
                         <div class="check_tips"></div>
                     </div>
 

@@ -119,8 +119,8 @@
                     <tr th:each="classRecordMain : ${classRecordMainList}">
                         <td th:text="${classRecordMain.banji_name}"></td>
                         <td th:text=" ${classRecordMain.xiaoqu_name}"></td>
-                        <td th:text="${#dates.format(classRecordMain.shangke_start_date, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                        <td th:text="${#dates.format(classRecordMain.shangke_end_date, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                        <td th:text="${classRecordMain.shangke_start_date}?${#dates.format(classRecordMain.shangke_start_date, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                        <td th:text="${classRecordMain.shangke_end_date}?${#dates.format(classRecordMain.shangke_end_date, 'yyyy-MM-dd HH:mm:ss')}"></td>
                         <td th:text="${classRecordMain.jiaoshi_keshi}"></td>
                         <td th:text="${classRecordMain.teacher_name}"></td>
                         <td th:text="${classRecordMain.shangke_content}"></td>

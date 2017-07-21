@@ -24,7 +24,7 @@ public interface BanJiDAO {
             "    `px_banji`.`teacher_consume_keshi`,\n" +
             "    `px_banji`.`note`,\n" +
             "    `px_banji`.`teacher`,\n" +
-            "    `px_banji`.`assistant_teacher`,\n" +
+            "    `px_banji`.`teacherSFZCode`,\n" +
             "    `px_banji`.`status`,\n" +
             "    `px_banji`.`institution_code`,\n" +
             "    `px_banji`.`createDate`,\n" +
@@ -43,7 +43,7 @@ public interface BanJiDAO {
             "    `px_banji`.`teacher_consume_keshi`,\n" +
             "    `px_banji`.`note`,\n" +
             "    `px_banji`.`teacher`,\n" +
-            "    `px_banji`.`assistant_teacher`,\n" +
+            "    `px_banji`.`teacherSFZCode`,\n" +
             "    `px_banji`.`status`,\n" +
             "    `px_banji`.`institution_code`,\n" +
             "    `px_banji`.`createDate`,\n" +
@@ -64,7 +64,7 @@ public interface BanJiDAO {
             "    `px_banji`.`teacher_consume_keshi`,\n" +
             "    `px_banji`.`note`,\n" +
             "    `px_banji`.`teacher`,\n" +
-            "    `px_banji`.`assistant_teacher`,\n" +
+            "    `px_banji`.`teacherSFZCode`,\n" +
             "    `px_banji`.`status`,\n" +
             "    `px_banji`.`institution_code`,\n" +
             "    `px_banji`.`createDate`,\n" +
@@ -85,7 +85,7 @@ public interface BanJiDAO {
             "`teacher_consume_keshi`,\n" +
             "`note`,\n" +
             "`teacher`,\n" +
-            "`assistant_teacher`,\n" +
+            "`teacherSFZCode`,\n" +
             "`status`,\n" +
             "`institution_code`,\n" +
             "`createDate`,\n" +
@@ -101,11 +101,12 @@ public interface BanJiDAO {
             "#{teacher_consume_keshi},\n" +
             "#{note},\n" +
             "#{teacher},\n" +
-            "#{assistant_teacher},\n" +
+            "#{teacherSFZCode},\n" +
             "#{status},\n" +
             "#{institution_code},\n" +
             "now(),\n" +
-            "now();\n"   )
+            "now() " +
+            ");\n"   )
     public int insertBanJi(BanJi   banJi);
 
 
@@ -119,7 +120,7 @@ public interface BanJiDAO {
             "`teacher_consume_keshi` = #{teacher_consume_keshi},\n" +
             "`note` = #{note},\n" +
             "`teacher` = #{teacher},\n" +
-            "`assistant_teacher` = #{assistant_teacher},\n" +
+            "`teacherSFZCode` = #{teacherSFZCode},\n" +
             "`status` = #{status},\n" +
             "`updateDate` = now() \n" +
             " where  institution_code = #{institution_code} and banji_name = #{banji_name} and id = #{id} ")

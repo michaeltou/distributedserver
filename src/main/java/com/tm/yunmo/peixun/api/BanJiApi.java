@@ -31,11 +31,13 @@ public class BanJiApi {
     }
 
     @RequestMapping("/queryBanJiListByNameWithLike")
-    public List<BanJi> queryBanJiListByNameWithLike(HttpServletRequest request) {
+    public ResultModel queryBanJiListByNameWithLike(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
         String institution_code = (String) request.getSession().getAttribute("institution_code");
         String banji_name = request.getParameter("banji_name");
         List<BanJi> banJiList = banJiService.queryBanJiListByNameWithLike(institution_code,banji_name);
-        return banJiList;
+        resultModel.setData(banJiList);
+        return resultModel;
     }
 
     //http://localhost:9999/queryBanJiListByInstitution?institution_code=tm&kecheng_name=java%E8%AF%BE%E7%A8%8B

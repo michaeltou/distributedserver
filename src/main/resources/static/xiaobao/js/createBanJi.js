@@ -87,9 +87,9 @@ $(document).ready(function () {
 
 
     $("#start_ban_ji_date").change(function () {
-        var telReg = /(\d{4}-\d{2}-\d{2}\d{2}:\d{2}:\d{2})|(\d{2}-\d{2}\d{2}:\d{2}:\d{2})|(\d{2}:\d{2}:\d{2})/;
+        var telReg = /^(\d{4})\-(\d{2})\-(\d{2})$/;
         if ( !telReg.test($("#start_ban_ji_date").val()) ) {
-            $("#start_ban_ji_date").next().text("时间格式有误!正确时间格式为yyyy-mm-dd hh:ii:ss");
+            $("#start_ban_ji_date").next().text("时间格式有误!正确时间格式为yyyy-mm-dd");
             $("#start_ban_ji_date").next().css({"display": "block", "color": "red"});
             b_validate_result5 = false;
         } else {
@@ -124,7 +124,7 @@ $(document).ready(function () {
             $("#teacher_consume_keshi").next().css({"display": "block", "color": "red"});
             b_validate_result7 = false;
         } else {
-            $("#student_consume_keshi").next().css("display", "none");
+            $("#teacher_consume_keshi").next().css("display", "none");
             b_validate_result7 = true;
         }
 
@@ -136,9 +136,9 @@ $(document).ready(function () {
 
         $("#banji_name").focus();
         $("#school_name").focus();
-        $("#kecheng_name").change();
-        $("#pre_recruit_cnt").change();
-        $("#start_ban_ji_date").focus();
+        $("#kecheng_name").focus();
+        $("#pre_recruit_cnt").focus();
+        $("#start_ban_ji_date").change();
         $("#student_consume_keshi").focus();
         $("#teacher_consume_keshi").focus(); 
         $("#banji_name").focus();
@@ -163,7 +163,7 @@ $(document).ready(function () {
                 school_name: $("#school_name").val(),
                 kecheng_name: $("#kecheng_name").val(),
                 pre_recruit_cnt: $("#pre_recruit_cnt").val(),
-                start_ban_ji_date: $("#start_ban_ji_date").val(),
+                start_ban_ji_date: $("#start_ban_ji_date").val()?null:$("#start_ban_ji_date").val()+" 00:00:00",
                 student_consume_keshi: $("#student_consume_keshi").val(),
                 teacher_consume_keshi: $("#teacher_consume_keshi").val(),
                 teacher: $("#teacher").val(),

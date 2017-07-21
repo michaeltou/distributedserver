@@ -68,7 +68,7 @@ $(document).ready(function () {
     $("#shangke_start_date").change(function () {
 
 
-        var telReg = /(\d{4}-\d{2}-\d{2}\d{2}:\d{2}:\d{2})|(\d{2}-\d{2}\d{2}:\d{2}:\d{2})|(\d{2}:\d{2}:\d{2})/;
+        var telReg = /^(\d{4})\-(\d{2})\-(\d{2}) (\d{2}):(\d{2}):(\d{2})$/;
         if ( !telReg.test($("#shangke_start_date").val()) ) {
 
             $("#shangke_start_date").next().text("时间格式有误!正确时间格式为yyyy-mm-dd hh:ii:ss");
@@ -84,7 +84,7 @@ $(document).ready(function () {
 
 
     $("#shangke_end_date").change(function () {
-        var telReg = /(\d{4}-\d{2}-\d{2}\d{2}:\d{2}:\d{2})|(\d{2}-\d{2}\d{2}:\d{2}:\d{2})|(\d{2}:\d{2}:\d{2})/;
+        var telReg = /^(\d{4})\-(\d{2})\-(\d{2}) (\d{2}):(\d{2}):(\d{2})$/;
         if ( !telReg.test($("#shangke_end_date").val()) ) {
             $("#shangke_end_date").next().text("时间格式有误!正确时间格式为yyyy-mm-dd hh:ii:ss");
             $("#shangke_end_date").next().css({"display": "block", "color": "red"});

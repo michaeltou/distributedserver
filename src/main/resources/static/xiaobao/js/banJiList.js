@@ -135,7 +135,17 @@ $(document).ready(function () {
                         var $td2 = $("<td >" + banJi.school_name + "</td>");
                         var $td3 = $("<td >" + banJi.kecheng_name + "</td>");
                         var $td4 = $("<td >" + banJi.pre_recruit_cnt + "</td>");
-                        var $td5 = $("<td >" + banJi.start_ban_ji_date + "</td>");
+                        var start_ban_ji_date =  banJi.start_ban_ji_date;
+                        var start_ban_ji_date_format;
+                        if(start_ban_ji_date){
+                            start_ban_ji_date_format =  start_ban_ji_date.substring(0,10);
+                        }else{
+                            start_ban_ji_date_format = null;
+                        }
+
+                        var $td5 = $("<td >" + start_ban_ji_date_format + "</td>");
+
+
                         var $td6 = $("<td >" + banJi.student_consume_keshi + "</td>");
                         var $td7 = $("<td >" + banJi.teacher_consume_keshi + "</td>");
                         var $td8 = $("<td >" + banJi.teacher + "</td>");

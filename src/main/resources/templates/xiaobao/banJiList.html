@@ -125,7 +125,7 @@
                         <td th:text=" ${banji.school_name}">null</td>
                         <td th:text="${banji.kecheng_name}">null</td>
                         <td th:text="${banji.pre_recruit_cnt}">null</td>
-                        <td th:text="${banji.start_ban_ji_date}">null</td>
+                        <td th:text="${banji.start_ban_ji_date}?${#dates.format(banji.start_ban_ji_date, 'yyyy-MM-dd')}"></td>
                         <td th:text="${banji.student_consume_keshi}">null</td>
                         <td th:text="${banji.teacher_consume_keshi}">null</td>
                         <td th:text="${banji.teacher}">null</td>

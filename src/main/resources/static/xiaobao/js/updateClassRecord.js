@@ -61,7 +61,7 @@ $(document).ready(function () {
     $("#shangke_start_date").change(function () {
 
 
-        var telReg = /(\d{4}-\d{2}-\d{2}\d{2}:\d{2}:\d{2})|(\d{2}-\d{2}\d{2}:\d{2}:\d{2})|(\d{2}:\d{2}:\d{2})/;
+        var telReg = /^(\d{4})\-(\d{2})\-(\d{2}) (\d{2}):(\d{2}):(\d{2})$/;
         if ( !telReg.test($("#shangke_start_date").val()) ) {
 
             $("#shangke_start_date").next().text("时间格式有误!正确时间格式为yyyy-mm-dd hh:ii:ss");
@@ -77,7 +77,7 @@ $(document).ready(function () {
 
 
     $("#shangke_end_date").change(function () {
-        var telReg = /(\d{4}-\d{2}-\d{2}\d{2}:\d{2}:\d{2})|(\d{2}-\d{2}\d{2}:\d{2}:\d{2})|(\d{2}:\d{2}:\d{2})/;
+        var telReg = /^(\d{4})\-(\d{2})\-(\d{2}) (\d{2}):(\d{2}):(\d{2})$/;
         if ( !telReg.test($("#shangke_end_date").val()) ) {
             $("#shangke_end_date").next().text("时间格式有误!正确时间格式为yyyy-mm-dd hh:ii:ss");
             $("#shangke_end_date").next().css({"display": "block", "color": "red"});
@@ -132,31 +132,7 @@ $(document).ready(function () {
 
     });
 
-  /*  $("#assist_teacher_name").focusout(function () {
-        if ($("#assist_teacher_name").val().length < 2) {
-            $("#assist_teacher_name").next().text("助教姓名小于2个字符，不合法!");
-            $("#assist_teacher_name").next().css({"display": "block", "color": "red"});
-            b_validate_result7 = false;
-        } else {
-            $("#assist_teacher_name").next().css("display", "none");
-            b_validate_result7 = true;
-        }
 
-    });
-
-    $("#assist_teacher_sfzCode").focusout(function () {
-
-        if ($("#assist_teacher_sfzCode").val().length < 2) {
-            $("#assist_teacher_sfzCode").next().text("助教身份证信息小于2个字符，不合法!");
-            $("#assist_teacher_sfzCode").next().css({"display": "block", "color": "red"});
-            b_validate_result8 = false;
-        } else {
-            $("#assist_teacher_sfzCode").next().css("display", "none");
-            b_validate_result8 = true;
-        }
-
-
-    });*/
     $("#shangke_content").focusout(function () {
 
         if ($("#shangke_content").val().length < 10) {
