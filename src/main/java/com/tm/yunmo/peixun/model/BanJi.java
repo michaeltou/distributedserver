@@ -25,12 +25,16 @@ public class BanJi {
     private String student_consume_keshi;
     /* '老师每次上课消耗课时 使用int，单位为100.一个课时，值为100' */
     private int teacher_consume_keshi;
+
+    //教师姓名
+    private String teacher;
+
+    //教师身份证
+    private String teacherSFZCode;
+
     /* ''备注'' */
     private String note;
 
-    private String teacher;
-
-    private String assistant_teacher;
     /* '状态' */
     private String status;
 
@@ -129,14 +133,6 @@ public class BanJi {
         this.teacher = teacher;
     }
 
-    public String getAssistant_teacher() {
-        return assistant_teacher;
-    }
-
-    public void setAssistant_teacher(String assistant_teacher) {
-        this.assistant_teacher = assistant_teacher;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -160,4 +156,14 @@ public class BanJi {
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
+
+    public String getTeacherSFZCode() {
+        return teacherSFZCode;
+    }
+
+    public void setTeacherSFZCode(String teacherSFZCode) {
+        this.teacherSFZCode = teacherSFZCode;
+    }
+
+
 }

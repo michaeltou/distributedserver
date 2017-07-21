@@ -33,6 +33,24 @@ public interface BanJiDAO {
             " where  institution_code = #{institution_code} ")
     List<BanJi> queryBanJiListByInstitution(@Param("institution_code") String institution_code);
 
+    @Select("SELECT `px_banji`.`id`,\n" +
+            "    `px_banji`.`banji_name`,\n" +
+            "    `px_banji`.`school_name`,\n" +
+            "    `px_banji`.`kecheng_name`,\n" +
+            "    `px_banji`.`pre_recruit_cnt`,\n" +
+            "    `px_banji`.`start_ban_ji_date`,\n" +
+            "    `px_banji`.`student_consume_keshi`,\n" +
+            "    `px_banji`.`teacher_consume_keshi`,\n" +
+            "    `px_banji`.`note`,\n" +
+            "    `px_banji`.`teacher`,\n" +
+            "    `px_banji`.`assistant_teacher`,\n" +
+            "    `px_banji`.`status`,\n" +
+            "    `px_banji`.`institution_code`,\n" +
+            "    `px_banji`.`createDate`,\n" +
+            "    `px_banji`.`updateDate`\n" +
+            "FROM  `px_banji` \n"+
+            " where  institution_code = #{institution_code} and  banji_name like CONCAT('%',#{banji_name},'%') ")
+    List<BanJi> queryBanJiListByNameWithLike(@Param("institution_code") String institution_code,@Param("banji_name") String banji_name);
 
 
 
@@ -86,8 +104,8 @@ public interface BanJiDAO {
             "#{assistant_teacher},\n" +
             "#{status},\n" +
             "#{institution_code},\n" +
-            "#{createDate},\n" +
-            "#{updateDate});\n"   )
+            "now(),\n" +
+            "now();\n"   )
     public int insertBanJi(BanJi   banJi);
 
 
@@ -103,7 +121,7 @@ public interface BanJiDAO {
             "`teacher` = #{teacher},\n" +
             "`assistant_teacher` = #{assistant_teacher},\n" +
             "`status` = #{status},\n" +
-            "`updateDate` = #{updateDate} \n" +
+            "`updateDate` = now() \n" +
             " where  institution_code = #{institution_code} and banji_name = #{banji_name} and id = #{id} ")
     public int updateBanJi(BanJi   banJi);
 

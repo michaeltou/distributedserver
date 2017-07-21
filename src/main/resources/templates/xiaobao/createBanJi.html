@@ -12,6 +12,10 @@
     <script src="/xiaobao/js/jquery-3.2.1.js"></script>
     <script src="/xiaobao/js/bootstrap.js"></script>
     <script src="/xiaobao/js/createBanJi.js"></script>
+
+    <script src="/xiaobao/js/bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="/xiaobao/css/bootstrap-datetimepicker.css"/>
+
 </head>
 <body>
 
@@ -21,8 +25,8 @@
     <div class="row">
         <div class="col-md-12">
             <ol class="breadcrumb">
-                <li><a  href="#" id="backToListbreadLink">教室管理</a></li>
-                <li><a href="#">新建教室</a></li>
+                <li><a href="#" id="backToListbreadLink">班级管理</a></li>
+                <li><a href="#">新建班级</a></li>
 
             </ol>
         </div>
@@ -31,7 +35,7 @@
     <div class="row">
         <div class="col-md-3">
             <h2 class="text-success  ">
-                新建教室
+                新建班级
             </h2>
             <div style="height: 20px;"></div>
         </div>
@@ -39,22 +43,20 @@
     <div class="row">
         <div class="col-md-3">
 
-            <div class="text-success" style="display: none;" id="successLabel">恭喜你，新建教室成功！
+            <div class="text-success" style="display: none;" id="successLabel">恭喜你，新建班级成功！
                 <div style="height: 50px;"></div>
                 <button type="button" class="btn btn-info" id="backToListBtn" style="display: none;">
                     返回
                 </button>
 
                 <button type="button" class="btn btn-success" id="createAgainBtn" style="display: none;">
-                    再新建一个教室
+                    再新建一个班级
                 </button>
                 <div style="height: 50px;"></div>
             </div>
-            <div class="text-danger" style="display: none;" id="failLabel">新建教室失败！
+            <div class="text-danger" style="display: none;" id="failLabel">新建班级失败！
                 <div style="height: 50px;"></div>
             </div>
-
-
 
 
         </div>
@@ -65,15 +67,14 @@
     <div class="row">
 
         <div class="col-md-4">
-
             <div id="formdiv">
                 <form role="form" id="myform">
                     <div class="form-group">
 
-                        <label for="name">
-                            教室名称
+                        <label for="banji_name">
+                            班级名称
                         </label>
-                        <input type="text" class="form-control" id="name"/>
+                        <input type="text" class="form-control" id="banji_name"/>
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
@@ -86,20 +87,79 @@
                     </div>
                     <div class="form-group">
 
-                        <label for="capacity">
-                            容纳人数
+                        <label for="kecheng_name">
+                            课程名称
                         </label>
-                        <input type="text" class="form-control" id="capacity"/>
+                        <input type="text" class="form-control" id="kecheng_name"/>
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
 
-                        <label for="address">
-                            地址
+                        <label for="pre_recruit_cnt">
+                            预招人数
                         </label>
-                        <input type="text" class="form-control" id="address"/>
+                        <input type="text" class="form-control" id="pre_recruit_cnt"/>
                         <div class="check_tips"></div>
                     </div>
+                    <div class="form-group">
+
+                        <label for="start_ban_ji_date">
+                            开班日期
+                        </label>
+                        <input type="text" class="form-control" id="start_ban_ji_date"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                </form>
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div id="formdiv2">
+                <form role="form" id="myform2">
+
+
+                    <div class="form-group">
+
+                        <label for="student_consume_keshi">
+                            学生每次上课消耗课时
+                        </label>
+                        <input type="text" class="form-control" id="student_consume_keshi"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="teacher_consume_keshi">
+                            老师每次上课消耗课时
+                        </label>
+                        <input type="text" class="form-control" id="teacher_consume_keshi"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="teacher">
+                            教师姓名
+                        </label>
+                        <input type="text" class="form-control" id="teacher"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="teacherSFZCode">
+                            教师身份证
+                        </label>
+                        <input type="text" class="form-control" id="teacherSFZCode"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+
                     <div class="form-group">
 
                         <label for="note">
@@ -113,9 +173,7 @@
                 </form>
 
             </div>
-
         </div>
-
 
     </div>
 
