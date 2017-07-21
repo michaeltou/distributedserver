@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * Created by jinhu on 17/6/23.
+ * Created by daoying on 17/6/23.
  */
 @Controller
 public class SchoolPage {

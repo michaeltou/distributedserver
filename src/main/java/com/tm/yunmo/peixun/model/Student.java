@@ -20,7 +20,7 @@ public class Student {
     //'性别'
     private String gender;
     //'生日'
-    private String birthday;
+    private Date birthday;
 
     //'母亲电话'
     private String motherPhone;
@@ -110,11 +110,11 @@ public class Student {
         this.gender = gender;
     }
 
-    public String getBirthday() {
+    public Date getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

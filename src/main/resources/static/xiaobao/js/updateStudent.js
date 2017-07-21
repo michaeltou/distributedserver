@@ -5,104 +5,76 @@
 
 $(document).ready(function () {
 
+    $('#birthday').datetimepicker({
+        format: 'yyyy-mm-dd',
+        minView: 'month',
+        initialDate: new Date(),//初始化当前日期
+        autoclose: true,//选中自动关闭
+        todayBtn: true//显示今日按钮
+
+    });
+
 
     var b_validate_result = true;
     var b_validate_result1 = true;
     var b_validate_result2 = true;
     var b_validate_result3 = true;
-    var b_validate_result4 = true;
-    var b_validate_result5 = true;
 
-    $("#classroom_name").focusout(function () {
+    $("#name").focusout(function () {
 
-        if ($("#classroom_name").val().length < 2) {
-            $("#classroom_name").next().text("教室名称小于2个字符，不合法!");
-            $("#classroom_name").next().css({"display": "block", "color": "red"});
+        if ($("#name").val().length < 2) {
+            $("#name").next().text("姓名小于2个字符，不合法!");
+            $("#name").next().css({"display": "block", "color": "red"});
             b_validate_result1 = false;
         } else {
-            $("#classroom_name").next().css("display", "none");
+            $("#name").next().css("display", "none");
             b_validate_result1 = true;
         }
 
 
     });
 
-    $("#school_name").focusout(function () {
+    $("#phone").focusout(function () {
 
-        if ($("#school_name").val().length < 2) {
-            $("#school_name").next().text("校区名称小于2个字符，不合法!");
-            $("#school_name").next().css({"display": "block", "color": "red"});
+        if ($("#phone").val().length < 2) {
+            $("#phone").next().text("电话不合法!");
+            $("#phone").next().css({"display": "block", "color": "red"});
             b_validate_result2 = false;
         } else {
-            $("#school_name").next().css("display", "none");
+            $("#phone").next().css("display", "none");
             b_validate_result2 = true;
         }
-
-
     });
 
-    $("#capacity").focusout(function () {
 
-
-
-        var telReg = /^\+?[1-9][0-9]*$/i;
-        if ( !telReg.test($("#capacity").val()) ) {
-            $("#capacity").next().text("非数字,不合法!");
-            $("#capacity").next().css({"display": "block", "color": "red"});
+    $("#sfzCode").focusout(function () {
+        var telReg = /^\d{6}(18|19|20)?\d{2}(0[1-9]|1[12])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/i;
+        if (!telReg.test($("#sfzCode").val())) {
+            $("#sfzCode").next().text("身份证号码不正确");
+            $("#sfzCode").next().css({"display": "block", "color": "red"});
             b_validate_result3 = false;
         } else {
-            $("#capacity").next().css("display", "none");
+            $("#sfzCode").next().css("display", "none");
             b_validate_result3 = true;
         }
 
-
     });
-    $("#address").focusout(function () {
-
-        if ($("#address").val().length < 2) {
-            $("#address").next().text("地址信息小于2个字符，不够详细!");
-            $("#address").next().css({"display": "block", "color": "red"});
-            b_validate_result4 = false;
-        } else {
-            $("#address").next().css("display", "none");
-            b_validate_result4 = true;
-        }
-
-
-    });
-    $("#note").focusout(function () {
-
-        if ($("#note").val().length < 2) {
-            $("#note").next().text("备注信息小于2个字符，不合法!");
-            $("#note").next().css({"display": "block", "color": "red"});
-            b_validate_result5 = false;
-        } else {
-            $("#note").next().css("display", "none");
-            b_validate_result5 = true;
-        }
-
-
-    });
-
 
 
 
     $("#update").click(function () {
+        $("#name").focus();
+        $("#sfzCode").focus();
+        $("#phone").focus();
+        $("#name").focus();
 
-        $("#classroom_name").focus();
-        $("#school_name").focus();
-        $("#capacity").focus();
-        $("#address").focus();
-        $("#note").focus();
-        $("#classroom_name").focus();
 
-        b_validate_result = b_validate_result1 & b_validate_result2 & b_validate_result3 & b_validate_result4 &b_validate_result5;
+        b_validate_result = b_validate_result1 & b_validate_result2 & b_validate_result3;
         if (!b_validate_result) {
-
             return;
         }
 
-        var url = "/updateClassroom";
+        var url = "/updateStudent";
         $.ajax({
             type: "post",
             url: url,
@@ -112,21 +84,42 @@ $(document).ready(function () {
              * */
             data: JSON.stringify({
                 id: $("#id").val(),
-                school_name: $("#school_name").val(),
-                name: $("#classroom_name").val(),
-                capacity: $("#capacity").val(),
+                name: $("#name").val(),
+                sfzCode: $("#sfzCode").val(),
+                phone: $("#phone").val(),
+                gender: $("#gender").val(),
+                birthday: !$("#birthday").val() ? null : $("#birthday").val() + " 00:00:00",
+                motherPhone: $("#motherPhone").val(),
+                fatherPhone: $("#fatherPhone").val(),
                 address: $("#address").val(),
-                note: $("#note").val()
+                email: $("#email").val(),
+                weixinhao: $("#weixinhao").val(),
+                qq: $("#qq").val(),
+                qudao_source: $("#qudao_source").val(),
+                header_image_url: $("#header_image_url").val(),
+                current_school_level: $("#current_school_level").val(),
+                current_school_grade: $("#current_school_grade").val(),
+                jiguan: $("#jiguan").val(),
+                minzu: $("#minzu").val(),
+                zheng_zhi_mian_miao: $("#zheng_zhi_mian_miao").val()
             }),
             dataType: "json",
             contentType: "application/json; charset=utf-8",//(可以)
             success: function (data, textStatus) {
                 if (data.success) {
+                    //清空表格数据
                     $("#myform")[0].reset();
+                    $("#myform2")[0].reset();
+                    $("#myform3")[0].reset();
+                    //显示
                     $("#successLabel").show();
                     $("#backBtn").show();
+
+                    //隐藏
                     $("#submitAreaDiv").empty();
                     $("#formdiv").empty();
+                    $("#formdiv2").empty();
+                    $("#formdiv3").empty();
                 }
                 else {
                     alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
@@ -141,17 +134,17 @@ $(document).ready(function () {
     });
 
     $("#formBackBtn").click(function () {
-        $("#classroomguanli").click();
+        $("#studentguanli").click();
 
     });
 
     $("#classroomguanlibread").click(function () {
-        $("#classroomguanli").click();
+        $("#studentguanli").click();
 
     });
 
     $("#backBtn").click(function () {
-        $("#classroomguanli").click();
+        $("#studentguanli").click();
 
     });
 

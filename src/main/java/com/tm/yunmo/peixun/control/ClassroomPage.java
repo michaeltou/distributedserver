@@ -1,9 +1,7 @@
 package com.tm.yunmo.peixun.control;
 
 import com.tm.yunmo.peixun.model.Classroom;
-import com.tm.yunmo.peixun.model.KeChengCategory;
 import com.tm.yunmo.peixun.service.ClassroomService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * Created by Huangqijun on 2017/6/28.
+ * Created by daoying on 2017/6/28.
  */
 @Controller
 public class ClassroomPage {

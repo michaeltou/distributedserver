@@ -1,8 +1,6 @@
 package com.tm.yunmo.peixun.control;
 
 import com.tm.yunmo.peixun.model.Student;
-import com.tm.yunmo.peixun.model.Student;
-import com.tm.yunmo.peixun.service.StudentService;
 import com.tm.yunmo.peixun.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * Created by Huangqijun on 2017/6/28.
+ * Created by daoying on 2017/6/28.
  */
 @Controller
 public class StudentPage {
