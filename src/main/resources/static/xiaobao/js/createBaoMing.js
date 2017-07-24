@@ -11,10 +11,9 @@ $(document).ready(function () {
     var b_validate_result2 = true;
     var b_validate_result3 = true;
     var b_validate_result4 = true;
-    var b_validate_result5 = true;
+
 
     $("#name").focusout(function () {
-
         if ($("#name").val().length < 2) {
             $("#name").next().text("教室名称小于2个字符，不合法!");
             $("#name").next().css({"display": "block", "color": "red"});
@@ -23,67 +22,45 @@ $(document).ready(function () {
             $("#name").next().css("display", "none");
             b_validate_result1 = true;
         }
-
-
     });
 
-    $("#school_name").focusout(function () {
 
-        if ($("#school_name").val().length < 2) {
-            $("#school_name").next().text("校区名称小于2个字符，不合法!");
-            $("#school_name").next().css({"display": "block", "color": "red"});
-            b_validate_result2 = false;
-        } else {
-            $("#school_name").next().css("display", "none");
-            b_validate_result2 = true;
-        }
+    var telReg = /^\d{6}(18|19|20)?\d{2}(0[1-9]|1[12])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/i;
+    if (!telReg.test($("#sfzCode").val())) {
+        $("#sfzCode").next().text("身份证号码不正确");
+        $("#sfzCode").next().css({"display": "block", "color": "red"});
+        b_validate_result2 = false;
+    } else {
+        $("#sfzCode").next().css("display", "none");
+        b_validate_result2 = true;
+    }
 
+    $("#banji_name").focusout(function () {
 
-    });
-
-    $("#capacity").focusout(function () {
-
-
-
-        var telReg = /^\+?[1-9][0-9]*$/i;
-        if ( !telReg.test($("#capacity").val()) ) {
-            $("#capacity").next().text("非数字,不合法!");
-            $("#capacity").next().css({"display": "block", "color": "red"});
+        if ($("#banji_name").val().length < 2) {
+            $("#banji_name").next().text("班级名称小于2个字符，不合法!");
+            $("#banji_name").next().css({"display": "block", "color": "red"});
             b_validate_result3 = false;
         } else {
-            $("#capacity").next().css("display", "none");
+            $("#banji_name").next().css("display", "none");
             b_validate_result3 = true;
         }
-
-
     });
-    $("#address").focusout(function () {
 
-        if ($("#address").val().length < 2) {
-            $("#address").next().text("地址信息小于2个字符，不够详细!");
-            $("#address").next().css({"display": "block", "color": "red"});
+
+    $("#chargeFee").focusout(function () {
+        var telReg = /^\+?[1-9][0-9]*$/i;
+        if ( !telReg.test($("#chargeFee").val()) ) {
+            $("#chargeFee").next().text("非数字,不合法!");
+            $("#chargeFee").next().css({"display": "block", "color": "red"});
             b_validate_result4 = false;
         } else {
-            $("#address").next().css("display", "none");
+            $("#chargeFee").next().css("display", "none");
             b_validate_result4 = true;
         }
 
 
     });
-    $("#note").focusout(function () {
-
-        if ($("#note").val().length < 2) {
-            $("#note").next().text("备注信息小于2个字符，不合法!");
-            $("#note").next().css({"display": "block", "color": "red"});
-            b_validate_result5 = false;
-        } else {
-            $("#note").next().css("display", "none");
-            b_validate_result5 = true;
-        }
-
-
-    });
-
 
 
 
@@ -92,20 +69,19 @@ $(document).ready(function () {
 
 
         $("#name").focus();
-        $("#school_name").focus();
-        $("#capacity").focus();
-        $("#address").focus();
-        $("#note").focus();
+        $("#sfzCode").focus();
+        $("#banji_name").focus();
+        $("#chargeFee").focus();
         $("#name").focus();
 
 
 
-        b_validate_result = b_validate_result1 & b_validate_result2 & b_validate_result3 & b_validate_result4 &b_validate_result5;
+        b_validate_result = b_validate_result1 & b_validate_result2 & b_validate_result3 & b_validate_result4 ;
         if (!b_validate_result) {
             return;
         }
 
-        var url = "/insertClassroom";
+        var url = "/insertBaoMing";
         $.ajax({
             type: "post",
             url: url,
@@ -115,10 +91,14 @@ $(document).ready(function () {
              * */
             data: JSON.stringify({
                 name: $("#name").val(),
-                school_name: $("#school_name").val(),
-                capacity: $("#capacity").val(),
-                address: $("#address").val(),
-                note: $("#note").val()
+                sfzCode: $("#sfzCode").val(),
+                banji_name: $("#banji_name").val(),
+                chargeFee: $("#chargeFee").val(),
+                chageFeeNote: $("#chageFeeNote").val(),
+                jiaocai_zafei_chargeFee: $("#jiaocai_zafei_chargeFee").val(),
+                jiaocai_zafei_note: $("#jiaocai_zafei_note").val(),
+                totalChargeFee: $("#totalChargeFee").val()
+
             }),
             dataType: "json",
             contentType: "application/json; charset=utf-8",//(可以)
@@ -126,6 +106,7 @@ $(document).ready(function () {
                 if (data.success) {
                     //清空表格数据
                     $("#myform")[0].reset();
+                    $("#myform")[1].reset();
                     //显示
                     $("#successLabel").show();
                     $("#createAgainBtn").show();
@@ -133,6 +114,7 @@ $(document).ready(function () {
                     //隐藏
                     $("#submitAreaDiv").empty();
                     $("#formdiv").empty();
+                    $("#formdiv2").empty();
 
                 }
                 else {
@@ -153,7 +135,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "GET",
-            url: "/xiaobao/createClassroom",
+            url: "/xiaobao/createBaoMing",
             success: function (data) {
                 $('#mainContents').empty();
                 //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
@@ -171,17 +153,17 @@ $(document).ready(function () {
 
 
     $("#backToListBtn").click(function () {
-        $("#classroomguanli").click();
+        $("#baomingguanli").click();
 
     });
 
     $("#formBackBtn").click(function () {
-        $("#classroomguanli").click();
+        $("#baomingguanli").click();
 
     });
 
     $("#backToListbreadLink").click(function () {
-        $("#classroomguanli").click();
+        $("#baomingguanli").click();
 
     });
 

@@ -33,9 +33,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            <input type="hidden" id="name"  />
                             <input type="hidden" id="id"  />
-                            <input type="hidden" id="school_name"  />
 
                             确认删除该报名吗?
                             <div class="text-danger">数据删除后，将不可恢复！</div>
@@ -89,7 +87,7 @@
             <span style="">
                 报名名称:
             </span>
-            <input type="text" name="baoMing_name" placeholder="请输入报名名称" id="query_param_baoMing_name"/>
+            <input type="text" name="baoMing_student_name" placeholder="请输入学生姓名" id="query_param_baoMing_student_name"/>
             <button type="button" class="btn btn-success" id="searchBtn">
                 查询
             </button>
@@ -103,29 +101,37 @@
                 <table class="table table-striped table-hover">
                     <thead style="  background-color: rgba(113,210,113,0.36);  border-color: #71ce71;">
                     <tr>
-                        <th> 报名名称</th>
-                        <th> 校区</th>
-                        <th> 容纳人数</th>
-                        <th> 地址</th>
-                        <th> 备注</th>
+                        <th> 姓名</th>
+                        <th> 身份证</th>
+                        <th> 班级名称</th>
+                        <th> 费用</th>
+                        <th> 费用备注</th>
+
+                        <th> 教材杂费</th>
+                        <th> 教材杂费备注</th>
+                        <th> 总费用</th>
                         <th> 操作</th>
                     </tr>
                     </thead>
                     <tbody id="mytablebody">
 
-                    <tr th:each="classroom : ${classroomList}">
-                        <td th:text="${classroom.name}">null</td>
-                        <td th:text=" ${classroom.school_name}">null</td>
-                        <td th:text="${classroom.capacity}">null</td>
-                        <td th:text="${classroom.address}">null</td>
-                        <td th:text="${classroom.note}">null</td>
+                    <tr th:each="baoMing : ${baoMingList}">
+                        <td th:text="${baoMing.name}">null</td>
+                        <td th:text="${baoMing.sfzCode}">null</td>
+                        <td th:text="${baoMing.banji_name}">null</td>
+                        <td th:text="${baoMing.chargeFee}">null</td>
+                        <td th:text="${baoMing.chageFeeNote}">null</td>
+                        <td th:text="${baoMing.jiaocai_zafei_chargeFee}">null</td>
+                        <td th:text="${baoMing.jiaocai_zafei_note}">null</td>
+                        <td th:text="${baoMing.totalChargeFee}">null</td>
+
 
                         <td><a    class="deleteObjectLinkClass"
                                href="#"
-                               th:attr="name=${classroom.name},id=${classroom.id},school_name=${classroom.school_name}" >删除</a>
+                               th:attr="id=${baoMing.id}" >删除</a>
                             &nbsp;&nbsp;
                             <a   href="#" class="updateObjectLinkClass"
-                               th:href="@{/xiaobao/updateClassroom(id=${classroom.id},name=${classroom.name},school_name=${classroom.school_name} )}">编辑</a>
+                               th:href="@{/xiaobao/updateBaoMing(id=${baoMing.id})}">编辑</a>
                         </td>
 
 

@@ -9,7 +9,7 @@ $(document).ready(function () {
     $("#createObjectBtnInList").click(function () {
         $.ajax({
             type: "GET",
-            url: "/xiaobao/createClassroom",
+            url: "/xiaobao/createBaoMing",
             success: function (data) {
                 $('#mainContents').empty();
                 //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
@@ -30,13 +30,10 @@ $(document).ready(function () {
         //获取点击链接自定义属性的值
         var href = $(this).attr('href');
         var id = $(this).attr('id');
-        var name = $(this).attr('name');
-        var school_name = $(this).attr('school_name');
 
         //将自定义属性的值赋值给modal
         $("#id").val(id);
-        $("#name").val(name);
-        $("#school_name").val(school_name);
+
 
         //显示属性框.
         $('#myDeleteModal').modal('show');
@@ -72,7 +69,7 @@ $(document).ready(function () {
 
     $("#deleteObjectBtnInModal").click(function () {
 
-        var url = "/deleteClassroom";
+        var url = "/deleteBaoMing";
         $.ajax({
             type: "post",
             url: url,
@@ -81,9 +78,7 @@ $(document).ready(function () {
              * 2、js里面的ajax请求的data要使用 data:  JSON.stringify({name: $("#name").val(), age: $("#age").val()}), 传递json字符串，而不json对象.
              * */
             data: JSON.stringify({
-                id: $("#id").val(),
-                name: $("#name").val(),
-                school_name:$("#school_name").val()
+                id: $("#id").val()
             }),
             dataType: "json",
             contentType: "application/json; charset=utf-8",//(可以)
@@ -106,17 +101,17 @@ $(document).ready(function () {
 
     $('#myDeleteModal').on('hidden.bs.modal', function () {
         // 执行一些动作...
-        $("#classroomguanli").click();
+        $("#baomingguanli").click();
     })
 
 
     $("#searchBtn").click(function () {
 
-        var query_param_classroom_name = $("#query_param_classroom_name").val();
+        var query_param_baoMing_student_name = $("#query_param_baoMing_student_name").val();
         $.ajax({
-            url: "/queryClassroomListByNameWithLike",
+            url: "/queryBaoMingListByNameWithLike",
             type: "GET",
-            data: {name: query_param_classroom_name},
+            data: {name: query_param_baoMing_student_name},
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (data, textStatus) {
@@ -130,21 +125,25 @@ $(document).ready(function () {
                     $("#mytablebody").empty();
 
                     //动态构建表格数据.
-                    $.each(data.data, function (id, classroom) {
+                    $.each(data.data, function (id, baoMing) {
                         var $tr = $("<tr ></tr>");
-                        var $td1 = $("<td >" + classroom.name + "</td>");
-                        var $td2 = $("<td >" + classroom.school_name + "</td>");
-                        var $td3 = $("<td >" + classroom.capacity + "</td>");
-                        var $td4 = $("<td >" + classroom.address + "</td>");
-                        var $td5 = $("<td >" + classroom.note + "</td>");
+                        var $td1 = $("<td >" + baoMing.name + "</td>");
+                        var $td2 = $("<td >" + baoMing.sfzCode + "</td>");
+                        var $td3 = $("<td >" + baoMing.banji_name + "</td>");
+                        var $td4 = $("<td >" + baoMing.chargeFee + "</td>");
+                        var $td5 = $("<td >" + baoMing.chageFeeNote + "</td>");
+                        var $td6 = $("<td >" + baoMing.jiaocai_zafei_chargeFee + "</td>");
+                        var $td7 = $("<td >" + baoMing.jiaocai_zafei_note + "</td>");
+                        var $td8 = $("<td >" + baoMing.totalChargeFee + "</td>");
 
-                        var $td6 = $("   <td><a    class='deleteObjectLinkClass' href='#' name='" + classroom.name +
-                             "' id='" + classroom.id + "' school_name='"+ classroom.school_name+ 　"'   >删除</a>" +
+
+
+                        var $td9 = $("   <td><a    class='deleteObjectLinkClass' href='#' "  +
+                             "  id='" + baoMing.id  + "'   >删除</a>" +
                             " &nbsp;&nbsp; " +
                             "<a  class='updateObjectLinkClass'  " +
-                            " href='/xiaobao/updateClassroom?id=" +
-                            classroom.id + "&name=" +
-                            classroom.name +"&school_name=" + classroom.school_name + "  '>编辑</a> </td>");
+                            " href='/xiaobao/updateBaoMing?id=" +
+                            baoMing.id + "'>编辑</a> </td>");
 
                         $tr.append($td1);
                         $tr.append($td2);
@@ -152,6 +151,10 @@ $(document).ready(function () {
                         $tr.append($td4);
                         $tr.append($td5);
                         $tr.append($td6);
+                        $tr.append($td7);
+                        $tr.append($td8);
+                        $tr.append($td9);
+
 
                         $tr.appendTo($("#mytablebody"));
 
@@ -163,12 +166,9 @@ $(document).ready(function () {
                         //获取点击链接自定义属性的值
                         var href = $(this).attr('href');
                         var id = $(this).attr('id');
-                        var name = $(this).attr('name');
-
 
                         //将自定义属性的值赋值给modal
                         $("#id").val(id);
-                        $("#name").val(name);
 
 
                         //显示属性框.

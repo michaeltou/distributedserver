@@ -5,80 +5,57 @@
 
 $(document).ready(function () {
 
-
     var b_validate_result = true;
     var b_validate_result1 = true;
     var b_validate_result2 = true;
     var b_validate_result3 = true;
     var b_validate_result4 = true;
-    var b_validate_result5 = true;
 
-    $("#classroom_name").focusout(function () {
 
-        if ($("#classroom_name").val().length < 2) {
-            $("#classroom_name").next().text("教室名称小于2个字符，不合法!");
-            $("#classroom_name").next().css({"display": "block", "color": "red"});
+    $("#name").focusout(function () {
+        if ($("#name").val().length < 2) {
+            $("#name").next().text("教室名称小于2个字符，不合法!");
+            $("#name").next().css({"display": "block", "color": "red"});
             b_validate_result1 = false;
         } else {
-            $("#classroom_name").next().css("display", "none");
+            $("#name").next().css("display", "none");
             b_validate_result1 = true;
         }
-
-
     });
 
-    $("#school_name").focusout(function () {
 
-        if ($("#school_name").val().length < 2) {
-            $("#school_name").next().text("校区名称小于2个字符，不合法!");
-            $("#school_name").next().css({"display": "block", "color": "red"});
-            b_validate_result2 = false;
-        } else {
-            $("#school_name").next().css("display", "none");
-            b_validate_result2 = true;
-        }
+    var telReg = /^\d{6}(18|19|20)?\d{2}(0[1-9]|1[12])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/i;
+    if (!telReg.test($("#sfzCode").val())) {
+        $("#sfzCode").next().text("身份证号码不正确");
+        $("#sfzCode").next().css({"display": "block", "color": "red"});
+        b_validate_result2 = false;
+    } else {
+        $("#sfzCode").next().css("display", "none");
+        b_validate_result2 = true;
+    }
 
+    $("#banji_name").focusout(function () {
 
-    });
-
-    $("#capacity").focusout(function () {
-
-
-
-        var telReg = /^\+?[1-9][0-9]*$/i;
-        if ( !telReg.test($("#capacity").val()) ) {
-            $("#capacity").next().text("非数字,不合法!");
-            $("#capacity").next().css({"display": "block", "color": "red"});
+        if ($("#banji_name").val().length < 2) {
+            $("#banji_name").next().text("班级名称小于2个字符，不合法!");
+            $("#banji_name").next().css({"display": "block", "color": "red"});
             b_validate_result3 = false;
         } else {
-            $("#capacity").next().css("display", "none");
+            $("#banji_name").next().css("display", "none");
             b_validate_result3 = true;
         }
-
-
     });
-    $("#address").focusout(function () {
 
-        if ($("#address").val().length < 2) {
-            $("#address").next().text("地址信息小于2个字符，不够详细!");
-            $("#address").next().css({"display": "block", "color": "red"});
+
+    $("#chargeFee").focusout(function () {
+        var telReg = /^\+?[1-9][0-9]*$/i;
+        if ( !telReg.test($("#chargeFee").val()) ) {
+            $("#chargeFee").next().text("非数字,不合法!");
+            $("#chargeFee").next().css({"display": "block", "color": "red"});
             b_validate_result4 = false;
         } else {
-            $("#address").next().css("display", "none");
+            $("#chargeFee").next().css("display", "none");
             b_validate_result4 = true;
-        }
-
-
-    });
-    $("#note").focusout(function () {
-
-        if ($("#note").val().length < 2) {
-            $("#note").next().text("备注信息小于2个字符，不合法!");
-            $("#note").next().css({"display": "block", "color": "red"});
-            b_validate_result5 = false;
-        } else {
-            $("#note").next().css("display", "none");
-            b_validate_result5 = true;
         }
 
 
@@ -89,20 +66,20 @@ $(document).ready(function () {
 
     $("#update").click(function () {
 
-        $("#classroom_name").focus();
-        $("#school_name").focus();
-        $("#capacity").focus();
-        $("#address").focus();
-        $("#note").focus();
-        $("#classroom_name").focus();
+        $("#name").focus();
+        $("#sfzCode").focus();
+        $("#banji_name").focus();
+        $("#chargeFee").focus();
+        $("#name").focus();
 
-        b_validate_result = b_validate_result1 & b_validate_result2 & b_validate_result3 & b_validate_result4 &b_validate_result5;
+
+
+        b_validate_result = b_validate_result1 & b_validate_result2 & b_validate_result3 & b_validate_result4 ;
         if (!b_validate_result) {
-
             return;
         }
 
-        var url = "/updateClassroom";
+        var url = "/updateBaoMing";
         $.ajax({
             type: "post",
             url: url,
@@ -112,21 +89,29 @@ $(document).ready(function () {
              * */
             data: JSON.stringify({
                 id: $("#id").val(),
-                school_name: $("#school_name").val(),
-                name: $("#classroom_name").val(),
-                capacity: $("#capacity").val(),
-                address: $("#address").val(),
-                note: $("#note").val()
+                name: $("#name").val(),
+                sfzCode: $("#sfzCode").val(),
+                banji_name: $("#banji_name").val(),
+                chargeFee: $("#chargeFee").val(),
+                chageFeeNote: $("#chageFeeNote").val(),
+                jiaocai_zafei_chargeFee: $("#jiaocai_zafei_chargeFee").val(),
+                jiaocai_zafei_note: $("#jiaocai_zafei_note").val(),
+                totalChargeFee: $("#totalChargeFee").val()
+
             }),
             dataType: "json",
             contentType: "application/json; charset=utf-8",//(可以)
             success: function (data, textStatus) {
                 if (data.success) {
                     $("#myform")[0].reset();
+                    $("#myform")[1].reset();
+
                     $("#successLabel").show();
                     $("#backBtn").show();
                     $("#submitAreaDiv").empty();
+
                     $("#formdiv").empty();
+                    $("#formdiv2").empty();
                 }
                 else {
                     alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
@@ -141,17 +126,17 @@ $(document).ready(function () {
     });
 
     $("#formBackBtn").click(function () {
-        $("#classroomguanli").click();
+        $("#baomingguanli").click();
 
     });
 
     $("#classroomguanlibread").click(function () {
-        $("#classroomguanli").click();
+        $("#baomingguanli").click();
 
     });
 
     $("#backBtn").click(function () {
-        $("#classroomguanli").click();
+        $("#baomingguanli").click();
 
     });
 

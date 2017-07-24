@@ -20,8 +20,8 @@
     <div class="row">
         <div class="col-md-12">
             <ol class="breadcrumb">
-                <li><a  href="#" id="classroomguanlibread">教室管理</a></li>
-                <li><a href="#">编辑教室</a></li>
+                <li><a  href="#" id="classroomguanlibread">报名管理</a></li>
+                <li><a href="#">编辑报名</a></li>
 
             </ol>
         </div>
@@ -30,7 +30,7 @@
     <div class="row">
         <div class="col-md-3">
             <h2 class="text-success  ">
-                编辑教室
+                编辑报名
             </h2>
             <div style="height: 20px;"></div>
         </div>
@@ -38,14 +38,14 @@
     <div class="row">
         <div class="col-md-3">
 
-            <div class="text-success" style="display: none;" id="successLabel">恭喜你，更新教室成功！
+            <div class="text-success" style="display: none;" id="successLabel">恭喜你，更新报名成功！
                 <div style="height: 50px;"></div>
                 <button type="button" class="btn btn-success" id="backBtn" style="display: none;">
                     返回
                 </button>
                 <div style="height: 50px;"></div>
             </div>
-            <div class="text-danger" style="display: none;" id="failLabel">更新教室失败！
+            <div class="text-danger" style="display: none;" id="failLabel">更新报名失败！
                 <div style="height: 50px;"></div>
             </div>
 
@@ -62,47 +62,80 @@
 
             <div id="formdiv">
                 <form role="form" id="myform">
-
-
                     <div class="form-group">
-                        <input type="hidden" class="form-control" id="id" th:value="${classroom.id}"/>
+                        <input type="hidden" class="form-control" id="id" th:value="${baoMing.id}" />
 
-                        <label for="classroom_name">
-                            教室名称
+                        <label for="name">
+                            姓名
                         </label>
-                        <input type="text" class="form-control" id="classroom_name" th:value="${classroom.name}"/>
+                        <input type="text" class="form-control" id="name" th:value="${baoMing.name}" />
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
 
-                        <label for="school_name">
-                            校区
+                        <label for="sfzCode">
+                            身份证
                         </label>
-                        <input type="text" class="form-control" id="school_name" th:value="${classroom.school_name}"/>
+                        <input type="text" class="form-control" id="sfzCode" th:value="${baoMing.sfzCode}" />
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
 
-                        <label for="capacity">
-                            容纳人数
+                        <label for="banji_name">
+                            班级名称
                         </label>
-                        <input type="text" class="form-control" id="capacity" th:value="${classroom.capacity}"/>
+                        <input type="text" class="form-control" id="banji_name" th:value="${baoMing.banji_name}" />
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
 
-                        <label for="address">
-                            地址
+                        <label for="chargeFee">
+                            费用
                         </label>
-                        <input type="text" class="form-control" id="address" th:value="${classroom.address}"/>
+                        <input type="text" class="form-control" id="chargeFee" th:value="${baoMing.chargeFee}" />
+                        <div class="check_tips"></div>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+        <div class="col-md-4">
+
+            <div id="formdiv2">
+                <form role="form" id="myform2">
+                    <div class="form-group">
+
+                        <label for="chageFeeNote">
+                            费用备注
+                        </label>
+                        <input type="text" class="form-control" id="chageFeeNote" th:value="${baoMing.chageFeeNote}" />
+                        <div class="check_tips"></div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="jiaocai_zafei_chargeFee">
+                            教材杂费
+                        </label>
+                        <input type="text" class="form-control" id="jiaocai_zafei_chargeFee" th:value="${baoMing.jiaocai_zafei_chargeFee}" />
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
 
-                        <label for="note">
-                            备注
+                        <label for="jiaocai_zafei_note">
+                            教材杂费备注
                         </label>
-                        <input type="text" class="form-control" id="note" th:value="${classroom.note}"/>
+                        <input type="text" class="form-control" id="jiaocai_zafei_note" th:value="${baoMing.jiaocai_zafei_note}" />
+                        <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="totalChargeFee">
+                            总费用
+                        </label>
+                        <input type="text" class="form-control" id="totalChargeFee" th:value="${baoMing.totalChargeFee}" />
                         <div class="check_tips"></div>
                     </div>
 
@@ -110,8 +143,8 @@
 
 
                 </form>
-            </div>
 
+            </div>
 
         </div>
 
