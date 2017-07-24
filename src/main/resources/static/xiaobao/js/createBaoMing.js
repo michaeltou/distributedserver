@@ -24,16 +24,18 @@ $(document).ready(function () {
         }
     });
 
+    $("#sfzCode").focusout(function () {
+        var telReg = /^\d{6}(18|19|20)?\d{2}(0[1-9]|1[12])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/i;
+        if (!telReg.test($("#sfzCode").val())) {
+            $("#sfzCode").next().text("身份证号码不正确");
+            $("#sfzCode").next().css({"display": "block", "color": "red"});
+            b_validate_result2 = false;
+        } else {
+            $("#sfzCode").next().css("display", "none");
+            b_validate_result2 = true;
+        }
 
-    var telReg = /^\d{6}(18|19|20)?\d{2}(0[1-9]|1[12])(0[1-9]|[12]\d|3[01])\d{3}(\d|X)$/i;
-    if (!telReg.test($("#sfzCode").val())) {
-        $("#sfzCode").next().text("身份证号码不正确");
-        $("#sfzCode").next().css({"display": "block", "color": "red"});
-        b_validate_result2 = false;
-    } else {
-        $("#sfzCode").next().css("display", "none");
-        b_validate_result2 = true;
-    }
+    });
 
     $("#banji_name").focusout(function () {
 
@@ -105,8 +107,7 @@ $(document).ready(function () {
             success: function (data, textStatus) {
                 if (data.success) {
                     //清空表格数据
-                    $("#myform")[0].reset();
-                    $("#myform")[1].reset();
+
                     //显示
                     $("#successLabel").show();
                     $("#createAgainBtn").show();

@@ -97,25 +97,19 @@ public interface BaoMingDAO {
 
     @Update(" UPDATE  `px_baoming`\n" +
             "SET\n" +
-            "`id` = #{id},\n" +
-            "`name` = #{name},\n" +
-            "`sfzCode` = #{sfzCode},\n" +
-            "`institution_code` = #{institution_code},\n" +
-            "`banji_name` = #{banji_name},\n" +
+
             "`chargeFee` = #{chargeFee},\n" +
             "`chageFeeNote` = #{chageFeeNote},\n" +
             "`jiaocai_zafei_chargeFee` = #{jiaocai_zafei_chargeFee},\n" +
             "`jiaocai_zafei_note` = #{jiaocai_zafei_note},\n" +
             "`totalChargeFee` = #{totalChargeFee},\n" +
-            "`createDate` = #{createDate},\n" +
-            "`updateDate` = #{updateDate}\n" +
-            "WHERE `id` = #{expr}>;")
+            "`updateDate` = now() \n" +
+            "WHERE `id` = #{id}  and institution_code = #{institution_code} ;")
     public int updateBaoMing(BaoMing baoMing);
 
 
     @Delete(" DELETE FROM  `px_baoming`\n" +
-            "WHERE    institution_code=#{institution_code} \n " +
-            "       id =#{id}; \n "   )
+            "WHERE      id =#{id} and institution_code=#{institution_code}   \n ")
     public int deleteBaoMing(BaoMing baoMing);
 
 

@@ -35,11 +35,13 @@ public class BaoMingApi {
 
 //http://localhost:9999/queryBaoMingListByNameWithLike?institution_code=tm&name=%E6%98%8E
     @RequestMapping("/queryBaoMingListByNameWithLike")
-    public List<BaoMing> queryBaoMingListByNameWithLike(HttpServletRequest request) {
+    public ResultModel queryBaoMingListByNameWithLike(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
         String institution_code = (String) request.getSession().getAttribute("institution_code");
         String name = request.getParameter("name");
         List<BaoMing> baoMingList = baoMingService.queryBaoMingListByNameWithLike(institution_code, name);
-        return baoMingList;
+        resultModel.setData(baoMingList);
+        return resultModel;
     }
 
 
