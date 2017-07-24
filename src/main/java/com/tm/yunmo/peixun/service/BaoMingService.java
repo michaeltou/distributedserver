@@ -30,19 +30,9 @@ public class BaoMingService {
     }
 
 
-    public List<BaoMing> queryBaoMingListBySFZCodeWithLike(String institution_code,String sfzCode){
-        List<BaoMing> baoMingList = baoMingDAO.queryBaoMingListBySFZCodeWithLike( institution_code,sfzCode);
-        return baoMingList;
-    }
 
     public List<BaoMing> queryBaoMingListByNameWithLike(String institution_code,String name){
         List<BaoMing> baoMingList = baoMingDAO.queryBaoMingListByNameWithLike( institution_code,name);
-        return baoMingList;
-    }
-
-
-    public List<BaoMing> queryBaoMingListByXuehaoWithLike(String institution_code,String xuehao){
-        List<BaoMing> baoMingList = baoMingDAO.queryBaoMingListByXuehaoWithLike( institution_code,xuehao);
         return baoMingList;
     }
 

@@ -31,14 +31,7 @@ public class BaoMingApi {
     }
 
 
-  //http://localhost:9999/queryBaoMingListBySFZCodeWithLike?institution_code=tm&sfzCode=362528
-    @RequestMapping("/queryBaoMingListBySFZCodeWithLike")
-    public List<BaoMing> queryBaoMingListBySFZCodeWithLike(HttpServletRequest request) {
-        String institution_code = (String) request.getSession().getAttribute("institution_code");
-        String sfzCode = request.getParameter("sfzCode");
-        List<BaoMing> baoMingList = baoMingService.queryBaoMingListBySFZCodeWithLike(institution_code, sfzCode);
-        return baoMingList;
-    }
+
 
 //http://localhost:9999/queryBaoMingListByNameWithLike?institution_code=tm&name=%E6%98%8E
     @RequestMapping("/queryBaoMingListByNameWithLike")
@@ -49,14 +42,6 @@ public class BaoMingApi {
         return baoMingList;
     }
 
-    //http://localhost:9999/queryBaoMingListByXuehaoWithLike?institution_code=tm&xuehao=01
-    @RequestMapping("/queryBaoMingListByXuehaoWithLike")
-    public List<BaoMing> queryBaoMingListByXuehaoWithLike(HttpServletRequest request) {
-        String institution_code = (String) request.getSession().getAttribute("institution_code");
-        String xuehao = request.getParameter("xuehao");
-        List<BaoMing> baoMingList = baoMingService.queryBaoMingListByXuehaoWithLike(institution_code, xuehao);
-        return baoMingList;
-    }
 
 
     /**
