@@ -1,0 +1,101 @@
+#content{
+    /*width: 600px;
+    height: 300px;
+    min-height:300px;
+    min-width:600px;
+    max-height:300px;
+    max-width:600px;*/
+    border:1px solid silver;
+}
+
+div.tree-multiselect .auxiliary input.search {
+    padding: 5px;
+    margin-top: 10px;
+    border: 2px solid silver;
+    display: table-cell;
+    width: 363px;
+}
+
+div.tree-multiselect>div.selected, div.tree-multiselect>div.selections {
+    width: 100px;
+    border:none;
+}
+
+.selections{
+    border: none;
+}
+
+#authorityBody{
+    width:390px;
+    height:400px;
+    float:left;
+    margin-left:0px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    border: 1px solid silver;
+
+}
+
+div.tree-multiselect {
+    border: none;
+
+}
+
+.scroll {
+    width: 100px;
+    height: 100px;
+}
+
+/*.deleteButton{
+    width:20px;
+    color: blue;
+    background: transparent;
+//display: inline-block;
+    color: royalblue !important;
+    cursor: pointer;
+    border: none;
+    padding: 0px;
+}*/
+
+.sendObjectsDiv {
+    width: 600px;
+    float:left;
+    /*margin-left: 20px;*/
+    margin-bottom: 10px;
+    height:100%;
+    overflow:hidden;!important;
+    /*background-color: seashell;*/
+}
+
+.sendObjectDiv{
+    margin: 5px;
+    float: left;
+    border: 1px solid silver;
+    padding-top: 5px;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: seashell;
+}
+
+.item > label{
+    font-weight: normal;
+}
+
+.sendObjectDiv > label{
+    font-weight: normal;
+}
+
+/*.sendToAllText{
+    font-weight: normal;
+}*/
+
+.sendToAllText{
+    padding-left: 5px;;
+}
+
+
+
+.check_tips{
+    clear: both;
+}

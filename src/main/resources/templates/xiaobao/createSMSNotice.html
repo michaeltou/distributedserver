@@ -2,16 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>新建课程</title>
+    <title>新建通知</title>
     <meta name="viewport" content="width=device-width,
                                      initial-scale=1.0,
                                      maximum-scale=1.0,
                                      user-scalable=no"/>
 
     <link rel="stylesheet" href="/xiaobao/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/xiaobao/css/jquery.tree-multiselect.min.css"/>
+    <link rel="stylesheet" href="/xiaobao/css/createSMSNotice.css"/>
     <script src="/xiaobao/js/jquery-3.2.1.js"></script>
     <script src="/xiaobao/js/bootstrap.js"></script>
-    <script src="/xiaobao/js/createClassroom.js"></script>
+    <script src="/xiaobao/js/jquery.tree-multiselect.min.js"></script>
+    <script src="/xiaobao/js/createSMSNotice.js"></script>
 </head>
 <body>
 
@@ -21,8 +24,8 @@
     <div class="row">
         <div class="col-md-12">
             <ol class="breadcrumb">
-                <li><a  href="#" id="backToListbreadLink">教室管理</a></li>
-                <li><a href="#">新建教室</a></li>
+                <li><a  href="#" id="backToListbreadLink">短信通知</a></li>
+                <li><a href="#">新建通知</a></li>
 
             </ol>
         </div>
@@ -31,7 +34,7 @@
     <div class="row">
         <div class="col-md-3">
             <h2 class="text-success  ">
-                新建教室
+                新建通知
             </h2>
             <div style="height: 20px;"></div>
         </div>
@@ -39,73 +42,79 @@
     <div class="row">
         <div class="col-md-3">
 
-            <div class="text-success" style="display: none;" id="successLabel">恭喜你，新建教室成功！
+            <div class="text-success" style="display: none;" id="successLabel">恭喜你，新建通知成功！
                 <div style="height: 50px;"></div>
                 <button type="button" class="btn btn-info" id="backToListBtn" style="display: none;">
                     返回
                 </button>
 
                 <button type="button" class="btn btn-success" id="createAgainBtn" style="display: none;">
-                    再新建一个教室
+                    再新建一个通知
                 </button>
                 <div style="height: 50px;"></div>
             </div>
-            <div class="text-danger" style="display: none;" id="failLabel">新建教室失败！
+            <div class="text-danger" style="display: none;" id="failLabel">新建通知失败！
                 <div style="height: 50px;"></div>
             </div>
-
-
-
-
         </div>
-
-
     </div>
 
     <div class="row">
 
         <div class="col-md-4">
 
-            <div id="formdiv">
-                <form role="form" id="myform">
+            <div id="formdiv1">
+                <!--<div class="form-group">
+
+                    <label for="school">
+                        通知校区
+                    </label>
+                    <select name="school" class="form-control" id="school">
+                        <option th:each=" school : ${schoolList}" th:value="${school.school_name}" th:text="${school.school_name}"></option>
+                    </select>
+                    <div class="check_tips"></div>
+                </div>-->
+                <form role="form" id="myform1">
+                    <div>
+                        <input type="checkbox" name="sendToAll" value="全员送信" class="sendToAll"/><label class="sendToAllText">全员送信</label>
+                    </div>
+                    <div id="authorityBody">
+                        <select id="authorifyselect" multiple="multiple">
+                            <option th:each="student : ${studentList}" th:value="${student.phone}" th:text="${student.name}" data-section="未报名"></option>
+                        </select>
+                    </div>
+
+
+                </form>
+
+            </div>
+
+        </div>
+        <div class="col-md-6">
+
+            <div id="formdiv2">
+                <form role="form" id="myform2">
                     <div class="form-group">
 
-                        <label for="name">
-                            教室名称
+                        <label>发送对象</label>
+                        <div class="sendObjectsDiv">
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="title">
+                            标题
                         </label>
-                        <input type="text" class="form-control" id="name"/>
+                        <input type="text" class="form-control" id="title"/>
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
 
-                        <label for="school_name">
-                            校区
+                        <label for="title">
+                            内容
                         </label>
-                        <input type="text" class="form-control" id="school_name"/>
-                        <div class="check_tips"></div>
-                    </div>
-                    <div class="form-group">
-
-                        <label for="capacity">
-                            容纳人数
-                        </label>
-                        <input type="text" class="form-control" id="capacity"/>
-                        <div class="check_tips"></div>
-                    </div>
-                    <div class="form-group">
-
-                        <label for="address">
-                            地址
-                        </label>
-                        <input type="text" class="form-control" id="address"/>
-                        <div class="check_tips"></div>
-                    </div>
-                    <div class="form-group">
-
-                        <label for="note">
-                            备注
-                        </label>
-                        <input type="text" class="form-control" id="note"/>
+                        <textarea class="form-control" id="content" name="content" rows="10"  cols="120"></textarea>
                         <div class="check_tips"></div>
                     </div>
 
@@ -115,7 +124,6 @@
             </div>
 
         </div>
-
 
     </div>
 
