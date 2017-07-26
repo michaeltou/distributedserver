@@ -1,7 +1,5 @@
 package com.tm.yunmo.file;
 
-import com.google.gson.Gson;
-import com.tm.yunmo.common.JsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -16,11 +14,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Administrator on 2017/5/26.
@@ -56,34 +50,13 @@ public class FileUploadController {
     @RequestMapping("/single/upload")
     @ResponseBody
     public String upload(@RequestParam("file") MultipartFile file) {
-        if (file.isEmpty()) {
-            return "文件为空";
-        }
-        // 获取文件名
-        String fileName = file.getOriginalFilename();
-        logger.info("上传的文件名为：" + fileName);
-        // 获取文件的后缀名
-        String suffixName = fileName.substring(fileName.lastIndexOf("."));
-        logger.info("上传的后缀名为：" + suffixName);
-        // 文件上传后的路径
-        String filePath = "E://test//";
-        // 解决中文问题，liunx下中文路径，图片显示问题
-        // fileName = UUID.randomUUID() + suffixName;
-        File dest = new File(filePath + fileName);
-        // 检测是否存在目录
-        if (!dest.getParentFile().exists()) {
-            dest.getParentFile().mkdirs();
-        }
-        try {
-            file.transferTo(dest);
 
-            return "上传成功";
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        boolean saveResult = saveFile(file);
+        if (!saveResult){
+            return "上传失败";
+        }else {
+            return "文件上传成功";
         }
-        return "上传失败";
     }
 
     //多文件上传
@@ -97,28 +70,8 @@ public class FileUploadController {
         BufferedOutputStream stream = null;
         for (int i = 0; i < files.size(); ++i) {
             file = files.get(i);
-            // 获取文件名
-            String fileName = file.getOriginalFilename();
-            logger.info("上传的文件名为：" + fileName);
-            // 获取文件的后缀名
-            String suffixName = fileName.substring(fileName.lastIndexOf("."));
-            logger.info("上传的后缀名为：" + suffixName);
-            // 文件上传后的路径
-            String filePath = "E://test//";
-            // 解决中文问题，liunx下中文路径，图片显示问题
-            // fileName = UUID.randomUUID() + suffixName;
-            File dest = new File(filePath + fileName);
-            // 检测是否存在目录
-            if (!dest.getParentFile().exists()) {
-                dest.getParentFile().mkdirs();
-            }
-            try {
-                file.transferTo(dest);
-            } catch (IllegalStateException e) {
-                e.printStackTrace();
-                return "上传失败";
-            } catch (IOException e) {
-                e.printStackTrace();
+            boolean saveResult = saveFile(file);
+            if (!saveResult){
                 return "上传失败";
             }
 
@@ -135,74 +88,21 @@ public class FileUploadController {
         model.addAttribute("result","success");
 
         model.addAttribute("imagePath","/image/test/2.jpg");
-        if (file.isEmpty()) {
-            return "文件为空";
-        }
-        // 获取文件名
-        String fileName = file.getOriginalFilename();
-        logger.info("上传的文件名为：" + fileName);
-        // 获取文件的后缀名
-        String suffixName = fileName.substring(fileName.lastIndexOf("."));
-        logger.info("上传的后缀名为：" + suffixName);
-        // 文件上传后的路径
-        String filePath = "E://test//";
-        // 解决中文问题，liunx下中文路径，图片显示问题
-        // fileName = UUID.randomUUID() + suffixName;
-        File dest = new File(filePath + fileName);
-        // 检测是否存在目录
-        if (!dest.getParentFile().exists()) {
-            dest.getParentFile().mkdirs();
-        }
-        try {
-            file.transferTo(dest);
-
+        boolean saveResult = saveFile(file);
+        if (!saveResult){
             return"/file/singleFileUploadWithNoRefresh";
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        }else {
+            return"/file/singleFileUploadWithNoRefresh";
         }
-        return"/file/singleFileUploadWithNoRefresh";
+
     }
 
 
-    //文件上传相关代码
-    @RequestMapping("/uploadify")
-    @ResponseBody
-    public String uploadify(@RequestParam("file") MultipartFile file) {
-        if (file.isEmpty()) {
-            return "文件为空";
-        }
-        // 获取文件名
-        String fileName = file.getOriginalFilename();
-        logger.info("上传的文件名为：" + fileName);
-        // 获取文件的后缀名
-        String suffixName = fileName.substring(fileName.lastIndexOf("."));
-        logger.info("上传的后缀名为：" + suffixName);
-        // 文件上传后的路径
-        String filePath = "E://test//";
-        // 解决中文问题，liunx下中文路径，图片显示问题
-        // fileName = UUID.randomUUID() + suffixName;
-        File dest = new File(filePath + fileName);
-        // 检测是否存在目录
-        if (!dest.getParentFile().exists()) {
-            dest.getParentFile().mkdirs();
-        }
-        try {
-            file.transferTo(dest);
 
-            return "上传成功";
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "上传失败";
-    }
 
 
     /***
-     * 保存文件
+     * 保存文件 功能ok
      * @param file
      * @return
      */
@@ -212,11 +112,18 @@ public class FileUploadController {
         // 获取文件名
         String fileName = file.getOriginalFilename();
 
+        // 解决中文问题，liunx下中文路径，图片显示问题
+        // fileName = UUID.randomUUID() + suffixName;
+        File dest = new File(filePath + fileName);
+
+        // 检测是否存在目录
+        if (!dest.getParentFile().exists()) {
+            dest.getParentFile().mkdirs();
+        }
+
         // 判断文件是否为空
         if (!file.isEmpty()) {
             try {
-
-                File dest = new File(filePath + fileName);
                 System.out.println("上传的文件是："+ filePath + fileName);
                 // 转存文件
                 file.transferTo(dest);
@@ -246,78 +153,7 @@ public class FileUploadController {
 
 
 
-    //文件上传相关代码
-    @RequestMapping("/jqueryfileupload")
-    @ResponseBody
-    public String jqueryfileupload(@RequestParam("file") MultipartFile file) {
-        System.out.println(" jqueryfileupload here ");
-        if (file.isEmpty()) {
-            return "文件为空";
-        }
-        // 获取文件名
-        String fileName = file.getOriginalFilename();
-        logger.info("上传的文件名为：" + fileName);
-        // 获取文件的后缀名
-        String suffixName = fileName.substring(fileName.lastIndexOf("."));
-        logger.info("上传的后缀名为：" + suffixName);
-        // 文件上传后的路径
-        String filePath = "E://test//";
-        // 解决中文问题，liunx下中文路径，图片显示问题
-        // fileName = UUID.randomUUID() + suffixName;
-        File dest = new File(filePath + fileName);
-        // 检测是否存在目录
-        if (!dest.getParentFile().exists()) {
-            dest.getParentFile().mkdirs();
-        }
-        try {
-            file.transferTo(dest);
 
-            return "上传成功";
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "上传失败";
-    }
-
-
-
-    @RequestMapping("/jquerybatchfileupload")
-    @ResponseBody
-    public String jquerybatchfileupload(@RequestParam("files") MultipartFile[] files) {
-
-        List<MyFile> myFileList = new ArrayList<MyFile>();
-
-        System.out.println(" jquerybatchfileupload here ");
-        //判断file数组不能为空并且长度大于0
-        if(files!=null&&files.length>0){
-            //循环获取file数组中得文件
-            for(int i = 0;i<files.length;i++){
-                MultipartFile file = files[i];
-                //保存文件
-                saveFile(file);
-
-                MyFile filetemp =new MyFile();
-                filetemp.setName(file.getOriginalFilename());
-                filetemp.setSize(file.getSize());
-                myFileList.add(filetemp);
-            }
-        }
-
-        Gson json = new Gson();
-
-
-        Map<String,List<MyFile>> myResult = new HashMap<String,List<MyFile>>();
-        myResult.put("files",myFileList);
-
-        String jsonResult = JsonUtil.getString(myResult);
-        System.out.println( jsonResult );
-
-
-        return jsonResult;
-
-    }
 
 
 
