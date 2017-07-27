@@ -16,8 +16,6 @@
 <body>
 
 
-
-
 <div class="container-fluid">
 
 
@@ -43,21 +41,24 @@
             <div id="formdiv">
 
 
-                <input type="hidden" id="openSchoolNameListHidden"  />
+                <input type="hidden" id="openSchoolNameListHidden"/>
                 <div class="form-group">
 
-                    <label  > 开课分校：</label>
+                    <label> 开课分校：</label>
                     <div></div>
-                    <input type="radio" id="selectALLBtn" value="全选" name="select"/>全选&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" id="unSelectALLBtn" value="取消全选"  name="select"/>取消全选
+
 
                     <tr th:each=" baoMing : ${baoMingList}">
                         <td>
                             <div class="checkbox">
-                                <label><input type="checkbox" th:value="${baoMing.banji_name}"
-                                              name="banJiName" class="mycheckbox"/>
+
+
+                                <label>
+                                    <input type="radio" id="selectALLBtn" th:value="${baoMing.banji_name}"
+                                           name="banJiName" class="myradio"/>
                                     <span th:text="${baoMing.banji_name}">班级名称</span>
                                 </label>
+
                             </div>
                         </td>
                     </tr>
@@ -66,15 +67,24 @@
                 </div>
 
 
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div style="height: 20px;"></div>
+            <div id="formdiv2">
+
+                <form method="POST" enctype="multipart/form-data" action="/batch/upload">
+                    <p>文件1：<input type="file" name="file" /></p>
+                    <p>文件2：<input type="file" name="file" /></p>
+                    <p>文件3：<input type="file" name="file" /></p>
+                    <p><input type="submit" value="上传" /></p>
+                </form>
+
 
             </div>
         </div>
     </div>
 </div>
-
-
-
-
 
 
 </body>

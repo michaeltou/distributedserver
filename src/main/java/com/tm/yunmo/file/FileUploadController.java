@@ -70,6 +70,9 @@ public class FileUploadController {
         BufferedOutputStream stream = null;
         for (int i = 0; i < files.size(); ++i) {
             file = files.get(i);
+            if(file.getOriginalFilename()==null || "".equals(file.getOriginalFilename().trim() )){
+                continue;
+            }
             boolean saveResult = saveFile(file);
             if (!saveResult){
                 return "上传失败";
