@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>排课</title>
+    <meta name="viewport" content="width=device-width,
+                                     initial-scale=1.0,
+                                     maximum-scale=1.0,
+                                     user-scalable=no"/>
+
+    <link rel="stylesheet" href="/xiaobao/css/bootstrap.css"/>
+    <link rel='stylesheet' href='/xiaobao/css/fullcalendar.min.css'/>
+    <link rel='stylesheet' href='/xiaobao/css/fullcalendar.print.min.css' media='print'/>
+    <link rel='stylesheet' href='/xiaobao/css/jquery.qtip_3.0.3.min.css'/>
+    <link rel='stylesheet' href='/xiaobao/css/scheduling.css' />
+    <script src='/xiaobao/js/moment.min.js'></script>
+    <script src="/xiaobao/js/jquery-3.2.1.js"></script>
+    <script src="/xiaobao/js/bootstrap.js"></script>
+    <script src='/xiaobao/js/scheduling.js'></script>
+
+    <script src='/xiaobao/js/fullcalendar.min.js'></script>
+    <script src='/xiaobao/js/locale-all.js'></script>
+    <script src="/xiaobao/js/jquery-ui.js"></script>
+    <script src='/xiaobao/js/jquery.qtip_3.0.3.min.js'></script>
+    <script src="/xiaobao/js/bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="/xiaobao/css/bootstrap-datetimepicker.css"/>
+</head>
+<body>
+
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myConfirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="color:white;background-color:#449d44;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    确认操作
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="hidden" id="name"  />
+                            <input type="hidden" id="id"  />
+
+                            是否要去创建日程？
+                            <!--<div class="text-danger">数据删除后，将不可恢复！</div>-->
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+                <button id="confirmObjectBtnInModal" type="button" class="btn btn-primary"  >
+                    确定
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="addClassesTimesModal" tabindex="-1" role="dialog" aria-labelledby="addClassesTimesModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="color:white;background-color:#449d44;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="addClassesTimesModalLabel">
+                    新增上课时间
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div id="formdiv1">
+                                <form role="form" id="myform1">
+                                    <div class="form-group">
+
+                                        <label for="className">
+                                            班级
+                                        </label>
+                                        <select name="className" class="form-control" id="className">
+                                            <option th:each=" banJi : ${banJiList}" th:value="${banJi.banji_name}" th:text="${banJi.banji_name}"></option>
+                                        </select>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="startTime">
+                                            开始时间
+                                        </label>
+                                        <input type="text"  class="form-control"  id="startTime" readonly = "readonly" style="background-color: white;" />
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="teacherName">
+                                            上课老师
+                                        </label>
+                                        <select name="teacherName" class="form-control" id="teacherName">
+                                            <option th:each=" employee : ${employeeList}" th:value="${employee.sfzCode}" th:text="${employee.name}"></option>
+                                        </select>
+                                        <div class="check_tips"></div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="classRoomName">
+                                            上课教室
+                                        </label>
+                                        <select name="classRoomName" class="form-control" id="classRoomName">
+                                            <option th:each=" classroom : ${classroomList}" th:value="${classroom.name}" th:text="${classroom.name}"></option>
+                                        </select>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+
+                            <div id="formdiv2">
+                                <form role="form" id="myform2">
+                                    <div class="form-group">
+                                        <label for="classesDate">
+                                            上课日期
+                                        </label>
+                                        <input type="text"  class="form-control"  id="classesDate" readonly = "readonly" style="background-color: white;" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="endTime">
+                                            结束时间
+                                        </label>
+                                        <input type="text"  class="form-control"  id="endTime" readonly = "readonly" style="background-color: white;" />
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="teacherName">
+                                            助教
+                                        </label>
+                                        <select name="helpTeacherName" class="form-control" id="helpTeacherName">
+                                            <option th:each=" employee : ${employeeList}" th:value="${employee.sfzCode}" th:text="${employee.name}"></option>
+                                        </select>
+                                        <div class="check_tips"></div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <label for="classSubject">
+                                            上课主题
+                                        </label>
+                                        <input type="text" class="form-control" id="classSubject"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+                <button id="saveObjectBtnInModal" type="button" class="btn btn-primary"  >
+                    保存
+                </button>
+                <button id="deleteObjectBtnInModal" type="button" class="btn btn-primary"  >
+                    删除
+                </button>
+            </div>
+            <input type="hidden" id="operationType" value="0"/>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div id='calendar'></div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>

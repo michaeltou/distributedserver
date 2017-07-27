@@ -5,6 +5,7 @@ import com.tm.yunmo.peixun.model.BanjiPaikeItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,6 +42,31 @@ public class BanjiPaikeItemService {
 
     public BanjiPaikeItem queryBanjiPaikeItemByInstitutionAndBanjiNameAndId(String institution_code,  String xiaoqu_name,  String banji_name,int id){
         BanjiPaikeItem banjiPaikeItem = banjiPaikeItemDAO.queryBanjiPaikeItemByInstitutionAndBanjiNameAndId( institution_code,xiaoqu_name,banji_name,id);
+        return banjiPaikeItem;
+    }
+
+    public List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndClassName(String institution_code, String banji_name, Date start, Date end){
+        List<BanjiPaikeItem>  banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemByStartAndEndAndClassName( institution_code,banji_name,start,end);
+        return banjiPaikeItemList;
+    }
+
+    public List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndTeacherCode(String institution_code, String teacherCode, Date start, Date end){
+        List<BanjiPaikeItem>  banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemByStartAndEndAndTeacherCode( institution_code,teacherCode,start,end);
+        return banjiPaikeItemList;
+    }
+
+    public List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndAssistTeacherCode(String institution_code, String assistTeacherCode, Date start, Date end){
+        List<BanjiPaikeItem>  banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemByStartAndEndAndAssistTeacherCode( institution_code,assistTeacherCode,start,end);
+        return banjiPaikeItemList;
+    }
+
+    public List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndClassroomName(String institution_code, String classroomName, Date start, Date end){
+        List<BanjiPaikeItem>  banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemByStartAndEndAndClassroomName( institution_code,classroomName,start,end);
+        return banjiPaikeItemList;
+    }
+
+    public BanjiPaikeItem queryBanjiPaikeItemByUIData(String institution_code, String classroomName, String banji_name, String jiaoshi_sfzCode,String assist_teacher_sfzCode, Date start, Date end){
+        BanjiPaikeItem banjiPaikeItem = banjiPaikeItemDAO.queryBanjiPaikeItemByUIData( institution_code,classroomName,banji_name,jiaoshi_sfzCode,assist_teacher_sfzCode,start,end);
         return banjiPaikeItem;
     }
 

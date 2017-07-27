@@ -11,15 +11,17 @@ public class BanjiPaikeItem {
 
     //'机构代码'
     private String institution_code;
+    //标题
+    private String title;
     //'校区名称'
     private String xiaoqu_name;
     //教室名称
     private String classroom_name;
     //'上课开始时间'
-    private Date start_date;
+    private Date start;
 
     //上课结束时间
-    private Date end_date;
+    private Date end;
 
     //'班级名称'
     private String banji_name;
@@ -31,6 +33,8 @@ public class BanjiPaikeItem {
     private String assist_teacher_name;
     //'助教身份证'
     private String assist_teacher_sfzCode;
+    //上课主题
+    private  String classSubject;
     //'状态 1为有效，0为无效'
     private String status;
     //对应表px_banji_paike_rule的排课规则id
@@ -82,20 +86,28 @@ public class BanjiPaikeItem {
         this.classroom_name = classroom_name;
     }
 
-    public Date getStart_date() {
-        return start_date;
+    public String getTitle() {
+        return title;
     }
 
-    public void setStart_date(Date start_date) {
-        this.start_date = start_date;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public Date getEnd_date() {
-        return end_date;
+    public Date getStart() {
+        return start;
     }
 
-    public void setEnd_date(Date end_date) {
-        this.end_date = end_date;
+    public void setStart(Date start) {
+        this.start = start;
+    }
+
+    public Date getEnd() {
+        return end;
+    }
+
+    public void setEnd(Date end) {
+        this.end = end;
     }
 
     public String getBanji_name() {
@@ -137,7 +149,13 @@ public class BanjiPaikeItem {
     public void setAssist_teacher_sfzCode(String assist_teacher_sfzCode) {
         this.assist_teacher_sfzCode = assist_teacher_sfzCode;
     }
+    public String getClassSubject() {
+        return classSubject;
+    }
 
+    public void setClassSubject(String classSubject) {
+        this.classSubject = classSubject;
+    }
     public String getStatus() {
         return status;
     }

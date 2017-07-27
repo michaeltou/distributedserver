@@ -2,7 +2,9 @@ package com.tm.yunmo.peixun.api;
 
 import com.tm.yunmo.common.ErrorCode;
 import com.tm.yunmo.common.ResultModel;
+import com.tm.yunmo.peixun.model.BanJi;
 import com.tm.yunmo.peixun.model.BanjiPaikeItem;
+import com.tm.yunmo.peixun.service.BanJiService;
 import com.tm.yunmo.peixun.service.BanjiPaikeItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,6 +24,9 @@ public class BanjiPaikeItemApi {
     @Autowired
     private BanjiPaikeItemService banjiPaikeItemService;
 
+    @Autowired
+    private BanJiService banJiService;
+
 
 
     @RequestMapping("/queryBanjiPaikeItemListByInstitution")
@@ -31,6 +36,15 @@ public class BanjiPaikeItemApi {
         String banji_name = request.getParameter("banji_name");
         List<BanjiPaikeItem> banjiPaikeItemList = banjiPaikeItemService.queryBanjiPaikeItemListByInstitution(institution_code);
         return banjiPaikeItemList;
+    }
+
+    @RequestMapping("/queryBanjiPaikeItemListForEventByInstitution")
+    public ResultModel queryBanjiPaikeItemListForEventByInstitution(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        List<BanjiPaikeItem> banjiPaikeItemList = banjiPaikeItemService.queryBanjiPaikeItemListByInstitution(institution_code);
+        resultModel.setData(banjiPaikeItemList);
+        return resultModel;
     }
 
     @RequestMapping("/queryBanjiPaikeItemListByInstitutionAndSchoolname")
@@ -98,14 +112,21 @@ public class BanjiPaikeItemApi {
     public ResultModel insertBanjiPaikeItem(@RequestBody BanjiPaikeItem banjiPaikeItem,HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
         String institution_code = (String) request.getSession().getAttribute("institution_code");
+
+        BanJi banJi = banJiService.queryBanJiByName(banjiPaikeItem.getBanji_name(),institution_code);
+        banjiPaikeItem.setXiaoqu_name(banJi.getSchool_name());
+
         banjiPaikeItem.setInstitution_code(institution_code);
         int result = banjiPaikeItemService.insertBanjiPaikeItem(banjiPaikeItem);
         if (result > 0) {
+            BanjiPaikeItem item = banjiPaikeItemService.queryBanjiPaikeItemByUIData(institution_code,banjiPaikeItem.getClassroom_name(),banjiPaikeItem.getBanji_name(),banjiPaikeItem.getJiaoshi_sfzCode(),banjiPaikeItem.getAssist_teacher_sfzCode(),banjiPaikeItem.getStart(),banjiPaikeItem.getEnd());
+            resultModel.setData(item.getId());
             return resultModel;
         } else {
             resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
             return resultModel;
         }
+
 
     }
 
@@ -189,6 +210,61 @@ public class BanjiPaikeItemApi {
             resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
             return resultModel;
         }
+    }
+
+    @RequestMapping("/checkBanjiPaikeItem")
+    public ResultModel checkBanjiPaikeItem(@RequestBody BanjiPaikeItem banjiPaikeItem,HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        banjiPaikeItem.setInstitution_code(institution_code);
+        List<BanjiPaikeItem> items =  banjiPaikeItemService.queryBanjiPaikeItemByStartAndEndAndClassName(institution_code,banjiPaikeItem.getBanji_name(),banjiPaikeItem.getStart(),banjiPaikeItem.getEnd());
+        if(items != null && items.size() > 0){
+            resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+            String message = "";
+            for (BanjiPaikeItem item : items){
+                message += String.format("时间段:%tR-%tR",item.getStart(),item.getEnd()) +"\r\n";
+            }
+
+            resultModel.setErrorMsg("以下时间段该班级有课.\r\n" + message);
+            return resultModel;
+        }
+
+        items =  banjiPaikeItemService.queryBanjiPaikeItemByStartAndEndAndTeacherCode(institution_code,banjiPaikeItem.getJiaoshi_sfzCode(),banjiPaikeItem.getStart(),banjiPaikeItem.getEnd());
+        if(items != null && items.size() > 0){
+            resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+            String message = "";
+            for (BanjiPaikeItem item : items){
+                message += String.format("时间段:%tR-%tR",item.getStart(),item.getEnd()) +"\r\n";
+            }
+
+            resultModel.setErrorMsg("以下时间段该老师有课.\r\n" + message);
+            return resultModel;
+        }
+        items =  banjiPaikeItemService.queryBanjiPaikeItemByStartAndEndAndAssistTeacherCode(institution_code,banjiPaikeItem.getAssist_teacher_sfzCode(),banjiPaikeItem.getStart(),banjiPaikeItem.getEnd());
+        if(items != null && items.size() > 0){
+            resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+            String message = "";
+            for (BanjiPaikeItem item : items){
+                message += String.format("时间段:%tR-%tR",item.getStart(),item.getEnd()) +"\r\n";
+            }
+
+            resultModel.setErrorMsg("以下时间段该助教有课.\r\n" + message);
+            return resultModel;
+        }
+
+        items =  banjiPaikeItemService.queryBanjiPaikeItemByStartAndEndAndClassroomName(institution_code,banjiPaikeItem.getClassroom_name(),banjiPaikeItem.getStart(),banjiPaikeItem.getEnd());
+        if(items != null && items.size() > 0){
+            resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+            String message = "";
+            for (BanjiPaikeItem item : items){
+                message += String.format("时间段:%tR-%tR",item.getStart(),item.getEnd()) +"\r\n";
+            }
+
+            resultModel.setErrorMsg("以下时间段该教室有课.\r\n" + message);
+            return resultModel;
+        }
+        return resultModel;
+
     }
 
 }

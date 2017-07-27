@@ -1,0 +1,17 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+#calendar {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 10px;
+}
+
+.qtip.qtip-my-schedule {
+    border-radius: 2px;
+    border: 1px solid rgb(104, 166, 245);
+    border-image: none;
+    color: whitesmoke;
+    background-color: #3ab4ff;
+}

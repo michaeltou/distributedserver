@@ -224,7 +224,7 @@ $(document).ready(function () {
             dataType: "json",
             success: function (data, textStatus) {
                 if (data.success) {
-                    // alert(JSON.stringify(data)); 调试使用，请勿删除
+                    //alert(JSON.stringify(data.data)); //调试使用，请勿删除
 
                     //清空当前表格
                     //   document.getElementById("mytablebody").innerHTML = '';
