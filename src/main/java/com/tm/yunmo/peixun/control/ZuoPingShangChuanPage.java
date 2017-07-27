@@ -1,14 +1,15 @@
 package com.tm.yunmo.peixun.control;
 
-import com.tm.yunmo.peixun.model.ClassRecordMain;
+import com.tm.yunmo.peixun.model.BaoMing;
+import com.tm.yunmo.peixun.service.BaoMingService;
 import com.tm.yunmo.peixun.service.ClassRecordDetailService;
-import com.tm.yunmo.peixun.service.ClassRecordMainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by Huangqijun on 2017/6/28.
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 public class ZuoPingShangChuanPage {
 
     @Autowired
-    ClassRecordMainService classRecordMainService;
+    BaoMingService baoMingService;
 
     @Autowired
     ClassRecordDetailService classRecordDetailService;
@@ -25,27 +26,15 @@ public class ZuoPingShangChuanPage {
 
     @RequestMapping("/xiaobao/zuoPingShangChuanPage")
     public String zuopingshangchuan(HttpServletRequest request, Model model ){
-        return "xiaobao/zuoPingShangChuan";
-    }
-
-
-
-
-    @RequestMapping("/xiaobao/createClassRecord")
-    public String createClassrom(HttpServletRequest request,Model model){
-        return "xiaobao/createClassRecord";
-    }
-
-
-
-    @RequestMapping("/xiaobao/updateClassRecord")
-    public String updateClassRecordMain( ClassRecordMain classRecordMain,HttpServletRequest request,Model model){
         String institution_code = (String) request.getSession().getAttribute("institution_code");
-        int id =  classRecordMain.getId();
 
-        ClassRecordMain classRecordMainResult = classRecordMainService.queryClassRecordMainByInstitutionAndId( institution_code,id);
-        model.addAttribute("classRecordMain",classRecordMainResult);
-        return "xiaobao/updateClassRecord";
+        String sfzCode = (String) request.getSession().getAttribute("sfzCode");
+
+        List<BaoMing> baoMingList = baoMingService.queryBaoMingListBySFZCode(institution_code,sfzCode);
+
+        model.addAttribute("baoMingList",baoMingList);
+
+        return "xiaobao/zuoPingShangChuan";
     }
 
 

@@ -16,65 +16,9 @@
 <body>
 
 
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header" style="color:white;background-color:#449d44;">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    确认操作
-                </h4>
-            </div>
-            <div class="modal-body">
-
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <input type="hidden" id="banji_name"  />
-                            <input type="hidden" id="id"  />
-
-
-                            确认删除该上课记录吗?
-                            <div class="text-danger">数据删除后，将不可恢复！</div>
-                        </div>
-
-
-                    </div>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消
-                </button>
-                <button id="deleteObjectBtnInModal" type="button" class="btn btn-primary"  >
-                    确定
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
-</div>
 
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div style="height: 20px;"></div>
-
-
-            <button type="button" class="btn btn-success" id="createObjectBtnInList">
-                新建上课记录
-            </button>
-
-
-
-
-            <div style="height: 20px;"></div>
-        </div>
-
-    </div>
 
 
     <div class="row">
@@ -87,60 +31,42 @@
         <div style="height: 10px;"></div>
         <div class="col-md-12">
             <span style="">
-                班级:
+                选择班级:
             </span>
-            <input type="text" name="classroom_name" placeholder="请输入班级名称" id="query_param_banji_name"/>
-            <button type="button" class="btn btn-success" id="searchBtn">
-                查询
-            </button>
+
         </div>
 
     </div>
     <div class="row">
         <div class="col-md-12">
             <div style="height: 20px;"></div>
-            <div class="table-responsive">
-                <table class="table table-striped table-hover">
-                    <thead style="  background-color: rgba(113,210,113,0.36);  border-color: #71ce71;">
-                    <tr>
-                        <th> 班级名称</th>
-                        <th> 校区</th>
-                        <th> 上课开始时间</th>
-                        <th> 上课结束时间</th>
-                        <th> 教师课时</th>
-                        <th> 教师名称</th>
-                        <th> 上课内容</th>
-                        <th> 上课备注</th>
-                        <th> 操作</th>
-                    </tr>
-                    </thead>
-                    <tbody id="mytablebody">
-
-                    <tr th:each="classRecordMain : ${classRecordMainList}">
-                        <td th:text="${classRecordMain.banji_name}"></td>
-                        <td th:text=" ${classRecordMain.xiaoqu_name}"></td>
-                        <td th:text="${classRecordMain.shangke_start_date}?${#dates.format(classRecordMain.shangke_start_date, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                        <td th:text="${classRecordMain.shangke_end_date}?${#dates.format(classRecordMain.shangke_end_date, 'yyyy-MM-dd HH:mm:ss')}"></td>
-                        <td th:text="${classRecordMain.jiaoshi_keshi}"></td>
-                        <td th:text="${classRecordMain.teacher_name}"></td>
-                        <td th:text="${classRecordMain.shangke_content}"></td>
-                        <td th:text="${classRecordMain.shangke_note}"></td>
+            <div id="formdiv">
 
 
+                <input type="hidden" id="openSchoolNameListHidden"  />
+                <div class="form-group">
 
-                        <td><a    class="deleteObjectLinkClass"
-                               href="#"
-                               th:attr=" id=${classRecordMain.id},banji_name=${classRecordMain.banji_name}" >删除</a>
-                            &nbsp;&nbsp;
-                            <a   href="#" class="updateObjectLinkClass"
-                               th:href="@{/xiaobao/updateClassRecord(id=${classRecordMain.id},banji_name=${classRecordMain.banji_name} )}">编辑</a>
+                    <label  > 开课分校：</label>
+                    <div></div>
+                    <input type="radio" id="selectALLBtn" value="全选" name="select"/>全选&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" id="unSelectALLBtn" value="取消全选"  name="select"/>取消全选
+
+                    <tr th:each=" baoMing : ${baoMingList}">
+                        <td>
+                            <div class="checkbox">
+                                <label><input type="checkbox" th:value="${baoMing.banji_name}"
+                                              name="banJiName" class="mycheckbox"/>
+                                    <span th:text="${baoMing.banji_name}">班级名称</span>
+                                </label>
+                            </div>
                         </td>
-
-
                     </tr>
 
-                    </tbody>
-                </table>
+                    <div class="check_tips" id="schoolTips"></div>
+                </div>
+
+
+
             </div>
         </div>
     </div>
