@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width,
+                                     initial-scale=1.0,
+                                     maximum-scale=1.0,
+                                     user-scalable=no"/>
+
+    <link rel="stylesheet" href="/xiaobao/css/bootstrap.css"/>
+    <script src="/xiaobao/js/jquery-3.2.1.js"></script>
+    <script src="/xiaobao/js/bootstrap.js"></script>
+    <script src="/xiaobao/js/zuoPingShangChuan.js"></script>
+</head>
+<body>
+
+
+<div class="container-fluid">
+
+
+    <div class="row">
+        <div class="col-md-12" style="background-color: transparent;">
+            <h3>作品上传</h3>
+        </div>
+
+    </div>
+    <div class="row">
+        <div style="height: 10px;"></div>
+        <div class="col-md-12">
+            <span style="">
+                选择班级:
+            </span>
+
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div style="height: 20px;"></div>
+            <div id="formdiv">
+
+
+                <input type="hidden" id="openSchoolNameListHidden"/>
+                <div class="form-group">
+
+                    <label> 开课分校：</label>
+                    <div></div>
+
+
+                    <tr th:each=" baoMing : ${baoMingList}">
+                        <td>
+                            <div class="checkbox">
+
+
+                                <label>
+                                    <input type="radio" id="selectALLBtn" th:value="${baoMing.banji_name}"
+                                           name="banJiName" class="myradio"/>
+                                    <span th:text="${baoMing.banji_name}">班级名称</span>
+                                </label>
+
+                            </div>
+                        </td>
+                    </tr>
+
+                    <div class="check_tips" id="schoolTips"></div>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div style="height: 20px;"></div>
+            <div id="formdiv2">
+
+                <form method="POST" enctype="multipart/form-data" action="/batch/upload">
+                    <p>文件1：<input type="file" name="file" /></p>
+                    <p>文件2：<input type="file" name="file" /></p>
+                    <p>文件3：<input type="file" name="file" /></p>
+                    <p><input type="submit" value="上传" /></p>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

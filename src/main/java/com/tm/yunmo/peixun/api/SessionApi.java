@@ -17,9 +17,10 @@ public class SessionApi {
     public String querySchoolListByInstitution(HttpServletRequest request) {
        String key = request.getParameter("key");
        String value = request.getParameter("value");
-
+        String sfzCode = request.getParameter("sfzCode");
        System.out.print("the key is: "+ key +" value is:"+ value);
        request.getSession().setAttribute(key,value);
+        request.getSession().setAttribute("sfzCode",sfzCode);
 
         return "set session value success";
     }

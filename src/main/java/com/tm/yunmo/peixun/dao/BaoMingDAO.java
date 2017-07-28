@@ -47,6 +47,25 @@ public interface BaoMingDAO {
             " where  institution_code = #{institution_code} and name like CONCAT('%',#{name},'%') ")
     List<BaoMing> queryBaoMingListByNameWithLike(@Param("institution_code") String institution_code, @Param("name") String name);
 
+
+    @Select(" SELECT `px_baoming`.`id`,\n" +
+            "    `px_baoming`.`name`,\n" +
+            "    `px_baoming`.`sfzCode`,\n" +
+            "    `px_baoming`.`institution_code`,\n" +
+            "    `px_baoming`.`banji_name`,\n" +
+            "    `px_baoming`.`chargeFee`,\n" +
+            "    `px_baoming`.`chageFeeNote`,\n" +
+            "    `px_baoming`.`jiaocai_zafei_chargeFee`,\n" +
+            "    `px_baoming`.`jiaocai_zafei_note`,\n" +
+            "    `px_baoming`.`totalChargeFee`,\n" +
+            "    `px_baoming`.`createDate`,\n" +
+            "    `px_baoming`.`updateDate`\n" +
+            "FROM  `px_baoming`" +
+            " where  institution_code = #{institution_code} and  sfzCode = #{sfzCode} ")
+    List<BaoMing> queryBaoMingListBySFZCode(@Param("institution_code") String institution_code, @Param("sfzCode") String sfzCode);
+
+
+
     @Select(" SELECT `px_baoming`.`id`,\n" +
             "    `px_baoming`.`name`,\n" +
             "    `px_baoming`.`sfzCode`,\n" +
@@ -62,6 +81,9 @@ public interface BaoMingDAO {
             "FROM  `px_baoming`" +
             " where  institution_code = #{institution_code} and id=#{id} ")
      BaoMing queryBaoMingByInstitutionAndId(@Param("institution_code") String institution_code, @Param("id") int id);
+
+
+
 
 
 
