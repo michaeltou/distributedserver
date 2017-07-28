@@ -142,9 +142,9 @@ public interface BanjiPaikeItemDAO {
             "    `px_banji_paike_item`.`createDate`,\n" +
             "    `px_banji_paike_item`.`updateDate`\n" +
             " FROM  `px_banji_paike_item` \n" +
-            " WHERE institution_code = #{institution_code} " +
-            " AND banji_name=#{banji_name} and (start between #{start} and #{end} or end between #{start} and #{end} ) ")
-    List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndClassName(@Param("institution_code") String institution_code, @Param("banji_name") String banji_name, @Param("start") Date start, @Param("end") Date end);
+            " WHERE institution_code = #{institution_code} AND id != #{id}" +
+            " AND banji_name=#{banji_name} and ((start > #{start} and start < #{end}) or (end > #{start} and end < #{end}) ) ")
+    List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndClassName(@Param("institution_code") String institution_code, @Param("banji_name") String banji_name, @Param("start") Date start, @Param("end") Date end,@Param("id") int id);
 
     @Select("  SELECT `px_banji_paike_item`.`id`,\n" +
             "    `px_banji_paike_item`.`institution_code`,\n" +
@@ -164,9 +164,9 @@ public interface BanjiPaikeItemDAO {
             "    `px_banji_paike_item`.`createDate`,\n" +
             "    `px_banji_paike_item`.`updateDate`\n" +
             " FROM  `px_banji_paike_item` \n" +
-            " WHERE institution_code = #{institution_code} " +
-            " AND jiaoshi_sfzCode=#{jiaoshi_sfzCode} and (start between #{start} and #{end} or end between #{start} and #{end} ) ")
-    List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndTeacherCode(@Param("institution_code") String institution_code, @Param("jiaoshi_sfzCode") String jiaoshi_sfzCode, @Param("start") Date start, @Param("end") Date end);
+            " WHERE institution_code = #{institution_code} AND id != #{id}" +
+            " AND jiaoshi_sfzCode=#{jiaoshi_sfzCode} and ((start > #{start} and start < #{end}) or (end > #{start} and end < #{end}) ) ")
+    List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndTeacherCode(@Param("institution_code") String institution_code, @Param("jiaoshi_sfzCode") String jiaoshi_sfzCode, @Param("start") Date start, @Param("end") Date end,@Param("id") int id);
 
     @Select("  SELECT `px_banji_paike_item`.`id`,\n" +
             "    `px_banji_paike_item`.`institution_code`,\n" +
@@ -186,9 +186,9 @@ public interface BanjiPaikeItemDAO {
             "    `px_banji_paike_item`.`createDate`,\n" +
             "    `px_banji_paike_item`.`updateDate`\n" +
             " FROM  `px_banji_paike_item` \n" +
-            " WHERE institution_code = #{institution_code} " +
-            " AND assist_teacher_sfzCode=#{assist_teacher_sfzCode} and (start between #{start} and #{end} or end between #{start} and #{end} ) ")
-    List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndAssistTeacherCode(@Param("institution_code") String institution_code, @Param("assist_teacher_sfzCode") String assist_teacher_sfzCode, @Param("start") Date start, @Param("end") Date end);
+            " WHERE institution_code = #{institution_code} AND id != #{id}" +
+            " AND assist_teacher_sfzCode=#{assist_teacher_sfzCode} and ((start > #{start} and start < #{end}) or (end > #{start} and end < #{end}) ) ")
+    List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndAssistTeacherCode(@Param("institution_code") String institution_code, @Param("assist_teacher_sfzCode") String assist_teacher_sfzCode, @Param("start") Date start, @Param("end") Date end,@Param("id") int id);
 
     @Select("  SELECT `px_banji_paike_item`.`id`,\n" +
             "    `px_banji_paike_item`.`institution_code`,\n" +
@@ -208,9 +208,9 @@ public interface BanjiPaikeItemDAO {
             "    `px_banji_paike_item`.`createDate`,\n" +
             "    `px_banji_paike_item`.`updateDate`\n" +
             " FROM  `px_banji_paike_item` \n" +
-            " WHERE institution_code = #{institution_code} " +
-            " AND classroom_name=#{classroom_name} and (start between #{start} and #{end} or end between #{start} and #{end} ) ")
-    List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndClassroomName(@Param("institution_code") String institution_code, @Param("classroom_name") String classroom_name, @Param("start") Date start, @Param("end") Date end);
+            " WHERE institution_code = #{institution_code} AND id != #{id}" +
+            " AND classroom_name=#{classroom_name} and ((start > #{start} and start < #{end}) or (end > #{start} and end < #{end}) )")
+    List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndClassroomName(@Param("institution_code") String institution_code, @Param("classroom_name") String classroom_name, @Param("start") Date start, @Param("end") Date end,@Param("id") int id);
 
 
     @Select("  SELECT `px_banji_paike_item`.`id`,\n" +

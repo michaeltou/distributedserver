@@ -14,7 +14,7 @@ $(function () {
             var mainSubject = $("#classSubject").val();
             var eventData;
             eventData = {
-                id:"",
+                id:0,
                 title:className,
                 xiaoqu_name: schoolName,
                 classroom_name:classRoomName ,
@@ -68,7 +68,7 @@ $(function () {
         }
     });
     
-    function checkConflict () {
+    function checkConflict (id) {
         var classDate = $("#classesDate").val();
         var classStartTime = $("#startTime").val();
         var classEndTime = $("#endTime").val();
@@ -82,7 +82,7 @@ $(function () {
         var mainSubject = $("#classSubject").val();
         var eventData;
         eventData = {
-            id:"",
+            id:id,
             title:className,
             xiaoqu_name: schoolName,
             classroom_name:classRoomName ,
@@ -185,7 +185,7 @@ $(function () {
     }
 
 
-    var $calEvent;
+    var $calEvent = "";
     $('#classesDate').datetimepicker({
         language:  'zh-CN',
         format: 'yyyy-mm-dd',
@@ -439,7 +439,41 @@ $(function () {
     });
 
     $("#saveObjectBtnInModal").click(function () {
-        if(!checkConflict ()){
+        var classDate = $("#classesDate").val();
+        var classStartTime = $("#startTime").val();
+        var classEndTime = $("#endTime").val();
+        var teacherName = $("#teacherName option:selected").text();
+        var teachersfzCode = $("#teacherName option:selected").val();
+        var helpTeacherName = $("#helpTeacherName option:selected").text();
+        var helpTeachersfzCode = $("#helpTeacherName option:selected").val();
+        var classRoomName = $("#classRoomName option:selected").val();
+        var className = $("#className option:selected").val();
+        if(classStartTime >= classEndTime){
+            alert("上课结束时间不能小于上课开始时间");
+            return;
+        }
+        if(className == undefined || className.length == 0){
+            alert("请选择班级");
+            return;
+        }
+        if(teacherName == undefined || teacherName.length == 0){
+            alert("请选择教师");
+            return;
+        }
+        if(helpTeacherName == undefined || helpTeacherName.length == 0){
+            alert("请选择助教");
+            return;
+        }
+        if(classRoomName == undefined || classRoomName.length == 0){
+            alert("请选择教室");
+            return;
+        }
+
+        var id = 0;
+        if($calEvent != ""){
+            id = $calEvent.id;
+        }
+        if(!checkConflict (id)){
             return;
         }
         if ($("#operationType").val() == "1") {

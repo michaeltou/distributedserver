@@ -45,23 +45,23 @@ public class BanjiPaikeItemService {
         return banjiPaikeItem;
     }
 
-    public List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndClassName(String institution_code, String banji_name, Date start, Date end){
-        List<BanjiPaikeItem>  banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemByStartAndEndAndClassName( institution_code,banji_name,start,end);
+    public List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndClassName(String institution_code, String banji_name, Date start, Date end,int id){
+        List<BanjiPaikeItem>  banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemByStartAndEndAndClassName( institution_code,banji_name,start,end,id);
         return banjiPaikeItemList;
     }
 
-    public List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndTeacherCode(String institution_code, String teacherCode, Date start, Date end){
-        List<BanjiPaikeItem>  banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemByStartAndEndAndTeacherCode( institution_code,teacherCode,start,end);
+    public List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndTeacherCode(String institution_code, String teacherCode, Date start, Date end,int id){
+        List<BanjiPaikeItem>  banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemByStartAndEndAndTeacherCode( institution_code,teacherCode,start,end,id);
         return banjiPaikeItemList;
     }
 
-    public List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndAssistTeacherCode(String institution_code, String assistTeacherCode, Date start, Date end){
-        List<BanjiPaikeItem>  banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemByStartAndEndAndAssistTeacherCode( institution_code,assistTeacherCode,start,end);
+    public List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndAssistTeacherCode(String institution_code, String assistTeacherCode, Date start, Date end,int id){
+        List<BanjiPaikeItem>  banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemByStartAndEndAndAssistTeacherCode( institution_code,assistTeacherCode,start,end,id);
         return banjiPaikeItemList;
     }
 
-    public List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndClassroomName(String institution_code, String classroomName, Date start, Date end){
-        List<BanjiPaikeItem>  banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemByStartAndEndAndClassroomName( institution_code,classroomName,start,end);
+    public List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndClassroomName(String institution_code, String classroomName, Date start, Date end,int id){
+        List<BanjiPaikeItem>  banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemByStartAndEndAndClassroomName( institution_code,classroomName,start,end,id);
         return banjiPaikeItemList;
     }
 

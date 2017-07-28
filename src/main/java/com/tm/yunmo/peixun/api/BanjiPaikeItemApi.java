@@ -217,7 +217,7 @@ public class BanjiPaikeItemApi {
         ResultModel resultModel = new ResultModel();
         String institution_code = (String) request.getSession().getAttribute("institution_code");
         banjiPaikeItem.setInstitution_code(institution_code);
-        List<BanjiPaikeItem> items =  banjiPaikeItemService.queryBanjiPaikeItemByStartAndEndAndClassName(institution_code,banjiPaikeItem.getBanji_name(),banjiPaikeItem.getStart(),banjiPaikeItem.getEnd());
+        List<BanjiPaikeItem> items =  banjiPaikeItemService.queryBanjiPaikeItemByStartAndEndAndClassName(institution_code,banjiPaikeItem.getBanji_name(),banjiPaikeItem.getStart(),banjiPaikeItem.getEnd(),banjiPaikeItem.getId());
         if(items != null && items.size() > 0){
             resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
             String message = "";
@@ -229,7 +229,7 @@ public class BanjiPaikeItemApi {
             return resultModel;
         }
 
-        items =  banjiPaikeItemService.queryBanjiPaikeItemByStartAndEndAndTeacherCode(institution_code,banjiPaikeItem.getJiaoshi_sfzCode(),banjiPaikeItem.getStart(),banjiPaikeItem.getEnd());
+        items =  banjiPaikeItemService.queryBanjiPaikeItemByStartAndEndAndTeacherCode(institution_code,banjiPaikeItem.getJiaoshi_sfzCode(),banjiPaikeItem.getStart(),banjiPaikeItem.getEnd(),banjiPaikeItem.getId());
         if(items != null && items.size() > 0){
             resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
             String message = "";
@@ -240,7 +240,7 @@ public class BanjiPaikeItemApi {
             resultModel.setErrorMsg("以下时间段该老师有课.\r\n" + message);
             return resultModel;
         }
-        items =  banjiPaikeItemService.queryBanjiPaikeItemByStartAndEndAndAssistTeacherCode(institution_code,banjiPaikeItem.getAssist_teacher_sfzCode(),banjiPaikeItem.getStart(),banjiPaikeItem.getEnd());
+        items =  banjiPaikeItemService.queryBanjiPaikeItemByStartAndEndAndAssistTeacherCode(institution_code,banjiPaikeItem.getAssist_teacher_sfzCode(),banjiPaikeItem.getStart(),banjiPaikeItem.getEnd(),banjiPaikeItem.getId());
         if(items != null && items.size() > 0){
             resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
             String message = "";
@@ -252,7 +252,7 @@ public class BanjiPaikeItemApi {
             return resultModel;
         }
 
-        items =  banjiPaikeItemService.queryBanjiPaikeItemByStartAndEndAndClassroomName(institution_code,banjiPaikeItem.getClassroom_name(),banjiPaikeItem.getStart(),banjiPaikeItem.getEnd());
+        items =  banjiPaikeItemService.queryBanjiPaikeItemByStartAndEndAndClassroomName(institution_code,banjiPaikeItem.getClassroom_name(),banjiPaikeItem.getStart(),banjiPaikeItem.getEnd(),banjiPaikeItem.getId());
         if(items != null && items.size() > 0){
             resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
             String message = "";
