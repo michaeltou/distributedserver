@@ -47,6 +47,20 @@ public class BanjiPaikeItemApi {
         return resultModel;
     }
 
+    @RequestMapping("/queryBanjiPaikeItemListByFilter")
+    public ResultModel queryBanjiPaikeItemListByFilter(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        String schoolName = request.getParameter("schoolName");
+        String className = request.getParameter("className");
+        String teacherName = request.getParameter("teacherName");
+        String classRoomName = request.getParameter("classRoomName");
+        String filter = " id  = 82 ";
+        List<BanjiPaikeItem> banjiPaikeItemList = banjiPaikeItemService.queryBanjiPaikeItemByFilter1(institution_code,filter);
+        resultModel.setData(banjiPaikeItemList);
+        return resultModel;
+    }
+
     @RequestMapping("/queryBanjiPaikeItemListByInstitutionAndSchoolname")
     public List<BanjiPaikeItem> queryBanjiPaikeItemListByInstitutionAndSchoolname(HttpServletRequest request) {
         String institution_code = (String) request.getSession().getAttribute("institution_code");

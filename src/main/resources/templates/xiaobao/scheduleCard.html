@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>排课</title>
+    <meta name="viewport" content="width=device-width,
+                                     initial-scale=1.0,
+                                     maximum-scale=1.0,
+                                     user-scalable=no"/>
+
+    <link rel="stylesheet" href="/xiaobao/css/bootstrap.css"/>
+    <link rel='stylesheet' href='/xiaobao/css/fullcalendar.min.css'/>
+    <link rel='stylesheet' href='/xiaobao/css/fullcalendar.print.min.css' media='print'/>
+    <link rel='stylesheet' href='/xiaobao/css/jquery.qtip_3.0.3.min.css'/>
+    <link rel='stylesheet' href='/xiaobao/css/scheduling.css' />
+    <script src='/xiaobao/js/moment.min.js'></script>
+    <script src="/xiaobao/js/jquery-3.2.1.js"></script>
+    <script src="/xiaobao/js/bootstrap.js"></script>
+    <script src='/xiaobao/js/scheduleCard.js'></script>
+
+    <script src='/xiaobao/js/fullcalendar.min.js'></script>
+    <script src='/xiaobao/js/locale-all.js'></script>
+    <script src="/xiaobao/js/jquery-ui.js"></script>
+    <script src='/xiaobao/js/jquery.qtip_3.0.3.min.js'></script>
+    <script src="/xiaobao/js/bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="/xiaobao/css/bootstrap-datetimepicker.css"/>
+</head>
+<body>
+
+
+
+<div class="container-fluid">
+    <div class="row" style=" border-bottom: 2px solid silver; padding-top: 20px;">
+        <div class="col-md-3">
+            <div id="formdiv1">
+                <form role="form" id="myform1">
+                    <div class="form-group">
+
+                        <label for="className" style="float: left;margin: 5px 10px 0 0;">
+                            校区
+                        </label>
+                        <select name="shcoolName" class="form-control" id="shcoolName" style="float: left; width: 200px; margin-bottom: 20px;">
+                            <option value="">全部</option>
+                            <option th:each=" school : ${schoolList}" th:value="${school.school_name}" th:text="${school.school_name}"></option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="teacherName" style="clear: both; float: left;margin: 5px 10px 0 0;">
+                            教师
+                        </label>
+                        <select name="teacherName" class="form-control" id="teacherName" style="float: left; width: 200px; margin-bottom: 20px;">
+                            <option value="">全部</option>
+                            <option th:each=" employee : ${employeeList}" th:value="${employee.sfzCode}" th:text="${employee.name}"></option>
+                        </select>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <div id="formdiv2">
+                <form role="form" id="myform2">
+                    <div class="form-group">
+
+                        <label for="className" style="float: left;margin: 5px 10px 0 0;">
+                            班级
+                        </label>
+                        <select name="className" class="form-control" id="className" style="float: left;    width: 200px; margin-bottom: 20px;">
+                            <option value="">全部</option>
+                            <option th:each=" banJi : ${banJiList}" th:value="${banJi.banji_name}" th:text="${banJi.banji_name}"></option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="classRoomName" style="clear: both; float: left;margin: 5px 10px 0 0;">
+                            教室
+                        </label>
+                        <select name="classRoomName" class="form-control" id="classRoomName" style="float: left;    width: 200px; margin-bottom: 20px;">
+                            <option value="">全部</option>
+                            <option th:each=" classroom : ${classroomList}" th:value="${classroom.name}" th:text="${classroom.name}"></option>
+                        </select>
+                        <button type="button" class="btn btn-success" id="searchBtn" style="float: left; margin-left:20px;">
+                            查询
+                        </button>
+                    </div>
+
+
+
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id='calendar'></div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
