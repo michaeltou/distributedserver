@@ -30,6 +30,7 @@ public class ZuoPingShangChuanPage {
 
         String sfzCode = (String) request.getSession().getAttribute("sfzCode");
 
+
         List<BaoMing> baoMingList = baoMingService.queryBaoMingListBySFZCode(institution_code,sfzCode);
 
         model.addAttribute("baoMingList",baoMingList);
