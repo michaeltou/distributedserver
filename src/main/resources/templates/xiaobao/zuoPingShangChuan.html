@@ -57,6 +57,28 @@
     </div>
 
     <div class="row">
+        <div class="col-md-3">
+
+            <div class="text-success" style="display: none;" id="successLabel">恭喜你，上传作品成功！
+                <div style="height: 50px;"></div>
+                <button type="button" class="btn btn-info" id="backToListBtn" style="display: none;">
+                    返回
+                </button>
+
+
+                <div style="height: 50px;"></div>
+            </div>
+            <div class="text-danger" style="display: none;" id="failLabel">新建课程失败！
+                <div style="height: 50px;"></div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <div class="row">
         <div class="col-md-4">
             <div style="height: 20px;"></div>
             <div id="formdiv">
@@ -108,7 +130,7 @@
             <div style="height: 20px;"></div>
 
 
-            <div id="formdiv3">
+            <div id="formdiv2">
 
 
                     <label>2、请选择要上传的作品图片</label>
@@ -117,8 +139,10 @@
 
                         <div style="height: 20px;"></div>
                         <div>
-                            <input type="file" name="myfile" data-ref="url2" multiple="multiple"  class="col-sm-4 myfile" value=""/>
-                            <input type="hidden" name="url2" value=""/>
+                            <input type="file" id="myfile" name="myfile" data-ref="url2" multiple="multiple"  class="col-sm-4 myfile" value=""/>
+
+                            <input type="hidden" name="url2" value="" id="url2"/>
+                            <div class="check_tips"></div>
                         </div>
 
 
@@ -141,7 +165,7 @@
                 <button id="save" type="button" class="btn btn-success">
                     保存
                 </button>
-                <div style="height: 80px;"></div>
+                <div style="height: 280px;"></div>
             </div>
         </div>
 

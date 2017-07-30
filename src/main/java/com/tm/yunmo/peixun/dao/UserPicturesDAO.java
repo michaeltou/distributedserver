@@ -15,6 +15,7 @@ public interface UserPicturesDAO {
 
     @Select("  SELECT `px_user_pictures`.`id`,\n" +
             "    `px_user_pictures`.`username`,\n" +
+            "    `px_user_pictures`.`institution_code`,\n" +
             "    `px_user_pictures`.`banji_name`,\n" +
             "    `px_user_pictures`.`picture_name`,\n" +
             "    `px_user_pictures`.`createDate`,\n" +
@@ -24,9 +25,23 @@ public interface UserPicturesDAO {
     List<UserPictures> queryUserPicturesByUserNameAndBanJiName(@Param("institution_code") String institution_code, @Param("username") String username, @Param("banji_name") String banji_name);
 
 
-    @Insert("  INSERT INTO  `px_user_pictures`\n" +
+    @Select("  SELECT `px_user_pictures`.`id`,\n" +
+            "    `px_user_pictures`.`username`,\n" +
+            "    `px_user_pictures`.`institution_code`,\n" +
+            "    `px_user_pictures`.`banji_name`,\n" +
+            "    `px_user_pictures`.`picture_name`,\n" +
+            "    `px_user_pictures`.`createDate`,\n" +
+            "    `px_user_pictures`.`updateDate`\n" +
+            "FROM  `px_user_pictures` " +
+            " where  institution_code = #{institution_code} and username=#{username}   ")
+    List<UserPictures> queryUserPicturesByUserName(@Param("institution_code") String institution_code, @Param("username") String username );
+
+
+    @Insert("   \n" +
+            "INSERT INTO  `px_user_pictures`\n" +
             "( \n" +
             "`username`,\n" +
+            "`institution_code`,\n" +
             "`banji_name`,\n" +
             "`picture_name`,\n" +
             "`createDate`,\n" +
@@ -34,10 +49,12 @@ public interface UserPicturesDAO {
             "VALUES\n" +
             "( \n" +
             "#{username},\n" +
+            "#{institution_code},\n" +
             "#{banji_name},\n" +
             "#{picture_name},\n" +
             "now(),\n" +
-            "now());"    )
+            " now() ) ; "
+             )
     public int insertUserPictures(UserPictures userPictures);
 
     @Delete(" DELETE FROM  `px_user_pictures`\n" +

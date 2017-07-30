@@ -13,10 +13,19 @@ public class UserPictures {
     private int id;
     //'用户名'
     private String username;
+
+    private String  institution_code;
+
     //'班级名称'
     private String banji_name;
     //'图片名称'
     private String picture_name;
+
+
+    /**
+     * 图片列表
+     */
+    private String url2;
 
     private Date createDate;
 
@@ -28,6 +37,22 @@ public class UserPictures {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getUrl2() {
+        return url2;
+    }
+
+    public String getInstitution_code() {
+        return institution_code;
+    }
+
+    public void setInstitution_code(String institution_code) {
+        this.institution_code = institution_code;
+    }
+
+    public void setUrl2(String url2) {
+        this.url2 = url2;
     }
 
     public String getUsername() {

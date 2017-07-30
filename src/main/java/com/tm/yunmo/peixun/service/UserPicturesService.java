@@ -22,6 +22,11 @@ public class UserPicturesService {
         return userPicturesList;
     }
 
+    public List<UserPictures> queryUserPicturesByUserName(String institution_code, String username ) {
+        List<UserPictures> userPicturesList = userPicturesDAO.queryUserPicturesByUserName(institution_code, username );
+        return userPicturesList;
+    }
+
     public int insertUserPictures(UserPictures userPictures) {
         int result = userPicturesDAO.insertUserPictures(userPictures);
         return result;
