@@ -65,11 +65,6 @@ public class BanjiPaikeItemService {
         return banjiPaikeItemList;
     }
 
-    public List<BanjiPaikeItem>  queryBanjiPaikeItemByFilter1(String institution_code, String filter){
-        List<BanjiPaikeItem>  banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemByFilter1( institution_code,filter);
-        return banjiPaikeItemList;
-    }
-
     public List<BanjiPaikeItem>  queryBanjiPaikeItemByFilter(String institution_code, String xiaoqu_name,String banji_name,String jiaoshi_sfzCode, String classroom_name){
         List<BanjiPaikeItem>  banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemByFilter( institution_code,xiaoqu_name,banji_name,jiaoshi_sfzCode,classroom_name);
         return banjiPaikeItemList;

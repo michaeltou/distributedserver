@@ -14,15 +14,15 @@ $(document).ready(function () {
             arrRows.eq(i).children().eq(7).children().eq(2).attr("class","conformObjectLinkClass");
         }else {
             arrRows.eq(i).children().eq(6).html("已确认");
-            arrRows.eq(i).children().eq(7).children().eq(1).html("取消确认");
+            arrRows.eq(i).children().eq(7).children().eq(1).html("取消");
             arrRows.eq(i).children().eq(7).children().eq(1).attr("class","conformCancelObjectLinkClass");
         }
 
     }
     $("#createObjectBtnInList").click(function () {
-        /*$.ajax({
+        $.ajax({
             type: "GET",
-            url: "/xiaobao/createSRDaLei",
+            url: "/xiaobao/createQingJiaDan",
             success: function (data) {
                 $('#mainContents').empty();
                 //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
@@ -33,7 +33,7 @@ $(document).ready(function () {
                 var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
                 $('#mainContents').append(data4);
             }
-        });*/
+        });
     });
 
 
@@ -109,7 +109,7 @@ $(document).ready(function () {
             contentType: "application/json; charset=utf-8",//(可以)
             success: function (data, textStatus) {
                 if (data.success) {
-                    $tra.html("取消确认");
+                    $tra.html("取消");
                     $tra.parents("tr").children().eq(6).html("已确认");
                     $tra.attr("class","conformCancelObjectLinkClass");
                 }
