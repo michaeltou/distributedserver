@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     $.ajax({
         type: "GET",
-        url: "/xiaobao/menu.html",
+        url: "/xiaobao/menu",
         success: function (data) {
             $('#menu-left').empty();
             //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）

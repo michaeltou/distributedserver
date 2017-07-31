@@ -58,6 +58,7 @@ public class XiaoBaoPage {
             request.getSession().setAttribute("password",userPassword.getPassword());
             request.getSession().setAttribute("sfzCode",userPassword.getSfzCode());
             request.getSession().setAttribute("institution_code",userPassword.getInstitution_code());
+            request.getSession().setAttribute("role",userPassword.getRole());
         }
 
         if (loginCheckResult){
@@ -85,6 +86,9 @@ public class XiaoBaoPage {
     public String index1(HttpServletRequest request, Model model) {
         String sfzCode = (String) request.getSession().getAttribute("sfzCode");
         String institution_code = (String) request.getSession().getAttribute("institution_code");
+        String role = (String) request.getSession().getAttribute("role");
+
+
 
         return "xiaobao/index";
     }
@@ -96,6 +100,18 @@ public class XiaoBaoPage {
         String institution_code = (String) request.getSession().getAttribute("institution_code");
 
         return "xiaobao/index";
+    }
+
+
+    @RequestMapping("/xiaobao/menu")
+    public String menu(HttpServletRequest request,Model model) {
+        String sfzCode = (String) request.getSession().getAttribute("sfzCode");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        String role = (String) request.getSession().getAttribute("role");
+
+        model.addAttribute("role",role);
+
+        return "xiaobao/menu";
     }
 
 
