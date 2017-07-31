@@ -55,8 +55,7 @@ public class BanjiPaikeItemApi {
         String className = request.getParameter("className");
         String teacherName = request.getParameter("teacherName");
         String classRoomName = request.getParameter("classRoomName");
-        String filter = " id  = 82 ";
-        List<BanjiPaikeItem> banjiPaikeItemList = banjiPaikeItemService.queryBanjiPaikeItemByFilter1(institution_code,filter);
+        List<BanjiPaikeItem> banjiPaikeItemList = banjiPaikeItemService.queryBanjiPaikeItemByFilter(institution_code,schoolName,className,teacherName,classRoomName);
         resultModel.setData(banjiPaikeItemList);
         return resultModel;
     }

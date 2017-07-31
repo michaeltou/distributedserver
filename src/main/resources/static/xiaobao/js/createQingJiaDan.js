@@ -1,0 +1,322 @@
+/**
+ * Created by Hangqijun on 2017/7/20.
+ */
+
+
+$(document).ready(function () {
+
+    function initialXiaoLeiList() {
+        $.ajax({
+            url: "/querySRXiaoLeiListByDaLeiName",
+            type: "GET",
+            data: {daLeiName: $("#shouRuDaLeiName option:selected").val()},
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data, textStatus) {
+                if (data.success) {
+                    // alert(JSON.stringify(data)); 调试使用，请勿删除
+
+                    //清空下拉列表框
+                    $("#shouRuXiaoLeiName").empty();
+
+                    //动态构建表格数据.
+                    $.each(data.data, function (id, shouRuXiaoLei) {
+                        var $option = $("<option ></option>");
+                        $option.val(shouRuXiaoLei.name);
+                        $option.html(shouRuXiaoLei.name);
+
+                        $option.appendTo($("#shouRuXiaoLeiName"));
+
+
+                    });//each
+                }
+                else {
+                    alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("系统异常！");
+            }
+        });//ajax
+    }
+    initialXiaoLeiList();
+
+    $('#qingJiaStartDate').datetimepicker({
+        language:  'zh-CN',
+        format: 'yyyy-mm-dd',
+        initialDate: new Date(),//初始化当前日期
+        autoclose: true,//选中自动关闭
+        todayBtn: true,//显示今日按钮
+        startView: 2,
+        minView: 2
+
+    });
+
+    $('#qingJiaEndDate').datetimepicker({
+        language:  'zh-CN',
+        format: 'yyyy-mm-dd',
+        initialDate: new Date(),//初始化当前日期
+        autoclose: true,//选中自动关闭
+        todayBtn: true,//显示今日按钮
+        startView: 2,
+        minView: 2
+
+    });
+
+    var nowDate = new Date();
+    var result=nowDate.getFullYear()+'-'+(nowDate.getMonth()+1)+'-'+nowDate.getDate() ;//
+    $('#qingJiaStartDate').val(result);
+    $('#qingJiaEndDate').val(result);
+
+
+    var b_validate_result = true;
+    var b_validate_result1 = true;
+    var b_validate_result2 = true;
+    var b_validate_result3 = true;
+    var b_validate_result4 = true;
+    var b_validate_result5 = true;
+
+
+    $("#qingJiaRenName").focusout(function () {
+
+        if ($("#qingJiaRenName option:selected").val() == undefined ||
+            $("#qingJiaRenName option:selected").val().length == 0) {
+            $("#qingJiaRenName").next().text("请选择请假人!");
+            $("#qingJiaRenName").next().css({"display": "block", "color": "red"});
+            b_validate_result1 = false;
+        } else {
+            $("#qingJiaRenName").next().css("display", "none");
+            b_validate_result1 = true;
+        }
+    });
+
+    $("#qingJiaLeiXing").focusout(function () {
+
+        if ($("#qingJiaLeiXing option:selected").val() == undefined ||
+            $("#qingJiaLeiXing option:selected").val().length == 0) {
+            $("#qingJiaLeiXing").next().text("请选择请假类型!");
+            $("#qingJiaLeiXing").next().css({"display": "block", "color": "red"});
+            b_validate_result2 = false;
+        } else {
+            $("#qingJiaLeiXing").next().css("display", "none");
+            b_validate_result2 = true;
+        }
+    });
+
+    $("#qingJiaStartDate").focusout(function () {
+
+        if ($("#qingJiaStartDate").val().length == 0) {
+            $("#qingJiaStartDate").next().text("请选择请假开始日期!");
+            $("#qingJiaStartDate").next().css({"display": "block", "color": "red"});
+            b_validate_result3 = false;
+        } else {
+            $("#qingJiaStartDate").next().css("display", "none");
+            b_validate_result3 = true;
+        }
+    });
+
+    $("#qingJiaEndDate").focusout(function () {
+
+        if ($("#qingJiaEndDate option:selected").val() == undefined ||
+            $("#qingJiaEndDate option:selected").val().length == 0) {
+            $("#qingJiaEndDate").next().text("请选择请假结束日期!");
+            $("#qingJiaEndDate").next().css({"display": "block", "color": "red"});
+            b_validate_result4 = false;
+        } else {
+            $("#qingJiaEndDate").next().css("display", "none");
+            b_validate_result4 = true;
+        }
+
+
+    });
+
+    $("#qingJiaFangShi").focusout(function () {
+
+        if ($("#qingJiaFangShi option:selected").val() == undefined ||
+            $("#qingJiaFangShi option:selected").val().length == 0) {
+            $("#qingJiaFangShi").next().text("请选择请假方式!");
+            $("#qingJiaFangShi").next().css({"display": "block", "color": "red"});
+            b_validate_result5 = false;
+        } else {
+            $("#qingJiaFangShi").next().css("display", "none");
+            b_validate_result5 = true;
+        }
+    });
+
+
+    $("#save").click(function () {
+
+        $("#qingJiaRenName").focus();
+
+        /*if($("#qingJiaStartDate").val().length == 0){
+            b_validate_result2 = false;
+        }else {
+            b_validate_result2 = true;
+        }
+
+        if($("#qingJiaEndDate").val().length == 0){
+            b_validate_result2 = false;
+        }else {
+            b_validate_result2 = true;
+        }*/
+
+        $("#qingJiaLeiXing").focus();
+
+        $("#qingJiaFangShi").focus();
+
+
+        b_validate_result = b_validate_result1 & b_validate_result2 & b_validate_result3 & b_validate_result4 & b_validate_result5 ;
+        if (!b_validate_result) {
+            return;
+        }
+
+        var idList = "";
+        for(var i = 0; i< $(".classTimeDiv").length;i++){
+            if($(".classTimeDiv").eq(i).children().is(":checked")){
+                if(idList == ""){
+                    idList+= $(".classTimeDiv").eq(i).children().attr("value");
+                }else {
+                    idList+=","+ $(".classTimeDiv").eq(i).children().attr("value");
+                }
+            }
+        }
+
+        var url = "/insertQingJiaDan";
+        $.ajax({
+            type: "get",
+            url: url,
+            data: {
+                qingJiaRenSFZ: $("#qingJiaRenName option:selected").val(),
+                qingJiaRenName: $("#qingJiaRenName option:selected").text(),
+                qingJiaLeiXing: $("#qingJiaLeiXing option:selected").val(),
+                qingJiaStartDate: $("#qingJiaStartDate").val()+" 00:00:00",
+                qingJiaEndDate: $("#qingJiaEndDate").val()+" 23:59:59",
+                qingJiaFangShi: $("#qingJiaFangShi option:selected").val(),
+                note: $("#note").val(),
+                idList:idList
+            },
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",//(可以)
+            success: function (data, textStatus) {
+                if (data.success) {
+                    //清空表格数据
+                    $("#myform1")[0].reset();
+                    $("#myform2")[0].reset();
+                    $("#myform3")[0].reset();
+                    //显示
+                    $("#successLabel").show();
+                    $("#createAgainBtn").show();
+                    $("#backToListBtn").show();
+                    //隐藏
+                    $("#submitAreaDiv").empty();
+                    $("#formdiv1").empty();
+                    $("#formdiv2").empty();
+                    $("#formdiv3").empty();
+
+                }
+                else {
+                    $("#failLabel").css("display:block");
+                  //  alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("系统异常！");
+            }
+        });
+
+
+    });
+
+
+    $("#createAgainBtn").click(function () {
+
+        $.ajax({
+            type: "GET",
+            url: "/xiaobao/createQingJiaDan",
+            success: function (data) {
+                $('#mainContents').empty();
+                //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
+                var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
+
+                var data3= data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
+
+                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
+                $('#mainContents').append(data4);
+            }
+        });
+    });
+
+    $("#qingJiaFangShi").change(function () {
+        var selectedItem = $(this).find("option:selected").html();
+        if (selectedItem == "按天") {
+            $(".classList").empty();
+            return;
+        }
+        $.ajax({
+            type: "get",
+            url: "/queryBanjiPaikeItemForQingJiaDan",
+            data: {
+                qingJiaRenSFZ: $("#qingJiaRenName option:selected").val(),
+                qingJiaRenName: $("#qingJiaRenName option:selected").text(),
+                qingJiaLeiXing: $("#qingJiaLeiXing option:selected").val(),
+                qingJiaStartDate: $("#qingJiaStartDate").val()+" 00:00:00",
+                qingJiaEndDate: $("#qingJiaEndDate").val()+" 23:59:59",
+                qingJiaFangShi: $("#qingJiaFangShi option:selected").val(),
+                note: $("#note").val()
+            },
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",//(可以)
+            success: function (data, textStatus) {
+                if (data.success) {
+                    $.each(data.data, function (id, item) {
+                        var lblText = "["+item.banji_name+"]" + " ["+item.start+ "]-["+item.end+"]";
+                        $div = $('<div class="classTimeDiv"></div>');
+                        $chk = $('<input value="" name="classTimes" type="checkbox" class="classTimes">');
+                        $chk.attr("value", item.id);
+                        $lbl = $('<label></label>');
+                        $lbl.html(lblText);
+                        $div.append($chk);
+                        $div.append($lbl);
+                        $(".classList").append($div);
+
+                    });//each
+
+                }
+                else {
+                    $("#failLabel").css("display:block");
+                    //  alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("系统异常！");
+            }
+        });
+    });
+
+
+
+
+    $("#backToListBtn").click(function () {
+        $("#qingjiaguanli").click();
+
+    });
+
+    $("#formBackBtn").click(function () {
+        $("#qingjiaguanli").click();
+
+    });
+
+    $("#backToListbreadLink").click(function () {
+        $("#qingjiaguanli").click();
+
+    });
+
+
+
+
+
+
+
+
+});
+

@@ -212,63 +212,14 @@ public interface BanjiPaikeItemDAO {
             " AND classroom_name=#{classroom_name} and ((start > #{start} and start < #{end}) or (end > #{start} and end < #{end}) )")
     List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndClassroomName(@Param("institution_code") String institution_code, @Param("classroom_name") String classroom_name, @Param("start") Date start, @Param("end") Date end,@Param("id") int id);
 
-    @Select("  SELECT `px_banji_paike_item`.`id`,\n" +
-            "    `px_banji_paike_item`.`institution_code`,\n" +
-            "    `px_banji_paike_item`.`title`,\n" +
-            "    `px_banji_paike_item`.`xiaoqu_name`,\n" +
-            "    `px_banji_paike_item`.`classroom_name`,\n" +
-            "    `px_banji_paike_item`.`start`,\n" +
-            "    `px_banji_paike_item`.`end`,\n" +
-            "    `px_banji_paike_item`.`banji_name`,\n" +
-            "    `px_banji_paike_item`.`teacher_name`,\n" +
-            "    `px_banji_paike_item`.`jiaoshi_sfzCode`,\n" +
-            "    `px_banji_paike_item`.`assist_teacher_name`,\n" +
-            "    `px_banji_paike_item`.`assist_teacher_sfzCode`,\n" +
-            "    `px_banji_paike_item`.`classSubject`,\n" +
-            "    `px_banji_paike_item`.`status`,\n" +
-            "    `px_banji_paike_item`.`rule_id`,\n" +
-            "    `px_banji_paike_item`.`createDate`,\n" +
-            "    `px_banji_paike_item`.`updateDate`\n" +
-            " FROM  `px_banji_paike_item` \n" +
-            " WHERE institution_code = #{institution_code} " +
-            " AND #{filter}")
-    List<BanjiPaikeItem>  queryBanjiPaikeItemByFilter1(@Param("institution_code") String institution_code,
-                                                       @Param("filter") String filter);
 
+    @SelectProvider(type = SqlProvider.class,method = "queryBanjiPaikeItemByFilter")
+    public List<BanjiPaikeItem>  queryBanjiPaikeItemByFilter(String institution_code,
+                                                      String xiaoqu_name,
+                                                      String banji_name,
+                                                      String jiaoshi_sfzCode,
+                                                      String classroom_name);
 
-    @Select("  SELECT `px_banji_paike_item`.`id`,\n" +
-            "    `px_banji_paike_item`.`institution_code`,\n" +
-            "    `px_banji_paike_item`.`title`,\n" +
-            "    `px_banji_paike_item`.`xiaoqu_name`,\n" +
-            "    `px_banji_paike_item`.`classroom_name`,\n" +
-            "    `px_banji_paike_item`.`start`,\n" +
-            "    `px_banji_paike_item`.`end`,\n" +
-            "    `px_banji_paike_item`.`banji_name`,\n" +
-            "    `px_banji_paike_item`.`teacher_name`,\n" +
-            "    `px_banji_paike_item`.`jiaoshi_sfzCode`,\n" +
-            "    `px_banji_paike_item`.`assist_teacher_name`,\n" +
-            "    `px_banji_paike_item`.`assist_teacher_sfzCode`,\n" +
-            "    `px_banji_paike_item`.`classSubject`,\n" +
-            "    `px_banji_paike_item`.`status`,\n" +
-            "    `px_banji_paike_item`.`rule_id`,\n" +
-            "    `px_banji_paike_item`.`createDate`,\n" +
-            "    `px_banji_paike_item`.`updateDate`\n" +
-            " FROM  `px_banji_paike_item` \n" +
-            " WHERE institution_code = #{institution_code} " +
-            " <if test=\"xiaoqu_name != null and xiaoqu_name !=''\"> " +
-            " AND xiaoqu_name = #{xiaoqu_name} " +
-            " <if test=\"banji_name != null and banji_name !=''\"> " +
-            " AND banji_name = #{banji_name} " +
-            " <if test=\"jiaoshi_sfzCode != null and jiaoshi_sfzCode !=''\"> " +
-            " AND jiaoshi_sfzCode = #{jiaoshi_sfzCode} " +
-            " <if test=\"classroom_name != null and classroom_name !=''\"> " +
-            " AND classroom_name = #{classroom_name} " +
-            "  )")
-    List<BanjiPaikeItem>  queryBanjiPaikeItemByFilter(@Param("institution_code") String institution_code,
-                                                      @Param("xiaoqu_name") String xiaoqu_name,
-                                                      @Param("banji_name") String banji_name,
-                                                      @Param("jiaoshi_sfzCode") String jiaoshi_sfzCode,
-                                                      @Param("classroom_name") String classroom_name);
     @Select("  SELECT `px_banji_paike_item`.`id`,\n" +
             "    `px_banji_paike_item`.`institution_code`,\n" +
             "    `px_banji_paike_item`.`title`,\n" +

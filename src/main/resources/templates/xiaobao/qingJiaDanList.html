@@ -33,9 +33,7 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            <input type="hidden" id="school_id"  />
-                            <input type="hidden" id="institution_code"  />
-                            <input type="hidden" id="school_name"  />
+                            <input type="hidden" id="id"  />
                             确认删除该请假单吗?
                             <div class="text-danger">数据删除后，将不可恢复！</div>
                         </div>
@@ -48,7 +46,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消
                 </button>
-                <button id="deleteSchoolBtn" type="button" class="btn btn-primary"  >
+                <button id="deleteObjectBtnInModal" type="button" class="btn btn-primary"  >
                     确定
                 </button>
             </div>
@@ -63,7 +61,7 @@
             <div style="height: 20px;"></div>
 
 
-            <button type="button" class="btn btn-success" id="createSchoolBtnForSchoolList">
+            <button type="button" class="btn btn-success" id="createObjectBtnInList">
                 新建请假单
             </button>
             <div style="height: 20px;"></div>
@@ -99,11 +97,9 @@
                     <tbody id="mytablebody">
 
                     <tr th:each="qingJiaDan : ${qingJiaDanList}">
-                        <td th:text="${qingJiaDan.qingjia_person}">null</td>
-                        <!--<td th:text="${qingJiaDan.qingjia_start_time}">null</td>
-                        <td th:text="${qingJiaDan.qingjia_end_time}">null</td>-->
-                        <td th:text="${#dates.format(qingJiaDan.qingjia_start_time, 'yyyy-MM-dd HH:MM')}"></td>
-                        <td th:text="${#dates.format(qingJiaDan.qingjia_end_time, 'yyyy-MM-dd HH:MM')}"></td>
+                        <td th:text="${qingJiaDan.qingjia_person_name}">null</td>
+                        <td th:text="${#dates.format(qingJiaDan.qingjia_start_time, 'yyyy-MM-dd HH:mm:ss')}"></td>
+                        <td th:text="${#dates.format(qingJiaDan.qingjia_end_time, 'yyyy-MM-dd HH:mm:ss')}"></td>
                         <td th:text=" ${qingJiaDan.qingjia_banji}">null</td>
                         <td th:text=" ${qingJiaDan.qingjia_kecheng}">null</td>
                         <td th:text=" ${qingJiaDan.qingjia_yuanyin}">null</td>

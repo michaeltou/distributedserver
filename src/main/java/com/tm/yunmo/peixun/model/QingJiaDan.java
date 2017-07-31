@@ -11,8 +11,10 @@ public class QingJiaDan {
     private  Integer id ;
     //机构代码
     private  String institution_code;
-    //请假人
-    private  String qingjia_person;
+    //请假人名称
+    private  String qingjia_person_name;
+    // 请假人身份证
+    private  String qingjia_person_sfz;
     // 请假开始时间
     private  Date qingjia_start_time;
     // 请假结束时间
@@ -24,7 +26,9 @@ public class QingJiaDan {
      // 请假原因
     private  String qingjia_yuanyin;
     // 状态
-    private  String status;
+    private  Byte status;
+    //备注
+    private  String note;
     // 创建时间
     private Date createDate;
     // 修正时间
@@ -46,12 +50,20 @@ public class QingJiaDan {
         this.institution_code = institution_code;
     }
 
-    public String getQingjia_person() {
-        return qingjia_person;
+    public String getQingjia_person_name() {
+        return qingjia_person_name;
     }
 
-    public void setQingjia_person(String qingjia_person) {
-        this.qingjia_person = qingjia_person;
+    public void setQingjia_person_name(String qingjia_person_name) {
+        this.qingjia_person_name = qingjia_person_name;
+    }
+
+    public String getQingjia_person_sfz() {
+        return qingjia_person_sfz;
+    }
+
+    public void setQingjia_person_sfz(String qingjia_person_sfz) {
+        this.qingjia_person_sfz = qingjia_person_sfz;
     }
 
     public Date getQingjia_start_time() {
@@ -94,12 +106,20 @@ public class QingJiaDan {
         this.qingjia_yuanyin = qingjia_yuanyin;
     }
 
-    public String getStatus() {
+    public Byte getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Byte status) {
         this.status = status;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public Date getCreateDate() {
