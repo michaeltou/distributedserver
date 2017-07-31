@@ -117,6 +117,7 @@ public class StudentApi {
             userPassword.setPassword(password);
             userPassword.setSfzCode(sfzCode);
             userPassword.setInstitution_code(institution_code);
+            userPassword.setRole(LoginConst.ROLE_STUDENT);
            int userpasswordResult =  userPasswordService.insertUserPassword(userPassword);
            if (userpasswordResult>0){
                return resultModel;

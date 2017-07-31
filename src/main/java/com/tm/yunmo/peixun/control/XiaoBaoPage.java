@@ -27,12 +27,14 @@ public class XiaoBaoPage {
     private UserPasswordService userPasswordService;
 
     @RequestMapping("/login")
-    public String myZuoPingPage(HttpServletRequest request, Model model) {
+    public String login(HttpServletRequest request, Model model) {
         String sfzCode = (String) request.getSession().getAttribute("sfzCode");
         String institution_code = (String) request.getSession().getAttribute("institution_code");
 
         return "xiaobao/login";
     }
+
+
 
     @RequestMapping("/processLogin")
     @ResponseBody
@@ -68,7 +70,16 @@ public class XiaoBaoPage {
 
     }
 
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request, Model model) {
 
+        request.getSession().setAttribute("username",null);
+        request.getSession().setAttribute("phone",null);
+        request.getSession().setAttribute("password",null);
+        request.getSession().setAttribute("sfzCode",null);
+        request.getSession().setAttribute("institution_code",null);
+        return "xiaobao/login";
+    }
 
     @RequestMapping("/")
     public String index1(HttpServletRequest request, Model model) {

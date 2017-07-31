@@ -122,6 +122,7 @@ public class EmployeeApi {
             userPassword.setPassword(password);
             userPassword.setSfzCode(sfzCode);
             userPassword.setInstitution_code(institution_code);
+            userPassword.setRole(LoginConst.ROLE_TEACHER);
             int userpasswordResult =  userPasswordService.insertUserPassword(userPassword);
             if (userpasswordResult>0){
                 return resultModel;

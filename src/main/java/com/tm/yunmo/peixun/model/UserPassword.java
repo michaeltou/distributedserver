@@ -24,6 +24,10 @@ public class UserPassword {
 
     //身份证代码
     private String  sfzCode;
+
+    //身份证代码
+    private String  role;
+
     //
     private Date createDate;
     //
@@ -35,6 +39,14 @@ public class UserPassword {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 
     public String getSfzCode() {
