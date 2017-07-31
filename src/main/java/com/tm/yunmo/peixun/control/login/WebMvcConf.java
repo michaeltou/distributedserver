@@ -26,5 +26,6 @@ public class WebMvcConf extends WebMvcConfigurerAdapter {
 
         // 拦截配置
         addInterceptor.addPathPatterns("/");
+        addInterceptor.addPathPatterns("/*");
     }
 }
