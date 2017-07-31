@@ -2,8 +2,11 @@ package com.tm.yunmo.peixun.api;
 
 import com.tm.yunmo.common.ErrorCode;
 import com.tm.yunmo.common.ResultModel;
+import com.tm.yunmo.peixun.control.login.LoginConst;
 import com.tm.yunmo.peixun.model.Employee;
+import com.tm.yunmo.peixun.model.UserPassword;
 import com.tm.yunmo.peixun.service.EmployeeService;
+import com.tm.yunmo.peixun.service.UserPasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +25,8 @@ public class EmployeeApi {
     @Autowired
     private EmployeeService employeeService;
 
+    @Autowired
+    private UserPasswordService userPasswordService;
 
     //http://localhost:9999/queryEmployeeListByInstitution?institution_code=tm
     @RequestMapping("/queryEmployeeListByInstitution")
@@ -108,7 +113,24 @@ public class EmployeeApi {
         employee.setInstitution_code(institution_code);
         int result = employeeService.insertEmployee(employee);
         if (result > 0) {
-            return resultModel;
+
+            String username = employee.getPhone();
+            String password = LoginConst.DEFAULT_PASSWORD;
+            String sfzCode = employee.getSfzCode();
+            UserPassword userPassword = new UserPassword();
+            userPassword.setUsername(username);
+            userPassword.setPassword(password);
+            userPassword.setSfzCode(sfzCode);
+            userPassword.setInstitution_code(institution_code);
+            int userpasswordResult =  userPasswordService.insertUserPassword(userPassword);
+            if (userpasswordResult>0){
+                return resultModel;
+            }else {
+                resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+                resultModel.setErrorMsg("用户登入信息创建失败!");
+                return resultModel;
+            }
+
         } else {
             resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
             return resultModel;

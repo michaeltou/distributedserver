@@ -2,8 +2,11 @@ package com.tm.yunmo.peixun.api;
 
 import com.tm.yunmo.common.ErrorCode;
 import com.tm.yunmo.common.ResultModel;
+import com.tm.yunmo.peixun.control.login.LoginConst;
 import com.tm.yunmo.peixun.model.Student;
+import com.tm.yunmo.peixun.model.UserPassword;
 import com.tm.yunmo.peixun.service.StudentService;
+import com.tm.yunmo.peixun.service.UserPasswordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,7 +24,8 @@ public class StudentApi {
 
     @Autowired
     private StudentService studentService;
-
+    @Autowired
+    private UserPasswordService userPasswordService;
 
     @RequestMapping("/queryStudentListByInstitution")
     public List<Student> queryStudentListByInstitution(HttpServletRequest request) {
@@ -103,9 +107,29 @@ public class StudentApi {
         student.setInstitution_code(institution_code);
         int result = studentService.insertStudent(student);
         if (result > 0) {
-            return resultModel;
+
+
+            String username = student.getPhone();
+            String password = LoginConst.DEFAULT_PASSWORD;
+            String sfzCode = student.getSfzCode();
+            UserPassword userPassword = new UserPassword();
+            userPassword.setUsername(username);
+            userPassword.setPassword(password);
+            userPassword.setSfzCode(sfzCode);
+            userPassword.setInstitution_code(institution_code);
+           int userpasswordResult =  userPasswordService.insertUserPassword(userPassword);
+           if (userpasswordResult>0){
+               return resultModel;
+           }else {
+               resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+               resultModel.setErrorMsg("用户登入信息创建失败!");
+               return resultModel;
+           }
+
+
         } else {
             resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+            resultModel.setErrorMsg("学生信息创建失败!");
             return resultModel;
         }
 

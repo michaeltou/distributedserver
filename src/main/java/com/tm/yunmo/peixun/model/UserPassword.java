@@ -22,6 +22,8 @@ public class UserPassword {
     //机构代码
     private String institution_code;
 
+    //身份证代码
+    private String  sfzCode;
     //
     private Date createDate;
     //
@@ -33,6 +35,14 @@ public class UserPassword {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getSfzCode() {
+        return sfzCode;
+    }
+
+    public void setSfzCode(String sfzCode) {
+        this.sfzCode = sfzCode;
     }
 
     public String getInstitution_code() {

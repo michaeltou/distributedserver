@@ -54,9 +54,12 @@ public class ZuoPingShangChuanPage {
         model.addAttribute("baoMingList",baoMingList);
 
         List<UserPictures> userPicturesList =  userPicturesService.queryUserPicturesByUserName(institution_code,sfzCode);
+        String imageHost = "http://106.14.173.136:7777/images/";
+        for (UserPictures userPictures:userPicturesList  ) {
+            String fullUrl = imageHost + userPictures.getPicture_name();
+            userPictures.setFullUrl(fullUrl);
+        }
         model.addAttribute("userPicturesList",userPicturesList);
-
-
         return "xiaobao/myZuoPingPage";
     }
 

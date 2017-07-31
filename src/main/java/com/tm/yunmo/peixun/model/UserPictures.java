@@ -27,6 +27,9 @@ public class UserPictures {
      */
     private String url2;
 
+    private String fullUrl;
+
+
     private Date createDate;
 
     private Date updateDate;
@@ -37,6 +40,14 @@ public class UserPictures {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getFullUrl() {
+        return fullUrl;
+    }
+
+    public void setFullUrl(String fullUrl) {
+        this.fullUrl = fullUrl;
     }
 
     public String getUrl2() {

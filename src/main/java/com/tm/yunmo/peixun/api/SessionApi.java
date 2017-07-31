@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 public class SessionApi {
 
    /* 测试使用这个链接可以设置登录初始化数据
-    http://localhost/putSessionData?key=institution_code&value=tm*/
+    http://localhost:9999/putSessionData?key=institution_code&value=tm&sfzCode=362529198509111011
+    */
     @RequestMapping("/putSessionData")
     public String querySchoolListByInstitution(HttpServletRequest request) {
        String key = request.getParameter("key");

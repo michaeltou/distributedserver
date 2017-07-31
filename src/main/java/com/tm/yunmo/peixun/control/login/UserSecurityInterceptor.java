@@ -17,8 +17,9 @@ public class UserSecurityInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         HttpSession session = request.getSession();
-        if (session.getAttribute(LoginConst.SESSION_KEY) != null)
+        if (session.getAttribute("username") != null && session.getAttribute("password") != null){
             return true;
+        }
 
         // 跳转登录
         String url = "/login";

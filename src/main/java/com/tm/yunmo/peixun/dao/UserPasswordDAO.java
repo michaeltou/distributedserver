@@ -14,6 +14,8 @@ public interface UserPasswordDAO {
     @Select(" SELECT `px_user_password`.`id`,\n" +
             "    `px_user_password`.`username`,\n" +
             "    `px_user_password`.`password`,\n" +
+            "    `px_user_password`.`institution_code`,\n" +
+            "    `px_user_password`.`sfzCode`,\n" +
             "    `px_user_password`.`status`,\n" +
             "    `px_user_password`.`createDate`,\n" +
             "    `px_user_password`.`updateDate`\n" +
@@ -27,6 +29,8 @@ public interface UserPasswordDAO {
             "( \n" +
             "`username`,\n" +
             "`password`,\n" +
+            "`institution_code`,\n" +
+            "`sfzCode`,\n" +
             "`status`,\n" +
             "`createDate`,\n" +
             "`updateDate`)\n" +
@@ -34,9 +38,11 @@ public interface UserPasswordDAO {
             "( \n" +
             "#{username},\n" +
             "#{password},\n" +
+            "#{institution_code},\n" +
+            "#{sfzCode},\n" +
             "#{status},\n" +
-            "#{createDate},\n" +
-            "#{updateDate});\n ")
+            "now(),\n" +
+            "now() ); \n ")
     public int insertUserPassword(UserPassword userPassword);
 
 
@@ -44,8 +50,8 @@ public interface UserPasswordDAO {
             "SET\n" +
             "`password` = #{password},\n" +
             "`status` = #{status},\n" +
-            "`updateDate` = #{updateDate}\n" +
-            "where username = #{username} and password=#{password} \n")
+            "`updateDate` = now() \n" +
+            " where username = #{username} and password=#{password} \n")
     public int updateUserPassword(UserPassword userPassword);
 
 

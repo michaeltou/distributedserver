@@ -8,4 +8,6 @@ public class LoginConst {
      * 登录session key
      */
     public final static String SESSION_KEY = "user";
+
+    public final static String DEFAULT_PASSWORD = "123456";
 }

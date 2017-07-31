@@ -25,6 +25,6 @@ public class WebMvcConf extends WebMvcConfigurerAdapter {
         addInterceptor.excludePathPatterns("/logout");
 
         // 拦截配置
-        addInterceptor.addPathPatterns("/xxx");
+        addInterceptor.addPathPatterns("/");
     }
 }
