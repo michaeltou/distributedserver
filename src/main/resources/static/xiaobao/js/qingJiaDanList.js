@@ -84,7 +84,7 @@ $(document).ready(function () {
 
     $('#myDeleteModal').on('hidden.bs.modal', function () {
         // 执行一些动作...
-        $("#qingjiaguanli").click();
+        $("#studentqingjiaguanli").click();
     })
 
     //确认

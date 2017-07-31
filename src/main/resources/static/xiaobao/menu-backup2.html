@@ -13,7 +13,7 @@
     <script src="/xiaobao/js/jquery-3.2.1.js"></script>
     <script src="/xiaobao/js/bootstrap.js"></script>
 
-    <script src="/xiaobao/js/menu.js"></script>
+
 
     <style>
 
@@ -51,8 +51,7 @@
 
 
         <div class="panel-group" id="panel-tm-menu" >
-
-            <div class="panel panel-default  "   th:if="${role eq 'ADMIN' || role eq 'PRINCIPAL' || role eq 'TEACHER' ||  role eq 'JIAOWU'  }"   >
+            <div class="panel panel-default  ">
                 <div class="panel-heading">
 
                     <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
@@ -76,7 +75,7 @@
                     </div>
                 </div>
             </div>
-            <div class="panel panel-default  " th:if="${role eq 'ADMIN' || role eq 'PRINCIPAL' || role eq 'TEACHER' ||  role eq 'JIAOWU'  }"  >
+            <div class="panel panel-default  ">
                 <div class="panel-heading">
                     <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
                        href="#panel-renyuanguanli">
@@ -96,7 +95,7 @@
                 </div>
             </div>
 
-            <div class="panel panel-default" th:if="${role eq 'ADMIN' || role eq 'PRINCIPAL' || role eq 'TEACHER' ||  role eq 'JIAOWU'  }" >
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
                        href="#panel-paike">
@@ -117,7 +116,7 @@
             </div>
 
 
-            <div class="panel panel-default" th:if="${role eq 'ADMIN' || role eq 'PRINCIPAL' || role eq 'TEACHER' ||  role eq 'JIAOWU'  }" >
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
                        href="#panel-jiaocaizafei">
@@ -134,7 +133,7 @@
             </div>
 
 
-            <div class="panel panel-default" th:if="${role eq 'ADMIN' || role eq 'PRINCIPAL' || role eq 'TEACHER' ||  role eq 'JIAOWU'  }" >
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
                        href="#panel-jishangke">
@@ -152,7 +151,7 @@
             </div>
 
 
-            <div class="panel panel-default" th:if="${role eq 'STUDENT' }" >
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
                        href="#panel-xueshengzuopin">
@@ -172,34 +171,18 @@
             </div>
 
 
-            <div class="panel panel-default" th:if="${role eq 'STUDENT' }">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
-                       href="#panel-qingjiaguanli1">
+                       href="#panel-qingjiaguanli">
                         <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 请假管理
                     </a>
                 </div>
 
-                <div id="panel-qingjiaguanli1" class="panel-collapse collapse">
+                <div id="panel-qingjiaguanli" class="panel-collapse collapse">
                     <div class="list-group">
-                        <a href="/xiaobao/queryQingJiaDanListByInstitution" class="list-group-item " id="studentqingjiaguanli"><span class="glyphicon glyphicon-star"
-                                                                                                                              aria-hidden="true"></span>学员请假</a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="panel panel-default" th:if="${role eq 'ADMIN' || role eq 'PRINCIPAL' || role eq 'TEACHER' ||  role eq 'JIAOWU'  }">
-                <div class="panel-heading">
-                    <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
-                       href="#panel-qingjiaguanli2">
-                        <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 请假管理
-                    </a>
-                </div>
-
-                <div id="panel-qingjiaguanli2" class="panel-collapse collapse">
-                    <div class="list-group">
-
+                        <a href="/xiaobao/queryQingJiaDanListByInstitution" class="list-group-item " id="qingjiaguanli"><span class="glyphicon glyphicon-star"
+                                                                                                              aria-hidden="true"></span>学员请假</a>
                         <a href="#" class="list-group-item "><span class="glyphicon glyphicon-star"
                                                                    aria-hidden="true"></span>员工请假</a>
 
@@ -207,7 +190,7 @@
                 </div>
             </div>
 
-            <div class="panel panel-default" th:if="${role eq 'ADMIN' || role eq 'PRINCIPAL' ||   role eq 'JIAOWU'  }" >
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
                        href="#panel-gongziguanli">
@@ -225,7 +208,7 @@
             </div>
 
 
-            <div class="panel panel-default" th:if="${role eq 'ADMIN' || role eq 'PRINCIPAL' ||   role eq 'JIAOWU'  }" >
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
                        href="#panel-caiwuguanli">
@@ -252,7 +235,7 @@
             </div>
 
 
-            <div class="panel panel-default" th:if="${role eq 'ADMIN' || role eq 'PRINCIPAL' || role eq 'TEACHER' ||  role eq 'JIAOWU'  }" >
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
                        href="#panel-tongzhiguanli">
@@ -273,7 +256,7 @@
 
 
 
-            <div class="panel panel-default" th:if="${role eq 'ADMIN' || role eq 'PRINCIPAL'   ||  role eq 'JIAOWU'  }">
+            <div class="panel panel-default">
                 <div class="panel-heading">
                     <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
                        href="#panel-sezhiguanli">
@@ -298,7 +281,42 @@
 
         </div>
 
+<script>
 
+   // $("#panel-people-management a").on('click', function () {
+    $("a.list-group-item").on('click', function () {
+
+        var href = $(this).attr('href');
+
+
+
+        /**  这是第二种加载页面方式 **/
+        $.ajax({
+            type: "GET",
+            url:   href,
+            success: function (data) {
+
+                $('#mainContents').empty();
+                //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
+                var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
+
+                var data3= data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
+
+                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
+
+                $('#mainContents').append(data4);
+
+
+            }
+        });
+
+//阻止跳转
+        return false;
+    });
+
+    //   bootstrap 页面设计工具：http://www.layoutit.com/
+
+</script>
 
 </body>
 </html>
