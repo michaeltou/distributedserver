@@ -94,14 +94,13 @@
 
             <div id="formdiv2">
                 <form role="form" id="myform2">
+                    <label for="sendObjectsDiv">发送对象</label>
                     <div class="form-group">
-
-                        <label>发送对象</label>
-                        <div class="sendObjectsDiv">
+                        <div class="sendObjectsDiv" id="sendObjectsDiv">
 
                         </div>
                     </div>
-                    <div class="form-group">
+                    <!--<div class="form-group">
 
                         <label for="title">
                             标题
@@ -111,42 +110,67 @@
                     </div>
                     <div class="form-group">
 
-                        <label for="title">
+                        <label for="content">
                             内容
                         </label>
                         <textarea class="form-control" id="content" name="content" rows="10"  cols="120"></textarea>
                         <div class="check_tips"></div>
-                    </div>
+                    </div>-->
 
 
                 </form>
 
             </div>
 
-        </div>
 
-    </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default" id="selectsmstemplatediv">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                请选择短信模板
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <label>
+                                <input type="radio"
+                                value="SMS_66480047"     name="smstemplate" />
+                                <span   > 验证码${code}，您正在进行${product}身份验证，打死不要告诉别人哦！</span>
+                            </label>
 
-    <div class="row">
+                        </div>
+                        <div class="panel-footer">
 
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-2 text-center">
-            <div id="submitAreaDiv">
-                <div style="height: 20px;"></div>
+                        </div>
+                    </div>
 
-                <button type="button" class="btn btn-default" id="formBackBtn">返回
-                </button>
-                &nbsp; &nbsp; &nbsp;
-                <button id="save" type="button" class="btn btn-success">
-                    保存
-                </button>
-                <div style="height: 80px;"></div>
+
+                    <div class="row">
+
+
+                        <div class="col-md-4 text-center">
+                            <div id="submitAreaDiv">
+                                <div style="height: 20px;"></div>
+
+                                <button type="button" class="btn btn-default" id="formBackBtn">返回
+                                </button>
+                                &nbsp; &nbsp; &nbsp;
+                                <button id="save" type="button" class="btn btn-success">
+                                    发送
+                                </button>
+                                <div style="height: 80px;"></div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
             </div>
+
         </div>
 
-
     </div>
+
 </div>
 
 

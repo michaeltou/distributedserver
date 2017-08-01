@@ -8,6 +8,7 @@ import com.aliyun.mns.model.BatchSmsAttributes;
 import com.aliyun.mns.model.MessageAttributes;
 import com.aliyun.mns.model.RawTopicMessage;
 import com.aliyun.mns.model.TopicMessage;
+import org.apache.tools.ant.filters.TokenFilter;
 
 import java.util.*;
 
@@ -20,7 +21,7 @@ public class SMSSender {
 
 
     public static void main(String[] args) {
-        testSingleSendSms();
+        testBatchSendSms2();
     }
 
     public static void testBatchSendSms(){
@@ -32,6 +33,32 @@ public class SMSSender {
         String signName = "云模网络";
         batchSendSMS(templateCode,keyValues,phoneNoList,signName);
     }
+
+    public static void testBatchSendSms2(){
+        String templateCode = "SMS_66480047";
+        Map<String ,String> keyValues = new HashMap<String ,String>();
+        keyValues.put("code","123456");
+        keyValues.put("product","云模学习宝人工智能");
+        List<String> phoneNoList = new ArrayList<>();
+        phoneNoList.add("18658160158");
+        String signName = "云模网络";
+        batchSendSMS(templateCode,keyValues,phoneNoList,signName);
+    }
+
+    /**
+     *  发送不成功 SMS_66515123模板的原因.
+     */
+    public static void testBatchSendSms3(){
+        String templateCode = "SMS_66515123";
+        Map<String ,String> keyValues = new HashMap<String ,String>();
+        keyValues.put("code","123456");
+        keyValues.put("product","云模学习宝人工智能");
+        List<String> phoneNoList = new ArrayList<>();
+        phoneNoList.add("18658160158");
+        String signName = "云模网络";
+        batchSendSMS(templateCode,keyValues,phoneNoList,signName);
+    }
+
 
     public static void testSingleSendSms(){
         String templateCode = "SMS_66480046";
@@ -110,19 +137,24 @@ public class SMSSender {
         // 3.3 设置发送短信所使用的模板中参数对应的值（在短信模板中定义的，没有可以不用设置）
         BatchSmsAttributes.SmsReceiverParams smsReceiverParams = new BatchSmsAttributes.SmsReceiverParams();
 
-        Set<String> keys = keyValues.keySet();
-        if (!keys.isEmpty()) {
-            for (String key :
-                    keys) {
-                String value = (String) keyValues.get(key);
-                smsReceiverParams.setParam(key, value);
+        if (keyValues !=null){
+            Set<String> keys = keyValues.keySet();
+            if (!keys.isEmpty()) {
+                for (String key :  keys) {
+                    String value = (String) keyValues.get(key);
+                    smsReceiverParams.setParam(key, value);
+                }
             }
         }
 
+
         if (!phoneNoList.isEmpty()){
             for (String phoneNo:phoneNoList   ) {
-             // 3.4 增加接收短信的号码
-                batchSmsAttributes.addSmsReceiver(phoneNo, smsReceiverParams);
+                if (phoneNo!=null && !"".equals(phoneNo.trim())){
+                    // 3.4 增加接收短信的号码
+                    batchSmsAttributes.addSmsReceiver(phoneNo, smsReceiverParams);
+                }
+
             }
         }
 
