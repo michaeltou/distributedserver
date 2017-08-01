@@ -132,8 +132,11 @@ public class BanjiPaikeItemApi {
         banjiPaikeItem.setInstitution_code(institution_code);
         int result = banjiPaikeItemService.insertBanjiPaikeItem(banjiPaikeItem);
         if (result > 0) {
-            BanjiPaikeItem item = banjiPaikeItemService.queryBanjiPaikeItemByUIData(institution_code,banjiPaikeItem.getClassroom_name(),banjiPaikeItem.getBanji_name(),banjiPaikeItem.getJiaoshi_sfzCode(),banjiPaikeItem.getAssist_teacher_sfzCode(),banjiPaikeItem.getStart(),banjiPaikeItem.getEnd());
-            resultModel.setData(item.getId());
+            List<BanjiPaikeItem> items = banjiPaikeItemService.queryBanjiPaikeItemByUIData(institution_code,banjiPaikeItem.getClassroom_name(),banjiPaikeItem.getBanji_name(),banjiPaikeItem.getJiaoshi_sfzCode(),banjiPaikeItem.getAssist_teacher_sfzCode(),banjiPaikeItem.getStart(),banjiPaikeItem.getEnd());
+           if(items.size() > 0){
+               resultModel.setData(items.get(0).getId());
+           }
+
             return resultModel;
         } else {
             resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);

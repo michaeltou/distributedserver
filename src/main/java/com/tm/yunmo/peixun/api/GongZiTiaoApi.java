@@ -25,20 +25,10 @@ public class GongZiTiaoApi {
     //http://localhost:9999/queryGongZiTiaoListBySfz?sfz_code=341225199509098888
     @RequestMapping("/queryGongZiTiaoListBySfz")
     public List<GongZiTiao> queryGongZiTiaoListBySfz(HttpServletRequest request) {
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String sfz_code = request.getParameter("sfz_code");
-        List<GongZiTiao> gongZiTiaoList = gongZiTiaoService.queryGongZiTiaoListBySfz(sfz_code);
+        List<GongZiTiao> gongZiTiaoList = gongZiTiaoService.queryGongZiTiaoListBySfz(institution_code,sfz_code);
         return gongZiTiaoList;
-    }
-
-
-
-    //http://localhost:9999/queryGongZiTiaoListBySfz?sfz_code=341225199509098888&name=java%E8%AF%BE%E7%A8%8B
-    @RequestMapping("/queryGongZiTiaoByName")
-    public GongZiTiao queryGongZiTiaoByName(HttpServletRequest request) {
-        String name = request.getParameter("name");
-        String sfz_code = request.getParameter("sfz_code");
-        GongZiTiao gongZiTiao = gongZiTiaoService.queryGongZiTiaoByName(name, sfz_code);
-        return gongZiTiao;
     }
 
     /**
@@ -112,9 +102,10 @@ public class GongZiTiaoApi {
      * @return
      */
     @RequestMapping("/insertGongZiTiao")
-    public ResultModel insertGongZiTiao(@RequestBody GongZiTiao gongZiTiao) {
+    public ResultModel insertGongZiTiao(@RequestBody GongZiTiao gongZiTiao,HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
-
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        gongZiTiao.setInstitution_code(institution_code);
         int result = gongZiTiaoService.insertGongZiTiao(gongZiTiao);
         if (result > 0) {
             return resultModel;
@@ -209,6 +200,18 @@ public class GongZiTiaoApi {
         }
     }
 
+    @RequestMapping("/updateGongZiTiaoStatus")
+    public ResultModel updateGongZiTiaoStatus(@RequestBody GongZiTiao gongZiTiao) {
+        ResultModel resultModel = new ResultModel();
+        int result = gongZiTiaoService.updateGongZiTiaoStatus(gongZiTiao);
+        if (result > 0) {
+            return resultModel;
+        } else {
+            resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+            return resultModel;
+        }
+    }
+
 
     /**
      * POST http://localhost:9999/deleteGongZiTiao HTTP/1.1
@@ -284,6 +287,20 @@ public class GongZiTiaoApi {
     public ResultModel deleteGongZiTiao(@RequestBody  GongZiTiao gongZiTiao) {
         ResultModel resultModel = new ResultModel();
         int result = gongZiTiaoService.deleteGongZiTiao(gongZiTiao);
+        if (result > 0) {
+            return resultModel;
+        } else {
+            resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+            return resultModel;
+        }
+    }
+
+    @RequestMapping("/deleteGongZiTiaoByMonth")
+    public ResultModel deleteGongZiTiaoByMonth(HttpServletRequest request) {
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        String month = request.getParameter("month");
+        ResultModel resultModel = new ResultModel();
+        int result = gongZiTiaoService.deleteGongZiTiaoByMonth(institution_code,month);
         if (result > 0) {
             return resultModel;
         } else {

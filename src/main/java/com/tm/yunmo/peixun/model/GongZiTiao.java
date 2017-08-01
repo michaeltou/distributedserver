@@ -1,5 +1,7 @@
 package com.tm.yunmo.peixun.model;
 
+import java.util.Date;
+
 /**
  * Created by daoying on 2017/6/17.
  * 工资条.
@@ -7,13 +9,17 @@ package com.tm.yunmo.peixun.model;
 public class GongZiTiao {
 
     private int id;
-    //
+    //机构代码
+    private String institution_code;
+    // 员工姓名
     private String name;
     //'身份证'
-    private String sfzCode;
+    private String sfz_code;
+    //工资月份
+    private String month;
     //'实发工资'
     private int shi_fa_gz;
-    //'加班费'
+    //'加班工资'
     private int jia_ban_gz;
     //'岗位工资'
     private int gang_wei_gz;
@@ -31,8 +37,6 @@ public class GongZiTiao {
     private int quan_qing_jiang;
     //'补课费'
     private int bu_ke_fei;
-
-
     //'请假扣款'
     private int qing_jia_kou_kuan;
     //'退费扣款'
@@ -65,6 +69,12 @@ public class GongZiTiao {
     private int other_kk;
     //'应发总工资'
     private int ying_fa_zong_gz;
+    // 确认状态
+    private Byte status;
+    //创建日期
+    private Date create_date;
+    //最后修正日期
+    private Date update_date;
 
     public int getId() {
         return id;
@@ -72,6 +82,14 @@ public class GongZiTiao {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getInstitution_code() {
+        return institution_code;
+    }
+
+    public void setInstitution_code(String institution_code) {
+        this.institution_code = institution_code;
     }
 
     public String getName() {
@@ -82,12 +100,20 @@ public class GongZiTiao {
         this.name = name;
     }
 
-    public String getSfzCode() {
-        return sfzCode;
+    public String getSfz_code() {
+        return sfz_code;
     }
 
-    public void setSfzCode(String sfzCode) {
-        this.sfzCode = sfzCode;
+    public void setSfz_code(String sfz_code) {
+        this.sfz_code = sfz_code;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public void setMonth(String month) {
+        this.month = month;
     }
 
     public int getShi_fa_gz() {
@@ -296,5 +322,29 @@ public class GongZiTiao {
 
     public void setYing_fa_zong_gz(int ying_fa_zong_gz) {
         this.ying_fa_zong_gz = ying_fa_zong_gz;
+    }
+
+    public Byte getStatus() {
+        return status;
+    }
+
+    public void setStatus(Byte status) {
+        this.status = status;
+    }
+
+    public Date getCreate_date() {
+        return create_date;
+    }
+
+    public void setCreate_date(Date create_date) {
+        this.create_date = create_date;
+    }
+
+    public Date getUpdate_date() {
+        return update_date;
+    }
+
+    public void setUpdate_date(Date update_date) {
+        this.update_date = update_date;
     }
 }

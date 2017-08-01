@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <title>新建课程</title>
+    <meta charset="UTF-8"/>
+    <title>创建工资条</title>
     <meta name="viewport" content="width=device-width,
                                      initial-scale=1.0,
                                      maximum-scale=1.0,
@@ -12,135 +12,419 @@
     <script src="/xiaobao/js/jquery-3.2.1.js"></script>
     <script src="/xiaobao/js/bootstrap.js"></script>
     <script src="/xiaobao/js/createGongZiTiao.js"></script>
+
+    <script src="/xiaobao/js/bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="/xiaobao/css/bootstrap-datetimepicker.css"/>
+    <style>
+        .modal-dialog {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .modal-content {
+            /*overflow-y: scroll; */
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .modal-body {
+            overflow-y: scroll;
+            position: absolute;
+            top: 55px;
+            bottom: 65px;
+            width: 100%;
+        }
+
+        .modal-header .close {margin-right: 15px;}
+
+        .modal-footer {
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
 
 
-<div class="container-fluid">
-
-    <div class="row">
-        <div class="col-md-12">
-            <ol class="breadcrumb">
-                <li><a  href="#" id="backToListbreadLink">教室管理</a></li>
-                <li><a href="#">新建教室</a></li>
-
-            </ol>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-3">
-            <h2 class="text-success  ">
-                新建教室
-            </h2>
-            <div style="height: 20px;"></div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3">
-
-            <div class="text-success" style="display: none;" id="successLabel">恭喜你，新建教室成功！
-                <div style="height: 50px;"></div>
-                <button type="button" class="btn btn-info" id="backToListBtn" style="display: none;">
-                    返回
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myDeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="color:white;background-color:#449d44;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
                 </button>
-
-                <button type="button" class="btn btn-success" id="createAgainBtn" style="display: none;">
-                    再新建一个教室
-                </button>
-                <div style="height: 50px;"></div>
+                <h4 class="modal-title" id="myModalLabel">
+                    确认操作
+                </h4>
             </div>
-            <div class="text-danger" style="display: none;" id="failLabel">新建教室失败！
-                <div style="height: 50px;"></div>
-            </div>
+            <div class="modal-body">
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="hidden" id="month"  />
+
+                            确认删除该员工的工资条吗?
+                            <div class="text-danger">数据删除后，将不可恢复！</div>
+                        </div>
 
 
-
-
-        </div>
-
-
-    </div>
-
-    <div class="row">
-
-        <div class="col-md-4">
-
-            <div id="formdiv">
-                <form role="form" id="myform">
-                    <div class="form-group">
-
-                        <label for="name">
-                            教室名称
-                        </label>
-                        <input type="text" class="form-control" id="name"/>
-                        <div class="check_tips"></div>
                     </div>
-                    <div class="form-group">
-
-                        <label for="school_name">
-                            校区
-                        </label>
-                        <input type="text" class="form-control" id="school_name"/>
-                        <div class="check_tips"></div>
-                    </div>
-                    <div class="form-group">
-
-                        <label for="capacity">
-                            容纳人数
-                        </label>
-                        <input type="text" class="form-control" id="capacity"/>
-                        <div class="check_tips"></div>
-                    </div>
-                    <div class="form-group">
-
-                        <label for="address">
-                            地址
-                        </label>
-                        <input type="text" class="form-control" id="address"/>
-                        <div class="check_tips"></div>
-                    </div>
-                    <div class="form-group">
-
-                        <label for="note">
-                            备注
-                        </label>
-                        <input type="text" class="form-control" id="note"/>
-                        <div class="check_tips"></div>
-                    </div>
-
-
-                </form>
+                </div>
 
             </div>
-
-        </div>
-
-
-    </div>
-
-    <div class="row">
-
-        <div class="col-md-1">
-        </div>
-        <div class="col-md-2 text-center">
-            <div id="submitAreaDiv">
-                <div style="height: 20px;"></div>
-
-                <button type="button" class="btn btn-default" id="formBackBtn">返回
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
                 </button>
-                &nbsp; &nbsp; &nbsp;
-                <button id="save" type="button" class="btn btn-success">
+                <button id="deleteObjectBtnInModal" type="button" class="btn btn-primary"  >
+                    确定
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="createGongZiTiaoModal" tabindex="-1" role="dialog" aria-labelledby="createGongZiTiaoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="color:white;background-color:#449d44;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="createGongZiTiaoModalLabel">
+                    创建工资条
+                </h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div id="formdiv1">
+                                <form role="form" id="myform1">
+                                    <div class="form-group">
+
+                                        <label for="shiFaGongZi">
+                                            实发工资
+                                        </label>
+                                        <input type="text" class="form-control" id="shiFaGongZi" readonly = "readonly"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="yingFaGongZi">
+                                            应发工资
+                                        </label>
+                                        <input type="text" class="form-control" id="yingFaGongZi" readonly = "readonly"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="jiaBanGongZi">
+                                            加班工资
+                                        </label>
+                                        <input type="text" class="form-control" id="jiaBanGongZi"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="gangWeiGongZi">
+                                            岗位工资
+                                        </label>
+                                        <input type="text" class="form-control" id="gangWeiGongZi"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="jiXiaoGongZi">
+                                            绩效工资
+                                        </label>
+                                        <input type="text" class="form-control" id="jiXiaoGongZi"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="keShiFei">
+                                            课时费
+                                        </label>
+                                        <input type="text" class="form-control" id="keShiFei"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="jieShaoFei">
+                                            介绍费
+                                        </label>
+                                        <input type="text" class="form-control" id="jieShaoFei"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="jiXiaoJiangJin">
+                                            绩效奖金
+                                        </label>
+                                        <input type="text" class="form-control" id="jiXiaoJiangJin"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="jiaBanFei">
+                                            加班费
+                                        </label>
+                                        <input type="text" class="form-control" id="jiaBanFei"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="quanQinJiang">
+                                            全勤奖
+                                        </label>
+                                        <input type="text" class="form-control" id="quanQinJiang"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="buKeFei">
+                                            补课费
+                                        </label>
+                                        <input type="text" class="form-control" id="buKeFei"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="tongXunBuTie">
+                                            通讯补贴
+                                        </label>
+                                        <input type="text" class="form-control" id="tongXunBuTie"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="jiaoTongBuTie">
+                                            交通补贴
+                                        </label>
+                                        <input type="text" class="form-control" id="jiaoTongBuTie"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="canFeiBuTie">
+                                            餐费补贴
+                                        </label>
+                                        <input type="text" class="form-control" id="canFeiBuTie"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="gongLingGongZi">
+                                            工龄工资
+                                        </label>
+                                        <input type="text" class="form-control" id="gongLingGongZi"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="otherBonus">
+                                            其他奖金
+                                        </label>
+                                        <input type="text" class="form-control" id="otherBonus"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="qingJiaKouKuan">
+                                            请假扣款
+                                        </label>
+                                        <input type="text" class="form-control" id="qingJiaKouKuan"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="tuiFeiKouKuan">
+                                            退费扣款
+                                        </label>
+                                        <input type="text" class="form-control" id="tuiFeiKouKuan"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="yangLaoBaoXian">
+                                            养老保险
+                                        </label>
+                                        <input type="text" class="form-control" id="yangLaoBaoXian"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="yiLiaoBaoXian">
+                                            医疗保险
+                                        </label>
+                                        <input type="text" class="form-control" id="yiLiaoBaoXian"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="shiYeBaoXian">
+                                            失业保险
+                                        </label>
+                                        <input type="text" class="form-control" id="shiYeBaoXian"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="gongShangBaoXian">
+                                            工伤保险
+                                        </label>
+                                        <input type="text" class="form-control" id="gongShangBaoXian"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="shengYuBaoXian">
+                                            生育保险
+                                        </label>
+                                        <input type="text" class="form-control" id="shengYuBaoXian"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="tax">
+                                            公积金
+                                        </label>
+                                        <input type="text" class="form-control" id="tax"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="tax">
+                                            个税
+                                        </label>
+                                        <input type="text" class="form-control" id="tax"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <label for="otherKK">
+                                            其他支出
+                                        </label>
+                                        <input type="text" class="form-control" id="otherKK"/>
+                                        <div class="check_tips"></div>
+                                    </div>
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消
+                </button>
+                <button id="saveObjectBtnInModal" type="button" class="btn btn-primary"  >
                     保存
                 </button>
-                <div style="height: 80px;"></div>
             </div>
-        </div>
-
-
-    </div>
+            <input type="hidden" id="operationType" value="0"/>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
 </div>
 
 
+<div class="container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div style="height: 20px;"></div>
+            <label for="gongZiTiaoMonth" style="float: left; margin-top: 5px;margin-right: 10px;">
+                创建月份
+            </label>
+            <input type="text" class="form-control" id="gongZiTiaoMonth" style="width: 150px;float: left;margin-right: 10px;"/>
+            <button type="button" class="btn btn-success" id="createObjectBtnInList" style="float: left;">
+                新建工资条
+            </button>
+            <div style="height: 20px;"></div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12" style="background-color: transparent;">
+            <h3>员工列表</h3>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div style="height: 20px;"></div>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover">
+                    <thead id = "mytablehead" style="  background-color: rgba(113,210,113,0.36);  border-color: #71ce71;">
+                    <tr>
+                        <th> <input value="" name="selectedEmployee" type="checkbox" class="selectedEmployee"/></th>
+                        <th> 员工姓名</th>
+                        <th> 联系电话</th>
+                        <th> 身份证号码</th>
+                        <th> 所属校区</th>
+                        <th> 人事状态</th>
+                        <th> 操作</th>
+                    </tr>
+                    </thead>
+                    <tbody id="mytablebody">
+
+                    <tr th:each="employee : ${employeeList}">
+                        <td><input value="" name="selectedEmployee" type="checkbox" class="selectedEmployee"/></td>
+                        <td th:text="${employee.name}">null</td>
+                        <td th:text="${employee.phone}">null</td>
+                        <td th:text="${employee.sfzCode}">null</td>
+                        <td th:text="${employee.xiaoqu_name}">null</td>
+                        <td th:text="${employee.laodong_guanxi}">null</td>
+                        <td>
+                            <a    class="deleteObjectLinkClass" href="#">删除</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
