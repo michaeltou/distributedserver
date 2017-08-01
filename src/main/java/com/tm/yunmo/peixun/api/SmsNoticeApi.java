@@ -4,6 +4,7 @@ import com.tm.yunmo.common.ErrorCode;
 import com.tm.yunmo.common.ResultModel;
 import com.tm.yunmo.peixun.model.SmsNotice;
 import com.tm.yunmo.peixun.service.SmsNoticeService;
+import com.tm.yunmo.sms.SMSSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,8 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Huangqijun on 2017/7/25.
@@ -62,9 +62,22 @@ public class SmsNoticeApi {
     public ResultModel insertSmsNotice(@RequestBody SmsNotice smsNotice, HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
         String institution_code = (String) request.getSession().getAttribute("institution_code");
+        String username = (String) request.getSession().getAttribute("username");
         smsNotice.setInstitution_code(institution_code);
+        smsNotice.setSend_person(username);
         int result = smsNoticeService.insertSmsNotice(smsNotice);
         if (result > 0) {
+
+            /***  发送短信代码块  开始**/
+            String phoneStr =  smsNotice.getNotify_object_phone();
+            String[] phoneArray= phoneStr.split(",");
+            List<String> phoneList = Arrays.asList(phoneArray);
+            Map<String ,String> keyValues = new HashMap<String ,String>();
+            keyValues.put("code","123456");
+            keyValues.put("product","云模学习宝人工智能");
+            SMSSender.batchSendSMS(smsNotice.getTitle(),keyValues,phoneList,"云模网络");
+
+            /***  发送短信代码块  结束**/
             return resultModel;
         } else {
             resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);

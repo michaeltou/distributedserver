@@ -67,7 +67,7 @@
 
 
             <button type="button" class="btn btn-success" id="createObjectBtnInList">
-                新建通知
+                新建短信通知
             </button>
 
 
@@ -110,6 +110,7 @@
                         <th> 通知摘要</th>
                         <th> 通知对象</th>
                         <th> 发送者</th>
+                        <th> 内容</th>
                         <th> 发送时间</th>
                         <th> 操作</th>
                     </tr>
@@ -120,6 +121,7 @@
                         <td th:text="${smsNotice.title}">null</td>
                         <td th:text="${smsNotice.notify_object_name}">null</td>
                         <td th:text="${smsNotice.send_person}">null</td>
+                        <td th:text="${smsNotice.content}">null</td>
                         <td th:text="${#dates.format(smsNotice.send_date, 'yyyy-MM-dd')}"></td>
                         <td><a    class="deleteObjectLinkClass"
                                   href="#"

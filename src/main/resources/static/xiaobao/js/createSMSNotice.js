@@ -130,7 +130,7 @@ $(document).ready(function () {
     var b_validate_result4 = true;
     var b_validate_result5 = true;
 
-    $("#title").focusout(function () {
+ /*   $("#title").focusout(function () {
 
         if ($("#title").val().length < 2) {
             $("#title").next().text("标题小于2个字符，不合法!");
@@ -142,8 +142,8 @@ $(document).ready(function () {
         }
 
 
-    });
-
+    });*/
+/*
     $("#content").focusout(function () {
 
         if ($("#content").val().length < 2) {
@@ -154,13 +154,13 @@ $(document).ready(function () {
             $("#content").next().css("display", "none");
             b_validate_result2 = true;
         }
-    });
+    });*/
 
 
 
     $("#save").click(function () {
-        $("#title").focus();
-        $("#content").focus();
+        /*$("#title").focus();
+        $("#content").focus();*/
 
         if($(".sendObjectDiv").length == 0){
             b_validate_result3 = false;
@@ -206,8 +206,8 @@ $(document).ready(function () {
              * 2、js里面的ajax请求的data要使用 data:  JSON.stringify({name: $("#name").val(), age: $("#age").val()}), 传递json字符串，而不json对象.
              * */
             data: JSON.stringify({
-                title: $("#title").val(),
-                content: $("#content").val(),
+                title: $("input[name='smstemplate']:checked").val(),
+                content: $("input[name='smstemplate']:checked").next().text(),
                 notify_object_phone:notify_object_phone,
                 notify_object_name:notify_object_name,
                 send_person: "",
@@ -229,6 +229,9 @@ $(document).ready(function () {
                     $("#submitAreaDiv").empty();
                     $("#formdiv1").empty();
                     $("#formdiv2").empty();
+
+                    $("#selectsmstemplatediv").empty();
+
 
                 }
                 else {
