@@ -194,8 +194,8 @@ $(document).ready(function () {
                 }
             }
         }
-        alert(notify_object_name);
-        alert(notify_object_phone);
+        /*alert(notify_object_name);
+        alert(notify_object_phone);*/
 
         var url = "/insertSmsNotice";
         $.ajax({
