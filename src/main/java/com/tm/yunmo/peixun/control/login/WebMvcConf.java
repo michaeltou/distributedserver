@@ -23,6 +23,8 @@ public class WebMvcConf extends WebMvcConfigurerAdapter {
         addInterceptor.excludePathPatterns("/error");
         addInterceptor.excludePathPatterns("/login");
         addInterceptor.excludePathPatterns("/logout");
+        addInterceptor.excludePathPatterns("/processLogin");
+
 
         // 拦截配置
         addInterceptor.addPathPatterns("/");
