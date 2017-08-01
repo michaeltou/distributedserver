@@ -172,7 +172,7 @@
             </div>
 
 
-            <div class="panel panel-default" th:if="${role eq 'STUDENT' }">
+            <div class="panel panel-default" th:if="${role eq 'ADMIN' || role eq 'PRINCIPAL' || role eq 'STUDENT' }">
                 <div class="panel-heading">
                     <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-tm-menu"
                        href="#panel-qingjiaguanli1">
