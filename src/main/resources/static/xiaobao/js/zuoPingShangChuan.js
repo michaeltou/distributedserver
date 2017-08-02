@@ -37,17 +37,22 @@ $(document).ready(function () {
         console.log("fileerror");
         console.log(data);
     });
+
+
+    var oldValue= "";
     //异步上传返回结果处理
     $(".myfile").on("fileuploaded", function(event, data, previewId, index) {
-        console.log("fileuploaded");
-        var ref = $(this).attr("data-ref");
-        var oldValue= "";
-        if( $("input[name='" + ref + "']").val() == null ||$("input[name='" + ref + "']").val().length==0 ){
+
+        if(oldValue == "" ){
             oldValue = "";
+
         }else{
-            oldValue = $("input[name='" + ref + "']").val()+",";
+            var tempValue = $("#url2").val()
+            oldValue = tempValue + ",";
         }
-        $("input[name='" + ref + "']").val(oldValue+data.response.url);
+
+        var newvalue = oldValue+data.response.url;
+        $("#url2").val(newvalue);
 
         if ($("#url2").val().length < 2) {
             $("#url2").next().text("没有上传文件，无法进行保存!");
