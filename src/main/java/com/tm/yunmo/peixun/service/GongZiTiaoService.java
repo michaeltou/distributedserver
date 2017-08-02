@@ -32,6 +32,11 @@ public class GongZiTiaoService {
         return gongZiTiaoList;
     }
 
+    public List<GongZiTiao> queryGongZiTiaoListByInstitutionAndMonthAndSfz(String institution_code ,String month ,String filter) {
+        List<GongZiTiao> gongZiTiaoList = gongZiTiaoDAO.queryGongZiTiaoListByInstitutionAndMonthAndSfz(institution_code,month,filter);
+        return gongZiTiaoList;
+    }
+
     public List<GongZiTiao> queryGongZiTiaoListBySfz(String institution_code, String sfz_code) {
         List<GongZiTiao> gongZiTiaoList = gongZiTiaoDAO.queryGongZiTiaoListBySfz(institution_code,sfz_code);
         return gongZiTiaoList;

@@ -76,8 +76,6 @@ $(document).ready(function () {
             data: {
                 month: $("#month").val(),
             },
-/*            dataType: "json",
-            contentType: "application/json; charset=utf-8",//(可以)*/
             success: function (data) {
                 $('#mainContents').empty();
                 //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）

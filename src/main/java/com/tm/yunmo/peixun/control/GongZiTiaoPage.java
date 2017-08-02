@@ -39,7 +39,7 @@ public class GongZiTiaoPage {
         String month = request.getParameter("month");
         List<GongZiTiao> gongZiTiaoList = gongZiTiaoService.queryGongZiTiaoListByInstitutionAndMonth(institution_code,month);
         model.addAttribute("gongZiTiaoList",gongZiTiaoList);
-        return "xiaobao/gongZiTiaoForEmployeeList";
+        return "xiaobao/gongZiTiaoDetail";
     }
 
     @RequestMapping("/xiaobao/createGongZiTiao")

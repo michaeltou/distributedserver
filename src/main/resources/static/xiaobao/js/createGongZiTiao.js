@@ -4,6 +4,32 @@
 
 
 $(document).ready(function () {
+
+    var flag = false;
+    $.extend({
+        checkData: function () {
+            if ($("#gongZiTiaoMonth").val() == "") {
+                alert("请选择创建月份.");
+                $("#gongZiTiaoMonth").focus();
+                return false;
+            }
+
+            var bChecked = false;
+            for (var i = 0; i < $("#mytablebody tr").length; i++) {
+                var tdArr = $("#mytablebody tr").eq(i).children();
+                if (tdArr.eq(0).children().is(':checked')) {
+                    bChecked = true;
+                    break;
+                }
+            }
+            if (!bChecked) {
+                alert("请至少选择一名员工..");
+                return false;
+            }
+            return true;
+        }
+    });
+
     $('#gongZiTiaoMonth').datetimepicker({
         language:  'zh-CN',
         format: 'yyyy-mm',
@@ -16,13 +42,79 @@ $(document).ready(function () {
     });
 
     var nowDate = new Date();
-    var result=nowDate.getFullYear()+'-'+(nowDate.getMonth()+1);//
+    var result=nowDate.getFullYear()+'-'+padZero((nowDate.getMonth()+1),2);//
     $('#gongZiTiaoMonth').val(result);
 
     $("#createObjectBtnInList").click(function () {
-        $('#createGongZiTiaoModal').modal('show');
-        return false;
+        if($.checkData()){
+            $('#createGongZiTiaoModal').modal('show');
+            return false;
+        }
+    });
 
+    $("#copyObjectBtnInList").click(function () {
+        if($.checkData()){
+            var names = "";
+            var sfzCodes = "";
+
+            for(var i = 0;i < $("#mytablebody tr").length;i++){
+                if(!$("#mytablebody tr").eq(i).find(".selectedEmployee").is(":checked")){
+                    continue;
+                }
+                var tds = $("#mytablebody tr").eq(i).children();
+                if(names == ""){
+                    names+=tds.eq(1).html();
+                }
+                else {
+                    names+= "," + tds.eq(1).html();
+                }
+
+                if(sfzCodes == ""){
+                    sfzCodes+=tds.eq(3).html();
+                }
+                else {
+                    sfzCodes+= "," + tds.eq(3).html();
+                }
+            }
+            $.ajax({
+                type: "get",
+                url: "/copyPreMonthGongZiTiao",
+                async:false,
+                data: {
+                    names:names,
+                    sfzCodes:sfzCodes,
+                    month:$('#gongZiTiaoMonth').val(),
+                },
+                success: function (data, textStatus) {
+                    if (data.success) {
+                        alert("上月工资单拷贝成功");
+                        $.ajax({
+                            type: "GET",
+                            url: "/xiaobao/queryGongZiTiaoListByInstitutionAndMonth",
+                            async:false,
+                            data:{month:$("#gongZiTiaoMonth").val()},
+                            success: function (data) {
+                                $('#mainContents').empty();
+                                //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
+                                var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
+
+                                var data3= data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
+
+                                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
+                                $('#mainContents').append(data4);
+                            }
+                        });
+                    }
+                    else {
+                        /*$("#failLabel").css("display:block");*/
+                        alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
+                    }
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("系统异常！");
+                }
+            });
+        }
     });
 
     $("#saveObjectBtnInModal").click(function () {
@@ -149,6 +241,9 @@ $(document).ready(function () {
         var sfzCodes = "";
 
         for(var i = 0;i < $("#mytablebody tr").length;i++){
+            if(!$("#mytablebody tr").eq(i).find(".selectedEmployee").is(":checked")){
+                continue;
+            }
             var tds = $("#mytablebody tr").eq(i).children();
             if(names == ""){
                 names+=tds.eq(1).html();
@@ -164,10 +259,12 @@ $(document).ready(function () {
                 sfzCodes+= "," + tds.eq(3).html();
             }
         }
+        flag = "true";
+        $('#createGongZiTiaoModal').modal('hide');
         $.ajax({
             type: "post",
             url: "/insertGongZiTiao",
-            /*async:false,*/
+            async:false,
             /**     * 关键点：获取post请求的参数，有2个关键点：
              * 1、java接口需要加上@RequestBody这个注解.
              * 2、js里面的ajax请求的data要使用 data:  JSON.stringify({name: $("#name").val(), age: $("#age").val()}), 传递json字符串，而不json对象.
@@ -208,8 +305,7 @@ $(document).ready(function () {
             contentType: "application/json; charset=utf-8",//(可以)
             success: function (data, textStatus) {
                 if (data.success) {
-                    //清空表格数据
-                    $("#myform1")[0].reset();
+
                 }
                 else {
                     /*$("#failLabel").css("display:block");*/
@@ -222,6 +318,28 @@ $(document).ready(function () {
         });
 
     });
+
+    $('#createGongZiTiaoModal').on('hidden.bs.modal', function () {
+       if(flag == "true"){
+            $.ajax({
+                type: "GET",
+                url: "/xiaobao/queryGongZiTiaoListByInstitutionAndMonth",
+                async:false,
+                data:{month:$("#gongZiTiaoMonth").val()},
+                success: function (data) {
+                    $('#mainContents').empty();
+                    //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
+                    var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
+
+                    var data3= data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
+
+                    var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
+                    $('#mainContents').append(data4);
+                }
+            });
+           flag = false;
+       }
+    })
 
     $("#createGongZiTiaoModal form").on("change",".form-control",function () {
 
@@ -412,5 +530,16 @@ $(document).ready(function () {
 
     });
 
+    $("#backToListbreadLink").click(function () {
+        $("#gongzitiaoguanli").click();
+
+    });
+
 });
 
+function padZero(num, n) {
+    if ((num + "").length >= n) {
+        return num;
+    }
+    return padZero("0" + num, n);
+}

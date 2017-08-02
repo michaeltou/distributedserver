@@ -2,6 +2,7 @@ package com.tm.yunmo.peixun.dao;
 
 import com.tm.yunmo.peixun.model.GongZiTiao;
 import com.tm.yunmo.peixun.model.GongZiTiaoForMonth;
+import io.swagger.annotations.SwaggerDefinition;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -100,6 +101,9 @@ public interface GongZiTiaoDAO {
             " WHERE institution_code = #{institution_code}" +
             " AND month = #{month}")
     List<GongZiTiao> queryGongZiTiaoListByInstitutionAndMonth(@Param("institution_code") String institution_code,@Param("month") String month);
+
+    @SelectProvider(type = SqlProvider.class,method = "queryGongZiTiaoListByInstitutionAndMonthAndSfz")
+    List<GongZiTiao> queryGongZiTiaoListByInstitutionAndMonthAndSfz(String institution_code,String month, String filter);
 
     @Select("SELECT `px_gong_zi_tiao`.`id`,\n" +
             "    `px_gong_zi_tiao`.`institution_code`,\n" +
@@ -212,7 +216,7 @@ public interface GongZiTiaoDAO {
     public int insertGongZiTiao(GongZiTiao gongZiTiao);
 
 
-    @Update(" UPDATE  `px_gongZiTiao`\n" +
+    @Update(" UPDATE  `px_gong_zi_tiao`\n" +
             "SET\n" +
             "`name` = #{name},\n" +
             "`sfz_code` = #{sfz_code},\n" +
