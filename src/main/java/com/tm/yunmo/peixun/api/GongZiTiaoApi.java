@@ -10,6 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -25,20 +30,10 @@ public class GongZiTiaoApi {
     //http://localhost:9999/queryGongZiTiaoListBySfz?sfz_code=341225199509098888
     @RequestMapping("/queryGongZiTiaoListBySfz")
     public List<GongZiTiao> queryGongZiTiaoListBySfz(HttpServletRequest request) {
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
         String sfz_code = request.getParameter("sfz_code");
-        List<GongZiTiao> gongZiTiaoList = gongZiTiaoService.queryGongZiTiaoListBySfz(sfz_code);
+        List<GongZiTiao> gongZiTiaoList = gongZiTiaoService.queryGongZiTiaoListBySfz(institution_code,sfz_code);
         return gongZiTiaoList;
-    }
-
-
-
-    //http://localhost:9999/queryGongZiTiaoListBySfz?sfz_code=341225199509098888&name=java%E8%AF%BE%E7%A8%8B
-    @RequestMapping("/queryGongZiTiaoByName")
-    public GongZiTiao queryGongZiTiaoByName(HttpServletRequest request) {
-        String name = request.getParameter("name");
-        String sfz_code = request.getParameter("sfz_code");
-        GongZiTiao gongZiTiao = gongZiTiaoService.queryGongZiTiaoByName(name, sfz_code);
-        return gongZiTiao;
     }
 
     /**
@@ -112,10 +107,53 @@ public class GongZiTiaoApi {
      * @return
      */
     @RequestMapping("/insertGongZiTiao")
-    public ResultModel insertGongZiTiao(@RequestBody GongZiTiao gongZiTiao) {
+    public ResultModel insertGongZiTiao(@RequestBody GongZiTiao gongZiTiao,HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
+        int result = 0;
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        gongZiTiao.setInstitution_code(institution_code);
+        List<String> nameList = Arrays.asList(gongZiTiao.getName().split(","));
+        List<String> sfzCodeList = Arrays.asList(gongZiTiao.getSfz_code().split(","));
+        for(int i = 0;i< nameList.size();i++){
+            gongZiTiao.setName(nameList.get(i));
+            gongZiTiao.setSfz_code(sfzCodeList.get(i));
+            result = gongZiTiaoService.insertGongZiTiao(gongZiTiao);
+        }
+        if (result > 0) {
+            return resultModel;
+        } else {
+            resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+            return resultModel;
+        }
 
-        int result = gongZiTiaoService.insertGongZiTiao(gongZiTiao);
+    }
+
+    @RequestMapping("/copyPreMonthGongZiTiao")
+    public ResultModel copyPreMonthGongZiTiao(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
+        int result = 0;
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        /*String names = request.getParameter("names");*/
+        String sfzCodes = request.getParameter("sfzCodes");
+        String month = request.getParameter("month");
+        List<String> sfzCodeList = Arrays.asList(sfzCodes.split(","));
+
+        String preMonth = CalPreMonth(month);
+        String filter = "";
+        for (String str :sfzCodeList ){
+            if (filter.equals("")){
+                filter += "("+"'"+str +"'";
+            }else {
+                filter += ","+"'"+str +"'";
+            }
+        }
+        filter += ")";
+
+        List<GongZiTiao> gongZiTiaoList = gongZiTiaoService.queryGongZiTiaoListByInstitutionAndMonthAndSfz(institution_code,preMonth,filter);
+        for(GongZiTiao gongZiTiao : gongZiTiaoList){
+            gongZiTiao.setMonth(month);
+            result = gongZiTiaoService.insertGongZiTiao(gongZiTiao);
+        }
         if (result > 0) {
             return resultModel;
         } else {
@@ -198,9 +236,42 @@ public class GongZiTiaoApi {
      * @return
      */
     @RequestMapping("/updateGongZiTiao")
-    public ResultModel updateGongZiTiao(@RequestBody GongZiTiao gongZiTiao) {
+    public ResultModel updateGongZiTiao(@RequestBody GongZiTiao gongZiTiao,HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        gongZiTiao.setInstitution_code(institution_code);
         int result = gongZiTiaoService.updateGongZiTiao(gongZiTiao);
+        if (result > 0) {
+            return resultModel;
+        } else {
+            resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+            return resultModel;
+        }
+    }
+
+    @RequestMapping("/updateGongZiTiaoStatus")
+    public ResultModel updateGongZiTiaoStatus(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        String ids = request.getParameter("ids");
+        String names = request.getParameter("names");
+        String sfzCodes = request.getParameter("sfzCodes");
+        String status = request.getParameter("status");
+
+        List<String> idList = Arrays.asList(ids.split(","));
+        List<String> nameList = Arrays.asList(names.split(","));
+        List<String> sfcCodeList = Arrays.asList(sfzCodes.split(","));
+
+        int result = 0;
+        for(int i = 0 ;i< idList.size();i++){
+            GongZiTiao gongZiTiao = new GongZiTiao();
+            gongZiTiao.setInstitution_code(institution_code);
+            gongZiTiao.setId(Integer.valueOf(idList.get(i)));
+            gongZiTiao.setName(nameList.get(i));
+            gongZiTiao.setSfz_code(sfcCodeList.get(i));
+            gongZiTiao.setStatus(Byte.valueOf(status));
+            result = gongZiTiaoService.updateGongZiTiaoStatus(gongZiTiao);
+        }
         if (result > 0) {
             return resultModel;
         } else {
@@ -281,9 +352,27 @@ public class GongZiTiaoApi {
      * @return
      */
     @RequestMapping("/deleteGongZiTiao")
-    public ResultModel deleteGongZiTiao(@RequestBody  GongZiTiao gongZiTiao) {
+    public ResultModel deleteGongZiTiao(HttpServletRequest request) {
         ResultModel resultModel = new ResultModel();
-        int result = gongZiTiaoService.deleteGongZiTiao(gongZiTiao);
+
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        String ids = request.getParameter("ids");
+        String names = request.getParameter("names");
+        String sfzCodes = request.getParameter("sfzCodes");
+
+        List<String> idList = Arrays.asList(ids.split(","));
+        List<String> nameList = Arrays.asList(names.split(","));
+        List<String> sfcCodeList = Arrays.asList(sfzCodes.split(","));
+
+        int result = 0;
+        for(int i = 0 ;i< idList.size();i++){
+            GongZiTiao gongZiTiao = new GongZiTiao();
+            gongZiTiao.setInstitution_code(institution_code);
+            gongZiTiao.setId(Integer.valueOf(idList.get(i)));
+            gongZiTiao.setName(nameList.get(i));
+            gongZiTiao.setSfz_code(sfcCodeList.get(i));
+            result = gongZiTiaoService.deleteGongZiTiao(gongZiTiao);
+        }
         if (result > 0) {
             return resultModel;
         } else {
@@ -291,5 +380,56 @@ public class GongZiTiaoApi {
             return resultModel;
         }
     }
+
+    @RequestMapping("/deleteGongZiTiaoByMonth")
+    public ResultModel deleteGongZiTiaoByMonth(HttpServletRequest request) {
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        String month = request.getParameter("month");
+        ResultModel resultModel = new ResultModel();
+        int result = gongZiTiaoService.deleteGongZiTiaoByMonth(institution_code,month);
+        if (result > 0) {
+            return resultModel;
+        } else {
+            resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+            return resultModel;
+        }
+    }
+
+    /**
+     * 日期转换成字符串
+     * @param date
+     * @return str
+     */
+    public static String DateToStr(Date date) {
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String str = format.format(date);
+        return str;
+    }
+
+    /**
+     * 字符串转换成日期
+     * @param str
+     * @return date
+     */
+    public String CalPreMonth(String str) {
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM");
+        String strMonth = "";
+        try {
+            Date d = format.parse(str);
+            Calendar cld = Calendar.getInstance();
+            cld.setTime(d);
+            cld.add(Calendar.MONTH, -1);
+            Date d2 = cld.getTime();
+            strMonth = format.format(d2);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return strMonth;
+    }
+
+
 
 }

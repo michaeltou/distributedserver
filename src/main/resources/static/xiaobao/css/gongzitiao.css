@@ -1,0 +1,73 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+table th{
+    /*height: 39px;*/
+    white-space: nowrap;
+}
+table td{
+    /*height: 45px;*/
+    white-space: nowrap;
+}
+
+table tr{
+    height: 40px;
+}
+
+.middle-table-div{
+    overflow: auto;
+    width: 800px;
+    float: left;
+}
+
+.left-table-div{
+    width: 260px;
+    float: left;
+}
+
+.right-table-div{
+    width: 120px;
+    float: left;
+}
+
+.middle-table-div .table{
+    border-left: none;
+    border-right: none;
+}
+
+.modal-dialog {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.modal-content {
+    /*overflow-y: scroll; */
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.modal-body {
+    overflow-y: scroll;
+    position: absolute;
+    top: 55px;
+    bottom: 65px;
+    width: 100%;
+}
+
+.modal-header .close {margin-right: 15px;}
+
+.modal-footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.delete-btn{
+    margin-left: 20px;
+}

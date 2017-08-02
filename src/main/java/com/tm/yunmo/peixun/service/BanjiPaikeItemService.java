@@ -70,9 +70,9 @@ public class BanjiPaikeItemService {
         return banjiPaikeItemList;
     }
 
-    public BanjiPaikeItem queryBanjiPaikeItemByUIData(String institution_code, String classroomName, String banji_name, String jiaoshi_sfzCode,String assist_teacher_sfzCode, Date start, Date end){
-        BanjiPaikeItem banjiPaikeItem = banjiPaikeItemDAO.queryBanjiPaikeItemByUIData( institution_code,classroomName,banji_name,jiaoshi_sfzCode,assist_teacher_sfzCode,start,end);
-        return banjiPaikeItem;
+    public List<BanjiPaikeItem> queryBanjiPaikeItemByUIData(String institution_code, String classroomName, String banji_name, String jiaoshi_sfzCode,String assist_teacher_sfzCode, Date start, Date end){
+        List<BanjiPaikeItem>  banjiPaikeItemList = banjiPaikeItemDAO.queryBanjiPaikeItemByUIData( institution_code,classroomName,banji_name,jiaoshi_sfzCode,assist_teacher_sfzCode,start,end);
+        return banjiPaikeItemList;
     }
 
 

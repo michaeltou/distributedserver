@@ -143,7 +143,7 @@ public interface BanjiPaikeItemDAO {
             "    `px_banji_paike_item`.`updateDate`\n" +
             " FROM  `px_banji_paike_item` \n" +
             " WHERE institution_code = #{institution_code} AND id != #{id}" +
-            " AND banji_name=#{banji_name} and ((start > #{start} and start < #{end}) or (end > #{start} and end < #{end}) ) ")
+            " AND banji_name=#{banji_name} and ((start > #{start} and start < #{end}) or (end > #{start} and end < #{end}) or (start = #{start}) or (end = #{end}) ) ")
     List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndClassName(@Param("institution_code") String institution_code, @Param("banji_name") String banji_name, @Param("start") Date start, @Param("end") Date end,@Param("id") int id);
 
     @Select("  SELECT `px_banji_paike_item`.`id`,\n" +
@@ -165,7 +165,7 @@ public interface BanjiPaikeItemDAO {
             "    `px_banji_paike_item`.`updateDate`\n" +
             " FROM  `px_banji_paike_item` \n" +
             " WHERE institution_code = #{institution_code} AND id != #{id}" +
-            " AND jiaoshi_sfzCode=#{jiaoshi_sfzCode} and ((start > #{start} and start < #{end}) or (end > #{start} and end < #{end}) ) ")
+            " AND jiaoshi_sfzCode=#{jiaoshi_sfzCode}and ((start > #{start} and start < #{end}) or (end > #{start} and end < #{end}) or (start = #{start}) or (end = #{end}) )  ")
     List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndTeacherCode(@Param("institution_code") String institution_code, @Param("jiaoshi_sfzCode") String jiaoshi_sfzCode, @Param("start") Date start, @Param("end") Date end,@Param("id") int id);
 
     @Select("  SELECT `px_banji_paike_item`.`id`,\n" +
@@ -187,7 +187,7 @@ public interface BanjiPaikeItemDAO {
             "    `px_banji_paike_item`.`updateDate`\n" +
             " FROM  `px_banji_paike_item` \n" +
             " WHERE institution_code = #{institution_code} AND id != #{id}" +
-            " AND assist_teacher_sfzCode=#{assist_teacher_sfzCode} and ((start > #{start} and start < #{end}) or (end > #{start} and end < #{end}) ) ")
+            " AND assist_teacher_sfzCode=#{assist_teacher_sfzCode} and ((start > #{start} and start < #{end}) or (end > #{start} and end < #{end}) or (start = #{start}) or (end = #{end}) ) ")
     List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndAssistTeacherCode(@Param("institution_code") String institution_code, @Param("assist_teacher_sfzCode") String assist_teacher_sfzCode, @Param("start") Date start, @Param("end") Date end,@Param("id") int id);
 
     @Select("  SELECT `px_banji_paike_item`.`id`,\n" +
@@ -209,7 +209,7 @@ public interface BanjiPaikeItemDAO {
             "    `px_banji_paike_item`.`updateDate`\n" +
             " FROM  `px_banji_paike_item` \n" +
             " WHERE institution_code = #{institution_code} AND id != #{id}" +
-            " AND classroom_name=#{classroom_name} and ((start > #{start} and start < #{end}) or (end > #{start} and end < #{end}) )")
+            " AND classroom_name=#{classroom_name} and ((start > #{start} and start < #{end}) or (end > #{start} and end < #{end}) or (start = #{start}) or (end = #{end}) ) ")
     List<BanjiPaikeItem>  queryBanjiPaikeItemByStartAndEndAndClassroomName(@Param("institution_code") String institution_code, @Param("classroom_name") String classroom_name, @Param("start") Date start, @Param("end") Date end,@Param("id") int id);
 
 
@@ -244,7 +244,7 @@ public interface BanjiPaikeItemDAO {
             " AND jiaoshi_sfzCode=#{jiaoshi_sfzCode} " +
             " AND assist_teacher_sfzCode=#{assist_teacher_sfzCode}  " +
             " AND start=#{start} AND end=#{end} ")
-    BanjiPaikeItem queryBanjiPaikeItemByUIData(@Param("institution_code") String institution_code,
+    List<BanjiPaikeItem>  queryBanjiPaikeItemByUIData(@Param("institution_code") String institution_code,
                                                @Param("classroom_name") String classroom_name,
                                                @Param("banji_name") String banji_name,
                                                @Param("jiaoshi_sfzCode") String jiaoshi_sfzCode,
