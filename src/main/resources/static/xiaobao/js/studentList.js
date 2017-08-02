@@ -15,14 +15,13 @@ $(document).ready(function () {
                 //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
                 var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
 
-                var data3= data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
+                var data3 = data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
 
-                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
+                var data4 = data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
                 $('#mainContents').append(data4);
             }
         });
     });
-
 
 
     $(".deleteObjectLinkClass").on('click', function () {
@@ -54,9 +53,36 @@ $(document).ready(function () {
                 //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
                 var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
 
-                var data3= data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
+                var data3 = data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
 
-                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
+                var data4 = data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
+
+                $('#mainContents').append(data4);
+
+
+            }
+        });
+
+        //阻止跳转
+        return false;
+    });
+
+
+    $(".baoMingLinkClass").on('click', function () {
+        var href = $(this).attr('href');
+
+        $.ajax({
+            type: "GET",
+            url: href,
+            success: function (data) {
+
+                $('#mainContents').empty();
+                //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
+                var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
+
+                var data3 = data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
+
+                var data4 = data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
 
                 $('#mainContents').append(data4);
 
@@ -79,7 +105,7 @@ $(document).ready(function () {
              * 2、js里面的ajax请求的data要使用 data:  JSON.stringify({name: $("#name").val(), age: $("#age").val()}), 传递json字符串，而不json对象.
              * */
             data: JSON.stringify({
-                sfzCode:$("#sfzCode").val()
+                sfzCode: $("#sfzCode").val()
             }),
             dataType: "json",
             contentType: "application/json; charset=utf-8",//(可以)
@@ -144,7 +170,12 @@ $(document).ready(function () {
                             " &nbsp;&nbsp; " +
                             "<a  class='updateObjectLinkClass'  " +
                             " href='/xiaobao/updateStudent?sfzCode=" +
-                            student.sfzCode +   "  '>编辑</a> </td>");
+                            student.sfzCode + "  '>编辑</a>  " +
+                            " &nbsp;&nbsp; " +
+                            "<a  class='baoMingLinkClass'  " +
+                            " href='/xiaobao/createBaoMing?sfzCode=" +
+                            student.sfzCode + "  '>报名</a> </td>"
+                        );
 
                         $tr.append($td1);
                         $tr.append($td2);
@@ -168,10 +199,8 @@ $(document).ready(function () {
                         var sfzCode = $(this).attr('sfzCode');
 
 
-
                         //将自定义属性的值赋值给modal
                         $("#sfzCode").val(sfzCode);
-
 
 
                         //显示属性框.
@@ -192,9 +221,9 @@ $(document).ready(function () {
                                 //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
                                 var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
 
-                                var data3= data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
+                                var data3 = data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
 
-                                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
+                                var data4 = data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
 
                                 $('#mainContents').append(data4);
 

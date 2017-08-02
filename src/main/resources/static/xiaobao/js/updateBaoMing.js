@@ -10,7 +10,7 @@ $(document).ready(function () {
     var b_validate_result2 = true;
     var b_validate_result3 = true;
     var b_validate_result4 = true;
-
+    var b_validate_result5 = true;
 
     $("#name").focusout(function () {
         if ($("#name").val().length < 2) {
@@ -49,19 +49,35 @@ $(document).ready(function () {
 
 
     $("#chargeFee").focusout(function () {
-        var telReg = /^\+?[1-9][0-9]*$/i;
-        if ( !telReg.test($("#chargeFee").val()) ) {
-            $("#chargeFee").next().text("非数字,不合法!");
+        var telReg = /^\d+\.*\d{0,2}$/i;
+        if (!telReg.test($("#chargeFee").val())) {
+            $("#chargeFee").next().text("不合法，请保留2位小数!");
             $("#chargeFee").next().css({"display": "block", "color": "red"});
             b_validate_result4 = false;
+            $("#totalChargeFee").val(null);
         } else {
             $("#chargeFee").next().css("display", "none");
             b_validate_result4 = true;
+            $("#totalChargeFee").val((parseFloat($("#chargeFee").val()) + parseFloat($("#jiaocai_zafei_chargeFee").val())).toFixed(2));
         }
 
 
     });
 
+    $("#jiaocai_zafei_chargeFee").focusout(function () {
+        var telReg = /^\d+\.*\d{0,2}$/i;
+        if (!telReg.test($("#jiaocai_zafei_chargeFee").val())) {
+            $("#jiaocai_zafei_chargeFee").next().text("不合法，请保留2位小数!");
+            $("#jiaocai_zafei_chargeFee").next().css({"display": "block", "color": "red"});
+            b_validate_result5 = false;
+            $("#totalChargeFee").val(null);
+        } else {
+            $("#jiaocai_zafei_chargeFee").next().css("display", "none");
+            b_validate_result5 = true;
+            $("#totalChargeFee").val((parseFloat($("#chargeFee").val()) + parseFloat($("#jiaocai_zafei_chargeFee").val())).toFixed(2));
+        }
+
+    });
 
 
 
@@ -71,11 +87,11 @@ $(document).ready(function () {
         $("#sfzCode").focus();
         $("#banji_name").focus();
         $("#chargeFee").focus();
+        $("#jiaocai_zafei_chargeFee").focus();
         $("#name").focus();
 
 
-
-        b_validate_result = b_validate_result1 & b_validate_result2 & b_validate_result3 & b_validate_result4 ;
+        b_validate_result = b_validate_result1 & b_validate_result2 & b_validate_result3 & b_validate_result4 & b_validate_result5;
         if (!b_validate_result) {
             return;
         }
@@ -93,11 +109,11 @@ $(document).ready(function () {
                 name: $("#name").val(),
                 sfzCode: $("#sfzCode").val(),
                 banji_name: $("#banji_name").val(),
-                chargeFee: $("#chargeFee").val(),
+                chargeFee: $("#chargeFee").val()*100,
                 chageFeeNote: $("#chageFeeNote").val(),
-                jiaocai_zafei_chargeFee: $("#jiaocai_zafei_chargeFee").val(),
+                jiaocai_zafei_chargeFee: $("#jiaocai_zafei_chargeFee").val()*100,
                 jiaocai_zafei_note: $("#jiaocai_zafei_note").val(),
-                totalChargeFee: $("#totalChargeFee").val()
+                totalChargeFee: $("#totalChargeFee").val()*100
 
             }),
             dataType: "json",

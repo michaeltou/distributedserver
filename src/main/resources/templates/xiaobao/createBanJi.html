@@ -82,7 +82,14 @@
                         <label for="school_name">
                             校区
                         </label>
-                        <input type="text" class="form-control" id="school_name"/>
+
+                        <select name="school_name" class="form-control" id="school_name">
+                            <option th:each="school : ${schoolList}"
+                                    th:value="${school.school_name}"
+                                    th:text="${school.school_name}">校区
+                            </option>
+                        </select>
+
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
@@ -90,7 +97,15 @@
                         <label for="kecheng_name">
                             课程名称
                         </label>
-                        <input type="text" class="form-control" id="kecheng_name"/>
+
+                        <select name="kecheng_name" class="form-control" id="kecheng_name">
+                            <option th:each="keCheng : ${keChengList}"
+                                    th:value="${keCheng.name}"
+                                    th:text="${keCheng.name}">课程名称
+                            </option>
+                        </select>
+
+
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">

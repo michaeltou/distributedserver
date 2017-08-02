@@ -56,7 +56,7 @@ $(document).ready(function () {
     $("#kecheng_name").focusout(function () {
 
         if ($("#kecheng_name").val().length < 2) {
-            $("#kecheng_name").next().text("校区名称小于2个字符，不合法!");
+            $("#kecheng_name").next().text("课程名称小于2个字符，不合法!");
             $("#kecheng_name").next().css({"display": "block", "color": "red"});
             b_validate_result3 = false;
         } else {

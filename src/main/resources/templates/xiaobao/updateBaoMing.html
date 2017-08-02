@@ -84,7 +84,17 @@
                         <label for="banji_name">
                             班级名称
                         </label>
-                        <input type="text" class="form-control" id="banji_name" readonly = "readonly" th:value="${baoMing.banji_name}" />
+
+                        <select name="banji_name" class="form-control" id="banji_name">
+                            <option th:each="banJi : ${banJiList}"
+                                    th:value="${banJi.banji_name}"
+                                    th:text="${banJi.banji_name}" th:selected="${banJi.banji_name}==${baoMing.banji_name}" >班级名称
+                            </option>
+                        </select>
+
+
+
+
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
@@ -92,7 +102,7 @@
                         <label for="chargeFee">
                             费用
                         </label>
-                        <input type="text" class="form-control" id="chargeFee" th:value="${baoMing.chargeFee}" />
+                        <input type="text" class="form-control" id="chargeFee" th:value="${baoMing.chargeFee}/100" />
                         <div class="check_tips"></div>
                     </div>
 
@@ -119,7 +129,7 @@
                         <label for="jiaocai_zafei_chargeFee">
                             教材杂费
                         </label>
-                        <input type="text" class="form-control" id="jiaocai_zafei_chargeFee" th:value="${baoMing.jiaocai_zafei_chargeFee}" />
+                        <input type="text" class="form-control" id="jiaocai_zafei_chargeFee" th:value="${baoMing.jiaocai_zafei_chargeFee}/100" />
                         <div class="check_tips"></div>
                     </div>
                     <div class="form-group">
@@ -135,7 +145,7 @@
                         <label for="totalChargeFee">
                             总费用
                         </label>
-                        <input type="text" class="form-control" id="totalChargeFee" th:value="${baoMing.totalChargeFee}" />
+                        <input type="text" class="form-control" id="totalChargeFee" readonly="readonly" th:value="${baoMing.totalChargeFee}/100" />
                         <div class="check_tips"></div>
                     </div>
 

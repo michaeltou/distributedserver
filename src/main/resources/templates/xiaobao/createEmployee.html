@@ -102,7 +102,14 @@
                         <label for="xiaoqu_name">
                             校区
                         </label>
-                        <input type="text" class="form-control" id="xiaoqu_name"/>
+
+                        <select name="xiaoqu_name" class="form-control" id="xiaoqu_name">
+                            <option th:each="school : ${schoolList}"
+                                    th:value="${school.school_name}"
+                                    th:text="${school.school_name}">校区
+                            </option>
+                        </select>
+
                         <div class="check_tips"></div>
                     </div>
 

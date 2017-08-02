@@ -105,15 +105,16 @@ public interface ClassroomDAO {
              "SET\n" +
              "`capacity` = #{capacity},\n" +
              "`address` = #{address},\n" +
+             "`school_name` = #{school_name},\n" +
              "`picUrl` = #{picUrl},\n" +
              "`note` = #{note},\n" +
              "`updateDate` = now() \n" +
-             " where  institution_code = #{institution_code} and school_name = #{school_name} and name = #{name} ")
+             " where  institution_code = #{institution_code} and id = #{id}  ")
     public int updateClassroom(Classroom classroom);
 
 
     @Delete(" DELETE FROM  `px_classroom`\n" +
-            " where  institution_code = #{institution_code} and  school_name = #{school_name} and name = #{name} ")
+            " where  institution_code = #{institution_code} and  id = #{id}   ")
     public int deleteClassroom(Classroom classroom);
 
 

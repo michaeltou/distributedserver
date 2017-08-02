@@ -88,7 +88,7 @@
                         <label for="sfzCode">
                             身份证
                         </label>
-                        <input type="text" class="form-control" id="sfzCode" readonly = "readonly" th:value="${employee.sfzCode}"/>
+                        <input type="text" class="form-control" id="sfzCode"   th:value="${employee.sfzCode}"/>
                         <div class="check_tips"></div>
                     </div>
 
@@ -98,7 +98,15 @@
                         <label for="xiaoqu_name">
                             校区
                         </label>
-                        <input type="text" class="form-control" id="xiaoqu_name" th:value="${employee.xiaoqu_name}"/>
+
+                        <select name="xiaoqu_name" class="form-control" id="xiaoqu_name">
+                            <option th:each="school : ${schoolList}"
+                                    th:value="${school.school_name}"
+                                    th:text="${school.school_name}" th:selected="${school.school_name}==${employee.xiaoqu_name}">校区
+                            </option>
+                        </select>
+
+
                         <div class="check_tips"></div>
                     </div>
 
@@ -106,7 +114,7 @@
                     <div class="form-group">
 
                         <label for="gender">
-                            身份证
+                            性别
                         </label>
                         <input type="text" class="form-control" id="gender" th:value="${employee.gender}"/>
                         <div class="check_tips"></div>

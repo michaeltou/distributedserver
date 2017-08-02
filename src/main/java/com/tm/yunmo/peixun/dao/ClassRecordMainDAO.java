@@ -55,6 +55,29 @@ public interface ClassRecordMainDAO {
             "    `px_class_record_main`.`createDate`,\n" +
             "    `px_class_record_main`.`updateDate`\n" +
             "FROM  `px_class_record_main` \n" +
+            " where  institution_code = #{institution_code} and teacher_sfzCode = #{teacher_sfzCode} ")
+    List<ClassRecordMain> queryClassRecordMainListByTeacherSfzCode(@Param("institution_code") String institution_code,@Param("teacher_sfzCode") String teacher_sfzCode);
+
+
+    @Select("   SELECT `px_class_record_main`.`id`,\n" +
+            "    `px_class_record_main`.`banji_name`,\n" +
+            "    `px_class_record_main`.`institution_code`,\n" +
+            "    `px_class_record_main`.`xiaoqu_name`,\n" +
+            "    `px_class_record_main`.`shangke_start_date`,\n" +
+            "    `px_class_record_main`.`shangke_end_date`,\n" +
+            "    `px_class_record_main`.`jiaoshi_keshi`,\n" +
+            "    `px_class_record_main`.`teacher_name`,\n" +
+            "    `px_class_record_main`.`teacher_sfzCode`,\n" +
+            "    `px_class_record_main`.`assist_teacher_name`,\n" +
+            "    `px_class_record_main`.`assist_teacher_sfzCode`,\n" +
+            "    `px_class_record_main`.`shangke_content`,\n" +
+            "    `px_class_record_main`.`shangke_note`,\n" +
+            "    `px_class_record_main`.`shangke_pic_list`,\n" +
+            "    `px_class_record_main`.`creator_username`,\n" +
+            "    `px_class_record_main`.`creator_name`,\n" +
+            "    `px_class_record_main`.`createDate`,\n" +
+            "    `px_class_record_main`.`updateDate`\n" +
+            "FROM  `px_class_record_main` \n" +
             " where  institution_code = #{institution_code} and xiaoqu_name = #{xiaoqu_name}")
     List<ClassRecordMain> queryClassRecordMainListByInstitutionAndXiaoquName(@Param("institution_code") String institution_code,@Param("xiaoqu_name") String xiaoqu_name);
 

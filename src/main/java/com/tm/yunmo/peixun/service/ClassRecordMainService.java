@@ -22,6 +22,11 @@ public class ClassRecordMainService {
         return classRecordMainList;
     }
 
+    public List<ClassRecordMain> queryClassRecordMainListByTeacherSfzCode(String institution_code,String teacher_sfzCode){
+        List<ClassRecordMain> classRecordMainList = classRecordMainDAO.queryClassRecordMainListByTeacherSfzCode( institution_code,teacher_sfzCode);
+        return classRecordMainList;
+    }
+
 
     public List<ClassRecordMain> queryClassRecordMainListByInstitutionAndXiaoquName(String institution_code, String xiaoqu_name){
         List<ClassRecordMain> classRecordMainList = classRecordMainDAO.queryClassRecordMainListByInstitutionAndXiaoquName( institution_code,xiaoqu_name);

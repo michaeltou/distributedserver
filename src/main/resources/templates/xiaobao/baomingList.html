@@ -61,11 +61,13 @@
         <div class="col-md-12">
             <div style="height: 20px;"></div>
 
+<!--
 
             <button type="button" class="btn btn-success" id="createObjectBtnInList">
                 新建报名
             </button>
 
+-->
 
 
 
@@ -119,11 +121,11 @@
                         <td th:text="${baoMing.name}">null</td>
                         <td th:text="${baoMing.sfzCode}">null</td>
                         <td th:text="${baoMing.banji_name}">null</td>
-                        <td th:text="${baoMing.chargeFee}">null</td>
+                        <td th:text="${baoMing.chargeFee}/100">null</td>
                         <td th:text="${baoMing.chageFeeNote}">null</td>
-                        <td th:text="${baoMing.jiaocai_zafei_chargeFee}">null</td>
+                        <td th:text="${baoMing.jiaocai_zafei_chargeFee}/100">null</td>
                         <td th:text="${baoMing.jiaocai_zafei_note}">null</td>
-                        <td th:text="${baoMing.totalChargeFee}">null</td>
+                        <td th:text="${baoMing.totalChargeFee}/100">null</td>
 
 
                         <td><a    class="deleteObjectLinkClass"

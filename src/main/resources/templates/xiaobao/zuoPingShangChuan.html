@@ -13,9 +13,7 @@
     <script src="/xiaobao/js/bootstrap.js"></script>
 
 
-
- 
-    <link href="/xiaobao/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="/xiaobao/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css"/>
 
     <!-- piexif.min.js is only needed if you wish to resize images before upload to restore exif data.
          This must be loaded before fileinput.min.js -->
@@ -90,23 +88,23 @@
                     <label> 1、请选择作品对应的班级：</label>
                     <div></div>
 
-                        <!--
-                        单选框.
-                    <tr th:each=" baoMing : ${baoMingList}">
-                        <td>
-                            <div class="checkbox">
+                    <!--
+                    单选框.
+                <tr th:each=" baoMing : ${baoMingList}">
+                    <td>
+                        <div class="checkbox">
 
 
-                                <label>
-                                    <input type="radio" id="selectALLBtn" th:value="${baoMing.banji_name}"
-                                           name="banJiName" class="myradio"/>
-                                    <span th:text="${baoMing.banji_name}">班级名称</span>
-                                </label>
-                            </div>
-                        </td>
-                    </tr>
+                            <label>
+                                <input type="radio" id="selectALLBtn" th:value="${baoMing.banji_name}"
+                                       name="banJiName" class="myradio"/>
+                                <span th:text="${baoMing.banji_name}">班级名称</span>
+                            </label>
+                        </div>
+                    </td>
+                </tr>
 
-                    -->
+                -->
 
                     <select name="banji_name" class="form-control" id="banji_name">
                         <option th:each="baoMing : ${baoMingList}"
@@ -114,7 +112,6 @@
                                 th:text="${baoMing.banji_name}">班级名称
                         </option>
                     </select>
-
 
 
                     <div class="check_tips" id="schoolTips"></div>
@@ -133,20 +130,17 @@
             <div id="formdiv2">
 
 
-                    <label>2、请选择要上传的作品图片</label>
+                <label>2、请选择要上传的作品图片</label>
 
 
+                <div style="height: 20px;"></div>
+                <div>
+                    <input type="file" id="myfile" name="myfile" data-ref="url2" multiple="multiple"
+                           class="col-sm-4 myfile" value=""/>
 
-                        <div style="height: 20px;"></div>
-                        <div>
-                            <input type="file" id="myfile" name="myfile" data-ref="url2" multiple="multiple"  class="col-sm-4 myfile" value=""/>
-
-                            <input type="hidden" name="url2" value="" id="url2"/>
-                            <div class="check_tips"></div>
-                        </div>
-
-
-
+                    <input type="hidden" name="url2" value="" id="url2"/>
+                    <div class="check_tips"></div>
+                </div>
             </div>
         </div>
     </div>

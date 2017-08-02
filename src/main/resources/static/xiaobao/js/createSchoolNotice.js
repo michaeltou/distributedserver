@@ -65,6 +65,7 @@ $(document).ready(function () {
             return;
         }
 
+
         var url = "/insertSchoolNotice";
         var istop = $("#isTop").is(":checked")?1:0;
         $.ajax({
@@ -77,7 +78,7 @@ $(document).ready(function () {
             data: JSON.stringify({
                 notice_type: $("#type option:selected").val(),
                 notice_title: $("#title").val(),
-                notice_content: $("#school option:selected").val(),
+                notice_content: $("#preview").val(),
                 notice_school: $("#school option:selected").val(),
                 is_top:istop,
                 publisher:"",

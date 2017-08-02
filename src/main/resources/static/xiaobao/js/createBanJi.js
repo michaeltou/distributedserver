@@ -59,7 +59,7 @@ $(document).ready(function () {
     $("#kecheng_name").focusout(function () {
 
         if ($("#kecheng_name").val().length < 2) {
-            $("#kecheng_name").next().text("校区名称小于2个字符，不合法!");
+            $("#kecheng_name").next().text("课程名称小于2个字符，不合法!");
             $("#kecheng_name").next().css({"display": "block", "color": "red"});
             b_validate_result3 = false;
         } else {
@@ -163,7 +163,7 @@ $(document).ready(function () {
                 school_name: $("#school_name").val(),
                 kecheng_name: $("#kecheng_name").val(),
                 pre_recruit_cnt: $("#pre_recruit_cnt").val(),
-                start_ban_ji_date: $("#start_ban_ji_date").val()?null:$("#start_ban_ji_date").val()+" 00:00:00",
+                start_ban_ji_date: !$("#start_ban_ji_date").val()?null:$("#start_ban_ji_date").val()+" 00:00:00",
                 student_consume_keshi: $("#student_consume_keshi").val(),
                 teacher_consume_keshi: $("#teacher_consume_keshi").val(),
                 teacher: $("#teacher").val(),

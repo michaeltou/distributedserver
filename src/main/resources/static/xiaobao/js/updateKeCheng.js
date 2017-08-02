@@ -54,13 +54,10 @@ $(document).ready(function () {
 
 
     $("#chargeFee").focusout(function () {
-        //float
-        var telReg1 = /^\d+\.\d\d$/i;
-        //整数
-        var telReg2 = /^\+?[1-9][0-9]*$/i;
 
-        if (!telReg1.test($("#chargeFee").val()) || !telReg2.test($("#chargeFee").val())   ) {
-            $("#chargeFee").next().text("收费标准输入数据不合法!");
+        var telReg = /^\d+\.*\d*$/i;
+        if (!telReg.test($("#chargeFee").val())) {
+            $("#chargeFee").next().text("请输入正确的数值!");
             $("#chargeFee").next().css({"display": "block", "color": "red"});
             b_validate_result3 = false;
         } else {
@@ -137,7 +134,7 @@ $(document).ready(function () {
                 openSchoolNameList:  $("#openSchoolNameListHidden").val(),
                 note: $("#note").val(),
                 chargeType: $("#chargeType").val(),
-                chargeFee: $("#chargeFee").val()
+                chargeFee: $("#chargeFee").val()*100
             }),
             dataType: "json",
             contentType: "application/json; charset=utf-8",//(可以)

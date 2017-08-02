@@ -1,7 +1,9 @@
 package com.tm.yunmo.peixun.control;
 
 import com.tm.yunmo.peixun.model.Classroom;
+import com.tm.yunmo.peixun.model.School;
 import com.tm.yunmo.peixun.service.ClassroomService;
+import com.tm.yunmo.peixun.service.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,8 +19,11 @@ import java.util.List;
 public class ClassroomPage {
 
     @Autowired
-    ClassroomService classroomService;
- 
+    private ClassroomService classroomService;
+
+    @Autowired
+    private SchoolService schoolService;
+
 
     @RequestMapping("/xiaobao/queryClassroomByInstitution")
     public String queryClassroomByInstitution(HttpServletRequest request, Model model){
@@ -31,6 +36,11 @@ public class ClassroomPage {
 
     @RequestMapping("/xiaobao/createClassroom")
     public String createClassrom(HttpServletRequest request,Model model){
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+
+        List<School> schoolList =schoolService.querySchoolListByInstitution(institution_code);
+
+        model.addAttribute("schoolList",schoolList);
         return "xiaobao/createClassroom";
     }
 
@@ -44,6 +54,12 @@ public class ClassroomPage {
 
         Classroom classroomResult = classroomService.queryClassroomByName( institution_code,school_name,classroom_name);
         model.addAttribute("classroom",classroomResult);
+
+        List<School> schoolList =schoolService.querySchoolListByInstitution(institution_code);
+
+        model.addAttribute("schoolList",schoolList);
+
+
         return "xiaobao/updateClassroom";
     }
 

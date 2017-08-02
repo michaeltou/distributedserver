@@ -1,7 +1,9 @@
 package com.tm.yunmo.peixun.control;
 
 import com.tm.yunmo.peixun.model.Employee;
+import com.tm.yunmo.peixun.model.School;
 import com.tm.yunmo.peixun.service.EmployeeService;
+import com.tm.yunmo.peixun.service.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +20,8 @@ public class EmployeePage {
 
     @Autowired
     EmployeeService employeeService;
- 
+    @Autowired
+    private SchoolService schoolService;
 
     @RequestMapping("/xiaobao/queryEmployeeByInstitution")
     public String queryEmployeeByInstitution(HttpServletRequest request, Model model){
@@ -31,6 +34,14 @@ public class EmployeePage {
 
     @RequestMapping("/xiaobao/createEmployee")
     public String createClassrom(HttpServletRequest request,Model model){
+
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+
+        List<School> schoolList =schoolService.querySchoolListByInstitution(institution_code);
+
+        model.addAttribute("schoolList",schoolList);
+
+
         return "xiaobao/createEmployee";
     }
 
@@ -41,6 +52,12 @@ public class EmployeePage {
         String sfzCode =  employee.getSfzCode();
         Employee employeeResult = employeeService.queryEmployeeByInstitutionAndSFZCode( institution_code,sfzCode );
         model.addAttribute("employee",employeeResult);
+
+        List<School> schoolList =schoolService.querySchoolListByInstitution(institution_code);
+
+        model.addAttribute("schoolList",schoolList);
+
+
         return "xiaobao/updateEmployee";
     }
 
