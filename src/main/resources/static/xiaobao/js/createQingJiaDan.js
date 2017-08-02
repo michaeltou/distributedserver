@@ -247,67 +247,41 @@ $(document).ready(function () {
     });
 
     $("#qingJiaFangShi").change(function () {
-        var selectedItem = $(this).find("option:selected").html();
-        if (selectedItem == "按天") {
-            $(".classList").empty();
-            return;
-        }
-        $.ajax({
-            type: "get",
-            url: "/queryBanjiPaikeItemForQingJiaDan",
-            data: {
-                qingJiaRenSFZ: $("#qingJiaRenName option:selected").val(),
-                qingJiaRenName: $("#qingJiaRenName option:selected").text(),
-                qingJiaLeiXing: $("#qingJiaLeiXing option:selected").val(),
-                qingJiaStartDate: $("#qingJiaStartDate").val()+" 00:00:00",
-                qingJiaEndDate: $("#qingJiaEndDate").val()+" 23:59:59",
-                qingJiaFangShi: $("#qingJiaFangShi option:selected").val(),
-                note: $("#note").val()
-            },
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",//(可以)
-            success: function (data, textStatus) {
-                if (data.success) {
-                    $.each(data.data, function (id, item) {
-                        var lblText = "["+item.banji_name+"]" + " ["+item.start+ "]-["+item.end+"]";
-                        $div = $('<div class="classTimeDiv"></div>');
-                        $chk = $('<input value="" name="classTimes" type="checkbox" class="classTimes">');
-                        $chk.attr("value", item.id);
-                        $lbl = $('<label></label>');
-                        $lbl.html(lblText);
-                        $div.append($chk);
-                        $div.append($lbl);
-                        $(".classList").append($div);
-
-                    });//each
-
-                }
-                else {
-                    $("#failLabel").css("display:block");
-                    //  alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
-                }
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert("系统异常！");
-            }
-        });
+        getClassesByGUIData();
     });
+
+    $("#qingJiaRenName").change(function () {
+        $(".classList").empty();
+        getClassesByGUIData();
+    });
+
+    $("#qingJiaStartDate").change(function () {
+        $(".classList").empty();
+        getClassesByGUIData();
+    });
+
+    $("#qingJiaEndDate").change(function () {
+        $(".classList").empty();
+        getClassesByGUIData();
+    });
+
+
 
 
 
 
     $("#backToListBtn").click(function () {
-        $("#qingjiaguanli").click();
+        $("#studentqingjiaguanli").click();
 
     });
 
     $("#formBackBtn").click(function () {
-        $("#qingjiaguanli").click();
+        $("#studentqingjiaguanli").click();
 
     });
 
     $("#backToListbreadLink").click(function () {
-        $("#qingjiaguanli").click();
+        $("#studentqingjiaguanli").click();
 
     });
 
@@ -319,4 +293,52 @@ $(document).ready(function () {
 
 
 });
+
+function getClassesByGUIData() {
+    var selectedItem = $(this).find("option:selected").html();
+    if (selectedItem == "按天") {
+        $(".classList").empty();
+        return;
+    }
+    $.ajax({
+        type: "get",
+        url: "/queryBanjiPaikeItemForQingJiaDan",
+        data: {
+            qingJiaRenSFZ: $("#qingJiaRenName option:selected").val(),
+            qingJiaRenName: $("#qingJiaRenName option:selected").text(),
+            qingJiaLeiXing: $("#qingJiaLeiXing option:selected").val(),
+            qingJiaStartDate: $("#qingJiaStartDate").val()+" 00:00:00",
+            qingJiaEndDate: $("#qingJiaEndDate").val()+" 23:59:59",
+            qingJiaFangShi: $("#qingJiaFangShi option:selected").val(),
+            note: $("#note").val()
+        },
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",//(可以)
+        success: function (data, textStatus) {
+            if (data.success) {
+                $.each(data.data, function (id, item) {
+                    var lblText = "["+item.banji_name+"]" + " ["+item.start+ "]-["+item.end+"]";
+                    $div = $('<div class="classTimeDiv"></div>');
+                    $chk = $('<input value="" name="classTimes" type="checkbox" class="classTimes">');
+                    $chk.attr("value", item.id);
+                    $lbl = $('<label></label>');
+                    $lbl.html(lblText);
+                    $div.append($chk);
+                    $div.append($lbl);
+                    $(".classList").append($div);
+
+                });//each
+
+            }
+            else {
+                $("#failLabel").css("display:block");
+                //  alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
+            }
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            alert("系统异常！");
+        }
+    });
+
+}
 

@@ -152,6 +152,7 @@ public class GongZiTiaoApi {
         List<GongZiTiao> gongZiTiaoList = gongZiTiaoService.queryGongZiTiaoListByInstitutionAndMonthAndSfz(institution_code,preMonth,filter);
         for(GongZiTiao gongZiTiao : gongZiTiaoList){
             gongZiTiao.setMonth(month);
+            gongZiTiao.setStatus((byte)0);
             result = gongZiTiaoService.insertGongZiTiao(gongZiTiao);
         }
         if (result > 0) {
