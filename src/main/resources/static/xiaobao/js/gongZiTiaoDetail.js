@@ -685,7 +685,7 @@ $(document).ready(function () {
                 }
             }
             if(ids == ""){
-                alert("所选员工的工资单已经确认,不可撤回.");
+                alert("所选员工的工资单状态不可撤回.");
                 return;
             }
             month = $(".myrighttablebody tr").eq(0).find(".editObjectLinkClass").attr("month")
