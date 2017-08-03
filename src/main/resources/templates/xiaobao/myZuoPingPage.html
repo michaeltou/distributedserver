@@ -7,15 +7,13 @@
                                      initial-scale=1.0,
                                      maximum-scale=1.0,
                                      user-scalable=no"/>
-
+    <link rel="stylesheet" href="/xiaobao/css/myZuoPingPage.css"/>
     <link rel="stylesheet" href="/xiaobao/css/bootstrap.css"/>
     <script src="/xiaobao/js/jquery-3.2.1.js"></script>
     <script src="/xiaobao/js/bootstrap.js"></script>
-    <script src="/xiaobao/js/zuoPingList.js"></script>
+    <script src="/xiaobao/js/myZuoPingPage.js"></script>
 </head>
 <body>
-
-
 
 
 <div class="container-fluid">
@@ -32,27 +30,22 @@
         <div class="col-md-4" style="background-color: transparent;">
             <tr th:each=" userPicture : ${userPicturesList}">
                 <td class="col-md-3">
-                    <a href="#" class="thumbnail">
-                        <img src="http://106.14.173.136:7777/images/4.jpg"
-                             alt="通用的占位符缩略图" />
-                        <!--
-                        <img src="http://106.14.173.136:7777/images/4.jpg" th:src="@{${userPicture.fullUrl}}"
-                             alt="通用的占位符缩略图" />
-                             -->
-                    </a>
-
+                    <div id="imagediv">
+                       <!-- <a href="#" class="thumbnail">-->
+                           <!-- <img src="http://106.14.173.136:7777/images/4.jpg"  />-->
+                        <!--<img src="" alt="" data-url="http://106.14.173.136:7777/images/4.jpg" class="myimage"/><br></br>-->
+                        <!--<img src="" alt="" data-url="http://106.14.173.136:7777/images/4.jpg" class="myimage"/><br></br>-->
+                        <img src="" alt=""  th:attr="data-url=${userPicture.fullUrl}" class="myimage" />
+                            <!--
+                            <img src="http://106.14.173.136:7777/images/4.jpg" th:src="@{${userPicture.fullUrl}}"
+                                 alt="通用的占位符缩略图" />
+                                 -->
+                        <!--</a>-->
+                    </div>
                 </td>
 
             </tr>
         </div>
-
-
-
-
-
-
-
-
 
 
     </div>
