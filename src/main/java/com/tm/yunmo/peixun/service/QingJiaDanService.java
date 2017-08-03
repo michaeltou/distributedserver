@@ -16,8 +16,8 @@ public class QingJiaDanService {
     @Autowired
     private QingJiaDanDAO qingJiaDanDAO;
 
-    public List<QingJiaDan> queryQingJiaDanListByInstitution(String institution_code){
-        List<QingJiaDan> qingJiaDanList = qingJiaDanDAO.queryQingJiaDanListByInstitution( institution_code);
+    public List<QingJiaDan> queryQingJiaDanListByInstitution(String institution_code ,Byte role){
+        List<QingJiaDan> qingJiaDanList = qingJiaDanDAO.queryQingJiaDanListByInstitutionAndRole( institution_code,role);
         return qingJiaDanList;
     }
 

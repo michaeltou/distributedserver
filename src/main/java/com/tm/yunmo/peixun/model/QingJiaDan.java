@@ -11,6 +11,10 @@ public class QingJiaDan {
     private  Integer id ;
     //机构代码
     private  String institution_code;
+    // 请教人角色
+    private Byte role;
+    // 员工类型
+    private  Byte employeeType;
     //请假人名称
     private  String qingjia_person_name;
     // 请假人身份证
@@ -25,6 +29,8 @@ public class QingJiaDan {
     private  String qingjia_kecheng;
      // 请假原因
     private  String qingjia_yuanyin;
+    // 请假天数
+    private  float qingjia_days;
     // 状态
     private  Byte status;
     //备注
@@ -48,6 +54,22 @@ public class QingJiaDan {
 
     public void setInstitution_code(String institution_code) {
         this.institution_code = institution_code;
+    }
+
+    public Byte getRole() {
+        return role;
+    }
+
+    public void setRole(Byte role) {
+        this.role = role;
+    }
+
+    public Byte getEmployeeType() {
+        return employeeType;
+    }
+
+    public void setEmployeeType(Byte employeeType) {
+        this.employeeType = employeeType;
     }
 
     public String getQingjia_person_name() {
@@ -104,6 +126,14 @@ public class QingJiaDan {
 
     public void setQingjia_yuanyin(String qingjia_yuanyin) {
         this.qingjia_yuanyin = qingjia_yuanyin;
+    }
+
+    public float getQingjia_days() {
+        return qingjia_days;
+    }
+
+    public void setQingjia_days(float qingjia_days) {
+        this.qingjia_days = qingjia_days;
     }
 
     public Byte getStatus() {

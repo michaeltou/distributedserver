@@ -811,6 +811,23 @@ $(document).ready(function () {
         }
     });
 
+    $("#gongZiTiaoDetailModal form input").focusout(function () {
+
+        if($(this).val() == ""){
+            return;
+        }
+        var numReg = /^\+?[1-9][0-9]*$/i;
+        if ( !numReg.test($(this).val()) ) {
+            $(this).val("");
+            $(this).next().text("非数字,不合法!");
+            $(this).next().css({"display": "block", "color": "red"});
+        } else {
+            $(this).next().css("display", "none");
+        }
+
+
+    });
+
     $("#backToListbreadLink").click(function () {
         $("#gongzitiaoguanli").click();
     });
