@@ -1,6 +1,7 @@
 package com.tm.yunmo.peixun.control;
 
 import com.tm.yunmo.common.ResultModel;
+import com.tm.yunmo.peixun.control.login.LoginConst;
 import com.tm.yunmo.peixun.model.BaoMing;
 import com.tm.yunmo.peixun.model.UserPassword;
 import com.tm.yunmo.peixun.model.UserPictures;
@@ -114,6 +115,23 @@ public class XiaoBaoPage {
         return "xiaobao/menu";
     }
 
+
+    @RequestMapping("/xiaobao/top")
+    public String top(HttpServletRequest request,Model model) {
+        String sfzCode = (String) request.getSession().getAttribute("sfzCode");
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        String role = (String) request.getSession().getAttribute("role");
+        String username = (String) request.getSession().getAttribute("username");
+
+        model.addAttribute("sfzCode",sfzCode);
+        model.addAttribute("institution_code",institution_code);
+        model.addAttribute("rolename",LoginConst.getRoleName(role));
+
+        model.addAttribute("username",username);
+
+
+        return "xiaobao/top";
+    }
 
 
 
