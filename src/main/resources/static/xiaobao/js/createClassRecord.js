@@ -9,105 +9,97 @@ $(document).ready(function () {
     // initialize with defaults
     $(".myfile").fileinput({
         //上传的地址
-        uploadUrl:"/uploadFile",
-        uploadAsync : true, //默认异步上传
-        showUpload : true, //是否显示上传按钮,跟随文本框的那个
-        showRemove : true, //显示移除按钮,跟随文本框的那个
-        layoutTemplates:{actionDelete:""},//将预览框里面的删除按钮去除.
-        showCaption : true,//是否显示标题,就是那个文本框
-        showPreview : true, //是否显示预览,不写默认为true
-        dropZoneEnabled : false,//是否显示拖拽区域，默认不写为true，但是会占用很大区域
+        uploadUrl: "/uploadFile",
+        uploadAsync: true, //默认异步上传
+        showUpload: true, //是否显示上传按钮,跟随文本框的那个
+        showRemove: true, //显示移除按钮,跟随文本框的那个
+        layoutTemplates: {actionDelete: ""},//将预览框里面的删除按钮去除.
+        showCaption: true,//是否显示标题,就是那个文本框
+        showPreview: true, //是否显示预览,不写默认为true
+        dropZoneEnabled: false,//是否显示拖拽区域，默认不写为true，但是会占用很大区域
         //minImageWidth: 50, //图片的最小宽度
         //minImageHeight: 50,//图片的最小高度
         //maxImageWidth: 1000,//图片的最大宽度
         //maxImageHeight: 1000,//图片的最大高度
         //maxFileSize: 0,//单位为kb，如果为0表示不限制文件大小
         //minFileCount: 0,
-        maxFileCount : 3, //表示允许同时上传的最大文件个数
-        enctype : 'multipart/form-data',
-        validateInitialCount : true,
-        previewFileIcon : "<i class='glyphicon glyphicon-king'></i>",
-        msgFilesTooMany : "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
-        allowedFileTypes : [ 'image' ],//配置允许文件上传的类型
-        allowedPreviewTypes : [ 'image' ],//配置所有的被预览文件类型
-        allowedPreviewMimeTypes : [ 'jpg', 'png', 'gif' ],//控制被预览的所有mime类型
-        language : 'zh'
+        maxFileCount: 3, //表示允许同时上传的最大文件个数
+        enctype: 'multipart/form-data',
+        validateInitialCount: true,
+        previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+        msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+        allowedFileTypes: ['image'],//配置允许文件上传的类型
+        allowedPreviewTypes: ['image'],//配置所有的被预览文件类型
+        allowedPreviewMimeTypes: ['jpg', 'png', 'gif'],//控制被预览的所有mime类型
+        language: 'zh'
     })
     //异步上传返回结果处理
-    $('.myfile').on('fileerror', function(event, data, msg) {
+    $('.myfile').on('fileerror', function (event, data, msg) {
         console.log("fileerror");
         console.log(data);
     });
 
-    var oldValue= "";
+
     //异步上传返回结果处理
-    $(".myfile").on("fileuploaded", function(event, data, previewId, index) {
+    $(".myfile").on("fileuploaded", function (event, data, previewId, index) {
 
-        if(oldValue == "" ){
-            oldValue = "";
+        var oldvalue = $("#urlxx2").val()  ;
+        var newvalue = data.response.url;
+       // alert("oldvalue:" + oldvalue);
+       // alert("newvalue:"+data.response.url);
+        $("#urlxx2").val(oldvalue +","+newvalue);
+       // alert("final:" + $("#urlxx2").val());
 
-        }else{
-            var tempValue = $("#url2").val()
-            oldValue = tempValue + ",";
-        }
-
-        var newvalue = oldValue+data.response.url;
-        $("#url2").val(newvalue);
-
-        if ($("#url2").val().length < 2) {
-            $("#url2").next().text("没有上传文件，无法进行保存!");
-            $("#url2").next().css({"display": "block", "color": "red"});
-            b_validate_result2 = false;
+        if ($("#urlxx2").val().length < 2) {
+            $("#urlxx2").next().text("没有上传文件，无法进行保存!");
+            $("#urlxx2").next().css({"display": "block", "color": "red"});
+            b_validate_result10 = false;
         } else {
-            $("#url2").next().css("display", "none");
-            b_validate_result2 = true;
+            $("#urlxx2").next().css("display", "none");
+            b_validate_result10 = true;
         }
 
     });
 
     //未上传时的删除
-    $('.myfile').on('fileremoved', function(event, id, index) {
+    $('.myfile').on('fileremoved', function (event, id, index) {
         console.log('fileremoved ，id = ' + id + ', index = ' + index);
         alert('id = ' + id + ', index = ' + index);
     });
 
     //上传后删除
-    $('.myfile').on('filesuccessremove', function(event, id) {
-        alert("id="+id);
+    $('.myfile').on('filesuccessremove', function (event, id) {
+        alert("id=" + id);
 
     });
 
-    $('.myfile').on('filecleared', function(event) {
-        // alert("filecleared,clear url2");
-        $("input[name='url2']").val("");
+    $('.myfile').on('filecleared', function (event) {
+        // alert("filecleared,clear urlxx2");
+        $("input[name='urlxx2']").val("");
     });
 
-    $('.myfile').on('fileclear', function(event) {
+    $('.myfile').on('fileclear', function (event) {
         //alert("fileclear");
     });
 
 
-
-
     //同步上传错误处理
-    $('.myfile').on('filebatchuploaderror', function(event, data, msg) {
+    $('.myfile').on('filebatchuploaderror', function (event, data, msg) {
         console.log("filebatchuploaderror");
         console.log(data);
     });
 
     //同步上传返回结果处理
     $(".myfile").on("filebatchuploadsuccess",
-        function(event, data, previewId, index) {
+        function (event, data, previewId, index) {
             console.log("filebatchuploadsuccess");
             console.log(data);
         });
 
     //上传前
-    $('.myfile').on('filepreupload', function(event, data, previewId, index) {
+    $('.myfile').on('filepreupload', function (event, data, previewId, index) {
         console.log("filepreupload");
     });
-
-
 
 
     $('#shangke_start_date').datetimepicker({
@@ -126,7 +118,6 @@ $(document).ready(function () {
     });
 
 
-    
     var b_validate_result = true;
     var b_validate_result1 = true;
     var b_validate_result2 = true;
@@ -172,7 +163,7 @@ $(document).ready(function () {
 
 
         var telReg = /^(\d{4})\-(\d{2})\-(\d{2}) (\d{2}):(\d{2}):(\d{2})$/;
-        if ( !telReg.test($("#shangke_start_date").val()) ) {
+        if (!telReg.test($("#shangke_start_date").val())) {
 
             $("#shangke_start_date").next().text("时间格式有误!正确时间格式为yyyy-mm-dd hh:ii:ss");
             $("#shangke_start_date").next().css({"display": "block", "color": "red"});
@@ -188,7 +179,7 @@ $(document).ready(function () {
 
     $("#shangke_end_date").change(function () {
         var telReg = /^(\d{4})\-(\d{2})\-(\d{2}) (\d{2}):(\d{2}):(\d{2})$/;
-        if ( !telReg.test($("#shangke_end_date").val()) ) {
+        if (!telReg.test($("#shangke_end_date").val())) {
             $("#shangke_end_date").next().text("时间格式有误!正确时间格式为yyyy-mm-dd hh:ii:ss");
             $("#shangke_end_date").next().css({"display": "block", "color": "red"});
             b_validate_result4 = false;
@@ -202,7 +193,7 @@ $(document).ready(function () {
     $("#jiaoshi_keshi").focusout(function () {
 
         var telReg = /^\+?[1-9][0-9]*$/i;
-        if ( !telReg.test($("#jiaoshi_keshi").val()) ) {
+        if (!telReg.test($("#jiaoshi_keshi").val())) {
             $("#jiaoshi_keshi").next().text("非数字,不合法!");
             $("#jiaoshi_keshi").next().css({"display": "block", "color": "red"});
             b_validate_result5 = false;
@@ -257,12 +248,7 @@ $(document).ready(function () {
     });
 
 
-
-
-
     $("#createBtn").click(function () {
-
-        alert("1");
 
         $("#banji_name").focus();
         $("#xiaoqu_name").focus();
@@ -278,23 +264,24 @@ $(document).ready(function () {
         $("#banji_name").focus();
 
 
-       /* if ($("#url2").val().length < 2) {
-            $("#url2").next().text("没有上传文件，无法进行保存!");
-            $("#url2").next().css({"display": "block", "color": "red"});
+
+        if ($("#urlxx2").val().length < 2) {
+            $("#urlxx2").next().text("没有上传文件，无法进行保存!");
+            $("#urlxx2").next().css({"display": "block", "color": "red"});
             b_validate_result10 = false;
         } else {
-            $("#url2").next().css("display", "none");
+            $("#urlxx2").next().css("display", "none");
             b_validate_result10 = true;
         }
-*/
-        alert("2");
+
+
         b_validate_result = b_validate_result1 & b_validate_result2 & b_validate_result3 & b_validate_result4
-            &b_validate_result5 &b_validate_result6&b_validate_result7&b_validate_result8&b_validate_result9 &b_validate_result10;
+            & b_validate_result5 & b_validate_result6 & b_validate_result7 & b_validate_result8 & b_validate_result9 & b_validate_result10;
         if (!b_validate_result) {
-            alert("3:"+b_validate_result);
+
             return;
         }
-        alert("4");
+
         var url = "/insertClassRecord";
         $.ajax({
             type: "post",
@@ -315,7 +302,7 @@ $(document).ready(function () {
                 assist_teacher_sfzCode: $("#assist_teacher_sfzCode").val(),
                 shangke_content: $("#shangke_content").val(),
                 shangke_note: $("#shangke_note").val(),
-                shangke_pic_list:$("#url2").val() //上传的图片列表.
+                shangke_pic_list: $("#urlxx2").val() //上传的图片列表.
             }),
             dataType: "json",
             contentType: "application/json; charset=utf-8",//(可以)
@@ -338,7 +325,7 @@ $(document).ready(function () {
                 }
                 else {
                     $("#failLabel").css("display:block");
-                  //  alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
+                    //  alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -360,15 +347,13 @@ $(document).ready(function () {
                 //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
                 var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
 
-                var data3= data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
+                var data3 = data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
 
-                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
+                var data4 = data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
                 $('#mainContents').append(data4);
             }
         });
     });
-
-
 
 
     $("#backToListBtn").click(function () {
@@ -385,12 +370,6 @@ $(document).ready(function () {
         $("#createClassRecordMenu").click();
 
     });
-
-
-
-
-
-
 
 
 });

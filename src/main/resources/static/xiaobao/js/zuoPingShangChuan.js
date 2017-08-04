@@ -43,23 +43,19 @@ $(document).ready(function () {
     //异步上传返回结果处理
     $(".myfile").on("fileuploaded", function(event, data, previewId, index) {
 
-        if(oldValue == "" ){
-            oldValue = "";
+        var oldvalue = $("#urlzuopingshangchuan").val()  ;
+        var newvalue = data.response.url;
+        // alert("oldvalue:" + oldvalue);
+        // alert("newvalue:"+data.response.url);
+        $("#urlzuopingshangchuan").val(oldvalue +","+newvalue);
+        // alert("final:" + $("#urlzuopingshangchuan").val());
 
-        }else{
-            var tempValue = $("#url2").val()
-            oldValue = tempValue + ",";
-        }
-
-        var newvalue = oldValue+data.response.url;
-        $("#url2").val(newvalue);
-
-        if ($("#url2").val().length < 2) {
-            $("#url2").next().text("没有上传文件，无法进行保存!");
-            $("#url2").next().css({"display": "block", "color": "red"});
+        if ($("#urlzuopingshangchuan").val().length < 2) {
+            $("#urlzuopingshangchuan").next().text("没有上传文件，无法进行保存!");
+            $("#urlzuopingshangchuan").next().css({"display": "block", "color": "red"});
             b_validate_result2 = false;
         } else {
-            $("#url2").next().css("display", "none");
+            $("#urlzuopingshangchuan").next().css("display", "none");
             b_validate_result2 = true;
         }
 
@@ -78,8 +74,8 @@ $(document).ready(function () {
     });
 
     $('.myfile').on('filecleared', function(event) {
-       // alert("filecleared,clear url2");
-        $("input[name='url2']").val("");
+       // alert("filecleared,clear urlzuopingshangchuan");
+        $("input[name='urlzuopingshangchuan']").val("");
     });
 
     $('.myfile').on('fileclear', function(event) {
@@ -125,31 +121,19 @@ $(document).ready(function () {
 
     });
 
-   /* $("#myfile").change(function () {
 
-        if ($("#url2").val().length < 2) {
-            $("#url2").next().text("没有上传文件，无法进行保存!");
-            $("#url2").next().css({"display": "block", "color": "red"});
-            b_validate_result2 = false;
-        } else {
-            $("#url2").next().css("display", "none");
-            b_validate_result2 = true;
-        }
-
-
-    });*/
 
 
 
 
     $("#save").click(function () {
 
-        if ($("#url2").val().length < 2) {
-            $("#url2").next().text("没有上传文件，无法进行保存!");
-            $("#url2").next().css({"display": "block", "color": "red"});
+        if ($("#urlzuopingshangchuan").val().length < 2) {
+            $("#urlzuopingshangchuan").next().text("没有上传文件，无法进行保存!");
+            $("#urlzuopingshangchuan").next().css({"display": "block", "color": "red"});
             b_validate_result2 = false;
         } else {
-            $("#url2").next().css("display", "none");
+            $("#urlzuopingshangchuan").next().css("display", "none");
             b_validate_result2 = true;
         }
 
@@ -160,6 +144,7 @@ $(document).ready(function () {
 
         b_validate_result = b_validate_result1&&b_validate_result2;
         if (!b_validate_result) {
+
             return;
         }
 
@@ -173,7 +158,7 @@ $(document).ready(function () {
              * */
             data: JSON.stringify({
                 banji_name: $("#banji_name").val(),
-                url2: $("#url2").val()
+                url2: $("#urlzuopingshangchuan").val()
             }),
             dataType: "json",
             contentType: "application/json; charset=utf-8",//(可以)

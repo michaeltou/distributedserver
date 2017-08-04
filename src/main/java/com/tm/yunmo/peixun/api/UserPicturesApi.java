@@ -26,9 +26,8 @@ public class UserPicturesApi {
     private UserPicturesService userPicturesService;
 
 
-
     @RequestMapping("/insertUserPictures")
-    public ResultModel insertRole(@RequestBody UserPictures userPictures,HttpServletRequest request) {
+    public ResultModel insertRole(@RequestBody UserPictures userPictures, HttpServletRequest request) {
 
         String institution_code = (String) request.getSession().getAttribute("institution_code");
         String sfzCode = (String) request.getSession().getAttribute("sfzCode");
@@ -36,38 +35,39 @@ public class UserPicturesApi {
 
         ResultModel resultModel = new ResultModel();
 
-        String url2 =userPictures.getUrl2();
-        if (url2==null || "".equals(url2)){
+        String url2 = userPictures.getUrl2();
+        if (url2 == null || "".equals(url2)) {
             resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
             return resultModel;
         }
 
         String[] urlArray = url2.split(",");
-        if (urlArray.length == 0){
+        if (urlArray.length == 0) {
             resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
             return resultModel;
         }
 
-        for (int i =0;i<urlArray.length;i++)  {
-          String   url = urlArray[i];
-            userPictures.setPicture_name(url);
-            userPictures.setInstitution_code(institution_code);
-            userPictures.setUsername(sfzCode);
+        for (int i = 0; i < urlArray.length; i++) {
+            String url = urlArray[i];
+            if(!"".equals(url.trim())){
+                userPictures.setPicture_name(url);
+                userPictures.setInstitution_code(institution_code);
+                userPictures.setUsername(sfzCode);
 
-            int result = userPicturesService.insertUserPictures(userPictures);
-            if (result > 0) {
-                continue;
-            } else {
-                resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
-                return resultModel;
+                int result = userPicturesService.insertUserPictures(userPictures);
+                if (result > 0) {
+                    continue;
+                } else {
+                    resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+                    return resultModel;
+                }
             }
+
         }
 
-         return resultModel;
+        return resultModel;
 
     }
-
-
 
 
 }
