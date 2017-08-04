@@ -48,6 +48,25 @@ public interface BanJiDAO {
             "    `px_banji`.`institution_code`,\n" +
             "    `px_banji`.`createDate`,\n" +
             "    `px_banji`.`updateDate`\n" +
+            " FROM  `px_banji` \n"+
+            " WHERE  institution_code = #{institution_code} AND teacherSFZCode = #{teacherSFZCode} ")
+    List<BanJi> queryBanJiListByInstitutionAndSFZCode(@Param("institution_code") String institution_code,@Param("teacherSFZCode") String teacherSFZCode);
+
+    @Select("SELECT `px_banji`.`id`,\n" +
+            "    `px_banji`.`banji_name`,\n" +
+            "    `px_banji`.`school_name`,\n" +
+            "    `px_banji`.`kecheng_name`,\n" +
+            "    `px_banji`.`pre_recruit_cnt`,\n" +
+            "    `px_banji`.`start_ban_ji_date`,\n" +
+            "    `px_banji`.`student_consume_keshi`,\n" +
+            "    `px_banji`.`teacher_consume_keshi`,\n" +
+            "    `px_banji`.`note`,\n" +
+            "    `px_banji`.`teacher`,\n" +
+            "    `px_banji`.`teacherSFZCode`,\n" +
+            "    `px_banji`.`status`,\n" +
+            "    `px_banji`.`institution_code`,\n" +
+            "    `px_banji`.`createDate`,\n" +
+            "    `px_banji`.`updateDate`\n" +
             "FROM  `px_banji` \n"+
             " where  institution_code = #{institution_code} and  banji_name like CONCAT('%',#{banji_name},'%') ")
     List<BanJi> queryBanJiListByNameWithLike(@Param("institution_code") String institution_code,@Param("banji_name") String banji_name);

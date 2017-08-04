@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>学员请假</title>
+    <title>员工请假</title>
     <meta name="viewport" content="width=device-width,
                                      initial-scale=1.0,
                                      maximum-scale=1.0,
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/xiaobao/css/bootstrap.css"/>
     <script src="/xiaobao/js/jquery-3.2.1.js"></script>
     <script src="/xiaobao/js/bootstrap.js"></script>
-    <script src="/xiaobao/js/qingJiaDanList.js"></script>
+    <script src="/xiaobao/js/qingJiaDanListForEmployee.js"></script>
 </head>
 <body>
 
@@ -84,13 +84,14 @@
                 <table class="table table-striped table-hover">
                     <thead style="  background-color: rgba(113,210,113,0.36);  border-color: #71ce71;">
                     <tr>
-                        <th> 请假学员</th>
+                        <th> 请假员工</th>
                         <th> 请假开始时间</th>
                         <th> 请假结束时间</th>
                         <th> 请假班级</th>
                         <th> 请假课程</th>
                         <th> 请假原因</th>
                         <th> 确认状态</th>
+                        <th> 备注</th>
                         <th> 操作</th>
                     </tr>
                     </thead>
@@ -104,6 +105,7 @@
                         <td th:text=" ${qingJiaDan.qingjia_kecheng}">null</td>
                         <td th:text=" ${qingJiaDan.qingjia_yuanyin}">null</td>
                         <td th:text=" ${qingJiaDan.status}">null</td>
+                        <td th:text=" ${qingJiaDan.note}">null</td>
                         <td><a  class="deleteObjectLinkClass"
                                href="#"
                                th:attr="institution_code=${qingJiaDan.institution_code},id=${qingJiaDan.id}" >删除</a>

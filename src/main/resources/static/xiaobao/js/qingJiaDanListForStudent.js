@@ -22,7 +22,7 @@ $(document).ready(function () {
     $("#createObjectBtnInList").click(function () {
         $.ajax({
             type: "GET",
-            url: "/xiaobao/createQingJiaDan",
+            url: "/xiaobao/createStudentQingJiaDan",
             success: function (data) {
                 $('#mainContents').empty();
                 //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）

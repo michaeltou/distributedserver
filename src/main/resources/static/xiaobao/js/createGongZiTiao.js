@@ -107,7 +107,7 @@ $(document).ready(function () {
                     }
                     else {
                         /*$("#failLabel").css("display:block");*/
-                        alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
+                        alert(data.errorMsg);
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -532,6 +532,23 @@ $(document).ready(function () {
 
     $("#backToListbreadLink").click(function () {
         $("#gongzitiaoguanli").click();
+
+    });
+
+    $("#createGongZiTiaoModal form input").focusout(function () {
+
+        if($(this).val() == ""){
+            return;
+        }
+        var numReg = /^\+?[1-9][0-9]*$/i;
+        if ( !numReg.test($(this).val()) ) {
+            $(this).val("");
+            $(this).next().text("非数字,不合法!");
+            $(this).next().css({"display": "block", "color": "red"});
+        } else {
+            $(this).next().css("display", "none");
+        }
+
 
     });
 

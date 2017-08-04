@@ -15,6 +15,8 @@ public interface QingJiaDanDAO {
 
     @Select("SELECT `px_qingjiadan`.`id`,\n" +
             "    `px_qingjiadan`.`institution_code`,\n" +
+            "    `px_qingjiadan`.`role`,\n" +
+            "    `px_qingjiadan`.`employeeType`,\n" +
             "    `px_qingjiadan`.`qingjia_person_name`,\n" +
             "    `px_qingjiadan`.`qingjia_person_sfz`,\n" +
             "    `px_qingjiadan`.`qingjia_start_time`,\n" +
@@ -22,16 +24,19 @@ public interface QingJiaDanDAO {
             "    `px_qingjiadan`.`qingjia_banji`,\n" +
             "    `px_qingjiadan`.`qingjia_kecheng`,\n" +
             "    `px_qingjiadan`.`qingjia_yuanyin`,\n" +
+            "    `px_qingjiadan`.`qingjia_days`,\n" +
             "    `px_qingjiadan`.`status`,\n" +
             "    `px_qingjiadan`.`note`,\n" +
             "    `px_qingjiadan`.`createDate`,\n" +
             "    `px_qingjiadan`.`updateDate`\n" +
             " FROM  `px_qingjiadan` \n" +
-            " WHERE  institution_code = #{institution_code} ")
-    List<QingJiaDan> queryQingJiaDanListByInstitution(@Param("institution_code") String institution_code);
+            " WHERE  institution_code = #{institution_code} AND role = #{role} ")
+    List<QingJiaDan> queryQingJiaDanListByInstitutionAndRole(@Param("institution_code") String institution_code,@Param("role") Byte role);
 
     @Select("SELECT `px_qingjiadan`.`id`,\n" +
             "    `px_qingjiadan`.`institution_code`,\n" +
+            "    `px_qingjiadan`.`role`,\n" +
+            "    `px_qingjiadan`.`employeeType`,\n" +
             "    `px_qingjiadan`.`qingjia_person_name`,\n" +
             "    `px_qingjiadan`.`qingjia_person_sfz`,\n" +
             "    `px_qingjiadan`.`qingjia_start_time`,\n" +
@@ -39,6 +44,7 @@ public interface QingJiaDanDAO {
             "    `px_qingjiadan`.`qingjia_banji`,\n" +
             "    `px_qingjiadan`.`qingjia_kecheng`,\n" +
             "    `px_qingjiadan`.`qingjia_yuanyin`,\n" +
+            "    `px_qingjiadan`.`qingjia_days`,\n" +
             "    `px_qingjiadan`.`status`,\n" +
             "    `px_qingjiadan`.`note`,\n" +
             "    `px_qingjiadan`.`createDate`,\n" +
@@ -58,6 +64,8 @@ public interface QingJiaDanDAO {
 
     @Select("SELECT `px_qingjiadan`.`id`,\n" +
             "    `px_qingjiadan`.`institution_code`,\n" +
+            "    `px_qingjiadan`.`role`,\n" +
+            "    `px_qingjiadan`.`employeeType`,\n" +
             "    `px_qingjiadan`.`qingjia_person_name`,\n" +
             "    `px_qingjiadan`.`qingjia_person_sfz`,\n" +
             "    `px_qingjiadan`.`qingjia_start_time`,\n" +
@@ -65,6 +73,7 @@ public interface QingJiaDanDAO {
             "    `px_qingjiadan`.`qingjia_banji`,\n" +
             "    `px_qingjiadan`.`qingjia_kecheng`,\n" +
             "    `px_qingjiadan`.`qingjia_yuanyin`,\n" +
+            "    `px_qingjiadan`.`qingjia_days`,\n" +
             "    `px_qingjiadan`.`status`,\n" +
             "    `px_qingjiadan`.`note`,\n" +
             "    `px_qingjiadan`.`createDate`,\n" +
@@ -77,6 +86,8 @@ public interface QingJiaDanDAO {
     @Insert(" INSERT INTO  `px_qingjiadan`\n" +
             "( \n" +
             "`institution_code`,\n" +
+            "`role`,\n" +
+            "`employeeType`,\n" +
             "`qingjia_person_name`,\n" +
             "`qingjia_person_sfz`,\n" +
             "`qingjia_start_time`,\n" +
@@ -84,6 +95,7 @@ public interface QingJiaDanDAO {
             "`qingjia_banji`,\n" +
             "`qingjia_kecheng`,\n" +
             "`qingjia_yuanyin`,\n" +
+            "`qingjia_days`,\n" +
             "`status`,\n" +
             "`note`,\n" +
             "`createDate`,\n" +
@@ -91,6 +103,8 @@ public interface QingJiaDanDAO {
             "VALUES\n" +
             "( \n" +
             "#{institution_code},\n" +
+            "#{role},\n" +
+            "#{employeeType},\n" +
             "#{qingjia_person_name},\n" +
             "#{qingjia_person_sfz},\n" +
             "#{qingjia_start_time},\n" +
@@ -98,6 +112,7 @@ public interface QingJiaDanDAO {
             "#{qingjia_banji},\n" +
             "#{qingjia_kecheng},\n" +
             "#{qingjia_yuanyin},\n" +
+            "#{qingjia_days},\n" +
             "#{status},\n" +
             "#{note},\n" +
             "now(),\n" +

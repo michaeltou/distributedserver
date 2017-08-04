@@ -5,42 +5,6 @@
 
 $(document).ready(function () {
 
-    function initialXiaoLeiList() {
-        $.ajax({
-            url: "/querySRXiaoLeiListByDaLeiName",
-            type: "GET",
-            data: {daLeiName: $("#shouRuDaLeiName option:selected").val()},
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function (data, textStatus) {
-                if (data.success) {
-                    // alert(JSON.stringify(data)); 调试使用，请勿删除
-
-                    //清空下拉列表框
-                    $("#shouRuXiaoLeiName").empty();
-
-                    //动态构建表格数据.
-                    $.each(data.data, function (id, shouRuXiaoLei) {
-                        var $option = $("<option ></option>");
-                        $option.val(shouRuXiaoLei.name);
-                        $option.html(shouRuXiaoLei.name);
-
-                        $option.appendTo($("#shouRuXiaoLeiName"));
-
-
-                    });//each
-                }
-                else {
-                    alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
-                }
-            },
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert("系统异常！");
-            }
-        });//ajax
-    }
-    initialXiaoLeiList();
-
     $('#qingJiaStartDate').datetimepicker({
         language:  'zh-CN',
         format: 'yyyy-mm-dd',
@@ -105,7 +69,8 @@ $(document).ready(function () {
 
     $("#qingJiaStartDate").focusout(function () {
 
-        if ($("#qingJiaStartDate").val().length == 0) {
+        if ($("#qingJiaStartDate").val() == undefined ||
+            $("#qingJiaStartDate").val().length == 0) {
             $("#qingJiaStartDate").next().text("请选择请假开始日期!");
             $("#qingJiaStartDate").next().css({"display": "block", "color": "red"});
             b_validate_result3 = false;
@@ -117,8 +82,8 @@ $(document).ready(function () {
 
     $("#qingJiaEndDate").focusout(function () {
 
-        if ($("#qingJiaEndDate option:selected").val() == undefined ||
-            $("#qingJiaEndDate option:selected").val().length == 0) {
+        if ($("#qingJiaEndDate").val() == undefined ||
+            $("#qingJiaEndDate").val().length == 0) {
             $("#qingJiaEndDate").next().text("请选择请假结束日期!");
             $("#qingJiaEndDate").next().css({"display": "block", "color": "red"});
             b_validate_result4 = false;
@@ -148,22 +113,9 @@ $(document).ready(function () {
 
         $("#qingJiaRenName").focus();
 
-        /*if($("#qingJiaStartDate").val().length == 0){
-            b_validate_result2 = false;
-        }else {
-            b_validate_result2 = true;
-        }
-
-        if($("#qingJiaEndDate").val().length == 0){
-            b_validate_result2 = false;
-        }else {
-            b_validate_result2 = true;
-        }*/
-
         $("#qingJiaLeiXing").focus();
 
         $("#qingJiaFangShi").focus();
-
 
         b_validate_result = b_validate_result1 & b_validate_result2 & b_validate_result3 & b_validate_result4 & b_validate_result5 ;
         if (!b_validate_result) {
@@ -186,6 +138,9 @@ $(document).ready(function () {
             type: "get",
             url: url,
             data: {
+                role:0,
+                employeeType:0,
+                qingJiaDays:0,
                 qingJiaRenSFZ: $("#qingJiaRenName option:selected").val(),
                 qingJiaRenName: $("#qingJiaRenName option:selected").text(),
                 qingJiaLeiXing: $("#qingJiaLeiXing option:selected").val(),
@@ -216,7 +171,7 @@ $(document).ready(function () {
                 }
                 else {
                     $("#failLabel").css("display:block");
-                  //  alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
+                    alert(data.errorMsg);
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -295,7 +250,7 @@ $(document).ready(function () {
 });
 
 function getClassesByGUIData() {
-    var selectedItem = $(this).find("option:selected").html();
+    var selectedItem = $("#qingJiaFangShi").find("option:selected").html();
     if (selectedItem == "按天") {
         $(".classList").empty();
         return;

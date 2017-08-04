@@ -159,6 +159,7 @@ public class GongZiTiaoApi {
             return resultModel;
         } else {
             resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+            resultModel.setErrorMsg("没有前月的工资条信息");
             return resultModel;
         }
 

@@ -21,6 +21,11 @@ public class BanJiService {
         return banJiList;
     }
 
+    public List<BanJi> queryBanJiListByInstitutionAndSFZCode(String institution_code,String teacherSFZCode) {
+        List<BanJi> banJiList = banJiDAO.queryBanJiListByInstitutionAndSFZCode(institution_code,teacherSFZCode);
+        return banJiList;
+    }
+
     public List<BanJi> queryBanJiListByNameWithLike(String institution_code,String banji_name) {
         List<BanJi> banJiList = banJiDAO.queryBanJiListByNameWithLike(institution_code,banji_name);
         return banJiList;
