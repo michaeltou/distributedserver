@@ -24,6 +24,19 @@ public interface UserPasswordDAO {
             "where username = #{username} and password=#{password} \n")
     UserPassword queryUserPasswordByUserNameAndPassword( @Param("username") String username, @Param("password") String password);
 
+    @Select(" SELECT `px_user_password`.`id`,\n" +
+            "    `px_user_password`.`username`,\n" +
+            "    `px_user_password`.`password`,\n" +
+            "    `px_user_password`.`institution_code`,\n" +
+            "    `px_user_password`.`sfzCode`,\n" +
+            "    `px_user_password`.`status`,\n" +
+            "    `px_user_password`.`role`,\n" +
+            "    `px_user_password`.`createDate`,\n" +
+            "    `px_user_password`.`updateDate`\n" +
+            " FROM  `px_user_password` \n" +
+            " WHERE institution_code = #{institution_code} AND username = #{username} AND password=#{password} \n")
+    UserPassword queryUserPasswordByUserNameAndPasswordAndInstitution(@Param("institution_code") String institution_code,  @Param("username") String username, @Param("password") String password);
+
 
 
     @Insert("   INSERT INTO  `px_user_password`\n" +
@@ -56,6 +69,13 @@ public interface UserPasswordDAO {
             "`updateDate` = now() \n" +
             " where username = #{username} and password=#{password} \n")
     public int updateUserPassword(UserPassword userPassword);
+
+    @Update(" UPDATE `px_user_password`\n" +
+            "SET\n" +
+            "`password` = #{newpassword},\n" +
+            "`updateDate` = now() \n" +
+            " WHERE institution_code = #{institution_code} AND username = #{username} AND password=#{password} \n")
+    public int updatePassword(@Param("institution_code") String institution_code,  @Param("username") String username, @Param("password") String password, @Param("newpassword") String newpassword);
 
 
     @Delete(" DELETE FROM  `px_user_password`\n" +

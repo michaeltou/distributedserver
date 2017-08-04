@@ -380,6 +380,33 @@
     </div>
 
     <div class="row">
+        <div class="col-md-3">
+            <h2 class="text-success  ">
+                创建工资条
+            </h2>
+            <div style="height: 20px;"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+
+            <div class="text-success" style="display: none;" id="successLabel">恭喜你，创建工资条成功！
+                <div style="height: 50px;"></div>
+                <button type="button" class="btn btn-info" id="backToListBtn" style="display: none;">
+                    确定
+                </button>
+                <div style="height: 50px;"></div>
+            </div>
+            <div class="text-danger" style="display: none;" id="failLabel">创建工资条失败！
+                <div style="height: 50px;"></div>
+            </div>
+            <button type="button" class="btn btn-info" id="backToThisBtn" style="display: none; margin-top: 50px;">
+                返回
+            </button>
+        </div>
+    </div>
+
+    <div class="row createCondition">
 
         <div class="col-md-12">
             <div style="height: 20px;"></div>
@@ -398,7 +425,7 @@
     </div>
 
 
-    <div class="row">
+    <div class="row createTitle">
         <div class="col-md-12" style="background-color: transparent;">
             <h3>员工列表</h3>
         </div>

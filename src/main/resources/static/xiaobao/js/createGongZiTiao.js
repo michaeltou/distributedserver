@@ -87,27 +87,28 @@ $(document).ready(function () {
                 },
                 success: function (data, textStatus) {
                     if (data.success) {
-                        alert("上月工资单拷贝成功");
-                        $.ajax({
-                            type: "GET",
-                            url: "/xiaobao/queryGongZiTiaoListByInstitutionAndMonth",
-                            async:false,
-                            data:{month:$("#gongZiTiaoMonth").val()},
-                            success: function (data) {
-                                $('#mainContents').empty();
-                                //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
-                                var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
+                        //显示
+                        $("#month").val($("#gongZiTiaoMonth").val());
+                        $("#successLabel").show();
+                        $("#backToListBtn").show();
+                        //隐藏
+                        $(".table-responsive").empty();
+                        $(".createTitle").empty();
+                        $(".createCondition").empty();
 
-                                var data3= data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
-
-                                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
-                                $('#mainContents').append(data4);
-                            }
-                        });
                     }
                     else {
-                        /*$("#failLabel").css("display:block");*/
-                        alert(data.errorMsg);
+                        $("#month").val($("#gongZiTiaoMonth").val());
+                        $("#failLabel").show();
+                        $("#failLabel").text(data.errorMsg);
+                        $("#failLabel").css("display:block");
+                        $("#backToThisBtn").show();
+                        //隐藏
+                        $(".table-responsive").empty();
+                        $(".createTitle").empty();
+                        $(".createCondition").empty();
+
+
                     }
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -305,11 +306,19 @@ $(document).ready(function () {
             contentType: "application/json; charset=utf-8",//(可以)
             success: function (data, textStatus) {
                 if (data.success) {
+                    //显示
+                    $("#month").val($("#gongZiTiaoMonth").val());
+                    $("#successLabel").show();
+                    $("#backToListBtn").show();
+                    //隐藏
+                    $(".table-responsive").empty();
+                    $(".createTitle").empty();
+                    $(".createCondition").empty();
 
                 }
                 else {
-                    /*$("#failLabel").css("display:block");*/
-                    alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
+                    $("#failLabel").css("display:block");
+                    //  alert("发生了错误！错误码：" + data.errorCode + ",错误详情：" + data.errorMsg);
                 }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
@@ -320,7 +329,7 @@ $(document).ready(function () {
     });
 
     $('#createGongZiTiaoModal').on('hidden.bs.modal', function () {
-       if(flag == "true"){
+       /*if(flag == "true"){
             $.ajax({
                 type: "GET",
                 url: "/xiaobao/queryGongZiTiaoListByInstitutionAndMonth",
@@ -338,7 +347,7 @@ $(document).ready(function () {
                 }
             });
            flag = false;
-       }
+       }*/
     })
 
     $("#createGongZiTiaoModal form").on("change",".form-control",function () {
@@ -549,6 +558,43 @@ $(document).ready(function () {
             $(this).next().css("display", "none");
         }
 
+    });
+
+    $("#backToListBtn").click(function () {
+        $.ajax({
+            type: "GET",
+            url: "/xiaobao/queryGongZiTiaoListByInstitutionAndMonth",
+            async:false,
+            data:{month:$("#month").val()},
+            success: function (data) {
+                $('#mainContents').empty();
+                //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
+                var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
+
+                var data3= data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
+
+                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
+                $('#mainContents').append(data4);
+            }
+        });
+
+    });
+
+    $("#backToThisBtn").click(function () {
+        $.ajax({
+            type: "GET",
+            url: "/xiaobao/createGongZiTiao",
+            success: function (data) {
+                $('#mainContents').empty();
+                //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）
+                var data2 = data.replace(/\<script src=\"\/xiaobao\/js\/jquery-3.2.1.js\"\>\<\/script\>/, "");
+
+                var data3= data2.replace(/\<script src=\"\/xiaobao\/js\/bootstrap.js\"\>\<\/script\>/, "");
+
+                var data4= data3.replace(/\<link rel=\"stylesheet\" href=\"\/xiaobao\/css\/bootstrap.css\"\/\>/, "");
+                $('#mainContents').append(data4);
+            }
+        });
 
     });
 

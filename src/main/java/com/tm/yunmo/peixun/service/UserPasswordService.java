@@ -20,6 +20,10 @@ public class UserPasswordService {
         return userPassword;
     }
 
+    public UserPassword queryUserPasswordByUserNameAndPasswordAndInstitution(String institutionCode, String username, String password) {
+        UserPassword userPassword = userPasswordDAO.queryUserPasswordByUserNameAndPasswordAndInstitution(institutionCode,username, password);
+        return userPassword;
+    }
 
     public int insertUserPassword(UserPassword userPassword) {
         int result = userPasswordDAO.insertUserPassword(userPassword);
@@ -29,6 +33,11 @@ public class UserPasswordService {
 
     public int updateUserPassword(UserPassword userPassword) {
         int result = userPasswordDAO.updateUserPassword(userPassword);
+        return result;
+    }
+
+    public int updatePassword(String institution_code,String username,String password,String newPassword) {
+        int result = userPasswordDAO.updatePassword(institution_code,username,password,newPassword);
         return result;
     }
 

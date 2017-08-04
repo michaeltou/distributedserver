@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>账户设定</title>
+    <meta name="viewport" content="width=device-width,
+                                     initial-scale=1.0,
+                                     maximum-scale=1.0,
+                                     user-scalable=no"/>
+
+    <link rel="stylesheet" href="/xiaobao/css/bootstrap.css"/>
+    <script src="/xiaobao/js/jquery-3.2.1.js"></script>
+    <script src="/xiaobao/js/bootstrap.js"></script>
+    <script src="/xiaobao/js/accountSetting.js"></script>
+</head>
+<body>
+
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-3">
+            <h2 class="text-success  ">
+                密码修改
+            </h2>
+            <div style="height: 20px;"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+
+            <div class="text-success" style="display: none;" id="successLabel">恭喜你，密码修改成功！
+                <div style="height: 50px;"></div>
+                <button type="button" class="btn btn-info" id="backToListBtn" style="display: none;">
+                    返回
+                </button>
+                <div style="height: 50px;"></div>
+            </div>
+            <div class="text-danger" style="display: none;" id="failLabel">密码修改失败！
+                <div style="height: 50px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-4">
+
+            <div id="formdiv">
+                <form role="form" id="myform">
+                    <!--<div class="form-group">
+
+                        <label for="daLeiName">
+                            大类名称
+                        </label>
+
+                        <select name="daLeiName" class="form-control" id="daLeiName">
+                            <option th:each=" srDaLei : ${srDaLeiList}" th:value="${srDaLei.name}" th:text="${srDaLei.name}"></option>
+                        </select>
+                        <div class="check_tips"></div>
+                    </div>-->
+
+                    <div class="form-group">
+                        <label for="oldPassword">
+                            原密码
+                        </label>
+                        <input type="password" class="form-control" id="oldPassword"/>
+                        <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="newPassword">
+                            薪密码
+                        </label>
+                        <input type="password" class="form-control" id="newPassword"/>
+                        <div class="check_tips"></div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="confirmNewPassword">
+                            确认薪密码
+                        </label>
+                        <input type="password" class="form-control" id="confirmNewPassword"/>
+                        <div class="check_tips"></div>
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-2 text-center">
+            <div id="submitAreaDiv">
+                <div style="height: 20px;"></div>
+
+                <button type="button" class="btn btn-default" id="formBackBtn">重置
+                </button>
+                &nbsp; &nbsp; &nbsp;
+                <button id="save" type="button" class="btn btn-success">
+                    保存
+                </button>
+                <div style="height: 80px;"></div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+</body>
+</html>

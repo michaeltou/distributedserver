@@ -31,6 +31,21 @@ public class UserPasswordApi {
         return userPassword;
     }
 
+    @RequestMapping("/queryUserPasswordByUserNameAndPasswordForAccountSetting")
+    public ResultModel queryUserPasswordByUserNameAndPasswordForAccountSetting(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        String username =(String)  request.getSession().getAttribute("username");
+        String password = request.getParameter("password");
+        UserPassword userPassword = userPasswordService.queryUserPasswordByUserNameAndPasswordAndInstitution(institution_code,username, password);
+        if (userPassword != null) {
+            return resultModel;
+        } else {
+            resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+            return resultModel;
+        }
+    }
+
 
     /**
      * POST http://localhost:9999/insertUserPassword HTTP/1.1
@@ -85,6 +100,23 @@ public class UserPasswordApi {
     public ResultModel updateUserPassword(@RequestBody UserPassword userPassword) {
         ResultModel resultModel = new ResultModel();
         int result = userPasswordService.updateUserPassword(userPassword);
+        if (result > 0) {
+            return resultModel;
+        } else {
+            resultModel.setErrorCode(ErrorCode.SYSTEM_ERROR);
+            return resultModel;
+        }
+    }
+
+    @RequestMapping("/updatePassword")
+    public ResultModel updatePassword(HttpServletRequest request) {
+        ResultModel resultModel = new ResultModel();
+        String institution_code = (String) request.getSession().getAttribute("institution_code");
+        String username =(String)  request.getSession().getAttribute("username");
+        String oldPassword = request.getParameter("oldPassword");
+        String newPassword = request.getParameter("newPassword");
+
+        int result = userPasswordService.updatePassword(institution_code,username,oldPassword,newPassword);
         if (result > 0) {
             return resultModel;
         } else {
