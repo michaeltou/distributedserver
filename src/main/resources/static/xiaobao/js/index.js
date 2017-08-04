@@ -21,7 +21,7 @@ $(document).ready(function () {
 
     $.ajax({
         type: "GET",
-        url: "/xiaobao/top.html",
+        url: "/xiaobao/top",
         success: function (data) {
             $('#top').empty();
             //通过替换为空，这个主要是解决jquery多次引入导致的冲突问题（不可预知的问题.）

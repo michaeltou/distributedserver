@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+
+    <link rel="stylesheet" href="/xiaobao/css/bootstrap.css"/>
+    <script src="/xiaobao/js/jquery-3.2.1.js"></script>
+    <script src="/xiaobao/js/bootstrap.js"></script>
+
+</head>
+<body>
+<div class="container-fluid">
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-2">
+                    <img alt="Bootstrap Image Preview" src="/xiaobao/images/logo.png" />
+                </div>
+                <div class="col-md-4">
+                    <div style="height: 20px;"> </div>
+                      尊敬的用户 <span th:text="${username}" ></span>(角色:<span th:text="${rolename}" ></span>)，您好！欢迎你访问云模学习宝
+                </div>
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-3">
+                    <div style="height: 20px;"> </div>
+                   <div style="color: #5e7a88">
+
+                       <span class="glyphicon glyphicon-home" aria-hidden="true"></span><a href="/"> 首页 </a>
+                       <span class="glyphicon glyphicon-home" aria-hidden="true"></span><a href="/logout"> 注销 </a>
+                       <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span> 咨询热线：0571-86571967  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

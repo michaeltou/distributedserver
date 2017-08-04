@@ -37,4 +37,20 @@ public class LoginConst {
      * 角色 父母
      */
     public final static String ROLE_PARENT = "PARENT";
+
+    public static String getRoleName(String role){
+        String rolename=null;
+        if (LoginConst.ROLE_ADMIN.equals(role)){
+            rolename="管理员";
+        }else if(LoginConst.ROLE_STUDENT.equals(role)  ){
+            rolename="学生";
+        }else if(LoginConst.ROLE_TEACHER.equals(role)  ){
+            rolename="教师";
+        }else if(LoginConst.ROLE_JIAOWU.equals(role)  ){
+            rolename="教务";
+        }else if(LoginConst.ROLE_PARENT.equals(role)  ){
+            rolename="家长";
+        }
+        return rolename;
+    }
 }

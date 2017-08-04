@@ -260,7 +260,9 @@ $(document).ready(function () {
 
 
 
-    $("#save").click(function () {
+    $("#createBtn").click(function () {
+
+        alert("1");
 
         $("#banji_name").focus();
         $("#xiaoqu_name").focus();
@@ -276,7 +278,7 @@ $(document).ready(function () {
         $("#banji_name").focus();
 
 
-        if ($("#url2").val().length < 2) {
+       /* if ($("#url2").val().length < 2) {
             $("#url2").next().text("没有上传文件，无法进行保存!");
             $("#url2").next().css({"display": "block", "color": "red"});
             b_validate_result10 = false;
@@ -284,14 +286,15 @@ $(document).ready(function () {
             $("#url2").next().css("display", "none");
             b_validate_result10 = true;
         }
-
-
+*/
+        alert("2");
         b_validate_result = b_validate_result1 & b_validate_result2 & b_validate_result3 & b_validate_result4
-            &b_validate_result5&b_validate_result6&b_validate_result7&b_validate_result8&b_validate_result9 &b_validate_result10;
+            &b_validate_result5 &b_validate_result6&b_validate_result7&b_validate_result8&b_validate_result9 &b_validate_result10;
         if (!b_validate_result) {
+            alert("3:"+b_validate_result);
             return;
         }
-
+        alert("4");
         var url = "/insertClassRecord";
         $.ajax({
             type: "post",
@@ -318,6 +321,7 @@ $(document).ready(function () {
             contentType: "application/json; charset=utf-8",//(可以)
             success: function (data, textStatus) {
                 if (data.success) {
+
                     //清空表格数据
 
                     //显示
@@ -329,7 +333,7 @@ $(document).ready(function () {
                     $("#formdiv").empty();
                     $("#formdiv2").empty();
                     $("#formdiv3").empty();
-                    $("#pictureArea").empty();
+
 
                 }
                 else {
