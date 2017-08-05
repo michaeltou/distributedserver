@@ -128,13 +128,16 @@ public class FileUploadController {
         String oldFileName = file.getOriginalFilename(); // 获取上传文件的原名
 //      System.out.println(oldFileName);
         // 存储图片的虚拟本地路径（这里需要配置tomcat的web模块路径，双击猫进行配置）
-        String saveFilePath = "E://picture";
+       // String saveFilePath = "E://picture";
+
+        String saveFilePath = "/usr/share/nginx/pictures/images";
+
         // 上传图片
         if (file != null && oldFileName != null && oldFileName.length() > 0) {
             // 新的图片名称
             String newFileName = UUID.randomUUID() + oldFileName.substring(oldFileName.lastIndexOf("."));
             // 新图片
-            File newFile = new File(saveFilePath + "\\" + newFileName);
+            File newFile = new File(saveFilePath + "/" + newFileName);
 
             // 检测是否存在目录
             if (!newFile.getParentFile().exists()) {
