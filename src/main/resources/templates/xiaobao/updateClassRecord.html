@@ -14,7 +14,9 @@
     <script src="/xiaobao/js/updateClassRecord.js"></script>
 
     <script src="/xiaobao/js/bootstrap-datetimepicker.js"></script>
+
     <link rel="stylesheet" href="/xiaobao/css/bootstrap-datetimepicker.css"/>
+    <link rel="stylesheet" href="/xiaobao/css/updateClassRecord.css"/>
 </head>
 <body>
 
@@ -191,7 +193,7 @@
                         <label for="shangke_pic_list">
                             上课图片列表
                         </label>
-                        <input type="text" class="form-control" id="shangke_pic_list" th:value="${classRecordMain.shangke_pic_list}" />
+                        <input type="text" class="form-control" id="shangke_pic_list" readonly="readonly" th:value="${classRecordMain.shangke_pic_list}" />
                         <div class="check_tips"></div>
                     </div>
 
@@ -200,6 +202,19 @@
 
             </div>
 
+        </div>
+
+        <div class="col-md-4" style="background-color: transparent;">
+            <tr th:each=" shangKePic : ${shangKePicList}">
+                <td class="col-md-3">
+                    <div id="imagediv">
+
+                        <img src="" alt=""  th:attr="data-url=${shangKePic}" class="updateClassRecordImage" />
+
+                    </div>
+                </td>
+
+            </tr>
         </div>
     </div>
 

@@ -32,6 +32,8 @@ public class Application {
 
         logger.info("系统拦截器配置在类  com.tm.yunmo.peixun.control.login.WebMvcConf 中。 ");
 
+        logger.info("图片服务器路径 /usr/share/nginx/pictures  ");
+
 
         return new Object();
     }

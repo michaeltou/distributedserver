@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -86,6 +88,22 @@ public class ClassRecordPage {
 
         ClassRecordMain classRecordMainResult = classRecordMainService.queryClassRecordMainByInstitutionAndId( institution_code,id);
         model.addAttribute("classRecordMain",classRecordMainResult);
+
+        String shangkePicListStr = classRecordMainResult.getShangke_pic_list();
+        String fullUrl = "";
+        List<String> shangKePicList = new ArrayList<String>();
+        if (shangkePicListStr!=null && !"".equals(shangkePicListStr.trim())){
+            String[] shangkePickArray = shangkePicListStr.split(",");
+            for(int i=0;i<shangkePickArray.length;i++){
+                if (!"".equals(shangkePickArray[i].trim())){
+                     fullUrl = LoginConst.imageHost + shangkePickArray[i].trim();
+                     shangKePicList.add(fullUrl);
+                }
+            }
+        }
+
+        model.addAttribute("shangKePicList",shangKePicList);
+
 
         List<School> schoolList =  schoolService.querySchoolListByInstitution(institution_code);
         model.addAttribute("schoolList",schoolList);

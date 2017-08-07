@@ -53,4 +53,10 @@ public class LoginConst {
         }
         return rolename;
     }
+
+    public final static String imageHost = "http://106.14.173.136:7777/images/";
+
+
+
+
 }
