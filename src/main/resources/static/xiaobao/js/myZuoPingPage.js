@@ -6,7 +6,7 @@
 $(document).ready(function () {
 
 
-    var obj = $(".myimage"),
+    var obj = $(".myzuopingimage"),
         windowheight = window.innerHeight || document.documentElement.clientHeight;
     for (var i = 0; i < obj.length; i++) {
         obj[i].url = obj[i].getAttribute("data-url");
@@ -16,10 +16,12 @@ $(document).ready(function () {
     var fnLoad = function (obj) {
         var scrollY = document.body.scrollTop || document.documentElement.scrollTop;
         //  if(t+h>obj.top+200&&obj.top>t){ //给个200为了提高让用户看到图片加载状态，更加友好
-        //  alert("windowheigt:"+windowheight + ",scrollY:"+scrollY + ",object.top:"+obj.top);
+      //   alert("windowheigt:"+windowheight + ",scrollY:"+scrollY + ",object.top:"+obj.top);
 
-        if (scrollY + windowheight > obj.top + 300 && obj.top + 200 > scrollY) { //给个200为了提高让用户看到图片加载状态，更加友好
-            setTimeout(function () {
+      if (scrollY + windowheight > obj.top + 300 && obj.top + 200 > scrollY) { //给个200为了提高让用户看到图片加载状态，更加友好
+        // if (scrollY + windowheight > obj.top  && obj.top   > scrollY) { //给个200为了提高让用户看到图片加载状态，更加友好
+
+        setTimeout(function () {
                 obj.src = obj.url;
                 obj.flag = false;
             }, 500)
@@ -33,11 +35,14 @@ $(document).ready(function () {
         }
     }
 
-    for (var i = 0; i < obj.length; i++) {
-        if (obj[i].flag) {
-            fnLoad(obj[i]);
-        }
+    if (obj[0] && obj[0].flag){
+       fnLoad(obj[0]);
     }
+    if (obj[1] && obj[1].flag){
+        fnLoad(obj[1]);
+    }
+
+
 
 });
 

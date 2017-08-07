@@ -1,1 +1,6 @@
-.myimage{display:block;width:350px;height:245px;background:url(/xiaobao/img/imageloading.gif) center center no-repeat}
+.myzuopingimage{
+    display:block;
+    width:700px;
+    height:490px;
+    background:url(/xiaobao/img/imageloading.gif) center center no-repeat
+}
