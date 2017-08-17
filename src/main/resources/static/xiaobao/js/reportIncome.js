@@ -554,7 +554,6 @@ var tableToExcel = (function () {
     return function (table, reportType) {
         var sheetName = "Worksheet";
         var xlsName = "财务收入.xls";
-        alert(reportType);
         if (reportType == 1) {
             //var obj = document.getElementById("reportYear");
             //var index = obj.selectedIndex; // 选中索引
@@ -574,7 +573,6 @@ var tableToExcel = (function () {
             xlsName = "财务收入_按校区" + "(" + sheetName + ")" + ".xls";
 
         }
-        alert(xlsName);
         if (!table.nodeType)
             table = document.getElementById(table)
         var ctx =
