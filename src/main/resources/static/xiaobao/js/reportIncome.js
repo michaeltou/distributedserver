@@ -554,12 +554,14 @@ var tableToExcel = (function () {
     return function (table, reportType) {
         var sheetName = "Worksheet";
         var xlsName = "财务收入.xls";
+        alert(reportType);
         if (reportType == 1) {
-            var obj = document.getElementById("reportYear");
-            var index = obj.selectedIndex; // 选中索引
-            sheetName = obj.options[index].text; // 选中文本
+            //var obj = document.getElementById("reportYear");
+            //var index = obj.selectedIndex; // 选中索引
+            //sheetName = obj.options[index].text; // 选中文本
             //var value = obj.options[index].value; // 选中值
-            xlsName = "财务收入" + "_" + obj.options[index].text + ".xls";
+            sheetName = $("#reportYear").val();
+            xlsName = "财务收入" + "_" + sheetName + ".xls";
         }
         else if (reportType == 0) {
             var start = document.getElementById("reportStartDate").value;
@@ -572,7 +574,7 @@ var tableToExcel = (function () {
             xlsName = "财务收入_按校区" + "(" + sheetName + ")" + ".xls";
 
         }
-
+        alert(xlsName);
         if (!table.nodeType)
             table = document.getElementById(table)
         var ctx =
