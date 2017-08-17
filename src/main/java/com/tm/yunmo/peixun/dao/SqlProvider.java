@@ -1,5 +1,11 @@
 package com.tm.yunmo.peixun.dao;
 
+import com.tm.yunmo.common.DateUtil;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created by Huangqijun on 2017/7/31.
  */
@@ -91,6 +97,89 @@ public class SqlProvider {
                 "AND  sfz_code IN " + filter;
 
         return sql;
+    }
+
+    public  String queryBaoBiao1ListByInstitution(String institution_code,String schoolList,String startDate,String endDate){
+
+        String filter = "AND handingSchool IN (";
+        List<String> list = Arrays.asList(schoolList.split(","));
+        for (String school : list){
+            filter +=  "'"+school + "'" + ",";
+        }
+        filter = filter.substring(0,filter.length() -1);
+        filter += ") ";
+
+        if(!(startDate == null || "".equals(startDate))){
+            //filter += " AND handingDate >= '" + DateUtil.StrToDate(startDate) +"'";
+            filter += " AND handingDate >= '" + startDate +"'";
+        }
+
+        if(!(endDate == null || "".equals(endDate))){
+            //filter += " AND handingDate <= '" + DateUtil.StrToDate(endDate) + "'";
+            filter += " AND handingDate <= '" + endDate + "'";
+        }
+
+
+        String sql =" SELECT handingSchool, shouru ,zhichu ,(shouru - zhichu) AS lirun FROM ( \n" +
+                "    SELECT handingSchool, SUM(shouru) AS shouru ,SUM(zhichu) AS zhichu  FROM (    SELECT handingSchool,  CASE  type \n" +
+                "    WHEN 1 THEN  SUM(amount) \n" +
+                "    WHEN 2 THEN  0 \n" +
+                "    END AS shouru , \n" +
+                "    CASE  type \n" +
+                "    WHEN 1 THEN  0 \n" +
+                "    WHEN 2 THEN  SUM(amount) \n" +
+                "    END AS zhichu \n" +
+                "    FROM   px_shou_zhi_detail WHERE  institution_code = '"+institution_code+"' " + filter +
+                "    GROUP BY handingSchool , type \n" +
+                "     )  AS T   GROUP BY        T.handingSchool     ) T2 ";
+
+        return  sql;
+
+    }
+
+
+    public  String queryShouZhiDetailListByInstitutionForYear(String institution_code,String schoolList,String startDate,String endDate){
+
+        String filter = "AND handingSchool IN (";
+        List<String> list = Arrays.asList(schoolList.split(","));
+        for (String school : list){
+            filter +=  "'"+school + "'" + ",";
+        }
+        filter = filter.substring(0,filter.length() -1);
+        filter += ") ";
+
+        if(!(startDate == null || "".equals(startDate))){
+            //filter += " AND handingDate >= '" + DateUtil.StrToDate(startDate) +"'";
+            filter += " AND handingDate >= '" + startDate +"'";
+        }
+
+        if(!(endDate == null || "".equals(endDate))){
+            //filter += " AND handingDate <= '" + DateUtil.StrToDate(endDate) + "'";
+            filter += " AND handingDate <= '" + endDate + "'";
+        }
+
+
+        String sql ="SELECT `px_shou_zhi_detail`.`id`,\n" +
+                "    `px_shou_zhi_detail`.`institution_code`,\n" +
+                "    `px_shou_zhi_detail`.`accountName`,\n" +
+                "    `px_shou_zhi_detail`.`type`,\n" +
+                "    `px_shou_zhi_detail`.`shou_zhi_da_lei`,\n" +
+                "    `px_shou_zhi_detail`.`shou_zhi_xiao_lei`,\n" +
+                "    `px_shou_zhi_detail`.`amount`,\n" +
+                "    `px_shou_zhi_detail`.`studentName`,\n" +
+                "    `px_shou_zhi_detail`.`orderNo`,\n" +
+                "    `px_shou_zhi_detail`.`amountStatus`,\n" +
+                "    `px_shou_zhi_detail`.`handingSchool`,\n" +
+                "    `px_shou_zhi_detail`.`handingPerson`,\n" +
+                "    `px_shou_zhi_detail`.`handingDate`,\n" +
+                "    `px_shou_zhi_detail`.`note`,\n" +
+                "    `px_shou_zhi_detail`.`createDate`,\n" +
+                "    `px_shou_zhi_detail`.`updateDate`\n" +
+                " FROM  `px_shou_zhi_detail` \n" +
+                " WHERE  institution_code = '"+institution_code+"'" + filter + "";
+
+        return  sql;
+
     }
 
 

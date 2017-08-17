@@ -137,7 +137,7 @@ $(function () {
     /*
      初始化校区信息
      */
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 20; i++) {
         $input = $('<input value="" name="handingSchool" type="checkbox" class="handingSchool" checked = "checked"/>');
         var schoolName = "校区" + (i + 1);
         $(".handingSchoolDiv").append($input);
@@ -360,7 +360,7 @@ var tableToExcel = (function () {
                 table: table.innerHTML
             }
         //window.location.href = uri + base64(format(template, ctx))
-
+alert(table.innerHTML);
         var downloadLink = document.createElement("a");
         downloadLink.href = uri + format(template, ctx);
 

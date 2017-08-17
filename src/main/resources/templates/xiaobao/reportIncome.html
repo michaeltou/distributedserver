@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>收入报表</title>
+    <meta name="viewport" content="width=device-width,
+                                     initial-scale=1.0,
+                                     maximum-scale=1.0,
+                                     user-scalable=no"/>
+
+    <link rel="stylesheet" href="/xiaobao/css/bootstrap.css"/>
+    <script src="/xiaobao/js/jquery-3.2.1.js"></script>
+    <script src="/xiaobao/js/bootstrap.js"></script>
+    <script type="text/javascript" src="/xiaobao/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="/xiaobao/js/Chart-1.0.1-beta.4.js"></script>
+    <script type="text/javascript" src="/xiaobao/js/Chart.js"></script>
+    <script type="text/javascript" src="/xiaobao/js/utils.js"></script>
+    <script type="text/javascript" src='/xiaobao/js/moment.min.js'></script>
+    <script src="/xiaobao/js/reportIncome.js"></script>
+
+    <script src="/xiaobao/js/bootstrap-datetimepicker.js"></script>
+    <link rel="stylesheet" href="/xiaobao/css/bootstrap-datetimepicker.css"/>
+    <style>
+        .table thead
+        {
+            background-color: rgba(113,210,113,0.36);
+            border-color: #71ce71;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <div class="row" style="border-bottom: 1px solid silver;">
+        <div style="height: 10px;"></div>
+        <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="#">按经办校区</a></li>
+            <li role="presentation"><a href="#">按月份</a></li>
+        </ul>
+
+    </div>
+    <div class="row">
+        <div style="height: 10px;"></div>
+        <div class="col-md-12">
+            <span style="float: left; margin: 5px 10px 0 0;">
+                经办校区:
+            </span>
+
+            <div class="handingSchoolDiv" style="float:left; ">
+                <div class="checkbox-group">
+                    <input value="全部校区" name="handingSchool" type="checkbox" class="handingSchool" checked="checked"/> 全部校区
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row" style="border-bottom: 2px solid silver; padding-bottom: 10px;">
+        <div style="height: 10px;"></div>
+        <div class="col-md-12">
+            <div class="reportPeriod" >
+                <span style="float: left; margin: 5px 10px 0 0;">
+                    统计期间:
+                </span>
+                <input type="text"  class="form-control"  id="reportStartDate" style="background-color: white; float: left; width: 200px; margin-right: 5px;" />
+                <div style="float: left;  width: 5px; height: 34px;line-height: 34px; margin-right: 5px;">-</div>
+                <input type="text"  class="form-control"  id="reportEndDate" style="background-color: white; float: left; width: 200px; margin-right: 20px;" />
+            </div>
+            <div class="reportYearDiv" style="display: none" >
+                <span style="float: left; margin: 5px 10px 0 0;">
+                    统计年度:
+                </span>
+                <input type="text"  class="form-control"  id="reportYear" style="background-color: white; float: left; width: 200px; margin-right: 5px;" />
+            </div>
+            <button type="button" class="btn btn-success" id="exportReport" style="float: right;margin-right: 20px;">
+                导出报表
+            </button>
+            <button type="button" class="btn btn-success" id="createReport" style="float: right; margin-right: 20px;">
+                生成报表
+            </button>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="accordingToSchool" style="width: 100%; height: 500px;">
+                <div class="chartContainer">
+                    <canvas class="canvas"></canvas>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover" id = "recordList">
+                        <thead style="  background-color: rgba(113,210,113,0.36);  border-color: #71ce71;">
+                        <tr>
+                            <th> 经办校区</th>
+                            <th> 总收入</th>
+                            <th> 总支出</th>
+                            <th> 总利润</th>
+                        </tr>
+                        </thead>
+                        <tbody id="mytablebody">
+
+                        <tr>
+                            <td ></td>
+                            <td ></td>
+                            <td ></td>
+                            <td ></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
